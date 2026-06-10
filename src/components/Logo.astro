@@ -1,0 +1,27 @@
+---
+interface Props {
+  /** Use cream ink on the navy footer. */
+  onDark?: boolean;
+}
+const { onDark = false } = Astro.props;
+---
+
+<span class="inline-flex items-center gap-2.5">
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <rect width="28" height="28" rx="8" fill="var(--color-navy-900)"></rect>
+    <!-- "C" as a flow: node → curve → node -->
+    <path
+      d="M18.5 9.25a6.5 6.5 0 1 0 0 9.5"
+      stroke="var(--color-mint-400)"
+      stroke-width="2.5"
+      stroke-linecap="round"></path>
+    <circle cx="18.5" cy="9.25" r="2" fill="var(--color-mint-400)"></circle>
+    <circle cx="18.5" cy="18.75" r="2" fill="var(--color-cream-50)"></circle>
+  </svg>
+  <span
+    class:list={[
+      'font-display text-xl font-bold tracking-tight',
+      onDark ? 'text-cream-50' : 'text-navy-900',
+    ]}>Calyflow</span
+  >
+</span>

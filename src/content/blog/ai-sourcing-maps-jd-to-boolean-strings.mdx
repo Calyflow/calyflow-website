@@ -1,0 +1,55 @@
+---
+title: 'AI sourcing maps: from JD to boolean strings in one run'
+description: 'A sourcing map turns a job description into target companies, talent pools, and ready-to-paste boolean strings — in one AI run instead of an afternoon.'
+pubDate: 2026-05-26
+topic: 'sourcing'
+---
+
+A sourcing map is everything you need to start hunting for a role, generated in one run: the target companies to raid, the adjacent talent pools most recruiters miss, the search channels worth your time, and ready-to-paste boolean strings for each of them. What used to be an afternoon of tab-hopping becomes the first fifteen minutes of the search.
+
+This post breaks down what a good sourcing map contains, why generating it in *one* run beats prompting for boolean strings piecemeal, and how to keep the quality consistent across every search your team runs.
+
+## The piecemeal problem
+
+Most recruiters already use AI for sourcing — one fragment at a time. "Give me a boolean string for a senior data engineer." Then, in another chat: "Which companies in Berlin have strong data teams?" Then: "Synonyms for 'data pipeline'?"
+
+Each answer is fine. The problem is that the fragments don't talk to each other:
+
+- The boolean string doesn't know which companies you're targeting, so it can't exclude them or tune for their tech stack.
+- The company list doesn't know the JD's actual must-haves, so it optimizes for fame rather than fit.
+- Nothing gets reused — next search, you re-improvise the whole set from scratch, and a teammate running the same role gets entirely different results.
+
+Sourcing quality ends up depending on who did the prompting and how much patience they had that day. That's the [chatting-vs-building gap](/blog/chatting-with-ai-vs-building-ai-workflows) in its purest form.
+
+## What a sourcing map contains
+
+A complete sourcing map, generated from the job description and intake notes in a single run, has four layers:
+
+1. **Target companies.** Where do people with this exact skill profile work today? Not just the famous names — the unglamorous mid-size companies where the JD's stack is the daily job. Grouped into direct competitors, adjacent industries, and feeder companies.
+2. **Talent pools.** The non-obvious populations: people with the right skills under different titles ("analytics engineer" hiding inside "BI developer"), bootcamp-and-OSS profiles, relevant communities and conference speaker lists.
+3. **Channels.** Which of LinkedIn, GitHub, niche job boards, or your own ATS history is actually worth searching for *this* role — sourcing a COBOL engineer and a design lead are different games.
+4. **Boolean strings per channel.** Ready-to-paste strings tuned to each platform's quirks — title variants, skill synonyms, exclusions — derived from the same must-haves the rest of the search uses.
+
+The layers reinforce each other, and that's the point of generating them together: the boolean strings inherit the company targets and the title variants from the talent-pool analysis, instead of being generic guesses.
+
+## Why one run beats one afternoon
+
+Beyond speed, the single-run approach fixes three things piecemeal prompting can't:
+
+- **Consistency.** Every searcher on the team starts from the same map structure. Search #50 is as thorough as search #1 — thoroughness is encoded in the workflow, not in someone's mood.
+- **Provenance.** The map derives from the JD and intake notes you attached. When a target company looks odd, you can trace *why* it's there — same philosophy as [evidence-quoted CV screening](/blog/ai-cv-screening-without-hallucinations): every output should justify itself.
+- **Iteration.** When the client adds a constraint ("no candidates from vendors"), you re-run the map with updated intake notes. The whole set — companies, pools, strings — updates coherently, instead of you patching one boolean string and forgetting the rest.
+
+## Garbage in, garbage map
+
+One honest caveat: a sourcing map is only as sharp as the job description feeding it. "Looking for a rockstar engineer with good communication skills" produces a map of everywhere and nowhere. This is why the sourcing map sits *second* in the search lifecycle — after a JD workflow has turned raw intake notes into explicit must-haves. Fix the JD first; the map gets dramatically better for free.
+
+## Running it as a workflow
+
+The Sourcing Map workflow in [Calyflow](/#how-it-works) takes the job description and intake notes you've attached to a project and produces the full four-layer map in one run — typically a dozen boolean strings across channels, with the run cost shown at the bottom. It runs on [your own AI key and your own tools](/#principles), so the same workflow serves the whole team regardless of which model you prefer, and your search strategy never leaves your control.
+
+## The takeaway
+
+Stop prompting for boolean strings one at a time. Generate the whole sourcing map — companies, pools, channels, and strings that share one understanding of the role — in a single run, from the same JD the rest of your search uses. Your first hour on any new role should be spent contacting candidates, not assembling search queries.
+
+*Generate your first sourcing map free: [create a free account](https://app.calyflow.ai/sign-up) — your own API key, no credit card.*

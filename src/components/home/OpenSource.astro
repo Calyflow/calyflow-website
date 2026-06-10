@@ -1,0 +1,31 @@
+---
+import { SITE } from '../../data/site';
+import GitHubButton from '../GitHubButton.astro';
+import Icon from '../icons/Icon.astro';
+---
+
+<section id="open-source" class="scroll-mt-20 py-24 md:py-32">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="mx-auto max-w-3xl text-center">
+      <Icon name="open-source-shield" size={48} class="mx-auto" />
+      <h2 class="mt-5 text-3xl tracking-tight md:text-4xl">Open source, on purpose</h2>
+
+      <!-- The quotable definition — keep this phrasing identical everywhere (spec §5.3) -->
+      <p class="mt-6 text-xl leading-relaxed text-navy-800/80">
+        {SITE.definition}
+      </p>
+
+      <p class="mt-5 text-navy-800/65">
+        The code is AGPL-3.0 and inspectable — you can read exactly what happens to every CV and
+        every prompt. You can self-host the whole platform on your own infrastructure. And because
+        your data lives in your systems and your AI runs on your key, there is no hostage-taking:
+        leave any time and take everything with you. Contributions welcome.
+      </p>
+
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <GitHubButton size="lg" event="github-click-oss" />
+        <span class="font-mono text-sm text-navy-800/55">License: {SITE.productLicense}</span>
+      </div>
+    </div>
+  </div>
+</section>

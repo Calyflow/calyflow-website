@@ -1,0 +1,30 @@
+{
+  "$comment": "Single source of truth for the BYO logo grids (spec §3.4 + §8). status: 'available' | 'coming-soon'. Honesty rule: never mark something available before it ships. Updating product reality = one-line PR here.",
+  "ai": [
+    { "name": "Claude", "status": "coming-soon" },
+    { "name": "ChatGPT", "status": "coming-soon" },
+    { "name": "Gemini", "status": "coming-soon" },
+    { "name": "OpenAI API", "status": "coming-soon" },
+    { "name": "Anthropic API", "status": "coming-soon" },
+    { "name": "Local models", "status": "coming-soon" }
+  ],
+  "data": [
+    { "name": "Recruit CRM", "status": "coming-soon" },
+    { "name": "Bullhorn", "status": "coming-soon" },
+    { "name": "Vincere", "status": "coming-soon" },
+    { "name": "HubSpot", "status": "coming-soon" },
+    { "name": "Salesforce", "status": "coming-soon" },
+    { "name": "Google Sheets", "status": "coming-soon" },
+    { "name": "Airtable", "status": "coming-soon" },
+    { "name": "CSV", "status": "coming-soon" }
+  ],
+  "tools": [
+    { "name": "LinkedIn", "status": "coming-soon" },
+    { "name": "Apollo", "status": "coming-soon" },
+    { "name": "BrightData", "status": "coming-soon" },
+    { "name": "GitHub", "status": "coming-soon" },
+    { "name": "Google Search", "status": "coming-soon" },
+    { "name": "Company databases", "status": "coming-soon" },
+    { "name": "Internal candidate DBs", "status": "coming-soon" }
+  ]
+}

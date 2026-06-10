@@ -1,0 +1,153 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthorBox from '../../components/blog/AuthorBox.astro';
+import Breadcrumbs from '../../components/blog/Breadcrumbs.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import TopicChip from '../../components/blog/TopicChip.astro';
+import Button from '../../components/Button.astro';
+import { SITE, AUTHOR } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  );
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, prev: posts[i - 1] ?? null, next: posts[i + 1] ?? null },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  prev: CollectionEntry<'blog'> | null;
+  next: CollectionEntry<'blog'> | null;
+}
+
+const { post, prev, next } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+
+// Same-topic posts first, padded with recent posts so the section never runs thin.
+const others = (await getCollection('blog', ({ data, id }) => !data.draft && id !== post.id)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const related = [
+  ...others.filter((p) => p.data.topic === post.data.topic),
+  ...others.filter((p) => p.data.topic !== post.data.topic),
+].slice(0, 3);
+
+const postUrl = `${SITE.url}/blog/${post.id}`;
+const ogImage = post.data.ogImage ?? `/blog/${post.id}/og.png`;
+const pubDateDisplay = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.pubDate.toISOString(),
+    ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
+    url: postUrl,
+    image: new URL(ogImage, SITE.url).href,
+    author: { '@type': 'Person', name: post.data.author, url: AUTHOR.linkedin },
+    publisher: { '@id': `${SITE.url}/#organization` },
+    mainEntityOfPage: postUrl,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.data.title, item: postUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  ogImage={ogImage}
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <article class="mx-auto max-w-6xl px-5 py-14 md:py-20">
+    <div class="mx-auto max-w-[68ch]">
+      <Breadcrumbs
+        crumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: post.data.title },
+        ]}
+      />
+
+      <header class="mt-7">
+        <TopicChip topic={post.data.topic} />
+        <h1 class="mt-4 text-3xl leading-tight tracking-tight md:text-4xl">{post.data.title}</h1>
+        <p class="mt-5 font-mono text-[0.8125rem] text-navy-800/55">
+          <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{pubDateDisplay}</time>
+          · {remarkPluginFrontmatter.minutesRead} · {post.data.author}
+        </p>
+      </header>
+
+      <div class="prose-calyflow mt-10">
+        <Content />
+      </div>
+
+      <div class="mt-14">
+        <AuthorBox />
+      </div>
+
+      {
+        (prev || next) && (
+          <nav aria-label="More posts" class="mt-10 flex flex-col gap-4 border-t border-navy-800/10 pt-8 sm:flex-row sm:justify-between">
+            {prev ? (
+              <a href={`/blog/${prev.id}`} class="group max-w-xs">
+                <span class="font-mono text-xs text-navy-800/55">← Previous</span>
+                <span class="mt-1 block font-display font-semibold text-navy-900 group-hover:text-mint-700">{prev.data.title}</span>
+              </a>
+            ) : (
+              <span />
+            )}
+            {next && (
+              <a href={`/blog/${next.id}`} class="group max-w-xs sm:text-right">
+                <span class="font-mono text-xs text-navy-800/55">Next →</span>
+                <span class="mt-1 block font-display font-semibold text-navy-900 group-hover:text-mint-700">{next.data.title}</span>
+              </a>
+            )}
+          </nav>
+        )
+      }
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="mx-auto mt-20 max-w-6xl">
+          <h2 class="text-2xl">Related posts</h2>
+          <div class="mt-6 grid gap-6 md:grid-cols-3">
+            {related.map((p) => (
+              <PostCard post={p} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <div class="mt-20 rounded-[20px] bg-cream-100 px-6 py-12 text-center">
+      <h2 class="text-2xl">Ready to run this as a workflow?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-navy-800/65">
+        Calyflow turns this playbook into a repeatable workflow on your own AI, data, and tools.
+      </p>
+      <Button href={SITE.signupUrl} size="lg" event="cta-blog-post" class="mt-6">
+        Create free account
+      </Button>
+    </div>
+  </article>
+</BaseLayout>

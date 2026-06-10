@@ -1,0 +1,121 @@
+---
+import '../styles/global.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import sg600 from '@fontsource/space-grotesk/files/space-grotesk-latin-600-normal.woff2?url';
+import sg700 from '@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2?url';
+import { SITE } from '../data/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  /** ≤60 chars; rendered as-is (include brand yourself if wanted). */
+  title: string;
+  /** ≤155 chars. */
+  description: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  /** Extra page-level JSON-LD objects (SoftwareApplication, FAQPage, BlogPosting…). */
+  jsonLd?: object[];
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogImage = SITE.ogImage,
+  ogType = 'website',
+  jsonLd = [],
+  noIndex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
+
+// Sitewide structured data (spec §5.2)
+const sitewideLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${SITE.url}/#organization`,
+    name: SITE.name,
+    url: SITE.url,
+    email: SITE.contactEmail,
+    description: SITE.definition,
+    sameAs: [SITE.githubUrl],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE.url}/#website`,
+    name: SITE.name,
+    url: SITE.url,
+    publisher: { '@id': `${SITE.url}/#organization` },
+  },
+];
+
+const cfBeaconToken = import.meta.env.CF_BEACON_TOKEN;
+---
+
+<!doctype html>
+<html lang={SITE.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noIndex && <meta name="robots" content="noindex" />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE.name} Blog`} href="/rss.xml" />
+
+    <link rel="preload" href={sg600} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={sg700} as="font" type="font/woff2" crossorigin />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {
+      [...sitewideLd, ...jsonLd].map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
+
+    {
+      cfBeaconToken && (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+        />
+      )
+    }
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <Header />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

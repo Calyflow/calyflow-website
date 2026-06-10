@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+
+const title = 'Page not found | Calyflow';
+const description = 'This page does not exist. Find the Calyflow homepage, blog, or GitHub repo from here.';
+---
+
+<BaseLayout title={title} description={description} noIndex>
+  <section class="relative overflow-hidden">
+    <div class="aurora-glow absolute -top-32 left-1/2 h-[360px] w-[640px] -translate-x-1/2 rounded-full" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-2xl px-5 py-28 text-center md:py-36">
+      <p class="font-mono text-sm text-navy-800/55">404 · run failed: page not found</p>
+      <h1 class="mt-4 text-3xl tracking-tight md:text-4xl">This page doesn’t exist</h1>
+      <p class="mt-4 text-xl text-navy-800/70">
+        The workflow you’re looking for might have moved. Here’s where to go instead:
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <Button href="/" size="lg">Back to homepage</Button>
+        <Button href="/blog" variant="secondary" size="lg">Read the blog</Button>
+      </div>
+      <p class="mt-6 text-sm text-navy-800/55">
+        Or <a href={SITE.signupUrl} class="font-medium text-mint-700 hover:underline">create a free account</a> and start running workflows.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

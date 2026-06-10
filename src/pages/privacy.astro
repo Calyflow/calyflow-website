@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+
+const title = 'Privacy Policy | Calyflow';
+const description =
+  'Plain-language privacy policy: EU-based processing, cookieless analytics, no personal data collected by this website.';
+const updated = 'June 10, 2026';
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="mx-auto max-w-[68ch] px-5 py-16 md:py-20">
+    <h1 class="text-3xl tracking-tight md:text-4xl">Privacy policy</h1>
+    <p class="mt-3 font-mono text-[0.8125rem] text-navy-800/55">Last updated: {updated}</p>
+
+    <div class="prose-calyflow mt-10">
+      <p>
+        <strong>The short version:</strong> this website collects no personal data, sets no
+        tracking cookies, and shows no consent banner because none is needed. We are an EU-based
+        company and GDPR is our home turf, not an afterthought.
+      </p>
+
+      <h2>Who we are</h2>
+      <p>
+        Calyflow is an EU-based company. For anything privacy-related, contact us at
+        <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+      </p>
+
+      <h2>What this website collects</h2>
+      <p>
+        We use cookieless, privacy-friendly analytics (Cloudflare Web Analytics) to understand
+        aggregate traffic: which pages are visited, roughly where visitors come from, and what
+        device class they use. This works without cookies, without fingerprinting, and without
+        storing anything on your device. We cannot identify you from it, and we do not try to.
+      </p>
+      <p>We do not collect names, email addresses, IP address logs, or any other personal data on this website.</p>
+
+      <h2>What happens when you sign up for the app</h2>
+      <p>
+        The Calyflow application at <a href={SITE.appUrl}>app.calyflow.ai</a> has its own account
+        system and processes data you bring to it (such as job descriptions and CVs) under your
+        instructions. The key design principle: your candidate data stays in your own systems —
+        Calyflow connects to them to run workflows but does not warehouse your data. App-specific
+        privacy terms are presented at sign-up.
+      </p>
+
+      <h2>Where processing happens</h2>
+      <p>
+        Our infrastructure and processing are EU-based. This website is served from a global CDN
+        (Cloudflare) for performance, which acts as our processor for delivering static pages.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        Under GDPR you have the right to access, rectify, erase, and port your personal data, and
+        to object to or restrict its processing. Since this website holds no personal data about
+        you, there is usually nothing to act on — but if you believe otherwise, email
+        <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> and we will respond
+        promptly. You also have the right to lodge a complaint with your local supervisory
+        authority.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        If this policy changes, we will update this page and the date at the top. No silent
+        rewrites.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

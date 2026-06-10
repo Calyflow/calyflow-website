@@ -1,0 +1,26 @@
+---
+import { FAQ } from '../../data/faq';
+import SectionHeading from '../SectionHeading.astro';
+---
+
+<section id="faq" class="scroll-mt-20 bg-cream-100 py-24 md:py-32">
+  <div class="mx-auto max-w-3xl px-5">
+    <SectionHeading eyebrow="FAQ" title="Real questions, direct answers" />
+
+    <div class="mt-12 space-y-3">
+      {
+        FAQ.map((item, i) => (
+          <details class="group rounded-[14px] border border-navy-800/12 bg-white px-6 py-1" open={i === 0}>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-display text-lg font-semibold text-navy-900 [&::-webkit-details-marker]:hidden">
+              {item.question}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" class="shrink-0 transition-transform duration-200 group-open:rotate-45" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </summary>
+            <p class="pb-5 text-navy-800/75">{item.answer}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+import { SITE } from '../../data/site';
+import { getStarCount, formatStars } from '../../lib/github';
+
+// Honesty rule: no fake logos. Until real customer logos/quotes arrive,
+// this strip states the pedigree plainly (spec §3.2).
+const stars = await getStarCount();
+---
+
+<section class="border-y border-navy-800/10 bg-cream-100">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 px-5 py-8 text-center sm:flex-row sm:gap-8">
+    <p class="font-display text-lg font-semibold text-navy-900">
+      Built by recruiters, for recruiters
+    </p>
+    <span class="hidden h-5 w-px bg-navy-800/15 sm:block" aria-hidden="true"></span>
+    <p class="text-[0.9375rem] text-navy-800/70">
+      From the team behind the <span class="font-medium text-navy-800">AI Adoption Ladder</span> for recruiting teams
+    </p>
+    <span class="hidden h-5 w-px bg-navy-800/15 sm:block" aria-hidden="true"></span>
+    <a href={SITE.githubUrl} rel="noopener" data-event="github-click-proof" class="font-mono text-sm text-mint-700 hover:underline">
+      {stars !== null ? `★ ${formatStars(stars)} on GitHub` : 'Open source on GitHub'}
+    </a>
+  </div>
+</section>

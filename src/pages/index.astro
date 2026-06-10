@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import SocialProof from '../components/home/SocialProof.astro';
+import ProblemSolution from '../components/home/ProblemSolution.astro';
+import Principles from '../components/home/Principles.astro';
+import HowItWorks from '../components/home/HowItWorks.astro';
+import Personas from '../components/home/Personas.astro';
+import OpenSource from '../components/home/OpenSource.astro';
+import Faq from '../components/home/Faq.astro';
+import FinalCta from '../components/home/FinalCta.astro';
+import { SITE } from '../data/site';
+import { FAQ } from '../data/faq';
+
+// Title 49 chars, description from SITE (≤155).
+const title = 'Calyflow — Open-source Recruiting OS';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: SITE.name,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description: SITE.definition,
+    url: SITE.url,
+    license: 'https://www.gnu.org/licenses/agpl-3.0.html',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    sameAs: [SITE.githubUrl],
+    publisher: { '@id': `${SITE.url}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={SITE.description} jsonLd={jsonLd}>
+  <Hero />
+  <SocialProof />
+  <ProblemSolution />
+  <Principles />
+  <HowItWorks />
+  <Personas />
+  <OpenSource />
+  <Faq />
+  <FinalCta />
+</BaseLayout>

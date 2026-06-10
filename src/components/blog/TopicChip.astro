@@ -1,0 +1,19 @@
+---
+interface Props {
+  topic: string;
+  class?: string;
+}
+
+const { topic, class: className } = Astro.props;
+const label = topic.replace(/-/g, ' ');
+---
+
+<a
+  href={`/blog/topics/${topic}`}
+  class:list={[
+    'inline-flex w-fit items-center rounded-full bg-mint-400/22 px-3 py-1 font-mono text-xs font-medium text-mint-700 capitalize hover:bg-mint-400/35',
+    className,
+  ]}
+>
+  {label}
+</a>

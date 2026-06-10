@@ -1,0 +1,70 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import TopicChip from '../../components/blog/TopicChip.astro';
+import { TOPICS } from '../../content.config';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  return paginate(posts, { pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<CollectionEntry<'blog'>>;
+}
+
+const { page } = Astro.props;
+const isFirst = page.currentPage === 1;
+const title = isFirst
+  ? 'Blog — AI Recruiting Workflows | Calyflow'
+  : `Blog — Page ${page.currentPage} | Calyflow`;
+const description =
+  'Practical guides to AI recruiting workflows: CV screening without hallucinations, sourcing maps, outreach, and the AI Adoption Ladder.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="relative overflow-hidden">
+    <div class="aurora-glow-b absolute -top-32 left-1/2 h-[320px] w-[640px] -translate-x-1/2 rounded-full" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-5 pt-16 pb-10 md:pt-20">
+      <h1 class="text-3xl tracking-tight md:text-4xl">The Calyflow Blog</h1>
+      <p class="mt-4 max-w-2xl text-xl text-navy-800/70">
+        Practical AI recruiting workflows — sourcing, screening, outreach — written by recruiters
+        who run them.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2">
+        {TOPICS.map((topic) => <TopicChip topic={topic} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 pb-24">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {page.data.map((post) => <PostCard post={post} />)}
+    </div>
+
+    {
+      page.lastPage > 1 && (
+        <nav aria-label="Pagination" class="mt-12 flex items-center justify-center gap-4 font-mono text-sm">
+          {page.url.prev ? (
+            <a href={page.url.prev} class="rounded-[10px] border border-navy-800/25 px-4 py-2 hover:border-navy-800">← Newer</a>
+          ) : (
+            <span class="rounded-[10px] border border-navy-800/10 px-4 py-2 text-navy-800/40">← Newer</span>
+          )}
+          <span class="text-navy-800/55">
+            Page {page.currentPage} of {page.lastPage}
+          </span>
+          {page.url.next ? (
+            <a href={page.url.next} class="rounded-[10px] border border-navy-800/25 px-4 py-2 hover:border-navy-800">Older →</a>
+          ) : (
+            <span class="rounded-[10px] border border-navy-800/10 px-4 py-2 text-navy-800/40">Older →</span>
+          )}
+        </nav>
+      )
+    }
+  </section>
+</BaseLayout>

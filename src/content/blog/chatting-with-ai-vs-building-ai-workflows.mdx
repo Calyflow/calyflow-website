@@ -1,0 +1,62 @@
+---
+title: 'Chatting with AI vs. building AI workflows in recruiting'
+description: 'Chatting with AI gives one person one good answer once. Workflows give the whole team the same quality on every search. Here is the difference in practice.'
+pubDate: 2026-05-12
+topic: 'ai-workflows'
+---
+
+Chatting with AI and building AI workflows are two different sports. A chat gives one person one good answer, once. A workflow gives your whole team the same quality answer on every search, every time. If your recruiting AI strategy is "everyone has a ChatGPT tab open," you don't have an AI strategy — you have fourteen browser tabs and one person's head.
+
+This post explains the difference, why it matters more in recruiting than in most industries, and how to make the jump without a development team.
+
+## The chat trap
+
+Almost every recruiting team adopts AI the same way. Someone discovers that Claude or ChatGPT writes a decent boolean string. Then a decent outreach message. Then a passable CV summary. Six months later, the team's AI capability looks like this:
+
+- The best prompts live in one recruiter's chat history — and nobody else's.
+- The same task produces different quality depending on who runs it and how they phrase it.
+- Nobody knows what a screen or a sourcing run actually costs in tokens.
+- When the prompt wizard goes on holiday, the "AI capability" goes with them.
+
+None of this is the model's fault. Chat is simply the wrong container for repeated work. Chat is brilliant for exploration — one-off questions, drafting, thinking out loud. Recruiting, though, is built on repetition: every search needs a JD, a sourcing plan, outreach, screening, and a submission. Doing repeated work through an interface designed for one-off conversations is how you get inconsistency at scale.
+
+## What a workflow actually is
+
+A workflow is a prompt that grew up. It has:
+
+1. **Defined inputs.** A CV screening workflow declares it needs a job description, intake notes, and CVs. It tells you what's missing before it runs — no more "let me paste the JD again."
+2. **A tested process.** The prompting, the steps, the output format — designed once, by whoever on your team (or in the community) does it best, then frozen and versioned.
+3. **Consistent outputs.** The screening report for candidate #40 has the same structure and rigor as the report for candidate #1.
+4. **Visible cost.** Every run shows what it consumed, so "what does AI screening cost us per role?" has an actual answer.
+
+The shift is the same one software teams made decades ago: from "Dave knows how to deploy" to a deploy script anyone can run. You stop renting one person's skill and start owning a team asset.
+
+## Why recruiting feels this pain first
+
+Recruiting work has an unusual shape: high volume, high stakes, and highly repetitive structure. A search is a pipeline — intake notes → job description → [sourcing map](/blog/ai-sourcing-maps-jd-to-boolean-strings) → outreach → [CV screen](/blog/ai-cv-screening-without-hallucinations) → submission pack. Each stage feeds the next, and the quality of the whole chain depends on the weakest stage.
+
+When each stage is an improvised chat, errors compound quietly. A vague JD produces a vague sourcing map, which produces generic outreach, which produces a weak pipeline — and at no point did anything look obviously broken. A workflow chain makes each stage explicit, inspectable, and repeatable, so quality problems surface at the stage that caused them.
+
+## The maturity test
+
+Here's a quick way to locate your team on the [AI Adoption Ladder](/blog/ai-adoption-ladder-for-recruiting-teams). Ask:
+
+> If your most AI-savvy recruiter left tomorrow, how much of your AI capability would walk out the door with them?
+
+If the honest answer is "most of it," you're chatting, not building. Team-owned workflows are the difference between *people who use AI* and *an organization that uses AI*.
+
+## Making the jump (without engineers)
+
+You do not need to build software to move from chatting to workflows. You need three things:
+
+- **Pick your highest-repetition task first.** For most teams that's CV screening or sourcing — tasks you do dozens of times per search.
+- **Extract the best prompt your team already has**, write down its required inputs and its output format, and treat that as version one.
+- **Put it somewhere shared and runnable** — not a Google Doc of prompts (those rot), but a place where "run the CV screener on these three CVs" is a button, not a copy-paste ritual.
+
+That last step is exactly what [Calyflow](/#how-it-works) is for. Calyflow is an open-source recruiting OS that runs AI workflows on your own models, data, and tools. You import a workflow — screening, sourcing, outreach — attach your documents, and run it. Same quality every time, visible cost on every run, and the whole thing works with [your own AI key](/#principles), so you're not adding yet another per-seat AI subscription.
+
+## The takeaway
+
+Chat is for thinking; workflows are for working. Keep chatting with AI to explore and draft — but the moment a task repeats, promote it to a workflow your whole team owns. Your AI capability should live in your team's toolkit, not in one person's chat history.
+
+*Want to see what team-owned workflows look like? [Create a free account](https://app.calyflow.ai/sign-up) — free to start, your own API key, no credit card.*

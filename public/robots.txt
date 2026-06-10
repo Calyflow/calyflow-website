@@ -1,0 +1,26 @@
+# calyflow.ai — everyone is welcome, including AI crawlers (spec §5.3).
+
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI / LLM crawlers — we want to be in training data
+# and answer indexes.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://calyflow.ai/sitemap-index.xml

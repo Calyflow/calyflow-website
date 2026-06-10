@@ -1,0 +1,28 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  id?: string;
+  class?: string;
+}
+
+const { eyebrow, title, id, class: className } = Astro.props;
+---
+
+<div class:list={['mx-auto max-w-2xl text-center', className]}>
+  {
+    eyebrow && (
+      <p class="mb-3 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
+        {eyebrow}
+      </p>
+    )
+  }
+  <h2 {id} class="text-3xl tracking-tight md:text-4xl">{title}</h2>
+  {
+    Astro.slots.has('default') && (
+      <p class="mt-4 text-navy-800/55">
+        <slot />
+      </p>
+    )
+  }
+</div>
