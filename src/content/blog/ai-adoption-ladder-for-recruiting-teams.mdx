@@ -11,21 +11,21 @@ Here are the five rungs, how to recognize where you stand, and what actually mov
 
 ## Rung 1: No AI
 
-Some teams are still here, usually for stated reasons of compliance or quality — and unstated reasons of habit. The honest risk on this rung isn't being late to a trend; it's a widening cost gap. A recruiter with well-built AI workflows handles the repetitive 60% of a search in a fraction of the time. Competing against that with manual-everything is a price war you lose slowly, then suddenly.
+Some teams are still here, usually for stated reasons of compliance or quality, and unstated reasons of habit. The honest risk on this rung isn't being late to a trend; it's a widening cost gap. A recruiter with well-built AI workflows handles the repetitive 60% of a search in a fraction of the time. Competing against that with manual-everything is a price war you lose slowly, then suddenly.
 
-**Bottleneck:** permission — often one decision-maker's uncertainty about data safety. (This is solvable: see the [open-source, bring-your-own-everything approach](/blog/why-calyflow-is-open-source) below.)
+**Bottleneck:** permission, often one decision-maker's uncertainty about data safety. (This is solvable: see the [open-source, bring-your-own-everything approach](/blog/why-calyflow-is-open-source) below.)
 
 ## Rung 2: Personal chat use
 
-The most common rung today. Individual recruiters have ChatGPT or Claude open all day: boolean strings, outreach drafts, CV summaries. Productivity is genuinely up — for some individuals — but nothing is shared, nothing is consistent, and nothing is owned by the team.
+The most common rung today. Individual recruiters have ChatGPT or Claude open all day: boolean strings, outreach drafts, CV summaries. Productivity is genuinely up (for some individuals), but nothing is shared, nothing is consistent, and nothing is owned by the team.
 
 The telltale sign: ask two recruiters to screen the same CV against the same JD, and you get two structurally different answers of different quality.
 
-**Bottleneck:** knowledge hoarding by accident. The best prompts live in personal chat histories. The fix isn't training everyone to prompt better — it's giving the good prompts somewhere shared to live.
+**Bottleneck:** knowledge hoarding by accident. The best prompts live in personal chat histories. The fix isn't training everyone to prompt better. It's giving the good prompts somewhere shared to live.
 
 ## Rung 3: Shared prompts
 
-The team has a prompt library — a Notion page, a Google Doc, a pinned Slack thread. This is real progress: best practices are at least written down. But prompt documents have a short half-life. They rot (models change, the doc doesn't), they drift (everyone "improves" their copy locally), and they still depend on copy-paste discipline under deadline pressure.
+The team has a prompt library: a Notion page, a Google Doc, a pinned Slack thread. This is real progress: best practices are at least written down. But prompt documents have a short half-life. They rot (models change, the doc doesn't), they drift (everyone "improves" their copy locally), and they still depend on copy-paste discipline under deadline pressure.
 
 The telltale sign: the doc says v3, half the team uses their own modified v2, and the intern doesn't know the doc exists.
 
@@ -33,7 +33,7 @@ The telltale sign: the doc says v3, half the team uses their own modified v2, an
 
 ## Rung 4: Team workflows
 
-The jump that changes everything: prompts become runnable, versioned workflows with defined inputs and consistent outputs. "Screen these CVs" is a button, not a ritual. Quality stops depending on who runs the task — [the workflow encodes the method](/blog/chatting-with-ai-vs-building-ai-workflows), like [evidence-quoted screening](/blog/ai-cv-screening-without-hallucinations), and everyone inherits it. Costs become visible per run, so AI spend per search is a known number instead of a vibe.
+The jump that changes everything: prompts become runnable, versioned workflows with defined inputs and consistent outputs. "Screen these CVs" is a button, not a ritual. Quality stops depending on who runs the task: [the workflow encodes the method](/blog/chatting-with-ai-vs-building-ai-workflows), like [evidence-quoted screening](/blog/ai-cv-screening-without-hallucinations), and everyone inherits it. Costs become visible per run, so AI spend per search is a known number instead of a vibe.
 
 The telltale sign (positive, this time): a new hire produces team-standard screens and [sourcing maps](/blog/ai-sourcing-maps-jd-to-boolean-strings) in week one, because the team's expertise is in the tooling, not the tenure.
 
@@ -41,7 +41,7 @@ The telltale sign (positive, this time): a new hire produces team-standard scree
 
 ## Rung 5: AI-operated lifecycle
 
-The top rung: the entire search runs as a connected chain — intake notes → JD → sourcing map → outreach → CV screen → submission pack — with AI executing each stage and recruiters supervising, deciding, and handling everything human: client trust, candidate relationships, judgment calls. Stage outputs feed the next stage automatically; humans review at the checkpoints that matter.
+The top rung: the entire search runs as a connected chain (intake notes → JD → sourcing map → outreach → CV screen → submission pack), with AI executing each stage and recruiters supervising, deciding, and handling everything human: client trust, candidate relationships, judgment calls. Stage outputs feed the next stage automatically; humans review at the checkpoints that matter.
 
 No team should *start* here, and be skeptical of anyone selling rung 5 to a rung 2 team. The chain is only as strong as the workflows in it — you earn this rung by building rung 4 well.
 
@@ -49,12 +49,12 @@ No team should *start* here, and be skeptical of anyone selling rung 5 to a rung
 
 Three rules cover most of the journey:
 
-1. **Climb one rung at a time.** A rung-2 team that buys a rung-5 "AI agent" gets an expensive demo. The skipped rungs — shared methods, workflow discipline — were the actual product.
+1. **Climb one rung at a time.** A rung-2 team that buys a rung-5 "AI agent" gets an expensive demo. The skipped rungs (shared methods, workflow discipline) were the actual product.
 2. **Lead with your most repetitive pain.** CV screening and sourcing are the usual first workflows: high volume, clear inputs, easy to compare AI output against your best recruiter's work.
-3. **Keep ownership as you climb.** The higher the rung, the more of your operation runs through AI tooling — which is exactly why the tooling should run on [your own models, your own data, and your own tools](/#principles), not inside a vendor's black box. Climbing the ladder shouldn't mean handing your search lifecycle to someone else.
+3. **Keep ownership as you climb.** The higher the rung, the more of your operation runs through AI tooling, which is exactly why the tooling should run on [your own models, your own data, and your own tools](/#principles), not inside a vendor's black box. Climbing the ladder shouldn't mean handing your search lifecycle to someone else.
 
 ## The takeaway
 
-Don't ask "how do we use AI more?" Ask "which rung are we on, and what's the bottleneck to the next one?" For most teams the answer is the rung-2-to-rung-4 jump: getting AI capability out of individual chat histories and into team-owned workflows. That jump is precisely what [Calyflow](/#how-it-works) was built for — an open-source recruiting OS where your team's workflows live, run, and improve together.
+Don't ask "how do we use AI more?" Ask "which rung are we on, and what's the bottleneck to the next one?" For most teams the answer is the rung-2-to-rung-4 jump: getting AI capability out of individual chat histories and into team-owned workflows. That jump is precisely what [Calyflow](/#how-it-works) was built for: an open-source recruiting OS where your team's workflows live, run, and improve together.
 
-*See where your team could be in a week: [create a free account](https://app.calyflow.ai/sign-up) — free to start, your own API key, no credit card.*
+*See where your team could be in a week: [create a free account](https://app.calyflow.ai/sign-up). Free to start, your own API key, no credit card.*

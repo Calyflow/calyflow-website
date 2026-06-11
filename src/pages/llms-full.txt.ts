@@ -16,13 +16,14 @@ const body = `# ${SITE.name} — full reference
 
 ${SITE.name} (${SITE.url}) is an open-source recruiting OS. Instead of chatting
 with AI in scattered browser tabs, recruiters import a workflow, attach their
-documents (job description, intake notes, CVs), and run it — with repeatable,
+documents (job description, intake notes, CVs), and run it, with repeatable,
 evidence-backed results and a visible cost per run.
 
 ## Core principles
 
-- Bring Your Own AI: model-agnostic — Claude, ChatGPT, Gemini, OpenAI API,
-  Anthropic API, or local models, on your own API key.
+- Bring Your Own AI: model-agnostic. Claude, ChatGPT, Gemini, OpenAI API,
+  Anthropic API, or local models, on your own API key or the built-in
+  Calyflow key ($10 of free credit for new accounts).
 - Bring Your Own Data: connects to your ATS/CRM and files (Recruit CRM,
   Bullhorn, Vincere, HubSpot, Salesforce, Google Sheets, Airtable, CSV).
   Calyflow does not own your candidate data.
@@ -30,7 +31,7 @@ evidence-backed results and a visible cost per run.
   (LinkedIn, Apollo, BrightData, GitHub, Google Search, company databases,
   internal candidate DBs).
 
-## The five launch workflows (one search lifecycle)
+## The launch workflows (one search lifecycle)
 
 ${workflows}
 

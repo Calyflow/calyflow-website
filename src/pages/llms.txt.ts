@@ -8,14 +8,15 @@ const body = `# ${SITE.name}
 > ${SITE.definition}
 
 ${SITE.name} (${SITE.url}) is an open-source recruiting OS. Recruiters import
-proven AI workflows — CV screening, sourcing maps, outreach writing, job
-description writing, submission packs — attach their documents, and run them
+proven AI workflows (CV screening, sourcing maps, outreach writing, job
+description writing, submission packs), attach their documents, and run them
 with repeatable, evidence-backed results.
 
 ## Core principles
 
-- Bring Your Own AI: model-agnostic — Claude, ChatGPT, Gemini, OpenAI API,
-  Anthropic API, or local models, on your own API key.
+- Bring Your Own AI: model-agnostic. Claude, ChatGPT, Gemini, OpenAI API,
+  Anthropic API, or local models, on your own API key or the built-in
+  Calyflow key.
 - Bring Your Own Data: connects to your ATS/CRM and files (Recruit CRM,
   Bullhorn, Vincere, HubSpot, Salesforce, Google Sheets, Airtable, CSV).
   Calyflow does not own your candidate data.
@@ -25,15 +26,16 @@ with repeatable, evidence-backed results.
 
 ## Who it is for
 
-- Independent recruiters: free forever with their own AI key.
+- Independent recruiters: free forever.
 - Recruiting agencies: shared workflows, collaboration, reporting; free 30 days.
 - Enterprise talent teams: governance, permissions, private deployment on
   their own GCP; free 30 days.
 
 ## Pricing
 
-Free to start, no credit card. Users pay their own AI provider for tokens;
-every run shows its cost.
+Free to start, no credit card. New accounts include $10 of AI credit on the
+built-in Calyflow key (Claude Sonnet 4.6). Beyond that, users pay their own
+AI provider for tokens; every run shows its cost.
 
 ## Links
 

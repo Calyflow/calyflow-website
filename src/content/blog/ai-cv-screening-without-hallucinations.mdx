@@ -5,15 +5,15 @@ pubDate: 2026-05-19
 topic: 'cv-screening'
 ---
 
-The way to stop AI from hallucinating candidate qualifications is to require evidence: every claim in the screening report must carry a verbatim quote from the CV, and "no evidence found" must be a valid — and visible — answer. This one rule turns AI CV screening from a liability into the most reliable step of your pipeline.
+The way to stop AI from hallucinating candidate qualifications is to require evidence: every claim in the screening report must carry a verbatim quote from the CV, and "no evidence found" must be a valid, visible answer. This one rule turns AI CV screening from a liability into the most reliable step of your pipeline.
 
 Here's why hallucinated qualifications happen, why the usual fixes don't work, and how the evidence-quoting method works in practice.
 
 ## Why AI invents qualifications
 
-Large language models are completion machines: they produce the most plausible continuation of the text they're given. Ask one "does this candidate have GCP experience?" about a data engineer's CV, and *"Yes, the candidate has experience with GCP"* is an extremely plausible sentence — data engineers often do. The model isn't lying; it's pattern-matching, and the pattern says "probably yes."
+Large language models are completion machines: they produce the most plausible continuation of the text they're given. Ask one "does this candidate have GCP experience?" about a data engineer's CV, and *"Yes, the candidate has experience with GCP"* is an extremely plausible sentence (data engineers often do). The model isn't lying; it's pattern-matching, and the pattern says "probably yes."
 
-This is the single biggest trust-killer in AI recruiting. One invented certification that surfaces in a client call, and your team (rightly) stops trusting every AI-written screen. The damage isn't the one bad answer — it's that you now have to re-verify everything, which erases the time the AI was supposed to save.
+This is the single biggest trust-killer in AI recruiting. One invented certification that surfaces in a client call, and your team (rightly) stops trusting every AI-written screen. The damage isn't the one bad answer: it's that you now have to re-verify everything, which erases the time the AI was supposed to save.
 
 ## The fixes that don't work
 
@@ -30,8 +30,8 @@ The structural fix changes what the model is asked to produce. Instead of *"asse
 Three things change immediately:
 
 1. **Claims become checkable in seconds.** A recruiter reads the quote next to the claim, glances at the CV, done. Verification goes from "re-do the screen" to "spot-check the quotes."
-2. **Hallucination becomes structurally hard.** The model can't quote a passage that doesn't exist — and if it tries, the fabricated quote fails the two-second check. Plausibility stops being good enough, because the output format demands provenance.
-3. **Gaps become useful instead of dangerous.** "No evidence found — flag for interview" is genuinely valuable output. A missing GCP certification isn't a rejection; it's the first interview question. The screen stops pretending to certainty it doesn't have.
+2. **Hallucination becomes structurally hard.** The model can't quote a passage that doesn't exist, and if it tries, the fabricated quote fails the two-second check. Plausibility stops being good enough, because the output format demands provenance.
+3. **Gaps become useful instead of dangerous.** "No evidence found: flag for interview" is genuinely valuable output. A missing GCP certification isn't a rejection; it's the first interview question. The screen stops pretending to certainty it doesn't have.
 
 A typical evidence-backed screening row looks like this:
 
@@ -39,20 +39,20 @@ A typical evidence-backed screening row looks like this:
 > *"…led the Airflow migration of 40+ ETL pipelines (2019–2025)…"*
 >
 > **⚠ GCP certification**
-> *No evidence found in CV — flag for interview.*
+> *No evidence found in CV: flag for interview.*
 
 ## Making it consistent: from method to workflow
 
-The evidence-quoting method only protects you if it's applied on every screen — including the Friday-afternoon one, by the intern, on candidate #47. That's a [workflow problem, not a prompting problem](/blog/chatting-with-ai-vs-building-ai-workflows): the method needs to be encoded once, in a shared workflow, rather than re-remembered in every chat session.
+The evidence-quoting method only protects you if it's applied on every screen, including the Friday-afternoon one, by the intern, on candidate #47. That's a [workflow problem, not a prompting problem](/blog/chatting-with-ai-vs-building-ai-workflows): the method needs to be encoded once, in a shared workflow, rather than re-remembered in every chat session.
 
-This is exactly how the CV Screener workflow in [Calyflow](/#how-it-works) is built. You attach the job description, intake notes, and CVs; it screens every candidate against the must-haves with a verbatim quote for each claim, flags every gap, and shows the run cost at the bottom of the report. Because Calyflow runs on [your own AI key](/#principles), the same workflow works whether your team uses Claude, GPT, Gemini, or a local model — and because it's open source, you can read exactly what the screening prompt does with every CV.
+This is exactly how the CV Screener workflow in [Calyflow](/#how-it-works) is built. You attach the job description, intake notes, and CVs; it screens every candidate against the must-haves with a verbatim quote for each claim, flags every gap, and shows the run cost at the bottom of the report. Because Calyflow runs on [your own AI key](/#principles), the same workflow works whether your team uses Claude, GPT, Gemini, or a local model. And because it's open source, you can read exactly what the screening prompt does with every CV.
 
 ## Where this fits in the pipeline
 
-Evidence-backed screening pays off most when the rest of the search feeds it good inputs: a sharp JD defines must-haves the screen can actually test, and a good [sourcing map](/blog/ai-sourcing-maps-jd-to-boolean-strings) fills the pipeline with candidates worth screening. The output — an evidence-quoted report per candidate — drops straight into a client-ready submission pack, which is why teams on the upper rungs of the [AI Adoption Ladder](/blog/ai-adoption-ladder-for-recruiting-teams) treat screening as the first workflow to standardize.
+Evidence-backed screening pays off most when the rest of the search feeds it good inputs: a sharp JD defines must-haves the screen can actually test, and a good [sourcing map](/blog/ai-sourcing-maps-jd-to-boolean-strings) fills the pipeline with candidates worth screening. The output (an evidence-quoted report per candidate) drops straight into a client-ready submission pack, which is why teams on the upper rungs of the [AI Adoption Ladder](/blog/ai-adoption-ladder-for-recruiting-teams) treat screening as the first workflow to standardize.
 
 ## The takeaway
 
 Don't ask AI whether a candidate is qualified. Ask it to *prove* each qualification with a quote, and to say plainly when it can't. Evidence in, trust out — that's the whole method.
 
-*Try the evidence-quoting CV Screener on your next role: [create a free account](https://app.calyflow.ai/sign-up) — free to start, your own API key, no credit card.*
+*Try the evidence-quoting CV Screener on your next role: [create a free account](https://app.calyflow.ai/sign-up). Free to start, your own API key, no credit card.*
