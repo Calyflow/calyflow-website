@@ -12,7 +12,7 @@ export const SITE = {
     'Calyflow is an open-source recruiting OS that runs AI workflows on your own models, data, and tools.',
   /** Meta description for the homepage (≤155 chars). */
   description:
-    'Run AI-powered recruiting workflows — sourcing, screening, outreach — on your own AI, your own data, your own tools. Open source, free to start.',
+    'Run AI-powered sourcing, screening, and outreach workflows on your own AI, your own data, your own tools. Open source, free to start.',
   url: 'https://calyflow.ai',
   appUrl: 'https://app.calyflow.ai',
   signupUrl: 'https://app.calyflow.ai/sign-up',
@@ -32,46 +32,79 @@ export const AUTHOR = {
   bio: 'Founder of Calyflow. Helps recruiting teams climb the AI Adoption Ladder — from chatting with AI to running repeatable AI workflows.',
 } as const;
 
-/** The five launch workflows, shown as one search lifecycle (spec §3.5). */
+/** The launch workflows, shown as one search lifecycle (spec §3.5). Names,
+ * stages, and descriptions mirror the in-app Workflow Library. */
 export const WORKFLOWS = [
   {
-    name: 'JD Writer',
+    name: 'Intake-to-JD Builder',
+    stage: 'intake',
     icon: 'document-check',
     input: 'Intake notes',
-    output: 'Job description',
+    output: 'JD + clarifying questions',
     description:
-      'Turn raw intake-call notes into a structured job description with must-haves, nice-to-haves, and screening criteria your whole team agrees on.',
+      'Turn messy intake notes from a hiring-manager call into a structured job description plus a list of clarifying questions to send back to the client. The JD it produces feeds every other workflow in the search.',
   },
   {
-    name: 'Sourcing Map',
+    name: 'Job Requirement Analysis',
+    stage: 'intake',
+    icon: 'workflow-nodes',
+    input: 'Hiring-manager notes',
+    output: '18-dimension breakdown',
+    description:
+      'Turn raw hiring-manager notes into a complete 18-dimension requirement breakdown: technical stack, seniority, culture fit, compensation, hiring process and more. Every dimension is either extracted or marked "TO ASK", so nothing is missed before sourcing.',
+  },
+  {
+    name: 'Candidate ICP Builder',
+    stage: 'icp',
+    icon: 'target',
+    input: 'Job description',
+    output: 'Weighted scoring rubric',
+    description:
+      'Turn the job description into a structured Ideal Candidate Profile with a weighted scoring rubric: must-have, important, and nice-to-have criteria, each with a concrete "how to evaluate" cue. The rubric that drives consistent screening.',
+  },
+  {
+    name: 'Sourcing Map from JD',
+    stage: 'sourcing',
     icon: 'magnet',
     input: 'Job description',
-    output: 'Boolean strings + channels',
+    output: 'Phased sourcing strategy',
     description:
-      'Go from JD to a complete sourcing map in one run: target companies, talent pools, and ready-to-paste boolean search strings.',
+      'Turn the job description into a phased sourcing strategy: five search steps from exact-match booleans to creative passive sourcing, plus a full channel checklist tailored to this exact role and market.',
+  },
+  {
+    name: 'Job Selling Pitch',
+    stage: 'selling',
+    icon: 'ai-spark',
+    input: 'Job description',
+    output: 'Candidate-magnet job post',
+    description:
+      'Turn the job description into a candidate magnet: a selling-points analysis, a feature-to-benefit reframe, a rewritten job post that leads with what excites candidates, and ready-to-use outreach hooks.',
   },
   {
     name: 'Outreach Writer',
+    stage: 'outreach',
     icon: 'envelope',
-    input: 'Sourcing map',
+    input: 'Candidate profile',
     output: 'Personalized sequences',
     description:
-      'Draft personalized outreach sequences grounded in the role and each candidate’s background — not generic spam.',
+      'Paste a candidate profile and get personalized LinkedIn, InMail, and email outreach with A/B variants and a two-step follow-up sequence. Writes in your voice and references concrete details, never flattery or buzzwords.',
   },
   {
     name: 'CV Screener',
+    stage: 'screening',
     icon: 'scorecard',
-    input: 'CVs + criteria',
-    output: 'Evidence-backed report',
+    input: 'CVs + JD',
+    output: 'Evidence-based scorecard',
     description:
-      'Screen CVs against the JD with evidence quotes for every claim — no hallucinated qualifications, every must-have backed by a citation from the CV.',
+      'Screen CVs against the job description and get an evidence-based scorecard: fit score, must-haves table with CV quotes as proof, red flags, and five screening-call questions specific to this candidate.',
   },
   {
-    name: 'Submission Pack',
+    name: 'Candidate Submission Pack',
+    stage: 'submission',
     icon: 'rocket',
-    input: 'Screening reports',
-    output: 'Client-ready summary',
+    input: 'CV + screening report',
+    output: 'Client-ready presentation',
     description:
-      'Assemble screened candidates into a client-ready submission pack: summaries, evidence, and a clear recommendation.',
+      'Combine a CV with its screening report into a polished, client-ready candidate presentation in your tone of voice, ready to send to the hiring manager.',
   },
 ] as const;

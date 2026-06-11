@@ -1,11 +1,11 @@
 {
   "$comment": "Single source of truth for the BYO logo grids (spec §3.4 + §8). status: 'available' | 'coming-soon'. Honesty rule: never mark something available before it ships. Updating product reality = one-line PR here.",
   "ai": [
-    { "name": "Claude", "status": "coming-soon" },
-    { "name": "ChatGPT", "status": "coming-soon" },
-    { "name": "Gemini", "status": "coming-soon" },
-    { "name": "OpenAI API", "status": "coming-soon" },
-    { "name": "Anthropic API", "status": "coming-soon" },
+    { "name": "Claude", "status": "available" },
+    { "name": "ChatGPT", "status": "available" },
+    { "name": "Gemini", "status": "available" },
+    { "name": "OpenAI API", "status": "available" },
+    { "name": "Anthropic API", "status": "available" },
     { "name": "Local models", "status": "coming-soon" }
   ],
   "data": [
