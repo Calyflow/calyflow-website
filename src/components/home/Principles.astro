@@ -1,43 +1,79 @@
 ---
-import integrations from '../../data/integrations.json';
+import { getConnectors, type Connector, type ConnectorCategory } from '../../lib/connectors';
 import Badge from '../Badge.astro';
 import Icon from '../icons/Icon.astro';
 import SectionHeading from '../SectionHeading.astro';
 
-interface Integration {
-  name: string;
-  status: 'available' | 'coming-soon';
-}
+// The differentiator block (spec §3.4). Connector states come live from the
+// Calyflow app at build time — the honesty rule made structural.
+const connectors = await getConnectors();
 
-// The differentiator block (spec §3.4). Logo states come from
-// integrations.json — the honesty rule made structural.
-const columns: {
+const columnDefs: {
   icon: 'key' | 'database' | 'integration-plug';
   title: string;
   blurb: string;
   note?: string;
-  items: Integration[];
+  categories: ConnectorCategory[];
+  // Recognizable subset shown as chips; the rest collapse into "+N more".
+  // Empty list = show everything in the column.
+  featured: string[];
 }[] = [
   {
     icon: 'key',
     title: 'Bring Your Own AI',
     blurb: 'Model-agnostic by design. Use the models you already pay for, and switch any time.',
-    items: integrations.ai as Integration[],
+    categories: ['ai'],
+    featured: [],
   },
   {
     icon: 'database',
     title: 'Bring Your Own Data',
     blurb: 'Connect the systems where your candidates already live.',
     note: 'Calyflow does not own your candidate data.',
-    items: integrations.data as Integration[],
+    categories: ['ats', 'crm', 'data'],
+    featured: [
+      'Greenhouse',
+      'Lever',
+      'Ashby',
+      'Workable',
+      'Bullhorn',
+      'SmartRecruiters',
+      'HubSpot',
+      'Notion',
+      'Google Sheets',
+      'Airtable',
+    ],
   },
   {
     icon: 'integration-plug',
     title: 'Bring Your Own Tools',
     blurb: 'Agents can use multiple tools during execution: search, enrich, verify.',
-    items: integrations.tools as Integration[],
+    categories: ['tool'],
+    featured: [
+      'Apollo',
+      'Gong',
+      'Hunter.io',
+      'Lusha',
+      'RocketReach',
+      'Fireflies.ai',
+      'Bright Data',
+      'Instantly.ai',
+      'Lemlist',
+      'People Data Labs',
+    ],
   },
 ];
+
+const columns = columnDefs.map((col) => {
+  const all = connectors.filter((c) => col.categories.includes(c.category));
+  const shown =
+    col.featured.length > 0
+      ? (col.featured
+          .map((name) => all.find((c) => c.name === name))
+          .filter(Boolean) as Connector[])
+      : all;
+  return { ...col, items: shown, more: all.length - shown.length };
+});
 ---
 
 <section id="principles" class="scroll-mt-20 bg-cream-100 py-24 md:py-32">
@@ -57,11 +93,21 @@ const columns: {
             {col.note && <p class="mt-2 text-[0.9375rem] font-medium text-mint-700">{col.note}</p>}
             <ul class="mt-5 flex flex-wrap gap-2">
               {col.items.map((item) => (
-                <li class="inline-flex items-center gap-2 rounded-[10px] border border-navy-800/12 bg-cream-50 py-1.5 pr-1.5 pl-3 text-sm font-medium text-navy-800">
+                <li
+                  class:list={[
+                    'inline-flex items-center gap-2 rounded-[10px] border border-navy-800/12 bg-cream-50 py-1.5 pl-3 text-sm font-medium text-navy-800',
+                    item.status === 'coming-soon' ? 'pr-1.5' : 'pr-3',
+                  ]}
+                >
                   {item.name}
-                  <Badge status={item.status} />
+                  {item.status === 'coming-soon' && <Badge status={item.status} />}
                 </li>
               ))}
+              {col.more > 0 && (
+                <li class="inline-flex items-center rounded-[10px] border border-navy-800/12 bg-cream-50 px-3 py-1.5 text-sm font-medium text-navy-800/55">
+                  +{col.more} more
+                </li>
+              )}
             </ul>
           </div>
         ))
