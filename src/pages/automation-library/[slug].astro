@@ -1,0 +1,168 @@
+---
+import { marked } from 'marked';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/blog/Breadcrumbs.astro';
+import LibraryCard from '../../components/library/LibraryCard.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+import { getAllLibraryItems, type LibraryItem } from '../../lib/library';
+
+export async function getStaticPaths() {
+  const items = await getAllLibraryItems();
+  return items.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+interface Props {
+  item: LibraryItem;
+}
+
+const { item } = Astro.props;
+const typeLabel = item.type === 'agent' ? 'Agent' : 'Workflow';
+
+// Related: a few other items of the same type, then fill from the other type.
+const all = await getAllLibraryItems();
+const others = all.filter((i) => i.slug !== item.slug);
+const related = [
+  ...others.filter((i) => i.type === item.type),
+  ...others.filter((i) => i.type !== item.type),
+].slice(0, 3);
+
+const bodyHtml = item.longDescription ? marked.parse(item.longDescription) : null;
+
+const pageUrl = `${SITE.url}/automation-library/${item.slug}`;
+const description = item.ogDescription ?? item.description;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: item.name,
+    description,
+    url: pageUrl,
+    image: item.coverUrl,
+    isPartOf: { '@id': `${SITE.url}/#website` },
+    publisher: { '@id': `${SITE.url}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Automation Library',
+        item: `${SITE.url}/automation-library`,
+      },
+      { '@type': 'ListItem', position: 3, name: item.name, item: pageUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout title={`${item.name} — Calyflow`} description={description} ogImage={item.coverUrl} jsonLd={jsonLd}>
+  <article class="mx-auto max-w-5xl px-5 py-14 md:py-20">
+    <div class="mx-auto max-w-[72ch]">
+      <Breadcrumbs
+        crumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Automation Library', href: '/automation-library' },
+          { label: item.name },
+        ]}
+      />
+
+      <header class="mt-7">
+        <span
+          class:list={[
+            'inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.6875rem] leading-4',
+            item.type === 'agent'
+              ? 'bg-lavender-300/30 text-navy-800/75'
+              : 'bg-mint-400/22 text-mint-700',
+          ]}
+        >
+          {typeLabel}
+        </span>
+        <h1 class="mt-4 text-3xl leading-tight tracking-tight md:text-4xl">{item.name}</h1>
+        {item.lead && <p class="mt-5 text-lg leading-relaxed text-navy-800/70">{item.lead}</p>}
+      </header>
+    </div>
+
+    {/* Cover breaks out to the full article width — it's a wide diagram. */}
+    <img
+      src={item.coverUrl}
+      alt={`${item.name} cover`}
+      loading="eager"
+      decoding="async"
+      class="mt-8 aspect-[1200/630] w-full rounded-[20px] border border-navy-800/12 bg-cream-100 object-cover"
+    />
+
+    <div class="mx-auto mt-8 max-w-[72ch]">
+      {/* Details panel: output + connectors used */}
+      <dl class="grid gap-5 rounded-[20px] border border-navy-800/12 bg-cream-50 p-6 sm:grid-cols-2">
+        <div>
+          <dt class="font-mono text-xs tracking-wide text-navy-800/55 uppercase">Output</dt>
+          <dd class="mt-1.5 flex items-center gap-1.5 text-[0.9375rem] text-navy-800">
+            <span class="text-mint-700">→</span>
+            {item.output}
+          </dd>
+        </div>
+        {
+          item.connectors.length > 0 && (
+            <div class="sm:col-span-2">
+              <dt class="font-mono text-xs tracking-wide text-navy-800/55 uppercase">
+                Connectors used
+              </dt>
+              <dd class="mt-2 space-y-2.5">
+                {item.connectors.map((g) => (
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="font-mono text-xs font-medium text-navy-800/70">{g.label}:</span>
+                    {g.connectors.length > 0 ? (
+                      g.connectors.map((name) => (
+                        <span class="inline-flex items-center rounded-[10px] border border-navy-800/12 bg-white px-2.5 py-1 text-sm text-navy-800">
+                          {name}
+                        </span>
+                      ))
+                    ) : (
+                      <span class="text-sm text-navy-800/60">Pick when you run it</span>
+                    )}
+                  </div>
+                ))}
+                <p class="pt-1 text-[0.8125rem] text-navy-800/55">
+                  Choose which connector to use each time you run it.
+                </p>
+              </dd>
+            </div>
+          )
+        }
+      </dl>
+
+      <div class="prose-calyflow mt-10">
+        {bodyHtml ? <Fragment set:html={bodyHtml} /> : <p>{item.description}</p>}
+      </div>
+
+      <div class="mt-12 rounded-[20px] bg-cream-100 px-6 py-10 text-center">
+        <h2 class="text-2xl">Run this {typeLabel.toLowerCase()} in Calyflow</h2>
+        <p class="mx-auto mt-3 max-w-xl text-navy-800/65">
+          On your own AI, data, and tools — repeatable and evidence-backed. Free to start, no credit
+          card.
+        </p>
+        <Button href={SITE.signupUrl} size="lg" event="cta-library-detail" class="mt-6">
+          Create free account
+        </Button>
+      </div>
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="mx-auto mt-20 max-w-6xl">
+          <h2 class="text-2xl">More from the library</h2>
+          <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((r) => (
+              <LibraryCard item={r} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </article>
+</BaseLayout>
