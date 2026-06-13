@@ -1,0 +1,247 @@
+{
+  "$comment": "Offline fallback snapshot of https://app.calyflow.ai/api/v1/library, used when the build-time fetch fails (see src/lib/library.ts). Same shape as the API. coverUrl host is ignored at build time and reconstructed against app.calyflow.ai. featured flags here drive the homepage trios until the live API supplies its own. Snapshot taken 2026-06-13.",
+  "workflows": [
+    {
+      "type": "workflow",
+      "slug": "intake-to-jd-builder",
+      "name": "Intake-to-JD Builder",
+      "description": "Turn messy intake notes from a hiring-manager call into a structured job description plus a list of clarifying questions to send back to the client. The JD it produces feeds every other workflow in the search.",
+      "category": "intake",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "output": "Job description",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/intake-to-jd-builder/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "workflow",
+      "slug": "job-requirement-analysis",
+      "name": "Job Requirement Analysis",
+      "description": "Turn raw hiring-manager notes into a complete 18-dimension requirement breakdown — technical stack, seniority, culture fit, compensation, hiring process and more. Every dimension is either extracted or marked \"TO ASK\" with a question, so nothing is missed before sourcing. Feeds the ICP Builder.",
+      "category": "intake",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "output": "Requirement analysis",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/job-requirement-analysis/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "workflow",
+      "slug": "candidate-icp-builder",
+      "name": "Candidate ICP Builder",
+      "description": "Turn the project's job description into a structured Ideal Candidate Profile with a weighted scoring rubric — must-have (3), important (2) and nice-to-have (1) criteria, each with a concrete \"how to evaluate\" cue, plus a max-score guide. The rubric that drives consistent candidate screening.",
+      "category": "icp",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "output": "Candidate ICP",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/candidate-icp-builder/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "workflow",
+      "slug": "sourcing-map",
+      "name": "Sourcing Map from JD",
+      "description": "Turn the project's job description into a phased sourcing strategy: five search steps from exact-match booleans to creative passive sourcing, plus a full channel checklist tailored to this exact role and market.",
+      "category": "sourcing",
+      "version": 2,
+      "featured": true,
+      "connectors": [],
+      "output": "Sourcing map",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/sourcing-map/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "workflow",
+      "slug": "job-selling-pitch",
+      "name": "Job Selling Pitch",
+      "description": "Turn the project's job description into a candidate magnet: a selling-points analysis across 10 dimensions, a \"So what?\" feature→benefit reframe, a rewritten job post that leads with what excites candidates, ready-to-use outreach hooks, and the questions to ask the hiring manager to uncover more.",
+      "category": "selling",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "output": "Job selling pitch",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/job-selling-pitch/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "workflow",
+      "slug": "outreach-writer",
+      "name": "Outreach Writer",
+      "description": "Paste a candidate's profile and get personalized LinkedIn, InMail, and email outreach with A/B variants and a two-step follow-up sequence. Writes in your voice, references concrete details (never flattery or buzzwords), and sells the client company specifically using its deck and benefits docs.",
+      "category": "outreach",
+      "version": 2,
+      "featured": true,
+      "connectors": [],
+      "output": "Outreach messages",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/outreach-writer/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "workflow",
+      "slug": "cv-screener",
+      "name": "CV Screener",
+      "description": "Screen CVs against the project's job description and get an evidence-based scorecard: fit score, must-haves table with CV quotes as proof, red flags, and five screening-call questions specific to this candidate.",
+      "category": "screening",
+      "version": 1,
+      "featured": true,
+      "connectors": [],
+      "output": "Screening report",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/cv-screener/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "workflow",
+      "slug": "candidate-marketing-profile",
+      "name": "Candidate Marketing Profile",
+      "description": "Turn a candidate's CV into a compelling, ready-to-market profile (MPC) — a positioning headline, biography in your voice, quantified wins, an anonymized blind teaser for cold campaigns, and pitch sound bites for hiring managers. Every claim is grounded in the CV, never invented.",
+      "category": "marketing",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "output": "Marketing profile",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/candidate-marketing-profile/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "workflow",
+      "slug": "submission-pack",
+      "name": "Candidate Submission Pack",
+      "description": "Combine a CV with its screening report into a polished, client-ready candidate presentation in your tone of voice — ready to send to the hiring manager.",
+      "category": "submission",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "output": "Submission pack",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/submission-pack/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    }
+  ],
+  "agents": [
+    {
+      "type": "agent",
+      "slug": "sourcing-shortlist-ats",
+      "name": "Sourcing Shortlist From ATS",
+      "description": "A sourcing agent that reads the role's brief from your knowledge base, pulls candidates from whichever ATS you connect (Greenhouse, Bullhorn, Lever, Workable and 15 more), ranks them against the role, and writes a shortlist back into the project. Pick the ATS when you run it.",
+      "category": null,
+      "version": 1,
+      "featured": true,
+      "connectors": [
+        {
+          "category": "ats",
+          "label": "ATS",
+          "connectors": [
+            "Greenhouse",
+            "Bullhorn",
+            "Lever",
+            "Workable",
+            "Ashby",
+            "SmartRecruiters",
+            "Recruitee",
+            "Teamtailor"
+          ]
+        }
+      ],
+      "output": "Document",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/agent/sourcing-shortlist-ats/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "agent",
+      "slug": "client-prospecting-research",
+      "name": "Client Prospecting Research",
+      "description": "A business-development researcher that digs through whichever CRM you connect (HubSpot, Attio, Pipedrive, monday.com, Notion, Zoho CRM), maps the accounts, contacts, and deals that match your target brief, and writes a prospecting report back into the project. Pick the CRM when you run it.",
+      "category": null,
+      "version": 1,
+      "featured": true,
+      "connectors": [
+        {
+          "category": "crm",
+          "label": "CRM",
+          "connectors": [
+            "Attio",
+            "HubSpot",
+            "monday.com",
+            "Notion",
+            "Pipedrive",
+            "Zoho CRM"
+          ]
+        }
+      ],
+      "output": "Document",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/agent/client-prospecting-research/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "agent",
+      "slug": "candidate-outreach-email",
+      "name": "Candidate Outreach From Sheet via Email",
+      "description": "An outreach agent that reads candidates from the tracker you run in Google Sheets, Excel, or Airtable, writes a short personalized email to each one grounded in the role and your tone of voice, sends them from your own mailbox (Gmail or Outlook), and saves a send log into the project. Pick the data source and the mailbox when you run it.",
+      "category": null,
+      "version": 1,
+      "featured": true,
+      "connectors": [
+        {
+          "category": "data",
+          "label": "Data",
+          "connectors": ["Google Sheets", "Excel", "Airtable"]
+        },
+        {
+          "category": "email",
+          "label": "Email",
+          "connectors": ["Gmail", "Outlook"]
+        }
+      ],
+      "output": "Emails",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/agent/candidate-outreach-email/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    },
+    {
+      "type": "agent",
+      "slug": "sourcing-shortlist-sheet",
+      "name": "Sourcing Shortlist From Sheet",
+      "description": "A sourcing agent that reads the role's brief from your knowledge base, pulls candidates from the tracker you already run in Google Sheets, Excel, or Airtable, ranks them against the role, and writes a shortlist back into the project. Pick the data source when you run it.",
+      "category": null,
+      "version": 1,
+      "featured": false,
+      "connectors": [
+        {
+          "category": "data",
+          "label": "Data",
+          "connectors": ["Google Sheets", "Excel", "Airtable"]
+        }
+      ],
+      "output": "Document",
+      "coverUrl": "https://app.calyflow.ai/api/v1/library/agent/sourcing-shortlist-sheet/cover",
+      "ogDescription": null,
+      "lead": null,
+      "longDescription": null
+    }
+  ]
+}
