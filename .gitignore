@@ -15,3 +15,7 @@ npm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Claude Code: share skills, ignore local settings & transient worktrees
+.claude/settings.local.json
+.claude/worktrees/
