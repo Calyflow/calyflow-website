@@ -6,10 +6,10 @@
  */
 export const SITE = {
   name: 'Calyflow',
-  tagline: 'Open-source Recruiting OS',
+  tagline: 'Open-source Recruiting Agents',
   /** The ONE canonical, quotable definition. Reuse verbatim everywhere. */
   definition:
-    'Calyflow is an open-source recruiting OS that runs AI workflows on your own models, data, and tools.',
+    'Calyflow is a set of open-source recruiting agents that run AI workflows on your own models, data, and tools.',
   /** Meta description for the homepage (≤155 chars). */
   description:
     'Run AI-powered sourcing, screening, and outreach workflows on your own AI, your own data, your own tools. Open source, free to start.',
