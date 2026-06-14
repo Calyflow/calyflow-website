@@ -1,8 +1,6 @@
 import snapshot from '../data/library.json';
 import { SITE } from '../data/site';
 
-export type LibraryItemType = 'workflow' | 'agent';
-
 /** A connector category an agent can use, with the concrete connectors in it. */
 export interface ConnectorGroup {
   category: string;
@@ -10,17 +8,31 @@ export interface ConnectorGroup {
   connectors: string[];
 }
 
+/** Documents an agent consumes, by human-facing label (e.g. "Job description"). */
+export interface DocumentSpec {
+  required: string[];
+  optional: string[];
+}
+
+/**
+ * A library agent. Calyflow no longer separates "workflows" from "agents" —
+ * everything is an agent; some are simple, some reach into connectors (ATS,
+ * CRM, data, email). The `context` field says which app context it runs in.
+ */
 export interface LibraryItem {
-  type: LibraryItemType;
   slug: string;
   name: string;
   /** Short card/listing description. */
   description: string;
   category: string | null;
+  /** App context the agent runs in (e.g. 'recruiting-project'); null if unknown. */
+  context: string | null;
   version: number;
   featured: boolean;
-  /** Empty for workflows; grouped connector breakdown for agents. */
+  /** Grouped connector breakdown; empty for agents that need no connectors. */
   connectors: ConnectorGroup[];
+  /** Documents the agent needs, split into required and optional. */
+  documents: DocumentSpec;
   output: string;
   /** Cover image URL, reconstructed against the app host (env-safe). */
   coverUrl: string;
@@ -32,23 +44,95 @@ export interface LibraryItem {
   longDescription: string | null;
 }
 
-export interface Library {
-  workflows: LibraryItem[];
-  agents: LibraryItem[];
+/** Display config for an agent context, in render order. */
+export interface ContextGroup {
+  /** The `context` slug from the API. */
+  context: string;
+  /** URL fragment / anchor id. */
+  id: string;
+  title: string;
+  blurb: string;
+}
+
+/**
+ * Agent contexts in render order. Agents whose `context` matches none of these
+ * fall into a trailing catch-all group (see {@link groupByContext}).
+ */
+export const CONTEXT_GROUPS: ContextGroup[] = [
+  {
+    context: 'recruiting-project',
+    id: 'recruiting',
+    title: 'Recruiting',
+    blurb:
+      'Run the whole search lifecycle on your own AI, data, and tools — intake and job descriptions, sourcing, screening, outreach, and submission packs.',
+  },
+  {
+    context: 'business-development',
+    id: 'business-development',
+    title: 'Business development',
+    blurb:
+      'Win and grow client relationships — market your strongest candidates and research prospects before you reach out.',
+  },
+];
+
+const CONTEXT_LABELS = new Map(CONTEXT_GROUPS.map((g) => [g.context, g.title]));
+
+/** Human label for a context slug, or null for an unknown/absent context
+ * (so callers can omit the badge rather than show a meaningless fallback). */
+export function contextLabel(context: string | null): string | null {
+  return (context && CONTEXT_LABELS.get(context)) || null;
+}
+
+export interface GroupedLibrary extends Omit<ContextGroup, 'context'> {
+  context: string | null;
+  items: LibraryItem[];
+}
+
+/**
+ * Group items into the configured contexts, in order, dropping empty groups.
+ *
+ * Items with an unknown/null context (e.g. an API that hasn't shipped `context`
+ * yet) fall into a catch-all group. When that catch-all is the *only* group, it
+ * is the whole library, so it's presented neutrally as "Agents" rather than an
+ * orphan "More agents" alongside nothing.
+ */
+export function groupByContext(items: LibraryItem[]): GroupedLibrary[] {
+  const known = new Set(CONTEXT_GROUPS.map((g) => g.context));
+  const groups: GroupedLibrary[] = CONTEXT_GROUPS.map((g) => ({
+    ...g,
+    items: items.filter((i) => i.context === g.context),
+  })).filter((g) => g.items.length > 0);
+
+  const rest = items.filter((i) => i.context === null || !known.has(i.context));
+  if (rest.length > 0) {
+    const sole = groups.length === 0;
+    groups.push({
+      context: null,
+      id: sole ? 'agents' : 'more',
+      title: sole ? 'Agents' : 'More agents',
+      blurb: sole
+        ? 'Every agent in the library, ready to run on your own AI, data, and tools.'
+        : '',
+      items: rest,
+    });
+  }
+  return groups;
 }
 
 /** Raw connector entry from the API — either a plain label or a full group. */
 type ApiConnector = string | Partial<ConnectorGroup>;
 
 interface ApiLibraryItem {
-  type?: LibraryItemType;
+  type?: string;
   slug: string;
   name: string;
   description: string;
   category?: string | null;
+  context?: string | null;
   version?: number;
   featured?: boolean;
   connectors?: ApiConnector[];
+  documents?: Partial<DocumentSpec> | null;
   output?: string;
   coverUrl?: string | null;
   ogDescription?: string | null;
@@ -56,14 +140,27 @@ interface ApiLibraryItem {
   longDescription?: string | null;
 }
 
-const API_URL = 'https://app.calyflow.ai/api/v1/library';
+/** API envelope. `workflows` is retained (now empty) for backward compatibility;
+ * we merge it into the agent list so a stale API still renders. */
+interface ApiLibrary {
+  workflows?: ApiLibraryItem[];
+  agents?: ApiLibraryItem[];
+}
 
-let cached: Library | undefined;
+// Defaults to the production app API. Override with the LIBRARY_API_URL env var
+// to build/preview against another environment (e.g. a local dev API):
+//   LIBRARY_API_URL=http://localhost:3000/api/v1/library npm run build
+const API_URL = import.meta.env.LIBRARY_API_URL ?? 'https://app.calyflow.ai/api/v1/library';
+/** Origin of the data API, used to reconstruct covers when the API omits them. */
+const API_ORIGIN = new URL(API_URL).origin;
 
-/** Build a host-safe cover URL from type + slug, ignoring the env-specific
- * host the API returns (it points at localhost in dev). */
-function coverUrlFor(type: LibraryItemType, slug: string): string {
-  return `${SITE.appUrl}/api/v1/library/${type}/${slug}/cover`;
+let cached: LibraryItem[] | undefined;
+
+/** Reconstruct a cover URL from the slug against a given host. Used for the
+ * bundled snapshot (whose baked host is env-specific) and as a last resort
+ * when the live API omits `coverUrl`. */
+function buildCoverUrl(slug: string, host: string): string {
+  return `${host}/api/v1/library/agent/${slug}/cover`;
 }
 
 /** Accept either `["CRM"]` (early API) or the grouped form with concrete
@@ -82,58 +179,73 @@ function normalizeConnectors(items: ApiConnector[] | undefined): ConnectorGroup[
   });
 }
 
-function normalizeItem(item: ApiLibraryItem, type: LibraryItemType): LibraryItem {
+function normalizeDocuments(docs: Partial<DocumentSpec> | null | undefined): DocumentSpec {
   return {
-    type,
+    required: Array.isArray(docs?.required) ? docs!.required! : [],
+    optional: Array.isArray(docs?.optional) ? docs!.optional! : [],
+  };
+}
+
+/**
+ * Resolve the cover URL. When `rebuildHost` is set (snapshot path), rebuild it
+ * from the slug against that host. Otherwise honor the URL the live API
+ * returns — so covers come from the same environment as the data — falling
+ * back to the API's own origin if it omits one.
+ */
+function resolveCoverUrl(item: ApiLibraryItem, rebuildHost: string | null): string {
+  if (rebuildHost) return buildCoverUrl(item.slug, rebuildHost);
+  return item.coverUrl || buildCoverUrl(item.slug, API_ORIGIN);
+}
+
+function normalizeItem(item: ApiLibraryItem, rebuildHost: string | null): LibraryItem {
+  return {
     slug: item.slug,
     name: item.name,
     description: item.description,
     category: item.category ?? null,
+    context: item.context ?? null,
     version: item.version ?? 1,
     featured: item.featured ?? false,
     connectors: normalizeConnectors(item.connectors),
+    documents: normalizeDocuments(item.documents),
     output: item.output ?? '',
-    coverUrl: coverUrlFor(type, item.slug),
+    coverUrl: resolveCoverUrl(item, rebuildHost),
     ogDescription: item.ogDescription ?? null,
     lead: item.lead ?? null,
     longDescription: item.longDescription ?? null,
   };
 }
 
-function normalize(data: { workflows?: ApiLibraryItem[]; agents?: ApiLibraryItem[] }): Library {
-  return {
-    workflows: (data.workflows ?? []).map((i) => normalizeItem(i, 'workflow')),
-    agents: (data.agents ?? []).map((i) => normalizeItem(i, 'agent')),
-  };
+/** `rebuildHost` forces cover URLs onto that host (used for the snapshot,
+ * whose baked localhost host must not leak into a production build). When
+ * null, the live API's `coverUrl` is honored as-is. */
+function normalize(data: ApiLibrary, rebuildHost: string | null): LibraryItem[] {
+  return [...(data.workflows ?? []), ...(data.agents ?? [])].map((i) =>
+    normalizeItem(i, rebuildHost),
+  );
 }
 
 /**
- * Workflow + agent library from the Calyflow app, fetched once per build
- * (never client-side). Falls back to the bundled snapshot in library.json so
- * the section still renders when the API is unreachable.
+ * Agent library from the Calyflow app, fetched once per build (never
+ * client-side). Falls back to the bundled snapshot in library.json so the
+ * section still renders when the API is unreachable.
  */
-export async function getLibrary(): Promise<Library> {
+export async function getAllLibraryItems(): Promise<LibraryItem[]> {
   if (cached !== undefined) return cached;
   try {
     const res = await fetch(API_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = (await res.json()) as { workflows?: ApiLibraryItem[]; agents?: ApiLibraryItem[] };
-    const total = (data.workflows?.length ?? 0) + (data.agents?.length ?? 0);
-    if (total === 0) throw new Error('empty library');
-    cached = normalize(data);
+    const data = (await res.json()) as ApiLibrary;
+    const items = normalize(data, null);
+    if (items.length === 0) throw new Error('empty library');
+    cached = items;
   } catch (err) {
     console.warn(
       `[library] falling back to bundled snapshot (${err instanceof Error ? err.message : err})`,
     );
-    cached = normalize(snapshot as { workflows?: ApiLibraryItem[]; agents?: ApiLibraryItem[] });
+    cached = normalize(snapshot as ApiLibrary, SITE.appUrl);
   }
   return cached;
-}
-
-/** Flat list of every item, workflows first. */
-export async function getAllLibraryItems(): Promise<LibraryItem[]> {
-  const { workflows, agents } = await getLibrary();
-  return [...workflows, ...agents];
 }
 
 /** Featured-first selection of up to `count` items for homepage trios. */

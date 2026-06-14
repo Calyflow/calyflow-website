@@ -1,5 +1,5 @@
 ---
-import type { LibraryItem } from '../../lib/library';
+import { contextLabel, type LibraryItem } from '../../lib/library';
 
 interface Props {
   item: LibraryItem;
@@ -8,7 +8,12 @@ interface Props {
 
 const { item, class: className } = Astro.props;
 const href = `/automation-library/${item.slug}`;
-const typeLabel = item.type === 'agent' ? 'Agent' : 'Workflow';
+const badge = contextLabel(item.context);
+// Business-development agents get the lavender chip; everything else mint.
+const badgeClass =
+  item.context === 'business-development'
+    ? 'bg-lavender-300/30 text-navy-800/75'
+    : 'bg-mint-400/22 text-mint-700';
 ---
 
 <a
@@ -17,7 +22,7 @@ const typeLabel = item.type === 'agent' ? 'Agent' : 'Workflow';
     'group flex flex-col overflow-hidden rounded-[20px] border border-navy-800/12 bg-white transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(19,31,56,0.08)] motion-reduce:hover:translate-y-0',
     className,
   ]}
-  data-event={`library-card-${item.type}`}
+  data-event={`library-card-${item.context ?? 'agent'}`}
 >
   <div class="aspect-[1200/630] overflow-hidden bg-cream-100">
     <img
@@ -31,14 +36,18 @@ const typeLabel = item.type === 'agent' ? 'Agent' : 'Workflow';
 
   <div class="flex flex-1 flex-col p-6">
     <div class="flex flex-wrap items-center gap-2">
-      <span
-        class:list={[
-          'inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.6875rem] leading-4',
-          item.type === 'agent' ? 'bg-lavender-300/30 text-navy-800/75' : 'bg-mint-400/22 text-mint-700',
-        ]}
-      >
-        {typeLabel}
-      </span>
+      {
+        badge && (
+          <span
+            class:list={[
+              'inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.6875rem] leading-4',
+              badgeClass,
+            ]}
+          >
+            {badge}
+          </span>
+        )
+      }
       {
         item.connectors.map((g) => (
           <span class="inline-flex items-center rounded-full bg-cream-100 px-2.5 py-0.5 font-mono text-[0.6875rem] leading-4 text-navy-800/60">

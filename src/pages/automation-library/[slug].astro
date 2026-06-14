@@ -5,7 +5,7 @@ import Breadcrumbs from '../../components/blog/Breadcrumbs.astro';
 import LibraryCard from '../../components/library/LibraryCard.astro';
 import Button from '../../components/Button.astro';
 import { SITE } from '../../data/site';
-import { getAllLibraryItems, type LibraryItem } from '../../lib/library';
+import { contextLabel, getAllLibraryItems, type LibraryItem } from '../../lib/library';
 
 export async function getStaticPaths() {
   const items = await getAllLibraryItems();
@@ -17,14 +17,19 @@ interface Props {
 }
 
 const { item } = Astro.props;
-const typeLabel = item.type === 'agent' ? 'Agent' : 'Workflow';
+const badge = contextLabel(item.context);
+const badgeClass =
+  item.context === 'business-development'
+    ? 'bg-lavender-300/30 text-navy-800/75'
+    : 'bg-mint-400/22 text-mint-700';
+const hasDocuments = item.documents.required.length > 0 || item.documents.optional.length > 0;
 
-// Related: a few other items of the same type, then fill from the other type.
+// Related: a few other agents from the same context, then fill from others.
 const all = await getAllLibraryItems();
 const others = all.filter((i) => i.slug !== item.slug);
 const related = [
-  ...others.filter((i) => i.type === item.type),
-  ...others.filter((i) => i.type !== item.type),
+  ...others.filter((i) => i.context === item.context),
+  ...others.filter((i) => i.context !== item.context),
 ].slice(0, 3);
 
 const bodyHtml = item.longDescription ? marked.parse(item.longDescription) : null;
@@ -72,16 +77,18 @@ const jsonLd = [
       />
 
       <header class="mt-7">
-        <span
-          class:list={[
-            'inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.6875rem] leading-4',
-            item.type === 'agent'
-              ? 'bg-lavender-300/30 text-navy-800/75'
-              : 'bg-mint-400/22 text-mint-700',
-          ]}
-        >
-          {typeLabel}
-        </span>
+        {
+          badge && (
+            <span
+              class:list={[
+                'inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.6875rem] leading-4',
+                badgeClass,
+              ]}
+            >
+              {badge}
+            </span>
+          )
+        }
         <h1 class="mt-4 text-3xl leading-tight tracking-tight md:text-4xl">{item.name}</h1>
         {item.lead && <p class="mt-5 text-lg leading-relaxed text-navy-800/70">{item.lead}</p>}
       </header>
@@ -97,8 +104,39 @@ const jsonLd = [
     />
 
     <div class="mx-auto mt-8 max-w-[72ch]">
-      {/* Details panel: output + connectors used */}
+      {/* Details panel: inputs (documents) → output → connectors used */}
       <dl class="grid gap-5 rounded-[20px] border border-navy-800/12 bg-cream-50 p-6 sm:grid-cols-2">
+        {
+          hasDocuments && (
+            <div class="sm:col-span-2">
+              <dt class="font-mono text-xs tracking-wide text-navy-800/55 uppercase">
+                Documents needed
+              </dt>
+              <dd class="mt-2 space-y-2.5">
+                {item.documents.required.length > 0 && (
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="font-mono text-xs font-medium text-navy-800/70">Required:</span>
+                    {item.documents.required.map((name) => (
+                      <span class="inline-flex items-center rounded-[10px] border border-navy-800/12 bg-white px-2.5 py-1 text-sm text-navy-800">
+                        {name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {item.documents.optional.length > 0 && (
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="font-mono text-xs font-medium text-navy-800/70">Optional:</span>
+                    {item.documents.optional.map((name) => (
+                      <span class="inline-flex items-center rounded-[10px] border border-navy-800/12 bg-cream-100 px-2.5 py-1 text-sm text-navy-800/70">
+                        {name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </dd>
+            </div>
+          )
+        }
         <div>
           <dt class="font-mono text-xs tracking-wide text-navy-800/55 uppercase">Output</dt>
           <dd class="mt-1.5 flex items-center gap-1.5 text-[0.9375rem] text-navy-800">
@@ -141,7 +179,7 @@ const jsonLd = [
       </div>
 
       <div class="mt-12 rounded-[20px] bg-cream-100 px-6 py-10 text-center">
-        <h2 class="text-2xl">Run this {typeLabel.toLowerCase()} in Calyflow</h2>
+        <h2 class="text-2xl">Run this agent in Calyflow</h2>
         <p class="mx-auto mt-3 max-w-xl text-navy-800/65">
           On your own AI, data, and tools — repeatable and evidence-backed. Free to start, no credit
           card.
