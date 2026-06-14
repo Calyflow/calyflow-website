@@ -7,7 +7,7 @@ const body = `# ${SITE.name}
 
 > ${SITE.definition}
 
-${SITE.name} (${SITE.url}) is an open-source recruiting OS. Recruiters import
+${SITE.name} (${SITE.url}) is a set of open-source recruiting agents. Recruiters import
 proven AI workflows (CV screening, sourcing maps, outreach writing, job
 description writing, submission packs), attach their documents, and run them
 with repeatable, evidence-backed results.

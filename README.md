@@ -1,6 +1,6 @@
 # calyflow.ai — marketing website
 
-> Calyflow is an open-source recruiting OS that runs AI workflows on your own
+> Calyflow is a set of open-source recruiting agents that run AI workflows on your own
 > models, data, and tools.
 
 This repo is the static marketing site for [calyflow.ai](https://calyflow.ai)
