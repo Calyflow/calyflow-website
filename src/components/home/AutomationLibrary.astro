@@ -1,36 +1,21 @@
 ---
-import { getLibrary, pickFeatured } from '../../lib/library';
+import { getAllLibraryItems, groupByContext, pickFeatured } from '../../lib/library';
 import SectionHeading from '../SectionHeading.astro';
 import LibraryCard from '../library/LibraryCard.astro';
 
-const { workflows, agents } = await getLibrary();
-const featuredWorkflows = pickFeatured(workflows, 3);
-const featuredAgents = pickFeatured(agents, 3);
-const total = workflows.length + agents.length;
-
-const groups = [
-  {
-    key: 'workflows',
-    title: 'Workflows',
-    blurb:
-      'Focused automations. Give one your knowledge base — your company, your team, the client you’re recruiting for — and a skill, a detailed prompt packed with expert instructions, and it returns a finished outcome in seconds.',
-    items: featuredWorkflows,
-  },
-  {
-    key: 'agents',
-    title: 'Agents',
-    blurb:
-      'Multi-step and tool-using. Agents think mid-process, decide the best course of action, and work with live data from your ATS, CRM, or sourcing and enrichment tools — then write the result back into your project.',
-    items: featuredAgents,
-  },
-];
+const items = await getAllLibraryItems();
+const groups = groupByContext(items).map((group) => ({
+  ...group,
+  items: pickFeatured(group.items, 3),
+}));
+const total = items.length;
 ---
 
-<section id="automation-library" class="scroll-mt-20 bg-cream-100 py-24 md:py-32">
+<section id="automation-library" class="scroll-mt-20 py-24 md:py-32">
   <div class="mx-auto max-w-6xl px-5">
     <SectionHeading eyebrow="Automation library" title="An automation platform for recruiting">
-      Calyflow runs two kinds of automation on your own AI, data, and tools: workflows that turn a
-      brief into a finished deliverable, and agents that reach into your systems to do the work.
+      Calyflow runs AI agents on your own AI, data, and tools. Some turn a brief into a finished
+      deliverable; others reach into your ATS, CRM, and data to do the work.
     </SectionHeading>
 
     {
@@ -42,11 +27,11 @@ const groups = [
               <p class="mt-2 text-[0.9375rem] leading-relaxed text-navy-800/65">{group.blurb}</p>
             </div>
             <a
-              href={`/automation-library#${group.key}`}
+              href={`/automation-library#${group.id}`}
               class="shrink-0 font-mono text-sm font-medium text-mint-700 hover:text-navy-900"
-              data-event={`library-see-all-${group.key}`}
+              data-event={`library-see-all-${group.id}`}
             >
-              See all {group.key} <span aria-hidden="true">→</span>
+              See all <span aria-hidden="true">→</span>
             </a>
           </div>
 
@@ -61,7 +46,7 @@ const groups = [
 
     <p class="mt-14 text-center font-mono text-sm text-navy-800/55">
       <a href="/automation-library" class="text-navy-800/70 hover:text-navy-900">
-        {total} workflows and agents available to use
+        {total} agents available to use
       </a>
     </p>
   </div>

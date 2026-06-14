@@ -1,172 +1,115 @@
 {
-  "$comment": "Offline fallback snapshot of https://app.calyflow.ai/api/v1/library, used when the build-time fetch fails (see src/lib/library.ts). Same shape as the API. coverUrl host is ignored at build time and reconstructed against app.calyflow.ai. featured flags here drive the homepage trios until the live API supplies its own. Snapshot taken 2026-06-13.",
-  "workflows": [
-    {
-      "type": "workflow",
-      "slug": "intake-to-jd-builder",
-      "name": "Intake-to-JD Builder",
-      "description": "Turn messy intake notes from a hiring-manager call into a structured job description plus a list of clarifying questions to send back to the client. The JD it produces feeds every other workflow in the search.",
-      "category": "intake",
-      "version": 1,
-      "featured": false,
-      "connectors": [],
-      "output": "Job description",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/intake-to-jd-builder/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    },
-    {
-      "type": "workflow",
-      "slug": "job-requirement-analysis",
-      "name": "Job Requirement Analysis",
-      "description": "Turn raw hiring-manager notes into a complete 18-dimension requirement breakdown — technical stack, seniority, culture fit, compensation, hiring process and more. Every dimension is either extracted or marked \"TO ASK\" with a question, so nothing is missed before sourcing. Feeds the ICP Builder.",
-      "category": "intake",
-      "version": 1,
-      "featured": false,
-      "connectors": [],
-      "output": "Requirement analysis",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/job-requirement-analysis/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    },
-    {
-      "type": "workflow",
-      "slug": "candidate-icp-builder",
-      "name": "Candidate ICP Builder",
-      "description": "Turn the project's job description into a structured Ideal Candidate Profile with a weighted scoring rubric — must-have (3), important (2) and nice-to-have (1) criteria, each with a concrete \"how to evaluate\" cue, plus a max-score guide. The rubric that drives consistent candidate screening.",
-      "category": "icp",
-      "version": 1,
-      "featured": false,
-      "connectors": [],
-      "output": "Candidate ICP",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/candidate-icp-builder/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    },
-    {
-      "type": "workflow",
-      "slug": "sourcing-map",
-      "name": "Sourcing Map from JD",
-      "description": "Turn the project's job description into a phased sourcing strategy: five search steps from exact-match booleans to creative passive sourcing, plus a full channel checklist tailored to this exact role and market.",
-      "category": "sourcing",
-      "version": 2,
-      "featured": true,
-      "connectors": [],
-      "output": "Sourcing map",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/sourcing-map/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    },
-    {
-      "type": "workflow",
-      "slug": "job-selling-pitch",
-      "name": "Job Selling Pitch",
-      "description": "Turn the project's job description into a candidate magnet: a selling-points analysis across 10 dimensions, a \"So what?\" feature→benefit reframe, a rewritten job post that leads with what excites candidates, ready-to-use outreach hooks, and the questions to ask the hiring manager to uncover more.",
-      "category": "selling",
-      "version": 1,
-      "featured": false,
-      "connectors": [],
-      "output": "Job selling pitch",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/job-selling-pitch/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    },
-    {
-      "type": "workflow",
-      "slug": "outreach-writer",
-      "name": "Outreach Writer",
-      "description": "Paste a candidate's profile and get personalized LinkedIn, InMail, and email outreach with A/B variants and a two-step follow-up sequence. Writes in your voice, references concrete details (never flattery or buzzwords), and sells the client company specifically using its deck and benefits docs.",
-      "category": "outreach",
-      "version": 2,
-      "featured": true,
-      "connectors": [],
-      "output": "Outreach messages",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/outreach-writer/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    },
-    {
-      "type": "workflow",
-      "slug": "cv-screener",
-      "name": "CV Screener",
-      "description": "Screen CVs against the project's job description and get an evidence-based scorecard: fit score, must-haves table with CV quotes as proof, red flags, and five screening-call questions specific to this candidate.",
-      "category": "screening",
-      "version": 1,
-      "featured": true,
-      "connectors": [],
-      "output": "Screening report",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/cv-screener/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    },
-    {
-      "type": "workflow",
-      "slug": "candidate-marketing-profile",
-      "name": "Candidate Marketing Profile",
-      "description": "Turn a candidate's CV into a compelling, ready-to-market profile (MPC) — a positioning headline, biography in your voice, quantified wins, an anonymized blind teaser for cold campaigns, and pitch sound bites for hiring managers. Every claim is grounded in the CV, never invented.",
-      "category": "marketing",
-      "version": 1,
-      "featured": false,
-      "connectors": [],
-      "output": "Marketing profile",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/candidate-marketing-profile/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    },
-    {
-      "type": "workflow",
-      "slug": "submission-pack",
-      "name": "Candidate Submission Pack",
-      "description": "Combine a CV with its screening report into a polished, client-ready candidate presentation in your tone of voice — ready to send to the hiring manager.",
-      "category": "submission",
-      "version": 1,
-      "featured": false,
-      "connectors": [],
-      "output": "Submission pack",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/workflow/submission-pack/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
-    }
-  ],
+  "$comment": "Build-time fallback for src/lib/library.ts when the app library API is unreachable. Regenerate from /api/v1/library. Cover URLs are ignored (rebuilt from slug against SITE.appUrl).",
+  "workflows": [],
   "agents": [
     {
       "type": "agent",
-      "slug": "sourcing-shortlist-ats",
-      "name": "Sourcing Shortlist From ATS",
-      "description": "A sourcing agent that reads the role's brief from your knowledge base, pulls candidates from whichever ATS you connect (Greenhouse, Bullhorn, Lever, Workable and 15 more), ranks them against the role, and writes a shortlist back into the project. Pick the ATS when you run it.",
+      "slug": "candidate-icp-builder",
+      "name": "Candidate ICP Builder",
+      "description": "Turn the project's job description into a structured Ideal Candidate Profile with a weighted scoring rubric — must-have (3), important (2) and nice-to-have (1) criteria, each with a concrete \"how to evaluate\" cue, plus a max-score guide. The rubric that drives consistent candidate screening.",
       "category": null,
+      "context": "recruiting-project",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "Job description"
+        ],
+        "optional": []
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/candidate-icp-builder/cover",
+      "ogDescription": "Use this free Calyflow agent to turn a job description into a clear, weighted scorecard for ranking candidates consistently.",
+      "lead": "Score every candidate the same way. This agent turns a job description into a weighted rubric your whole team can screen against.",
+      "longDescription": "## What it does\nThe Candidate ICP Builder reads the job description for a role and turns it\ninto an Ideal Candidate Profile — a structured scorecard that spells out\nexactly what \"a strong fit\" means for this job.\n\n## Why recruiters use it\n- Screen every candidate against the same criteria, so shortlists are\n  consistent and easy to defend to the client.\n- Get aligned with the hiring manager up front on what actually matters.\n- Spend less time on gut feel and more on real evidence.\n\n## What you get\nA weighted rubric with must-have (3), important (2) and nice-to-have (1)\ncriteria. Each criterion comes with a plain-language cue for how to judge it,\nplus a maximum-score guide so any recruiter applies it the same way.\n\n## What you need\n- A job description saved in the project.\n\n## How to run it\nPick the agent in your project and run it. The scorecard is saved to your\nproject files and feeds straight into CV screening.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "candidate-marketing-profile",
+      "name": "Candidate Marketing Profile",
+      "description": "Turn a candidate's CV into a compelling, ready-to-market profile (MPC) — a positioning headline, biography in your voice, quantified wins, an anonymized blind teaser for cold campaigns, and pitch sound bites for hiring managers. Every claim is grounded in the CV, never invented.",
+      "category": null,
+      "context": "business-development",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "CV"
+        ],
+        "optional": []
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/candidate-marketing-profile/cover",
+      "ogDescription": "Use this free Calyflow agent to turn a candidate's CV into a polished, ready-to-market profile that sells their strengths.",
+      "lead": "Market your best candidates without writing a word. Turn a CV into a sharp, ready-to-send profile that leads with what makes them stand out.",
+      "longDescription": "## What it does\nThe Candidate Marketing Profile turns a candidate's CV into a compelling,\nready-to-market profile (an MPC) you can use to spark client interest — even\nbefore you have a specific role to pitch.\n\n## Why recruiters use it\n- Get candidates in front of clients faster, with a profile that leads with\n  real, quantified wins.\n- Reuse one profile across multiple outreach campaigns.\n- Keep candidate details anonymous when you want to tease the market.\n\n## What you get\nA positioning headline, a short biography in your tone of voice, quantified\nhighlights, an anonymized \"blind\" teaser for cold campaigns, and a few pitch\nsound bites for hiring managers. Every claim is grounded in the CV — nothing\ninvented.\n\n## What you need\n- The candidate's CV.\n\n## How to run it\nAttach the CV in your project and run. The profile is saved to your project\nfiles, ready to copy into emails or your CRM.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "candidate-outreach-email",
+      "name": "Candidate Outreach From Sheet via Email",
+      "description": "An outreach agent that reads candidates from the tracker you run in Google Sheets, Excel, or Airtable, writes a short personalized email to each one grounded in the role and your tone of voice, sends them from your own mailbox (Gmail or Outlook), and saves a send log into the project. Pick the data source and the mailbox when you run it.",
+      "category": null,
+      "context": "recruiting-project",
       "version": 1,
       "featured": true,
       "connectors": [
         {
-          "category": "ats",
-          "label": "ATS",
+          "category": "data",
+          "label": "Data",
           "connectors": [
-            "Greenhouse",
-            "Bullhorn",
-            "Lever",
-            "Workable",
-            "Ashby",
-            "SmartRecruiters",
-            "Recruitee",
-            "Teamtailor"
+            "Airtable",
+            "Google Sheets",
+            "Microsoft Excel"
+          ]
+        },
+        {
+          "category": "email",
+          "label": "Email",
+          "connectors": [
+            "Gmail",
+            "Microsoft Outlook"
           ]
         }
       ],
+      "documents": {
+        "required": [],
+        "optional": [
+          "Job description"
+        ]
+      },
+      "output": "Emails",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/candidate-outreach-email/cover",
+      "ogDescription": "Use this free Calyflow agent to email candidates from your spreadsheet — personalized, from your own mailbox, with one send log.",
+      "lead": "Reach a whole list of candidates without the copy-paste. This agent reads your spreadsheet, writes a personal email to each, and sends them from your own inbox.",
+      "longDescription": "## What it does\nThe Candidate Outreach agent reads candidates from your spreadsheet, writes a\nshort, personalized email to each one based on the role and your tone of\nvoice, and sends them from your own mailbox. It keeps a log of everything it\nsent.\n\n## Why recruiters use it\n- Reach an entire candidate list in one run, with each email genuinely\n  personalized.\n- Send from your own address, so replies come straight back to you.\n- Stay safe — it only emails people listed in your sheet, never invented\n  addresses, and caps how many it sends.\n\n## Connect your tools\nPick one data source and one mailbox when you run it.\n\nRead candidates from:\n- Google Sheets, Microsoft Excel, or Airtable\n\nSend from:\n- Gmail or Microsoft Outlook\n\n## What you get\nA personal email sent to each chosen candidate, plus a send-log document\nrecording who was contacted, the subject used, and anyone skipped.\n\n## How to run it\nOpen a project with a role brief, choose your spreadsheet and mailbox,\ndescribe who to contact, and run. Emails go out from your inbox and the log\nis saved to your project files.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "submission-pack",
+      "name": "Candidate Submission Pack",
+      "description": "Combine a CV with its screening report into a polished, client-ready candidate presentation in your tone of voice — ready to send to the hiring manager.",
+      "category": null,
+      "context": "recruiting-project",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "Job description"
+        ],
+        "optional": [
+          "CV",
+          "Previous AI output"
+        ]
+      },
       "output": "Document",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/agent/sourcing-shortlist-ats/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/submission-pack/cover",
+      "ogDescription": "Use this free Calyflow agent to turn a CV and screening notes into a polished, client-ready candidate write-up in your own tone of voice.",
+      "lead": "Send the hiring manager a candidate write-up that actually gets read — a clear, honest summary built from the CV and your screening notes, in your agency's voice.",
+      "longDescription": "## What it does\nThe Candidate Submission Pack turns a candidate's CV and your screening\nnotes into a single, client-ready presentation you can send straight to the\nhiring manager. It pulls the role's requirements from the job description,\nmatches the candidate against them, and writes the summary in your agency's\ntone of voice.\n\n## Why recruiters use it\n- Stop rewriting the same submission email from scratch for every candidate.\n- Present candidates consistently, so every client sees the same standard.\n- Lead with evidence — each claim is backed by something in the CV or your\n  notes, so you stay credible.\n- Be honest about gaps in a constructive way, which builds client trust.\n\n## What you get\nA formatted submission document with a headline summary, a\nrequirement-by-requirement match table, career highlights, points to discuss\nat interview, logistics (availability, notice, location), and a recommended\nnext step.\n\n## What you need\n- A job description saved in the project, so the agent knows the role.\n- The candidate's CV, and optionally the report from the CV Screener.\n\n## How to run it\nOpen the project, pick this agent, attach the CV, and run. The finished\npack is saved to your project files in seconds, ready to download or send.\n"
     },
     {
       "type": "agent",
@@ -174,8 +117,9 @@
       "name": "Client Prospecting Research",
       "description": "A business-development researcher that digs through whichever CRM you connect (HubSpot, Attio, Pipedrive, monday.com, Notion, Zoho CRM), maps the accounts, contacts, and deals that match your target brief, and writes a prospecting report back into the project. Pick the CRM when you run it.",
       "category": null,
+      "context": "business-development",
       "version": 1,
-      "featured": true,
+      "featured": false,
       "connectors": [
         {
           "category": "crm",
@@ -190,37 +134,205 @@
           ]
         }
       ],
+      "documents": {
+        "required": [],
+        "optional": []
+      },
       "output": "Document",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/agent/client-prospecting-research/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/client-prospecting-research/cover",
+      "ogDescription": "Use this free Calyflow agent to research target client accounts in your CRM and get a prioritized prospecting report.",
+      "lead": "Find your next client in the data you already have. This agent digs through your CRM and hands back a prioritized list of accounts worth pursuing.",
+      "longDescription": "## What it does\nThe Client Prospecting Research agent digs through your CRM, finds the\naccounts, contacts, and deals that match your target brief, and writes a\nprospecting report back into your project.\n\n## Why recruiters and BD teams use it\n- Turn a messy CRM into a clear, prioritized list of who to pursue.\n- See decision-makers and relationship history without manual digging.\n- Spot the gaps — accounts and contacts your CRM is missing.\n\n## Connect your CRM\nPick any one of your connected CRM connectors when you run it:\n- HubSpot, Pipedrive, Attio\n- monday.com, Notion, Zoho CRM\n\n## What you get\nA report ranking target accounts by how attractive they are, with key\ncontacts, relationship status, and a one-line \"why now\" for each.\n\n## How to run it\nOpen a project, describe the kind of clients you're after, choose your CRM,\nand run. The report is saved to your project files.\n"
     },
     {
       "type": "agent",
-      "slug": "candidate-outreach-email",
-      "name": "Candidate Outreach From Sheet via Email",
-      "description": "An outreach agent that reads candidates from the tracker you run in Google Sheets, Excel, or Airtable, writes a short personalized email to each one grounded in the role and your tone of voice, sends them from your own mailbox (Gmail or Outlook), and saves a send log into the project. Pick the data source and the mailbox when you run it.",
+      "slug": "cv-screener",
+      "name": "CV Screener",
+      "description": "Screen one or more CVs against the project's job description — plus optional intake notes and a scorecard — and get an evidence-based report per candidate: fit score, must-haves table with CV quotes as proof, red flags, and five screening-call questions specific to that candidate.",
       "category": null,
+      "context": "recruiting-project",
+      "version": 2,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "Job description"
+        ],
+        "optional": [
+          "CV",
+          "Intake notes",
+          "Scorecard"
+        ]
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/cv-screener/cover",
+      "ogDescription": "Use this free Calyflow agent to screen one or more CVs against the job description and get an evidence-based scorecard per candidate in seconds.",
+      "lead": "Screen a whole batch of CVs in seconds, not hours. Get an evidence-based report per candidate that quotes the CV and flags exactly what to ask on the screening call.",
+      "longDescription": "## What it does\nThe CV Screener compares one or more candidate CVs against the role's job\ndescription and produces a structured report for each one — so you can decide\nwho to call without reading every CV line by line. Give it your intake notes\nand a scorecard too, and it screens against exactly the criteria you and the\nhiring manager agreed on.\n\n## Why recruiters use it\n- Screen a batch of CVs in one run and rank them consistently.\n- Cut screening time dramatically while staying thorough.\n- Back every decision with evidence quoted straight from the CV.\n- Score against your own rubric when you attach a scorecard.\n- Walk into the screening call already knowing what to probe.\n\n## What you get\nPer candidate: a fit score, a must-haves table with CV quotes as proof, a\nlist of red flags or gaps, and five screening-call questions tailored to that\ncandidate. Screen several at once and you get a ranked summary up top.\n\n## What you need\n- A job description saved in the project.\n- One or more candidate CVs.\n- Optional: intake notes from the hiring-manager call, and a scorecard or\n  rubric to score against.\n\n## How to run it\nAttach the CVs — and, if you have them, the intake notes and scorecard — then\nrun. The report is saved to your project files, and its output feeds the\nCandidate Submission Pack.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "intake-to-jd-builder",
+      "name": "Intake-to-JD Builder",
+      "description": "Turn messy intake notes from a hiring-manager call into a structured job description plus a list of clarifying questions to send back to the client. The JD it produces feeds every other agent in the search.",
+      "category": null,
+      "context": "recruiting-project",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "Intake notes"
+        ],
+        "optional": [
+          "Job description"
+        ]
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/intake-to-jd-builder/cover",
+      "ogDescription": "Use this free Calyflow agent to turn messy intake-call notes into a clean job description plus the questions to ask the client.",
+      "lead": "Turn a scrappy intake call into a proper job description — and a list of the questions you forgot to ask the client.",
+      "longDescription": "## What it does\nThe Intake-to-JD Builder takes your rough notes from a hiring-manager intake\ncall and turns them into a structured job description, plus a list of\nclarifying questions to send back to the client.\n\n## Why recruiters use it\n- Start every search with a clean, complete brief instead of half-remembered\n  notes.\n- Catch missing information before it costs you a placement.\n- Produce the job description that every other Calyflow agent builds on.\n\n## What you get\nA formatted job description and a short list of \"still to confirm\" questions\nfor the client.\n\n## What you need\n- Your intake notes — typed, pasted, or uploaded.\n\n## How to run it\nAdd your notes to the project and run. The job description is saved to your\nproject files and unlocks the ICP Builder, CV Screener, and more.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "job-requirement-analysis",
+      "name": "Job Requirement Analysis",
+      "description": "Turn raw hiring-manager notes into a complete 18-dimension requirement breakdown — technical stack, seniority, culture fit, compensation, hiring process and more. Every dimension is either extracted or marked \"TO ASK\" with a question, so nothing is missed before sourcing. Feeds the ICP Builder.",
+      "category": null,
+      "context": "recruiting-project",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "Intake notes"
+        ],
+        "optional": [
+          "Job description"
+        ]
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/job-requirement-analysis/cover",
+      "ogDescription": "Use this free Calyflow agent to break a role down into every requirement that matters — and flag the gaps to ask about.",
+      "lead": "Know a role inside out before you source. This agent breaks hiring-manager notes into every requirement that matters and flags what's still missing.",
+      "longDescription": "## What it does\nThe Job Requirement Analysis turns raw hiring-manager notes into a complete,\nstructured breakdown of the role — from technical skills and seniority to\nculture, compensation, and the hiring process.\n\n## Why recruiters use it\n- Spot missing or vague requirements before they derail a search.\n- Have a sharper, better-prepared conversation with the hiring manager.\n- Build a solid foundation for the Candidate ICP and your sourcing strategy.\n\n## What you get\nA breakdown across roughly 18 dimensions. Anything the notes don't cover is\nclearly marked \"to ask\", with a suggested question, so nothing slips through.\n\n## What you need\n- Hiring-manager notes, an existing job description, or intake notes.\n\n## How to run it\nAdd your notes to the project and run. The analysis is saved to your project\nfiles.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "job-selling-pitch",
+      "name": "Job Selling Pitch",
+      "description": "Turn the project's job description into a candidate magnet: a selling-points analysis across 10 dimensions, a \"So what?\" feature→benefit reframe, a rewritten job post that leads with what excites candidates, ready-to-use outreach hooks, and the questions to ask the hiring manager to uncover more.",
+      "category": null,
+      "context": "recruiting-project",
+      "version": 1,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "Job description"
+        ],
+        "optional": []
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/job-selling-pitch/cover",
+      "ogDescription": "Use this free Calyflow agent to turn a job description into a candidate magnet — selling points, a rewritten job post, and outreach hooks.",
+      "lead": "Make candidates actually want the job. Turn a dry job description into selling points, a rewritten post, and outreach hooks that get replies.",
+      "longDescription": "## What it does\nThe Job Selling Pitch turns a standard job description into materials that\nmake candidates want to apply — by reframing duties into benefits and\nsurfacing what's genuinely attractive about the role.\n\n## Why recruiters use it\n- Get more responses to outreach by leading with what excites candidates.\n- Rewrite weak job posts into ones that convert.\n- Uncover selling points the hiring manager forgot to mention.\n\n## What you get\nA selling-points analysis across ten angles, a \"so what?\" feature-to-benefit\nreframe, a rewritten job post, ready-to-use outreach hooks, and questions to\nask the hiring manager to dig up more.\n\n## What you need\n- A job description saved in the project.\n\n## How to run it\nPick the agent and run. The pitch is saved to your project files, ready to\nuse in posts and outreach.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "outreach-writer",
+      "name": "Outreach Writer",
+      "description": "Paste a candidate's profile and get personalized LinkedIn, InMail, and email outreach with A/B variants and a two-step follow-up sequence. Writes in your voice, references concrete details (never flattery or buzzwords), and sells the client company specifically using its deck and benefits docs.",
+      "category": null,
+      "context": "recruiting-project",
+      "version": 2,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "Job description"
+        ],
+        "optional": [
+          "CV"
+        ]
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/outreach-writer/cover",
+      "ogDescription": "Use this free Calyflow agent to write personalized candidate outreach — LinkedIn, InMail, and email — that references real details and gets replies.",
+      "lead": "Write outreach that sounds like you, not a mail merge. Personalized LinkedIn, InMail, and email — with A/B versions and follow-ups — built from the candidate's real profile.",
+      "longDescription": "## What it does\nThe Outreach Writer drafts personalized candidate outreach across LinkedIn,\nInMail, and email. It references concrete details from the candidate's\nprofile and sells the specific role and company — no generic templates.\n\n## Why recruiters use it\n- Get higher reply rates with messages that feel personal and specific.\n- Save the time you'd spend writing every message by hand.\n- Stay on-brand — it writes in your tone of voice, with no flattery or\n  buzzwords.\n\n## What you get\nA LinkedIn connection note, an InMail or first message, and an email — each\nwith two A/B variants — plus a two-step follow-up sequence.\n\n## What you need\n- A job description saved in the project.\n- The candidate's CV or profile.\n\n## How to run it\nAttach the candidate's profile and run. The messages are saved to your\nproject files, ready to send.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "sourcing-map",
+      "name": "Sourcing Map from JD",
+      "description": "Turn the project's job description into a phased sourcing strategy: five search steps from exact-match booleans to creative passive sourcing, plus a full channel checklist tailored to this exact role and market.",
+      "category": null,
+      "context": "recruiting-project",
+      "version": 2,
+      "featured": false,
+      "connectors": [],
+      "documents": {
+        "required": [
+          "Job description"
+        ],
+        "optional": []
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/sourcing-map/cover",
+      "ogDescription": "Use this free Calyflow agent to turn a job description into a step-by-step sourcing plan with searches and channels for the exact role.",
+      "lead": "Know where to look before you start sourcing. Turn a job description into a phased plan of searches and channels tailored to the role and market.",
+      "longDescription": "## What it does\nThe Sourcing Map turns a job description into a practical, phased sourcing\nstrategy — so you start a search with a clear plan instead of a blank search\nbar.\n\n## Why recruiters use it\n- Source faster with ready-made search steps and channels.\n- Reach passive candidates your competitors miss.\n- Give junior sourcers a repeatable playbook for any role.\n\n## What you get\nFive search steps that move from exact-match boolean strings to creative\npassive-sourcing ideas, plus a full channel checklist tailored to the\nspecific role and market.\n\n## What you need\n- A job description saved in the project.\n\n## How to run it\nPick the agent and run. The sourcing map is saved to your project files.\n"
+    },
+    {
+      "type": "agent",
+      "slug": "sourcing-shortlist-ats",
+      "name": "Sourcing Shortlist From ATS",
+      "description": "A sourcing agent that reads the role's brief from your knowledge base, pulls candidates from whichever ATS you connect (Greenhouse, Bullhorn, Lever, Workable and 15 more), ranks them against the role, and writes a shortlist back into the project. Pick the ATS when you run it.",
+      "category": null,
+      "context": "recruiting-project",
       "version": 1,
       "featured": true,
       "connectors": [
         {
-          "category": "data",
-          "label": "Data",
-          "connectors": ["Google Sheets", "Excel", "Airtable"]
-        },
-        {
-          "category": "email",
-          "label": "Email",
-          "connectors": ["Gmail", "Outlook"]
+          "category": "ats",
+          "label": "ATS",
+          "connectors": [
+            "Ashby",
+            "BambooHR",
+            "BreezyHR",
+            "Bullhorn",
+            "CATS",
+            "Crelate",
+            "Greenhouse",
+            "JazzHR",
+            "JobAdder",
+            "Lever",
+            "Loxo",
+            "Manatal",
+            "Pinpoint",
+            "Recruitee",
+            "Recruiterflow",
+            "SmartRecruiters",
+            "Teamtailor",
+            "Workable",
+            "Zoho Recruit"
+          ]
         }
       ],
-      "output": "Emails",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/agent/candidate-outreach-email/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
+      "documents": {
+        "required": [],
+        "optional": [
+          "Job description"
+        ]
+      },
+      "output": "Document",
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/sourcing-shortlist-ats/cover",
+      "ogDescription": "Use this free Calyflow agent to pull candidates from your ATS, rank them against the role, and get a ready-to-review shortlist.",
+      "lead": "Let an agent do your first pass. It reads the role, pulls candidates from whichever ATS you use, and hands back a ranked shortlist.",
+      "longDescription": "## What it does\nThe Sourcing Shortlist agent reads the role's brief from your project, pulls\ncandidates from your connected applicant tracking system, ranks them against\nthe requirements, and writes a shortlist back into the project.\n\n## Why recruiters use it\n- Get a first-pass shortlist in minutes instead of clicking through your ATS\n  by hand.\n- Rank candidates against the actual role, with the reasoning shown.\n- Works with whatever ATS your agency already runs — no switching tools.\n\n## Connect your ATS\nPick any one of your connected ATS connectors when you run it, including:\n- Greenhouse, Lever, Workable, Ashby\n- Bullhorn, JobAdder, Loxo, Recruiterflow\n- Teamtailor, SmartRecruiters, Recruitee, and more\n\n## What you get\nA ranked shortlist document with a one-line rationale for each candidate and\na note on who was ruled out and why.\n\n## How to run it\nOpen a project with a role brief, choose your ATS, describe what you want,\nand run. The shortlist is saved to your project files.\n"
     },
     {
       "type": "agent",
@@ -228,20 +340,31 @@
       "name": "Sourcing Shortlist From Sheet",
       "description": "A sourcing agent that reads the role's brief from your knowledge base, pulls candidates from the tracker you already run in Google Sheets, Excel, or Airtable, ranks them against the role, and writes a shortlist back into the project. Pick the data source when you run it.",
       "category": null,
+      "context": "recruiting-project",
       "version": 1,
       "featured": false,
       "connectors": [
         {
           "category": "data",
           "label": "Data",
-          "connectors": ["Google Sheets", "Excel", "Airtable"]
+          "connectors": [
+            "Airtable",
+            "Google Sheets",
+            "Microsoft Excel"
+          ]
         }
       ],
+      "documents": {
+        "required": [],
+        "optional": [
+          "Job description"
+        ]
+      },
       "output": "Document",
-      "coverUrl": "https://app.calyflow.ai/api/v1/library/agent/sourcing-shortlist-sheet/cover",
-      "ogDescription": null,
-      "lead": null,
-      "longDescription": null
+      "coverUrl": "http://localhost:3001/api/v1/library/agent/sourcing-shortlist-sheet/cover",
+      "ogDescription": "Use this free Calyflow agent to turn a candidate spreadsheet into a ranked shortlist for your role — no manual sorting.",
+      "lead": "Already track candidates in a spreadsheet? This agent reads it, ranks everyone against the role, and writes back a shortlist.",
+      "longDescription": "## What it does\nThe Sourcing Shortlist From Sheet agent reads the candidate tracker you\nalready keep in a spreadsheet, scores everyone against the role, and writes a\nranked shortlist back into your project.\n\n## Why recruiters use it\n- Put the spreadsheet you already maintain to work, without copy-pasting.\n- Rank candidates against the real requirements, with the reasoning shown.\n- No new system to learn — it reads your existing sheet.\n\n## Connect your data source\nPick any one of your connected data connectors when you run it:\n- Google Sheets\n- Microsoft Excel\n- Airtable\n\n## What you get\nA ranked shortlist document with a short rationale for each candidate and a\nnote on who didn't make the cut.\n\n## How to run it\nOpen a project with a role brief, choose your spreadsheet source, and run.\nThe shortlist is saved to your project files.\n"
     }
   ]
 }
