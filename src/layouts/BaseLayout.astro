@@ -12,6 +12,7 @@ import sg700 from '@fontsource/space-grotesk/files/space-grotesk-latin-700-norma
 import { SITE } from '../data/site';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PostHog from '../components/posthog.astro';
 
 interface Props {
   /** ≤60 chars; rendered as-is (include brand yourself if wanted). */
@@ -110,6 +111,8 @@ const cfBeaconToken = import.meta.env.CF_BEACON_TOKEN;
         />
       )
     }
+
+    <PostHog />
   </head>
   <body class="flex min-h-screen flex-col">
     <Header />
