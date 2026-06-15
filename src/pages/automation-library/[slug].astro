@@ -204,3 +204,11 @@ const jsonLd = [
     }
   </article>
 </BaseLayout>
+
+<script is:inline define:vars={{ agentName: item.name, agentSlug: item.slug, agentContext: item.context }}>
+  window.posthog?.capture('agent_viewed', {
+    agent_name: agentName,
+    agent_slug: agentSlug,
+    agent_context: agentContext,
+  });
+</script>
