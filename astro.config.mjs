@@ -12,7 +12,19 @@ export default defineConfig({
   // canonical slash-less URL, so there are no duplicate-content URLs.
   trailingSlash: 'never',
   build: { format: 'file' },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    // Keep the unlisted per-system "<system>-enrichment" pages out of the
+    // sitemap (they also set noindex). The "ats-crm-enrichment" overview is
+    // public (linked in the nav, indexable), so let it through.
+    sitemap({
+      filter: (page) => {
+        const path = page.replace(/\/$/, '');
+        if (path.endsWith('/ats-crm-enrichment')) return true;
+        return !path.endsWith('-enrichment');
+      },
+    }),
+  ],
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
