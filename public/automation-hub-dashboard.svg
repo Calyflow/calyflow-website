@@ -20,7 +20,8 @@
       <path d="M14 5c1.2 5.9 4.1 8.8 10 10-5.9 1.2-8.8 4.1-10 10-1.2-5.9-4.1-8.8-10-10 5.9-1.2 8.8-4.1 10-10Z" fill="#1B7A5F"/>
       <path d="M24.5 19c.4 1.9 1.3 2.8 3.2 3.2-1.9.4-2.8 1.3-3.2 3.2-.4-1.9-1.3-2.8-3.2-3.2 1.9-.4 2.8-1.3 3.2-3.2Z" fill="#1B7A5F"/>
     </g>
-    <text x="76" y="47" font-size="22" font-weight="700" fill="#1B2A4A">Calyflow</text>
+    <!-- "Calyflow" wordmark outlined in Space Grotesk 700 to match the site menu -->
+    <path transform="translate(76 47) scale(0.022 -0.022)" fill="#1B2A4A" d="M332 -14Q202 -14 126.0 58.5Q50 131 50 266V434Q50 569 126.0 641.5Q202 714 332 714Q461 714 531.5 643.5Q602 573 602 450V444H472V454Q472 516 437.5 556.0Q403 596 332 596Q262 596 222.0 553.0Q182 510 182 436V264Q182 191 222.0 147.5Q262 104 332 104Q403 104 437.5 144.5Q472 185 472 246V264H602V250Q602 127 531.5 56.5Q461 -14 332 -14Z M868 -14Q815 -14 773.0 4.5Q731 23 706.5 58.5Q682 94 682 145Q682 196 706.5 230.5Q731 265 774.5 282.5Q818 300 874 300H1010V328Q1010 363 988.0 385.5Q966 408 918 408Q871 408 848.0 386.5Q825 365 818 331L702 370Q714 408 740.5 439.5Q767 471 811.5 490.5Q856 510 920 510Q1018 510 1075.0 461.0Q1132 412 1132 319V134Q1132 104 1160 104H1200V0H1116Q1079 0 1055.0 18.0Q1031 36 1031 66V67H1012Q1008 55 994.0 35.5Q980 16 950.0 1.0Q920 -14 868 -14ZM890 88Q943 88 976.5 117.5Q1010 147 1010 196V206H883Q848 206 828.0 191.0Q808 176 808 149Q808 122 829.0 105.0Q850 88 890 88Z M1292 0V700H1418V0Z M1612 -200V-90H1882Q1910 -90 1910 -60V65H1892Q1884 48 1867.0 31.0Q1850 14 1821.0 3.0Q1792 -8 1747 -8Q1689 -8 1645.5 18.5Q1602 45 1578.0 92.0Q1554 139 1554 200V496H1680V210Q1680 154 1707.5 126.0Q1735 98 1786 98Q1844 98 1876.0 136.5Q1908 175 1908 244V496H2034V-88Q2034 -139 2004.0 -169.5Q1974 -200 1924 -200Z M2256 0V392H2130V496H2256V588Q2256 639 2286.5 669.5Q2317 700 2366 700H2496V596H2410Q2382 596 2382 566V496H2512V392H2382V0Z M2610 0V700H2736V0Z M3112 -14Q3038 -14 2979.0 16.0Q2920 46 2886.0 103.0Q2852 160 2852 240V256Q2852 336 2886.0 393.0Q2920 450 2979.0 480.0Q3038 510 3112 510Q3186 510 3245.0 480.0Q3304 450 3338.0 393.0Q3372 336 3372 256V240Q3372 160 3338.0 103.0Q3304 46 3245.0 16.0Q3186 -14 3112 -14ZM3112 98Q3170 98 3208.0 135.5Q3246 173 3246 243V253Q3246 323 3208.5 360.5Q3171 398 3112 398Q3054 398 3016.0 360.5Q2978 323 2978 253V243Q2978 173 3016.0 135.5Q3054 98 3112 98Z M3528 0 3458 496H3583L3627 85H3645L3709 496H3911L3975 85H3993L4037 496H4162L4092 0H3883L3819 411H3801L3737 0Z"/>
     <rect x="930" y="22" width="180" height="36" rx="18" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.15"/>
     <text x="950" y="45" font-size="14" fill="#1B2A4A">Marek's Agency</text>
     <path d="M1086 37 l6 7 l6 -7" fill="none" stroke="#1B2A4A" stroke-width="2" stroke-linecap="round"/>
@@ -31,37 +32,28 @@
     <line x1="256" y1="72" x2="256" y2="772" stroke="#1B2A4A" stroke-opacity="0.10"/>
 
     <g font-size="14" fill="#1B2A4A">
-      <!-- Library -->
-      <rect x="32" y="94" width="14" height="14" rx="3" fill="none" stroke="#1B2A4A" stroke-width="1.6" stroke-opacity="0.6"/>
-      <line x1="36" y1="99" x2="42" y2="99" stroke="#1B2A4A" stroke-width="1.6" stroke-opacity="0.6"/>
-      <line x1="36" y1="103" x2="42" y2="103" stroke="#1B2A4A" stroke-width="1.6" stroke-opacity="0.6"/>
-      <text x="56" y="106">Workflow Library</text>
+      <!-- Primary nav -->
+      <text x="34" y="114">Dashboard</text>
+      <text x="34" y="152">Agents</text>
+      <text x="34" y="190">Knowledge Base</text>
+      <text x="34" y="228">Settings</text>
 
-      <!-- Clients label -->
-      <text x="32" y="148" font-size="11" font-weight="700" letter-spacing="1.2" fill-opacity="0.45">CLIENTS</text>
+      <!-- Clients -->
+      <text x="34" y="272" font-size="11" font-weight="700" letter-spacing="1.2" fill-opacity="0.45">CLIENTS</text>
+      <text x="240" y="272" font-size="12" text-anchor="end" fill="#1B7A5F" fill-opacity="0.8">See all</text>
+      <path d="M30 290 l9 0 l-4.5 6 z" fill="#1B2A4A" fill-opacity="0.6"/>
+      <text x="48" y="294" font-weight="600">TechNova</text>
+      <text x="58" y="328" font-size="13" fill-opacity="0.55">Senior DevOps – Berlin</text>
+      <text x="58" y="362" font-size="13" fill-opacity="0.55">Frontend Lead – Prague</text>
+      <path d="M32 386 l6 4 l-6 4 z" fill="none" stroke="#1B2A4A" stroke-opacity="0.5" stroke-width="1.4"/>
+      <text x="48" y="392" fill-opacity="0.7">Aurora Labs</text>
 
-      <!-- TechNova (expanded) -->
-      <path d="M32 168 l6 4 l-6 4 z" fill="#1B2A4A" fill-opacity="0.6"/>
-      <text x="48" y="177" font-weight="600">TechNova</text>
-      <text x="58" y="205" font-size="13" fill-opacity="0.55">Senior DevOps – Berlin</text>
-      <text x="58" y="231" font-size="13" fill-opacity="0.55">Frontend Lead – Prague</text>
-
-      <!-- Other client -->
-      <path d="M32 252 l6 4 l-6 4 z" fill="none" stroke="#1B2A4A" stroke-opacity="0.5" stroke-width="1.4"/>
-      <text x="48" y="262" fill-opacity="0.7">Aurora Labs</text>
-
-      <!-- ===== NEW: Automation Hub section (active) ===== -->
-      <text x="32" y="316" font-size="11" font-weight="700" letter-spacing="1.2" fill-opacity="0.45">AUTOMATE</text>
-      <rect x="20" y="330" width="220" height="40" rx="10" fill="#5BC8A8" fill-opacity="0.22" stroke="#5BC8A8"/>
-      <!-- lightning icon -->
-      <path d="M40 342 l-8 13 h7 l-2 10 l9 -14 h-7 z" fill="#1B7A5F"/>
-      <text x="58" y="355" font-size="14" font-weight="700" fill="#1B2A4A">Automation Hub</text>
-      <text x="58" y="398" font-size="13" fill-opacity="0.6">Connections</text>
-
-      <!-- Settings -->
-      <circle cx="39" cy="738" r="7" fill="none" stroke="#1B2A4A" stroke-width="1.6" stroke-opacity="0.6"/>
-      <circle cx="39" cy="738" r="2.4" fill="#1B2A4A" fill-opacity="0.6"/>
-      <text x="56" y="743" fill-opacity="0.7">Settings</text>
+      <!-- Operations -->
+      <text x="34" y="434" font-size="11" font-weight="700" letter-spacing="1.2" fill-opacity="0.45">OPERATIONS</text>
+      <rect x="20" y="448" width="220" height="40" rx="10" fill="#5BC8A8" fill-opacity="0.22" stroke="#5BC8A8"/>
+      <path d="M44 460 l-8 13 h7 l-2 10 l9 -14 h-7 z" fill="#1B7A5F"/>
+      <text x="58" y="473" font-size="14" font-weight="700" fill="#1B2A4A">Automation Hub</text>
+      <text x="58" y="516" font-size="13" fill-opacity="0.6">Connections</text>
     </g>
 
     <!-- ===== Main: header ===== -->
