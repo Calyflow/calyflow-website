@@ -14,11 +14,15 @@ export default defineConfig({
   build: { format: 'file' },
   integrations: [
     mdx(),
-    // Keep unlisted client landing pages out of the sitemap (they also set
-    // noindex): the per-system "<system>-enrichment" pages and the
-    // "ats-crm-enrichment" overview all end in "-enrichment".
+    // Keep the unlisted per-system "<system>-enrichment" pages out of the
+    // sitemap (they also set noindex). The "ats-crm-enrichment" overview is
+    // public (linked in the nav, indexable), so let it through.
     sitemap({
-      filter: (page) => !page.replace(/\/$/, '').endsWith('-enrichment'),
+      filter: (page) => {
+        const path = page.replace(/\/$/, '');
+        if (path.endsWith('/ats-crm-enrichment')) return true;
+        return !path.endsWith('-enrichment');
+      },
     }),
   ],
   markdown: {
