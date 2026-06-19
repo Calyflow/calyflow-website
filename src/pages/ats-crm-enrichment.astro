@@ -1,0 +1,187 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+import { getConnectors, faviconMap } from '../lib/connectors';
+import type { EnrichmentTarget } from '../data/enrichment/types';
+
+const title = 'ATS / CRM Enrichment automation hubs | Calyflow';
+const description =
+  'Custom automation hubs that enrich your ATS or CRM daily from Coresignal, Bright Data, Apollo, and Hunter.io. Pick your system to see what it can do.';
+
+const modules = import.meta.glob<{ default: EnrichmentTarget }>('../data/enrichment/*.ts', {
+  eager: true,
+});
+const all = Object.values(modules)
+  .map((m) => m.default)
+  .filter(Boolean)
+  .sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+
+const ats = all.filter((t) => t.category === 'ats');
+const crm = all.filter((t) => t.category === 'crm');
+
+// Logos come from the live connector API (favicon URLs), keyed by name.
+const favicons = faviconMap(await getConnectors());
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero + selector -->
+  <section class="relative overflow-hidden">
+    <div
+      class="aurora-glow absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-5 pt-20 pb-16 text-center md:pt-28 md:pb-20">
+      <p class="mb-4 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
+        Custom automation hubs
+      </p>
+      <h1
+        class="mx-auto max-w-3xl font-display text-[clamp(2.5rem,5.5vw,3.5rem)] leading-[1.06] font-bold tracking-[-0.01em]"
+      >
+        <span class="text-gradient-brand">ATS / CRM</span> Enrichment
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-xl text-navy-800/70">
+        Keep your recruiting database current automatically. We build a custom hub that enriches
+        your ATS or CRM every day from workforce and contact data — fresh roles, verified emails,
+        and job-change alerts, with no manual research.
+      </p>
+
+      <!-- Dropdown selector + Learn More -->
+      <div class="mx-auto mt-10 flex max-w-xl flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+        <label for="system-select" class="sr-only">Choose your ATS or CRM</label>
+        <select
+          id="system-select"
+          class="flex-1 rounded-[10px] border-[1.5px] border-navy-800/25 bg-white px-4 py-3 text-[0.9375rem] font-medium text-navy-800 focus:border-navy-800 focus:outline-none"
+        >
+          <option value="" disabled selected>Choose your ATS or CRM…</option>
+          <optgroup label="Applicant Tracking Systems (ATS)">
+            {ats.map((t) => <option value={`/${t.slug}`}>{t.name}</option>)}
+          </optgroup>
+          <optgroup label="CRMs">
+            {crm.map((t) => <option value={`/${t.slug}`}>{t.name}</option>)}
+          </optgroup>
+        </select>
+        <a
+          id="learn-more"
+          href="#"
+          aria-disabled="true"
+          class="pointer-events-none inline-flex items-center justify-center gap-2 rounded-[10px] bg-mint-400 px-7 py-3 font-semibold text-navy-800 opacity-50 transition duration-200 ease-out hover:brightness-105"
+        >
+          Learn more
+        </a>
+      </div>
+      <p class="mt-4 font-mono text-sm text-navy-800/55">
+        {all.length} systems supported · Implementation from €2,500
+      </p>
+    </div>
+  </section>
+
+  <!-- Browse all (A–Z, grouped) -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="Supported systems" title="Browse every supported hub">
+        An ATS tracks your candidates; a CRM tracks your clients. We tailor the hub to whichever you
+        run.
+      </SectionHeading>
+
+      <h3 class="mt-14 font-display text-xl font-semibold">Applicant Tracking Systems (ATS)</h3>
+      <ul class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          ats.map((t) => (
+            <li>
+              <a
+                href={`/${t.slug}`}
+                class="group flex items-center justify-between rounded-[14px] border border-navy-800/12 bg-white px-5 py-4 transition hover:border-navy-800/30"
+              >
+                <span class="flex items-center gap-3">
+                  {favicons[t.name] && (
+                    <img
+                      src={favicons[t.name]}
+                      alt=""
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                      class="h-6 w-6 flex-none rounded-[6px] border border-navy-800/10 bg-cream-50"
+                    />
+                  )}
+                  <span class="font-medium text-navy-800">{t.name}</span>
+                </span>
+                <span class="font-mono text-sm text-mint-700 group-hover:translate-x-0.5">
+                  Learn more →
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h3 class="mt-12 font-display text-xl font-semibold">CRMs</h3>
+      <ul class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          crm.map((t) => (
+            <li>
+              <a
+                href={`/${t.slug}`}
+                class="group flex items-center justify-between rounded-[14px] border border-navy-800/12 bg-white px-5 py-4 transition hover:border-navy-800/30"
+              >
+                <span class="flex items-center gap-3">
+                  {favicons[t.name] && (
+                    <img
+                      src={favicons[t.name]}
+                      alt=""
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                      class="h-6 w-6 flex-none rounded-[6px] border border-navy-800/10 bg-cream-50"
+                    />
+                  )}
+                  <span class="font-medium text-navy-800">{t.name}</span>
+                </span>
+                <span class="font-mono text-sm text-mint-700 group-hover:translate-x-0.5">
+                  Learn more →
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-3xl px-5">
+      <div class="rounded-[24px] bg-navy-900 px-6 py-14 text-center md:px-12">
+        <p class="font-mono text-sm font-medium tracking-wide text-mint-400 uppercase">
+          Not sure which fits?
+        </p>
+        <p class="mt-4 font-display text-3xl font-bold text-white">Let's map it on a call</p>
+        <p class="mx-auto mt-4 max-w-xl text-white/70">
+          Tell us which ATS or CRM you run and how stale your data has become. We will scope a custom
+          enrichment hub and tell you straight if it is not worth it.
+        </p>
+        <div class="mt-8 flex justify-center">
+          <Button href={SITE.bookCallUrl} size="lg" event="cta-ats-crm-overview">Book a call</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  const select = document.getElementById('system-select');
+  const link = document.getElementById('learn-more');
+  if (select && link) {
+    select.addEventListener('change', () => {
+      const value = select.value;
+      if (value) {
+        link.setAttribute('href', value);
+        link.classList.remove('pointer-events-none', 'opacity-50');
+        link.removeAttribute('aria-disabled');
+      }
+    });
+  }
+</script>

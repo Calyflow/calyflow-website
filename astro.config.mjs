@@ -14,10 +14,15 @@ export default defineConfig({
   build: { format: 'file' },
   integrations: [
     mdx(),
-    // Keep unlisted client landing pages out of the sitemap (they also set
-    // noindex). Add their canonical URLs here.
+    // Keep the unlisted per-system "<system>-enrichment" pages out of the
+    // sitemap (they also set noindex). The "ats-crm-enrichment" overview is
+    // public (linked in the nav, indexable), so let it through.
     sitemap({
-      filter: (page) => !['https://calyflow.ai/vincere-enrichment'].includes(page),
+      filter: (page) => {
+        const path = page.replace(/\/$/, '');
+        if (path.endsWith('/ats-crm-enrichment')) return true;
+        return !path.endsWith('-enrichment');
+      },
     }),
   ],
   markdown: {

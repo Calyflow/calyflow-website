@@ -1,0 +1,273 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+import { getConnectors, faviconMap } from '../lib/connectors';
+import type { EnrichmentTarget } from '../data/enrichment/types';
+
+// Every ATS/CRM enrichment landing page is generated from a data file under
+// src/data/enrichment. These are unlisted (noindex + excluded from sitemap).
+const modules = import.meta.glob<{ default: EnrichmentTarget }>('../data/enrichment/*.ts', {
+  eager: true,
+});
+const targets = Object.values(modules)
+  .map((m) => m.default)
+  .filter(Boolean);
+
+export function getStaticPaths() {
+  const mods = import.meta.glob<{ default: EnrichmentTarget }>('../data/enrichment/*.ts', {
+    eager: true,
+  });
+  return Object.values(mods)
+    .map((m) => m.default)
+    .filter(Boolean)
+    .map((t) => ({ params: { slug: t.slug }, props: { target: t } }));
+}
+
+interface Props {
+  target: EnrichmentTarget;
+}
+
+const { target } = Astro.props;
+const isAts = target.category === 'ats';
+const systemKind = isAts ? 'ATS' : 'CRM';
+const subjectPlural = isAts ? 'candidates' : 'clients';
+const recordsPhrase = isAts ? 'candidate and contact records' : 'company and contact records';
+
+const providerRole: Record<string, string> = {
+  Coresignal: 'Workforce & firmographic data',
+  'Bright Data': 'Web-scale data enrichment',
+  Apollo: 'Verified contact data',
+  'Hunter.io': 'Email finding & verification',
+};
+
+// Logos come from the live connector API (favicon URLs), keyed by name.
+const favicons = faviconMap(await getConnectors());
+const systemFavicon = favicons[target.name];
+
+const stack = [
+  { name: target.name, role: target.stackRole, blurb: target.stackBlurb, icon: favicons[target.name] },
+  {
+    name: target.enrich1,
+    role: providerRole[target.enrich1],
+    blurb: target.enrich1Blurb,
+    icon: favicons[target.enrich1],
+  },
+  {
+    name: target.enrich2,
+    role: providerRole[target.enrich2],
+    blurb: target.enrich2Blurb,
+    icon: favicons[target.enrich2],
+  },
+];
+
+const howItWorks = [
+  {
+    step: '01',
+    title: 'Daily automation',
+    blurb: `Every morning the hub pulls a batch of ${target.name} ${recordsPhrase}, enriches them through ${target.enrich1} and ${target.enrich2}, and writes the results back — before your team logs in.`,
+  },
+  {
+    step: '02',
+    title: 'Automation hub overview',
+    blurb:
+      'A single dashboard shows what ran, what changed, which records were enriched, and what needs a human eye — full provenance on every update, no black box.',
+  },
+  {
+    step: '03',
+    title: 'A Claude project to engage',
+    blurb: `A dedicated Claude project sits on top of the enriched data so your team can ask questions, draft outreach to ${subjectPlural}, and trigger enrichment on demand in plain language.`,
+  },
+];
+
+const title = `${target.name} enrichment automation hub | Calyflow`;
+const description = `A custom automation hub that enriches your ${target.name} records daily from ${target.enrich1} and ${target.enrich2} — fresh data, verified contacts, and no manual research.`;
+---
+
+<BaseLayout title={title} description={description} noIndex={true}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div
+      class="aurora-glow absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-5 pt-20 pb-16 text-center md:pt-28 md:pb-20">
+      <p class="mb-4 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
+        Custom automation hub
+      </p>
+      {
+        systemFavicon && (
+          <img
+            src={systemFavicon}
+            alt={`${target.name} logo`}
+            width="56"
+            height="56"
+            loading="lazy"
+            class="mx-auto mb-5 h-14 w-14 rounded-[14px] border border-navy-800/12 bg-white p-2 shadow-sm"
+          />
+        )
+      }
+      <h1
+        class="mx-auto max-w-3xl font-display text-[clamp(2.5rem,5.5vw,3.5rem)] leading-[1.06] font-bold tracking-[-0.01em]"
+      >
+        {target.heroTitleLead}{' '}
+        <span class="text-gradient-brand">{target.name}</span>{' '}
+        {target.heroTitleTail}
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-xl text-navy-800/70">{target.heroSubtitle}</p>
+
+      <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <Button href={SITE.bookCallUrl} size="lg" event={`cta-${target.slug}-hero`}>
+          Book a call
+        </Button>
+      </div>
+      <p class="mt-4 font-mono text-sm text-navy-800/55">
+        Implementation from €2,500 · Runs on your own keys · Your data stays in {target.name}
+      </p>
+    </div>
+  </section>
+
+  <!-- The stack -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="The stack" title="Three systems, one daily loop">
+        Your {systemKind} stays the source of truth. {target.enrich1} and {target.enrich2} keep it
+        honest.
+      </SectionHeading>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {
+          stack.map((item) => (
+            <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
+              <div class="flex items-center gap-3">
+                {item.icon && (
+                  <img
+                    src={item.icon}
+                    alt=""
+                    width="32"
+                    height="32"
+                    loading="lazy"
+                    class="h-8 w-8 flex-none rounded-[8px] border border-navy-800/10 bg-cream-50 p-1"
+                  />
+                )}
+                <h3 class="font-display text-2xl font-semibold">{item.name}</h3>
+              </div>
+              <p class="mt-2 font-mono text-[0.8125rem] tracking-wide text-mint-700 uppercase">
+                {item.role}
+              </p>
+              <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.blurb}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- What it does -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="Capabilities" title="What the integration can do">
+        Everything below runs on a schedule and writes straight back into {target.name}.
+      </SectionHeading>
+
+      <ul class="mx-auto mt-12 grid max-w-3xl gap-4">
+        {
+          target.capabilities.map((cap) => (
+            <li class="flex items-start gap-3 rounded-[14px] border border-navy-800/12 bg-white p-5">
+              <svg
+                class="mt-0.5 h-5 w-5 flex-none text-mint-700"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0l-3.5-3.5a1 1 0 1 1 1.4-1.4l2.8 2.79 6.8-6.79a1 1 0 0 1 1.4 0Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-[0.9375rem] text-navy-800/80">{cap}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Time saved -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="The payoff" title="How much time it saves">
+        Conservative estimates. The exact numbers depend on your database size and how stale it has
+        become.
+      </SectionHeading>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {
+          target.timeSavings.map((item) => (
+            <div class="flex flex-col rounded-[20px] border border-navy-800/12 bg-white p-7">
+              <h3 class="font-display text-xl font-semibold">{item.task}</h3>
+              <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.detail}</p>
+              <p class="mt-4 text-[0.9375rem] font-medium text-mint-700">{item.saved}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="How it works" title="A hub your team actually uses">
+        Automated where it should be, conversational where you need control.
+      </SectionHeading>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {
+          howItWorks.map((item) => (
+            <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
+              <span class="font-mono text-sm font-medium text-navy-800/40">{item.step}</span>
+              <h3 class="mt-3 font-display text-2xl font-semibold">{item.title}</h3>
+              <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.blurb}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing + final CTA -->
+  <section class="pb-24 md:pb-32">
+    <div class="mx-auto max-w-3xl px-5">
+      <div class="rounded-[24px] bg-navy-900 px-6 py-14 text-center md:px-12">
+        <p class="font-mono text-sm font-medium tracking-wide text-mint-400 uppercase">
+          Implementation
+        </p>
+        <p class="mt-4 font-display text-5xl font-bold text-white">from €2,500</p>
+        <p class="mx-auto mt-4 max-w-xl text-white/70">
+          A one-time build of your custom automation hub — wired to your {target.name}, {
+            target.enrich1
+          }, and {target.enrich2} accounts, with the daily automation, the overview dashboard, and
+          the Claude project set up for your team. Final scope and price are confirmed on the call.
+        </p>
+        <div class="mt-8 flex justify-center">
+          <Button href={SITE.bookCallUrl} size="lg" event={`cta-${target.slug}-pricing`}>
+            Book a call
+          </Button>
+        </div>
+        <p class="mt-4 font-mono text-[0.8125rem] text-white/50">
+          30 minutes · No commitment · We will tell you if it is not a fit
+        </p>
+        <p class="mt-8 border-t border-white/10 pt-6 text-[0.8125rem] text-white/50">
+          <a href="/ats-crm-enrichment" class="underline hover:text-white">
+            See every supported ATS &amp; CRM →
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
