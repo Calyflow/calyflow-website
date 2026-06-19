@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Button from '../components/Button.astro';
 import { SITE } from '../data/site';
+import { getConnectors, faviconMap } from '../lib/connectors';
 import type { EnrichmentTarget } from '../data/enrichment/types';
 
 const title = 'ATS / CRM Enrichment automation hubs | Calyflow';
@@ -19,6 +20,9 @@ const all = Object.values(modules)
 
 const ats = all.filter((t) => t.category === 'ats');
 const crm = all.filter((t) => t.category === 'crm');
+
+// Logos come from the live connector API (favicon URLs), keyed by name.
+const favicons = faviconMap(await getConnectors());
 ---
 
 <BaseLayout title={title} description={description}>
@@ -92,7 +96,19 @@ const crm = all.filter((t) => t.category === 'crm');
                 href={`/${t.slug}`}
                 class="group flex items-center justify-between rounded-[14px] border border-navy-800/12 bg-white px-5 py-4 transition hover:border-navy-800/30"
               >
-                <span class="font-medium text-navy-800">{t.name}</span>
+                <span class="flex items-center gap-3">
+                  {favicons[t.name] && (
+                    <img
+                      src={favicons[t.name]}
+                      alt=""
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                      class="h-6 w-6 flex-none rounded-[6px] border border-navy-800/10 bg-cream-50"
+                    />
+                  )}
+                  <span class="font-medium text-navy-800">{t.name}</span>
+                </span>
                 <span class="font-mono text-sm text-mint-700 group-hover:translate-x-0.5">
                   Learn more →
                 </span>
@@ -111,7 +127,19 @@ const crm = all.filter((t) => t.category === 'crm');
                 href={`/${t.slug}`}
                 class="group flex items-center justify-between rounded-[14px] border border-navy-800/12 bg-white px-5 py-4 transition hover:border-navy-800/30"
               >
-                <span class="font-medium text-navy-800">{t.name}</span>
+                <span class="flex items-center gap-3">
+                  {favicons[t.name] && (
+                    <img
+                      src={favicons[t.name]}
+                      alt=""
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                      class="h-6 w-6 flex-none rounded-[6px] border border-navy-800/10 bg-cream-50"
+                    />
+                  )}
+                  <span class="font-medium text-navy-800">{t.name}</span>
+                </span>
                 <span class="font-mono text-sm text-mint-700 group-hover:translate-x-0.5">
                   Learn more →
                 </span>

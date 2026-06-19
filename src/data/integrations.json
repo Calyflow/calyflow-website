@@ -1,61 +1,405 @@
 {
-  "$comment": "Offline fallback snapshot of https://app.calyflow.ai/api/v1/connectors, used when the build-time fetch fails (see src/lib/connectors.ts). Same shape as the API. Honesty rule still applies: never mark something available before it ships. Snapshot taken 2026-06-12.",
+  "$comment": "Offline fallback snapshot of https://app.calyflow.ai/api/v1/connectors, used when the build-time fetch fails (see src/lib/connectors.ts). Same shape as the API. Honesty rule still applies: never mark something available before it ships. Snapshot taken 2026-06-19.",
   "items": [
-    { "name": "Anthropic", "category": "ai", "status": "available" },
-    { "name": "OpenAI", "category": "ai", "status": "available" },
-    { "name": "Google", "category": "ai", "status": "available" },
-    { "name": "Mistral", "category": "ai", "status": "available" },
-    { "name": "xAI (Grok)", "category": "ai", "status": "available" },
-    { "name": "DeepSeek", "category": "ai", "status": "available" },
-    { "name": "Groq", "category": "ai", "status": "available" },
-    { "name": "Cohere", "category": "ai", "status": "available" },
-    { "name": "Local models", "category": "ai", "status": "coming_soon" },
-    { "name": "Ashby", "category": "ats", "status": "available" },
-    { "name": "BambooHR", "category": "ats", "status": "available" },
-    { "name": "BreezyHR", "category": "ats", "status": "available" },
-    { "name": "Bullhorn", "category": "ats", "status": "available" },
-    { "name": "CATS", "category": "ats", "status": "available" },
-    { "name": "Crelate", "category": "ats", "status": "available" },
-    { "name": "Greenhouse", "category": "ats", "status": "available" },
-    { "name": "JazzHR", "category": "ats", "status": "available" },
-    { "name": "JobAdder", "category": "ats", "status": "available" },
-    { "name": "Lever", "category": "ats", "status": "available" },
-    { "name": "Loxo", "category": "ats", "status": "available" },
-    { "name": "Manatal", "category": "ats", "status": "available" },
-    { "name": "Pinpoint", "category": "ats", "status": "available" },
-    { "name": "Recruitee", "category": "ats", "status": "available" },
-    { "name": "Recruiterflow", "category": "ats", "status": "available" },
-    { "name": "SmartRecruiters", "category": "ats", "status": "available" },
-    { "name": "Teamtailor", "category": "ats", "status": "available" },
-    { "name": "Workable", "category": "ats", "status": "available" },
-    { "name": "Zoho Recruit", "category": "ats", "status": "available" },
-    { "name": "Attio", "category": "crm", "status": "available" },
-    { "name": "HubSpot", "category": "crm", "status": "available" },
-    { "name": "monday.com", "category": "crm", "status": "available" },
-    { "name": "Notion", "category": "crm", "status": "available" },
-    { "name": "Pipedrive", "category": "crm", "status": "available" },
-    { "name": "Zoho CRM", "category": "crm", "status": "available" },
-    { "name": "Airtable", "category": "data", "status": "available" },
-    { "name": "Google Sheets", "category": "data", "status": "available" },
-    { "name": "Microsoft Excel", "category": "data", "status": "available" },
-    { "name": "Apollo", "category": "tool", "status": "available" },
-    { "name": "Bright Data", "category": "tool", "status": "available" },
-    { "name": "ContactOut", "category": "tool", "status": "available" },
-    { "name": "Coresignal", "category": "tool", "status": "available" },
-    { "name": "Fathom", "category": "tool", "status": "available" },
-    { "name": "Fireflies.ai", "category": "tool", "status": "available" },
-    { "name": "Gong", "category": "tool", "status": "available" },
-    { "name": "HireEZ", "category": "tool", "status": "coming_soon" },
-    { "name": "Hunter.io", "category": "tool", "status": "available" },
-    { "name": "Instantly.ai", "category": "tool", "status": "available" },
-    { "name": "Lemlist", "category": "tool", "status": "available" },
-    { "name": "Lusha", "category": "tool", "status": "available" },
-    { "name": "People Data Labs", "category": "tool", "status": "available" },
-    { "name": "RocketReach", "category": "tool", "status": "available" },
-    { "name": "SignalHire", "category": "tool", "status": "available" },
-    { "name": "Smartlead", "category": "tool", "status": "available" },
-    { "name": "Snov.io", "category": "tool", "status": "available" },
-    { "name": "tl;dv", "category": "tool", "status": "available" },
-    { "name": "Woodpecker", "category": "tool", "status": "available" }
+    {
+      "name": "Anthropic",
+      "category": "ai",
+      "status": "available"
+    },
+    {
+      "name": "OpenAI",
+      "category": "ai",
+      "status": "available"
+    },
+    {
+      "name": "Google",
+      "category": "ai",
+      "status": "available"
+    },
+    {
+      "name": "Mistral",
+      "category": "ai",
+      "status": "available"
+    },
+    {
+      "name": "xAI (Grok)",
+      "category": "ai",
+      "status": "available"
+    },
+    {
+      "name": "DeepSeek",
+      "category": "ai",
+      "status": "available"
+    },
+    {
+      "name": "Groq",
+      "category": "ai",
+      "status": "available"
+    },
+    {
+      "name": "Cohere",
+      "category": "ai",
+      "status": "available"
+    },
+    {
+      "name": "Local models",
+      "category": "ai",
+      "status": "coming_soon"
+    },
+    {
+      "name": "Ashby",
+      "category": "ats",
+      "status": "available",
+      "domain": "ashbyhq.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=ashbyhq.com&sz=64"
+    },
+    {
+      "name": "BambooHR",
+      "category": "ats",
+      "status": "available",
+      "domain": "bamboohr.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=bamboohr.com&sz=64"
+    },
+    {
+      "name": "BreezyHR",
+      "category": "ats",
+      "status": "available",
+      "domain": "breezy.hr",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=breezy.hr&sz=64"
+    },
+    {
+      "name": "Bullhorn",
+      "category": "ats",
+      "status": "available",
+      "domain": "bullhorn.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=bullhorn.com&sz=64"
+    },
+    {
+      "name": "CATS",
+      "category": "ats",
+      "status": "available",
+      "domain": "catsone.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=catsone.com&sz=64"
+    },
+    {
+      "name": "Crelate",
+      "category": "ats",
+      "status": "available",
+      "domain": "crelate.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=crelate.com&sz=64"
+    },
+    {
+      "name": "Greenhouse",
+      "category": "ats",
+      "status": "available",
+      "domain": "greenhouse.io",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=greenhouse.io&sz=64"
+    },
+    {
+      "name": "JazzHR",
+      "category": "ats",
+      "status": "available",
+      "domain": "jazzhr.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=jazzhr.com&sz=64"
+    },
+    {
+      "name": "JobAdder",
+      "category": "ats",
+      "status": "available",
+      "domain": "jobadder.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=jobadder.com&sz=64"
+    },
+    {
+      "name": "Lever",
+      "category": "ats",
+      "status": "available",
+      "domain": "lever.co",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=lever.co&sz=64"
+    },
+    {
+      "name": "Loxo",
+      "category": "ats",
+      "status": "available",
+      "domain": "loxo.co",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=loxo.co&sz=64"
+    },
+    {
+      "name": "Manatal",
+      "category": "ats",
+      "status": "available",
+      "domain": "manatal.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=manatal.com&sz=64"
+    },
+    {
+      "name": "Pinpoint",
+      "category": "ats",
+      "status": "available",
+      "domain": "pinpointhq.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=pinpointhq.com&sz=64"
+    },
+    {
+      "name": "Recruitee",
+      "category": "ats",
+      "status": "available",
+      "domain": "recruitee.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=recruitee.com&sz=64"
+    },
+    {
+      "name": "Recruiterflow",
+      "category": "ats",
+      "status": "available",
+      "domain": "recruiterflow.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=recruiterflow.com&sz=64"
+    },
+    {
+      "name": "SmartRecruiters",
+      "category": "ats",
+      "status": "available",
+      "domain": "smartrecruiters.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=smartrecruiters.com&sz=64"
+    },
+    {
+      "name": "Teamtailor",
+      "category": "ats",
+      "status": "available",
+      "domain": "teamtailor.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=teamtailor.com&sz=64"
+    },
+    {
+      "name": "Vincere",
+      "category": "ats",
+      "status": "available",
+      "domain": "vincere.io",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=vincere.io&sz=64"
+    },
+    {
+      "name": "Workable",
+      "category": "ats",
+      "status": "available",
+      "domain": "workable.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=workable.com&sz=64"
+    },
+    {
+      "name": "Zoho Recruit",
+      "category": "ats",
+      "status": "available",
+      "domain": "zoho.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=zoho.com&sz=64"
+    },
+    {
+      "name": "Attio",
+      "category": "crm",
+      "status": "available",
+      "domain": "attio.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=attio.com&sz=64"
+    },
+    {
+      "name": "HubSpot",
+      "category": "crm",
+      "status": "available",
+      "domain": "hubspot.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=hubspot.com&sz=64"
+    },
+    {
+      "name": "monday.com",
+      "category": "crm",
+      "status": "available",
+      "domain": "monday.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=monday.com&sz=64"
+    },
+    {
+      "name": "Notion",
+      "category": "crm",
+      "status": "available",
+      "domain": "notion.so",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=notion.so&sz=64"
+    },
+    {
+      "name": "Pipedrive",
+      "category": "crm",
+      "status": "available",
+      "domain": "pipedrive.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=pipedrive.com&sz=64"
+    },
+    {
+      "name": "Zoho CRM",
+      "category": "crm",
+      "status": "available",
+      "domain": "zoho.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=zoho.com&sz=64"
+    },
+    {
+      "name": "Airtable",
+      "category": "data",
+      "status": "available",
+      "domain": "airtable.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=airtable.com&sz=64"
+    },
+    {
+      "name": "Google Sheets",
+      "category": "data",
+      "status": "available",
+      "domain": "sheets.google.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=sheets.google.com&sz=64"
+    },
+    {
+      "name": "Microsoft Excel",
+      "category": "data",
+      "status": "available",
+      "domain": "microsoft.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=64"
+    },
+    {
+      "name": "Gmail",
+      "category": "email",
+      "status": "available",
+      "domain": "mail.google.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=mail.google.com&sz=64"
+    },
+    {
+      "name": "Microsoft Outlook",
+      "category": "email",
+      "status": "available",
+      "domain": "outlook.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=outlook.com&sz=64"
+    },
+    {
+      "name": "Apollo",
+      "category": "tool",
+      "status": "available",
+      "domain": "apollo.io",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=apollo.io&sz=64"
+    },
+    {
+      "name": "Bright Data",
+      "category": "tool",
+      "status": "available",
+      "domain": "brightdata.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=brightdata.com&sz=64"
+    },
+    {
+      "name": "ContactOut",
+      "category": "tool",
+      "status": "available",
+      "domain": "contactout.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=contactout.com&sz=64"
+    },
+    {
+      "name": "Coresignal",
+      "category": "tool",
+      "status": "available",
+      "domain": "coresignal.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=coresignal.com&sz=64"
+    },
+    {
+      "name": "Fathom",
+      "category": "tool",
+      "status": "available",
+      "domain": "fathom.video",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=fathom.video&sz=64"
+    },
+    {
+      "name": "Fireflies.ai",
+      "category": "tool",
+      "status": "available",
+      "domain": "fireflies.ai",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=fireflies.ai&sz=64"
+    },
+    {
+      "name": "GitHub",
+      "category": "tool",
+      "status": "available",
+      "domain": "github.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=github.com&sz=64"
+    },
+    {
+      "name": "Gong",
+      "category": "tool",
+      "status": "available",
+      "domain": "gong.io",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=gong.io&sz=64"
+    },
+    {
+      "name": "HireEZ",
+      "category": "tool",
+      "status": "coming_soon"
+    },
+    {
+      "name": "Hunter.io",
+      "category": "tool",
+      "status": "available",
+      "domain": "hunter.io",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=hunter.io&sz=64"
+    },
+    {
+      "name": "Instantly.ai",
+      "category": "tool",
+      "status": "available",
+      "domain": "instantly.ai",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=instantly.ai&sz=64"
+    },
+    {
+      "name": "Lemlist",
+      "category": "tool",
+      "status": "available",
+      "domain": "lemlist.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=lemlist.com&sz=64"
+    },
+    {
+      "name": "Lusha",
+      "category": "tool",
+      "status": "available",
+      "domain": "lusha.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=lusha.com&sz=64"
+    },
+    {
+      "name": "People Data Labs",
+      "category": "tool",
+      "status": "available",
+      "domain": "peopledatalabs.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=peopledatalabs.com&sz=64"
+    },
+    {
+      "name": "RocketReach",
+      "category": "tool",
+      "status": "available",
+      "domain": "rocketreach.co",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=rocketreach.co&sz=64"
+    },
+    {
+      "name": "SignalHire",
+      "category": "tool",
+      "status": "available",
+      "domain": "signalhire.com",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=signalhire.com&sz=64"
+    },
+    {
+      "name": "Smartlead",
+      "category": "tool",
+      "status": "available",
+      "domain": "smartlead.ai",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=smartlead.ai&sz=64"
+    },
+    {
+      "name": "Snov.io",
+      "category": "tool",
+      "status": "available",
+      "domain": "snov.io",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=snov.io&sz=64"
+    },
+    {
+      "name": "tl;dv",
+      "category": "tool",
+      "status": "available",
+      "domain": "tldv.io",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=tldv.io&sz=64"
+    },
+    {
+      "name": "Woodpecker",
+      "category": "tool",
+      "status": "available",
+      "domain": "woodpecker.co",
+      "faviconUrl": "https://www.google.com/s2/favicons?domain=woodpecker.co&sz=64"
+    }
   ]
 }

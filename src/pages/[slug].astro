@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Button from '../components/Button.astro';
 import { SITE } from '../data/site';
+import { getConnectors, faviconMap } from '../lib/connectors';
 import type { EnrichmentTarget } from '../data/enrichment/types';
 
 // Every ATS/CRM enrichment landing page is generated from a data file under
@@ -41,10 +42,24 @@ const providerRole: Record<string, string> = {
   'Hunter.io': 'Email finding & verification',
 };
 
+// Logos come from the live connector API (favicon URLs), keyed by name.
+const favicons = faviconMap(await getConnectors());
+const systemFavicon = favicons[target.name];
+
 const stack = [
-  { name: target.name, role: target.stackRole, blurb: target.stackBlurb },
-  { name: target.enrich1, role: providerRole[target.enrich1], blurb: target.enrich1Blurb },
-  { name: target.enrich2, role: providerRole[target.enrich2], blurb: target.enrich2Blurb },
+  { name: target.name, role: target.stackRole, blurb: target.stackBlurb, icon: favicons[target.name] },
+  {
+    name: target.enrich1,
+    role: providerRole[target.enrich1],
+    blurb: target.enrich1Blurb,
+    icon: favicons[target.enrich1],
+  },
+  {
+    name: target.enrich2,
+    role: providerRole[target.enrich2],
+    blurb: target.enrich2Blurb,
+    icon: favicons[target.enrich2],
+  },
 ];
 
 const howItWorks = [
@@ -83,6 +98,18 @@ const description = `A custom automation hub that enriches your ${target.name} r
       <p class="mb-4 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
         Custom automation hub
       </p>
+      {
+        systemFavicon && (
+          <img
+            src={systemFavicon}
+            alt={`${target.name} logo`}
+            width="56"
+            height="56"
+            loading="lazy"
+            class="mx-auto mb-5 h-14 w-14 rounded-[14px] border border-navy-800/12 bg-white p-2 shadow-sm"
+          />
+        )
+      }
       <h1
         class="mx-auto max-w-3xl font-display text-[clamp(2.5rem,5.5vw,3.5rem)] leading-[1.06] font-bold tracking-[-0.01em]"
       >
@@ -115,8 +142,20 @@ const description = `A custom automation hub that enriches your ${target.name} r
         {
           stack.map((item) => (
             <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
-              <h3 class="font-display text-2xl font-semibold">{item.name}</h3>
-              <p class="mt-1 font-mono text-[0.8125rem] tracking-wide text-mint-700 uppercase">
+              <div class="flex items-center gap-3">
+                {item.icon && (
+                  <img
+                    src={item.icon}
+                    alt=""
+                    width="32"
+                    height="32"
+                    loading="lazy"
+                    class="h-8 w-8 flex-none rounded-[8px] border border-navy-800/10 bg-cream-50 p-1"
+                  />
+                )}
+                <h3 class="font-display text-2xl font-semibold">{item.name}</h3>
+              </div>
+              <p class="mt-2 font-mono text-[0.8125rem] tracking-wide text-mint-700 uppercase">
                 {item.role}
               </p>
               <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.blurb}</p>

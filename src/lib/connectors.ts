@@ -6,12 +6,18 @@ export interface Connector {
   name: string;
   category: ConnectorCategory;
   status: 'available' | 'coming-soon';
+  /** Primary domain, e.g. "greenhouse.io". Absent on older snapshots. */
+  domain?: string;
+  /** Favicon/logo URL for the connector. Absent on older snapshots. */
+  faviconUrl?: string;
 }
 
 interface ApiConnector {
   name: string;
   category: ConnectorCategory;
   status: 'available' | 'coming_soon';
+  domain?: string;
+  faviconUrl?: string;
 }
 
 const API_URL = 'https://app.calyflow.ai/api/v1/connectors';
@@ -23,7 +29,18 @@ function normalize(items: ApiConnector[]): Connector[] {
     name: item.name,
     category: item.category,
     status: item.status === 'coming_soon' ? 'coming-soon' : 'available',
+    domain: item.domain,
+    faviconUrl: item.faviconUrl,
   }));
+}
+
+/** Build a `name → faviconUrl` map from the connector list. */
+export function faviconMap(connectors: Connector[]): Record<string, string> {
+  const map: Record<string, string> = {};
+  for (const c of connectors) {
+    if (c.faviconUrl) map[c.name] = c.faviconUrl;
+  }
+  return map;
 }
 
 /**
