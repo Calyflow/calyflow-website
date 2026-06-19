@@ -1,0 +1,194 @@
+<svg viewBox="0 0 1200 780" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-labelledby="ahTitle ahDesc">
+  <title id="ahTitle">Calyflow Automation Hub</title>
+  <desc id="ahDesc">A recruiting agency's Calyflow Automation Hub showing scheduled AI automations — ATS and CRM data enrichment, daily reporting, candidate shortlisting and client research — each with a health status, schedule, last run and recent-run history.</desc>
+
+  <defs>
+    <clipPath id="ahFrame"><rect x="8" y="8" width="1184" height="764" rx="20"/></clipPath>
+  </defs>
+
+  <!-- App frame -->
+  <rect x="8" y="8" width="1184" height="764" rx="20" fill="#FBF7F0" stroke="#1B2A4A" stroke-opacity="0.12"/>
+
+  <g clip-path="url(#ahFrame)">
+
+    <!-- ===== Top bar ===== -->
+    <rect x="8" y="8" width="1184" height="64" fill="#FBF7F0"/>
+    <line x1="8" y1="72" x2="1192" y2="72" stroke="#1B2A4A" stroke-opacity="0.10"/>
+    <rect x="36" y="26" width="28" height="28" rx="8" fill="#5BC8A8"/>
+    <path d="M44 40 l5 5 l9 -10" fill="none" stroke="#1B2A4A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="76" y="47" font-size="22" font-weight="700" fill="#1B2A4A">Calyflow</text>
+    <rect x="930" y="22" width="180" height="36" rx="18" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.15"/>
+    <text x="950" y="45" font-size="14" fill="#1B2A4A">Marek's Agency</text>
+    <path d="M1086 37 l6 7 l6 -7" fill="none" stroke="#1B2A4A" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="1146" cy="40" r="16" fill="#1B2A4A"/>
+    <text x="1146" y="45" font-size="13" font-weight="700" fill="#FBF7F0" text-anchor="middle">M</text>
+
+    <!-- ===== Sidebar ===== -->
+    <line x1="256" y1="72" x2="256" y2="772" stroke="#1B2A4A" stroke-opacity="0.10"/>
+
+    <g font-size="14" fill="#1B2A4A">
+      <!-- Library -->
+      <rect x="32" y="94" width="14" height="14" rx="3" fill="none" stroke="#1B2A4A" stroke-width="1.6" stroke-opacity="0.6"/>
+      <line x1="36" y1="99" x2="42" y2="99" stroke="#1B2A4A" stroke-width="1.6" stroke-opacity="0.6"/>
+      <line x1="36" y1="103" x2="42" y2="103" stroke="#1B2A4A" stroke-width="1.6" stroke-opacity="0.6"/>
+      <text x="56" y="106">Workflow Library</text>
+
+      <!-- Clients label -->
+      <text x="32" y="148" font-size="11" font-weight="700" letter-spacing="1.2" fill-opacity="0.45">CLIENTS</text>
+
+      <!-- TechNova (expanded) -->
+      <path d="M32 168 l6 4 l-6 4 z" fill="#1B2A4A" fill-opacity="0.6"/>
+      <text x="48" y="177" font-weight="600">TechNova</text>
+      <text x="58" y="205" font-size="13" fill-opacity="0.55">Senior DevOps – Berlin</text>
+      <text x="58" y="231" font-size="13" fill-opacity="0.55">Frontend Lead – Prague</text>
+
+      <!-- Other client -->
+      <path d="M32 252 l6 4 l-6 4 z" fill="none" stroke="#1B2A4A" stroke-opacity="0.5" stroke-width="1.4"/>
+      <text x="48" y="262" fill-opacity="0.7">Aurora Labs</text>
+
+      <!-- ===== NEW: Automation Hub section (active) ===== -->
+      <text x="32" y="316" font-size="11" font-weight="700" letter-spacing="1.2" fill-opacity="0.45">AUTOMATE</text>
+      <rect x="20" y="330" width="220" height="40" rx="10" fill="#5BC8A8" fill-opacity="0.22" stroke="#5BC8A8"/>
+      <!-- lightning icon -->
+      <path d="M40 342 l-8 13 h7 l-2 10 l9 -14 h-7 z" fill="#1B7A5F"/>
+      <text x="58" y="355" font-size="14" font-weight="700" fill="#1B2A4A">Automation Hub</text>
+      <text x="58" y="398" font-size="13" fill-opacity="0.6">Connections</text>
+
+      <!-- Settings -->
+      <circle cx="39" cy="738" r="7" fill="none" stroke="#1B2A4A" stroke-width="1.6" stroke-opacity="0.6"/>
+      <circle cx="39" cy="738" r="2.4" fill="#1B2A4A" fill-opacity="0.6"/>
+      <text x="56" y="743" fill-opacity="0.7">Settings</text>
+    </g>
+
+    <!-- ===== Main: header ===== -->
+    <text x="288" y="110" font-size="13" fill="#1B2A4A" fill-opacity="0.5">Marek's Agency / Automation Hub</text>
+    <text x="288" y="140" font-size="24" font-weight="700" fill="#1B2A4A">Automation Hub</text>
+
+    <!-- ===== Stat cards ===== -->
+    <g>
+      <rect x="288" y="162" width="286" height="86" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.12"/>
+      <text x="308" y="190" font-size="11" font-weight="700" letter-spacing="1.1" fill="#1B2A4A" fill-opacity="0.45">ACTIVE AUTOMATIONS</text>
+      <text x="308" y="228" font-size="30" font-weight="700" fill="#1B2A4A">7</text>
+      <text x="350" y="228" font-size="13" fill="#1B7A5F" font-weight="600">running autonomously</text>
+
+      <rect x="590" y="162" width="286" height="86" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.12"/>
+      <text x="610" y="190" font-size="11" font-weight="700" letter-spacing="1.1" fill="#1B2A4A" fill-opacity="0.45">RUNS TODAY</text>
+      <text x="610" y="228" font-size="30" font-weight="700" fill="#1B2A4A">142</text>
+      <text x="664" y="228" font-size="13" fill="#1B7A5F" font-weight="600">98% success</text>
+
+      <rect x="892" y="162" width="284" height="86" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.12"/>
+      <text x="912" y="190" font-size="11" font-weight="700" letter-spacing="1.1" fill="#1B2A4A" fill-opacity="0.45">NEEDS ATTENTION</text>
+      <text x="912" y="228" font-size="30" font-weight="700" fill="#B07514">1</text>
+      <text x="950" y="228" font-size="13" fill="#1B2A4A" fill-opacity="0.6">New client research</text>
+    </g>
+
+    <!-- ===== Automations table panel ===== -->
+    <rect x="288" y="266" width="888" height="480" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.12"/>
+
+    <text x="312" y="298" font-size="11" font-weight="700" letter-spacing="1.2" fill="#1B2A4A" fill-opacity="0.45">SCHEDULED AUTOMATIONS</text>
+    <circle cx="1126" cy="294" r="4" fill="#5BC8A8"/>
+    <text x="1138" y="298" font-size="11.5" fill="#1B2A4A" fill-opacity="0.55">live</text>
+
+    <!-- Column headers -->
+    <g font-size="10.5" font-weight="700" letter-spacing="0.8" fill="#1B2A4A" fill-opacity="0.4">
+      <text x="332" y="328">AUTOMATION</text>
+      <text x="640" y="328">SCHEDULE</text>
+      <text x="772" y="328">LAST RUN</text>
+      <text x="978" y="328">RECENT</text>
+      <text x="1066" y="328">NEXT RUN</text>
+    </g>
+    <line x1="312" y1="340" x2="1152" y2="340" stroke="#1B2A4A" stroke-opacity="0.08"/>
+
+    <!-- Rows: each 56px tall starting at y=340 -->
+    <!-- Row 1: ATS data enrichment (green) -->
+    <g>
+      <circle cx="324" cy="368" r="6" fill="#5BC8A8"/>
+      <text x="340" y="365" font-size="14" font-weight="700" fill="#1B2A4A">ATS data enrichment</text>
+      <text x="340" y="382" font-size="11" fill="#1B2A4A" fill-opacity="0.5">Greenhouse → Coresignal · Apollo</text>
+      <rect x="636" y="356" width="96" height="22" rx="11" fill="#1B2A4A" fill-opacity="0.06"/>
+      <text x="648" y="371" font-size="11.5" fill="#1B2A4A" fill-opacity="0.7">Daily 06:00</text>
+      <text x="772" y="372" font-size="12" fill="#1B2A4A" fill-opacity="0.6">8 min ago · 124 records</text>
+      <g><rect x="978" y="362" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="991" y="362" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1004" y="362" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1017" y="362" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1030" y="362" width="9" height="11" rx="2" fill="#5BC8A8"/></g>
+      <text x="1066" y="372" font-size="12" fill="#1B2A4A" fill-opacity="0.6">Tomorrow</text>
+      <line x1="312" y1="396" x2="1152" y2="396" stroke="#1B2A4A" stroke-opacity="0.06"/>
+    </g>
+
+    <!-- Row 2: CRM data enrichment (green) -->
+    <g>
+      <circle cx="324" cy="424" r="6" fill="#5BC8A8"/>
+      <text x="340" y="421" font-size="14" font-weight="700" fill="#1B2A4A">CRM data enrichment</text>
+      <text x="340" y="438" font-size="11" fill="#1B2A4A" fill-opacity="0.5">HubSpot → Bright Data · Hunter.io</text>
+      <rect x="636" y="412" width="96" height="22" rx="11" fill="#1B2A4A" fill-opacity="0.06"/>
+      <text x="648" y="427" font-size="11.5" fill="#1B2A4A" fill-opacity="0.7">Daily 06:15</text>
+      <text x="772" y="428" font-size="12" fill="#1B2A4A" fill-opacity="0.6">24 min ago · 86 accounts</text>
+      <g><rect x="978" y="418" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="991" y="418" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1004" y="418" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1017" y="418" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1030" y="418" width="9" height="11" rx="2" fill="#5BC8A8"/></g>
+      <text x="1066" y="428" font-size="12" fill="#1B2A4A" fill-opacity="0.6">Tomorrow</text>
+      <line x1="312" y1="452" x2="1152" y2="452" stroke="#1B2A4A" stroke-opacity="0.06"/>
+    </g>
+
+    <!-- Row 3: Daily reporting (green) -->
+    <g>
+      <circle cx="324" cy="480" r="6" fill="#5BC8A8"/>
+      <text x="340" y="477" font-size="14" font-weight="700" fill="#1B2A4A">Daily reporting</text>
+      <text x="340" y="494" font-size="11" fill="#1B2A4A" fill-opacity="0.5">Pipeline + AI spend → Slack &amp; email</text>
+      <rect x="636" y="468" width="96" height="22" rx="11" fill="#1B2A4A" fill-opacity="0.06"/>
+      <text x="648" y="483" font-size="11.5" fill="#1B2A4A" fill-opacity="0.7">Daily 08:00</text>
+      <text x="772" y="484" font-size="12" fill="#1B2A4A" fill-opacity="0.6">Today 08:00 · delivered</text>
+      <g><rect x="978" y="474" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="991" y="474" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1004" y="474" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1017" y="474" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1030" y="474" width="9" height="11" rx="2" fill="#5BC8A8"/></g>
+      <text x="1066" y="484" font-size="12" fill="#1B2A4A" fill-opacity="0.6">Tomorrow</text>
+      <line x1="312" y1="508" x2="1152" y2="508" stroke="#1B2A4A" stroke-opacity="0.06"/>
+    </g>
+
+    <!-- Row 4: Top candidate shortlist (green) -->
+    <g>
+      <circle cx="324" cy="536" r="6" fill="#5BC8A8"/>
+      <text x="340" y="533" font-size="14" font-weight="700" fill="#1B2A4A">Top candidate shortlist</text>
+      <text x="340" y="550" font-size="11" fill="#1B2A4A" fill-opacity="0.5">Ranks new applicants against each open role</text>
+      <rect x="636" y="524" width="96" height="22" rx="11" fill="#1B2A4A" fill-opacity="0.06"/>
+      <text x="648" y="539" font-size="11.5" fill="#1B2A4A" fill-opacity="0.7">Hourly</text>
+      <text x="772" y="540" font-size="12" fill="#1B2A4A" fill-opacity="0.6">41 min ago · 5 shortlisted</text>
+      <g><rect x="978" y="530" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="991" y="530" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1004" y="530" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1017" y="530" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1030" y="530" width="9" height="11" rx="2" fill="#5BC8A8"/></g>
+      <text x="1066" y="540" font-size="12" fill="#1B2A4A" fill-opacity="0.6">In 19 min</text>
+      <line x1="312" y1="564" x2="1152" y2="564" stroke="#1B2A4A" stroke-opacity="0.06"/>
+    </g>
+
+    <!-- Row 5: New client research (FAILED / red) -->
+    <g>
+      <circle cx="324" cy="592" r="6" fill="#D64545"/>
+      <text x="340" y="589" font-size="14" font-weight="700" fill="#1B2A4A">New client research</text>
+      <text x="340" y="606" font-size="11" fill="#1B2A4A" fill-opacity="0.5">Firmographics + buying signals for new logos</text>
+      <rect x="636" y="580" width="96" height="22" rx="11" fill="#1B2A4A" fill-opacity="0.06"/>
+      <text x="648" y="595" font-size="11.5" fill="#1B2A4A" fill-opacity="0.7">Daily 07:00</text>
+      <text x="772" y="596" font-size="12" fill="#D64545" font-weight="600">Failed · API rate limit</text>
+      <g><rect x="978" y="586" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="991" y="586" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1004" y="586" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1017" y="586" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1030" y="586" width="9" height="11" rx="2" fill="#D64545"/></g>
+      <text x="1066" y="596" font-size="12" fill="#B07514" font-weight="600">Retry queued</text>
+      <line x1="312" y1="620" x2="1152" y2="620" stroke="#1B2A4A" stroke-opacity="0.06"/>
+    </g>
+
+    <!-- Row 6: Existing clients' new jobs research (green) -->
+    <g>
+      <circle cx="324" cy="648" r="6" fill="#5BC8A8"/>
+      <text x="340" y="645" font-size="14" font-weight="700" fill="#1B2A4A">Existing clients' new jobs research</text>
+      <text x="340" y="662" font-size="11" fill="#1B2A4A" fill-opacity="0.5">Watches client career pages for fresh roles</text>
+      <rect x="636" y="636" width="96" height="22" rx="11" fill="#1B2A4A" fill-opacity="0.06"/>
+      <text x="648" y="651" font-size="11.5" fill="#1B2A4A" fill-opacity="0.7">Daily 09:00</text>
+      <text x="772" y="652" font-size="12" fill="#1B2A4A" fill-opacity="0.6">Today 09:00 · 3 new roles</text>
+      <g><rect x="978" y="642" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="991" y="642" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1004" y="642" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1017" y="642" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1030" y="642" width="9" height="11" rx="2" fill="#5BC8A8"/></g>
+      <text x="1066" y="652" font-size="12" fill="#1B2A4A" fill-opacity="0.6">Tomorrow</text>
+      <line x1="312" y1="676" x2="1152" y2="676" stroke="#1B2A4A" stroke-opacity="0.06"/>
+    </g>
+
+    <!-- Row 7: Candidate re-engagement (running / amber) -->
+    <g>
+      <circle cx="324" cy="704" r="6" fill="#E2A33C"/>
+      <text x="340" y="701" font-size="14" font-weight="700" fill="#1B2A4A">Candidate re-engagement</text>
+      <text x="340" y="718" font-size="11" fill="#1B2A4A" fill-opacity="0.5">Flags candidates in your ATS who changed jobs</text>
+      <rect x="636" y="692" width="96" height="22" rx="11" fill="#1B2A4A" fill-opacity="0.06"/>
+      <text x="648" y="707" font-size="11.5" fill="#1B2A4A" fill-opacity="0.7">Continuous</text>
+      <text x="772" y="708" font-size="12" fill="#1B7A5F" font-weight="600">Running · 12 profiles</text>
+      <g><rect x="978" y="698" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="991" y="698" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1004" y="698" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1017" y="698" width="9" height="11" rx="2" fill="#5BC8A8"/><rect x="1030" y="698" width="9" height="11" rx="2" fill="#E2A33C"/></g>
+      <text x="1066" y="708" font-size="12" fill="#1B7A5F" font-weight="600">Live now</text>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+
+const title = 'Automation Hub — autonomous AI agents for recruiting | Calyflow';
+const description =
+  'The Calyflow Automation Hub runs custom AI agents on a schedule: enriching your ATS and CRM, researching clients, shortlisting candidates, and preparing documents — autonomously.';
+
+// The benefits of moving from on-demand workflows to scheduled, autonomous agents.
+const benefits = [
+  {
+    title: 'Connect every data source',
+    blurb:
+      'Agents reach into your ATS, CRM, data providers, and tools in one run — reading and writing where your data already lives, instead of you copy-pasting between tabs.',
+  },
+  {
+    title: 'Enrich data while you sleep',
+    blurb:
+      'Fresh job titles, verified emails, firmographics, and job-change signals land in your systems every morning — no manual research, no stale records.',
+  },
+  {
+    title: 'Prepare documents automatically',
+    blurb:
+      'Shortlists, screening reports, client research briefs, and daily summaries are drafted and filed before your team logs in, ready to review and send.',
+  },
+  {
+    title: 'Highly customized AI agents',
+    blurb:
+      'Each automation is an AI-powered agent tuned to your agency — your sources, your rubric, your tone of voice, your schedule. Not a generic integration.',
+  },
+  {
+    title: 'Runs on your own AI and keys',
+    blurb:
+      'Every agent runs on your own models, data, and tool accounts. The work — and the spend — stays yours, with a clear cost shown on every run.',
+  },
+  {
+    title: 'Always-on, never forgotten',
+    blurb:
+      'Hourly, daily, or continuous — automations fire on time, every time, with health states and run history so nothing silently breaks.',
+  },
+];
+
+// Example automations agency owners run (mirrors the dashboard illustration).
+const automations = [
+  {
+    name: 'ATS data enrichment',
+    blurb: 'Refreshes candidate records daily from your data providers — current role, employer, verified contacts.',
+  },
+  {
+    name: 'CRM data enrichment',
+    blurb: 'Keeps client and contact records current: firmographics, decision-makers, and direct dials.',
+  },
+  {
+    name: 'Daily reporting',
+    blurb: 'A morning digest of pipeline movement, placements, and AI spend, delivered to Slack or email.',
+  },
+  {
+    name: 'Top candidate shortlist',
+    blurb: 'Ranks new applicants against each open role and surfaces the strongest fits, hourly.',
+  },
+  {
+    name: 'New client research',
+    blurb: 'Builds a firmographic + buying-signal brief on every new logo before your first call.',
+  },
+  {
+    name: "Existing clients' new jobs research",
+    blurb: 'Watches your clients’ career pages and flags fresh roles you could be filling first.',
+  },
+  {
+    name: 'Candidate re-engagement',
+    blurb: 'Detects when people in your ATS change jobs, so you reach out at exactly the right moment.',
+  },
+  {
+    name: 'Inbox & lead triage',
+    blurb: 'Sorts inbound applications and enquiries, enriches them, and routes each to the right project.',
+  },
+];
+
+const steps = [
+  {
+    step: '01',
+    title: 'Connect your stack',
+    blurb: 'We wire the hub to your ATS, CRM, data providers, and tools — on your own accounts and keys.',
+  },
+  {
+    step: '02',
+    title: 'Customize the agents',
+    blurb: 'Each automation is built to your rubric, sources, and tone, then tested against your real data.',
+  },
+  {
+    step: '03',
+    title: 'Schedule & forget',
+    blurb: 'Set them to run hourly, daily, or continuously. They fire on time without anyone pressing go.',
+  },
+  {
+    step: '04',
+    title: 'Monitor at a glance',
+    blurb: 'The hub shows green/red health, run history, and cost — so you trust it, and catch the rare failure fast.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div
+      class="aurora-glow absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-5 pt-20 pb-16 text-center md:pt-28 md:pb-20">
+      <p class="mb-4 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
+        Automation Hub
+      </p>
+      <h1
+        class="mx-auto max-w-3xl font-display text-[clamp(2.5rem,5.5vw,3.5rem)] leading-[1.06] font-bold tracking-[-0.01em]"
+      >
+        Recruiting that <span class="text-gradient-brand">runs itself</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-xl text-navy-800/70">
+        Beyond one-off workflows: the Automation Hub runs highly customized AI agents on a schedule —
+        enriching your data, researching clients, shortlisting candidates, and preparing documents,
+        autonomously.
+      </p>
+
+      <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <Button href={SITE.bookCallUrl} size="lg" event="cta-automation-hub-hero">Book a call</Button>
+      </div>
+      <p class="mt-4 font-mono text-sm text-navy-800/55">
+        Custom-built for your agency · Runs on your own AI &amp; keys
+      </p>
+
+      <div class="mt-14">
+        <img
+          src="/automation-hub-dashboard.svg"
+          alt="Calyflow Automation Hub: a sidebar 'Automation Hub' section is selected, and the main panel lists scheduled AI automations — ATS and CRM data enrichment, daily reporting, top candidate shortlist, new client research, existing clients' new jobs research and candidate re-engagement — each with a green, red, or amber health state, schedule, last run, recent-run history, and next run. Stat cards show 7 active automations, 142 runs today at 98% success, and 1 needing attention."
+          width="1200"
+          height="780"
+          class="mx-auto w-full max-w-5xl rounded-[20px] ring-1 ring-navy-900/10 shadow-[0_2px_6px_rgba(19,31,56,0.06),0_24px_56px_-12px_rgba(19,31,56,0.28)]"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why autonomous automations -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="Why automate" title="The work that happens without you">
+        A workflow gives one person one good output when they run it. An automation gives your whole
+        agency that output every day, whether anyone remembers to or not.
+      </SectionHeading>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {
+          benefits.map((b) => (
+            <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
+              <h3 class="font-display text-xl font-semibold">{b.title}</h3>
+              <p class="mt-3 text-[0.9375rem] text-navy-800/65">{b.blurb}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Example automations -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="Examples" title="Automations agency owners actually run">
+        A starting set — every hub is tailored, so yours can do whatever repeats in your agency.
+      </SectionHeading>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        {
+          automations.map((a) => (
+            <div class="flex items-start gap-4 rounded-[16px] border border-navy-800/12 bg-white p-6">
+              <span class="mt-1.5 h-2.5 w-2.5 flex-none rounded-full bg-mint-400" aria-hidden="true" />
+              <div>
+                <h3 class="font-display text-lg font-semibold">{a.name}</h3>
+                <p class="mt-1.5 text-[0.9375rem] text-navy-800/65">{a.blurb}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="How it works" title="From manual chore to autonomous agent">
+        We build, you approve, then it runs on its own — with the visibility to trust it.
+      </SectionHeading>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-4">
+        {
+          steps.map((s) => (
+            <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
+              <span class="font-mono text-sm font-medium text-navy-800/40">{s.step}</span>
+              <h3 class="mt-3 font-display text-xl font-semibold">{s.title}</h3>
+              <p class="mt-3 text-[0.9375rem] text-navy-800/65">{s.blurb}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-3xl px-5">
+      <div class="rounded-[24px] bg-navy-900 px-6 py-14 text-center md:px-12">
+        <p class="font-mono text-sm font-medium tracking-wide text-mint-400 uppercase">
+          Build your Automation Hub
+        </p>
+        <p class="mt-4 font-display text-3xl font-bold text-white">
+          Tell us what your team does on repeat
+        </p>
+        <p class="mx-auto mt-4 max-w-xl text-white/70">
+          On a 30-minute call we will map the chores worth automating, the data sources to connect,
+          and what each agent should produce — then scope a hub built for your agency.
+        </p>
+        <div class="mt-8 flex justify-center">
+          <Button href={SITE.bookCallUrl} size="lg" event="cta-automation-hub-final">Book a call</Button>
+        </div>
+        <p class="mt-4 font-mono text-[0.8125rem] text-white/50">
+          30 minutes · No commitment · Runs on your own AI &amp; keys
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
