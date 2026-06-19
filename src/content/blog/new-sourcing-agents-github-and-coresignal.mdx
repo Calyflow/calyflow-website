@@ -1,0 +1,58 @@
+---
+title: 'New sourcing agents: GitHub and Coresignal'
+description: 'Two new sourcing agents find candidates for you: GitHub surfaces engineers by what they build, Coresignal by who they are. Both run on your own keys.'
+pubDate: 2026-06-18
+topic: 'sourcing'
+---
+
+import YouTube from '../../components/blog/YouTube.astro';
+
+Until now, sourcing in Calyflow stopped at the strategy. The [Sourcing Map](/blog/ai-sourcing-maps-jd-to-boolean-strings) turns a job description into target companies, talent pools, and ready-to-paste boolean strings, but you still had to take those strings somewhere and run them. Today two new sourcing agents close that gap: they go find the candidates. **GitHub** surfaces engineers by the code they actually ship, and **Coresignal** searches a large workforce dataset to find people by who they are and where they work.
+
+Both run the same way every other Calyflow agent does, on [your own AI key and your own tools](/#principles). Here's what each one does, when to reach for which, and why having the search run inside a workflow matters more than the data source itself.
+
+## The GitHub agent: source by what people build
+
+<YouTube id="KjqTgoJ2QTc" title="GitHub sourcing finally made easy" />
+
+![The GitHub sourcing agent running in Calyflow — searching for engineers by commit history and repository activity](https://github.com/user-attachments/assets/7bca5b74-7641-4eb2-9c18-59819ad1552e)
+
+Most engineer sourcing is keyword sourcing on a proxy. You search résumés and LinkedIn headlines for "Rust" or "Kubernetes" and hope the words map to real ability. The GitHub agent skips the proxy and looks at the work: public repositories, languages by actual commit volume, project activity, and contribution patterns over time.
+
+That changes who you find. The agent surfaces the engineer who has shipped a popular open-source library but whose LinkedIn says "Software Engineer" and nothing else. It finds the maintainer three commits deep in a dependency your client already uses. It distinguishes someone who starred a Go repo from someone who has written Go every week for four years.
+
+Give it the role's must-haves and it returns ranked candidates with the evidence attached: which repositories, which languages, how recently active. No "10 years of experience" claim to take on faith, the commit history is right there. It's the same philosophy as [evidence-quoted CV screening](/blog/ai-cv-screening-without-hallucinations): every result should justify itself.
+
+![Candidate shortlist saved as a new document in Calyflow — ready for the recruiter to review and share](https://github.com/user-attachments/assets/30470534-6ffe-49d5-90dd-821e339522b8)
+
+The honest limit: GitHub is a sourcing channel for people who build in public, which is strong for backend, infrastructure, data, and open-source-heavy ecosystems, and thin for engineers whose best work lives behind a corporate firewall. Use it where it's sharp, and let the other agents cover the rest.
+
+## The Coresignal agent: source by who people are
+
+Coresignal is a large workforce dataset, hundreds of millions of public professional profiles with current company, title, tenure, location, and career history. Where the GitHub agent is deep on a narrow population, the Coresignal agent is broad across every function: sales, finance, design, operations, the roles that never leave a public commit trail.
+
+Point it at a job description and it does structured search against that dataset: people in your target companies, with the right title progression, in the right market, who actually moved jobs recently or fit the tenure pattern you're after. It's the firepower behind the talent-pool layer of a sourcing map, applied at scale instead of one boolean string at a time.
+
+Because [Coresignal is a connector you bring](/#principles), the agent runs against your own Coresignal access. Your search criteria and the profiles you pull never become Calyflow's data, the same rule that holds for every integration.
+
+## Which one, when
+
+The two agents complement rather than compete:
+
+- **GitHub** for technical roles where the work is visible, when you want to rank on demonstrated skill rather than self-reported titles.
+- **Coresignal** for breadth, for non-engineering roles, and for systematically working a target-company list across a whole market.
+- **Both, in sequence,** for a senior engineering search: Coresignal maps the landscape and the moves, GitHub verifies who can actually do the work.
+
+And all of it still starts from a sharp [Sourcing Map](/blog/ai-sourcing-maps-jd-to-boolean-strings). Garbage in, garbage out applies here too: the better the job description and intake notes, the better the targeting both agents inherit.
+
+## Why agents, not just integrations
+
+You could, in theory, buy Coresignal and GitHub access directly and run the queries yourself. The point of wrapping them in agents is the same point as every other Calyflow workflow: **consistency and provenance.**
+
+A search run as an agent is reproducible. The criteria come from the JD attached to the project, not from whatever a recruiter typed that afternoon, so search #50 is as thorough as search #1 and a teammate running the same role gets the same caliber of results. Every candidate comes back with the evidence that put them on the list, so you can trace why they're there. When the client adds a constraint, you re-run with updated intake notes and the whole list updates coherently. That's the [chatting-vs-building difference](/blog/chatting-with-ai-vs-building-ai-workflows) made concrete in sourcing.
+
+## The takeaway
+
+Sourcing in Calyflow no longer stops at the strategy. The GitHub agent finds engineers by what they build; the Coresignal agent finds anyone by who they are and where they work. Both run on your own keys, return candidates with the evidence attached, and start from the same job description the rest of your search uses.
+
+*Try the new sourcing agents free: [create an account](https://app.calyflow.ai/sign-up). Your own API key, no credit card.*

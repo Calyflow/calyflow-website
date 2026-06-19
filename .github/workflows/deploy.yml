@@ -11,18 +11,24 @@ jobs:
       contents: read
       deployments: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
 
       - run: npm ci
 
+      # PostHog PUBLIC_* vars are inlined by Astro at build time, so they must
+      # be present here in CI. The Cloudflare Pages dashboard vars are NOT seen
+      # by this build — we ship a pre-built dist/ via `wrangler pages deploy`.
       - run: npm run build
+        env:
+          PUBLIC_POSTHOG_PROJECT_TOKEN: ${{ secrets.PUBLIC_POSTHOG_PROJECT_TOKEN }}
+          PUBLIC_POSTHOG_HOST: https://eu.i.posthog.com
 
-      - uses: cloudflare/wrangler-action@v3
+      - uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -12,7 +12,7 @@ export const FAQ: FaqItem[] = [
   {
     question: 'What is Calyflow?',
     answer:
-      'Calyflow is an open-source recruiting OS that runs AI workflows on your own models, data, and tools. Instead of chatting with AI in scattered browser tabs, you import a workflow (CV screening, sourcing, outreach), attach your documents, and run it.',
+      'Calyflow is a set of open-source recruiting agents that run AI workflows on your own models, data, and tools. Instead of chatting with AI in scattered browser tabs, you import a workflow (CV screening, sourcing, outreach), attach your documents, and run it.',
   },
   {
     question: 'Which AI models can I use?',

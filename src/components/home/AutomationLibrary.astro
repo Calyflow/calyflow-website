@@ -1,0 +1,53 @@
+---
+import { getAllLibraryItems, groupByContext, pickFeatured } from '../../lib/library';
+import SectionHeading from '../SectionHeading.astro';
+import LibraryCard from '../library/LibraryCard.astro';
+
+const items = await getAllLibraryItems();
+const groups = groupByContext(items).map((group) => ({
+  ...group,
+  items: pickFeatured(group.items, 3),
+}));
+const total = items.length;
+---
+
+<section id="automation-library" class="scroll-mt-20 py-24 md:py-32">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading eyebrow="Automation library" title="An automation platform for recruiting">
+      Calyflow runs AI agents on your own AI, data, and tools. Some turn a brief into a finished
+      deliverable; others reach into your ATS, CRM, and data to do the work.
+    </SectionHeading>
+
+    {
+      groups.map((group) => (
+        <div class="mt-16 first:mt-14">
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div class="max-w-2xl">
+              <h3 class="font-display text-2xl font-semibold text-navy-900">{group.title}</h3>
+              <p class="mt-2 text-[0.9375rem] leading-relaxed text-navy-800/65">{group.blurb}</p>
+            </div>
+            <a
+              href={`/automation-library#${group.id}`}
+              class="shrink-0 font-mono text-sm font-medium text-mint-700 hover:text-navy-900"
+              data-event={`library-see-all-${group.id}`}
+            >
+              See all <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="mt-7 grid gap-6 md:grid-cols-3">
+            {group.items.map((item) => (
+              <LibraryCard item={item} />
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <p class="mt-14 text-center font-mono text-sm text-navy-800/55">
+      <a href="/automation-library" class="text-navy-800/70 hover:text-navy-900">
+        {total} agents available to use
+      </a>
+    </p>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LibraryCard from '../../components/library/LibraryCard.astro';
+import Button from '../../components/Button.astro';
+import { SITE } from '../../data/site';
+import { getAllLibraryItems, groupByContext } from '../../lib/library';
+
+const items = await getAllLibraryItems();
+const total = items.length;
+const sections = groupByContext(items);
+
+const title = 'Agents — Calyflow Automation Library';
+const description =
+  'Browse every Calyflow agent: automations that turn a brief into a deliverable, and tool-using agents that reach into your ATS, CRM, and data.';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Calyflow Automation Library',
+    description,
+    url: `${SITE.url}/automation-library`,
+    isPartOf: { '@id': `${SITE.url}/#website` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Automation Library',
+        item: `${SITE.url}/automation-library`,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <header class="bg-cream-100">
+    <div class="mx-auto max-w-6xl px-5 py-16 text-center md:py-20">
+      <p class="mb-3 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
+        Automation library
+      </p>
+      <h1 class="mx-auto max-w-3xl text-3xl tracking-tight md:text-5xl">Agents</h1>
+      <p class="mx-auto mt-5 max-w-2xl text-navy-800/65">
+        Every agent in Calyflow, ready to run on your own AI, data, and tools. Some turn a brief
+        into a finished deliverable; others reach into your systems to do the work.
+      </p>
+      <p class="mt-6 font-mono text-sm text-navy-800/55">
+        {total} agents available
+      </p>
+    </div>
+  </header>
+
+  {
+    sections.map((section, i) => (
+      <section
+        id={section.id}
+        class:list={['scroll-mt-20 pb-16 md:pb-20', i === 0 && 'pt-16 md:pt-20']}
+      >
+        <div class="mx-auto max-w-6xl px-5">
+          <div class="max-w-2xl">
+            <h2 class="font-display text-2xl font-semibold text-navy-900 md:text-3xl">
+              {section.title}
+            </h2>
+            <p class="mt-2 text-[0.9375rem] leading-relaxed text-navy-800/65">{section.blurb}</p>
+          </div>
+          <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {section.items.map((item) => (
+              <LibraryCard item={item} />
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="px-5 pb-20">
+    <div class="mx-auto max-w-6xl rounded-[20px] bg-cream-100 px-6 py-12 text-center">
+      <h2 class="text-2xl">Run any of these on your own AI, data, and tools</h2>
+      <p class="mx-auto mt-3 max-w-xl text-navy-800/65">
+        Import an agent, attach your documents and systems, and get repeatable, evidence-backed
+        results. Free to start, no credit card.
+      </p>
+      <Button href={SITE.signupUrl} size="lg" event="cta-automation-library" class="mt-6">
+        Create free account
+      </Button>
+    </div>
+  </section>
+</BaseLayout>
