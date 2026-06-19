@@ -12,7 +12,14 @@ export default defineConfig({
   // canonical slash-less URL, so there are no duplicate-content URLs.
   trailingSlash: 'never',
   build: { format: 'file' },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    // Keep unlisted client landing pages out of the sitemap (they also set
+    // noindex). Add their canonical URLs here.
+    sitemap({
+      filter: (page) => !['https://calyflow.ai/vincere-enrichment'].includes(page),
+    }),
+  ],
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
