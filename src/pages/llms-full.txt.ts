@@ -43,6 +43,8 @@ ${faq}
 
 - Website: ${SITE.url}
 - App sign-up: ${SITE.signupUrl}
+- Documentation: ${SITE.docsUrl}
+- Documentation index for LLMs: ${SITE.docsLlmsTxtUrl}
 - Source code (${SITE.productLicense}): ${SITE.githubUrl}
 - Blog: ${SITE.url}/blog
 - RSS: ${SITE.url}/rss.xml

@@ -15,6 +15,10 @@ export const SITE = {
     'Run AI-powered sourcing, screening, and outreach workflows on your own AI, your own data, your own tools. Open source, free to start.',
   url: 'https://calyflow.ai',
   appUrl: 'https://app.calyflow.ai',
+  /** Full product documentation (lives in the app). */
+  docsUrl: 'https://app.calyflow.ai/docs',
+  /** llms.txt index of the documentation (lives in the app). */
+  docsLlmsTxtUrl: 'https://app.calyflow.ai/llms.txt',
   signupUrl: 'https://app.calyflow.ai/sign-up',
   /** Google Calendar booking link for custom automation-hub discovery calls. */
   bookCallUrl: 'https://calendar.app.google/gfGaewL9jx9wf7Xh7',
