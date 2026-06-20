@@ -12,6 +12,15 @@ proven AI workflows (CV screening, sourcing maps, outreach writing, job
 description writing, submission packs), attach their documents, and run them
 with repeatable, evidence-backed results.
 
+## Documentation
+
+Full product documentation lives in the app. For an LLM-readable index of every
+docs page (getting started, agents, connectors, Slack, security, self-hosting,
+FAQ), see the documentation's own llms.txt.
+
+- Product docs: ${SITE.docsUrl}
+- Documentation index for LLMs: ${SITE.docsLlmsTxtUrl}
+
 ## Core principles
 
 - Bring Your Own AI: model-agnostic. Claude, ChatGPT, Gemini, OpenAI API,
@@ -41,6 +50,8 @@ AI provider for tokens; every run shows its cost.
 
 - Website: ${SITE.url}
 - App sign-up: ${SITE.signupUrl}
+- Documentation: ${SITE.docsUrl}
+- Documentation index for LLMs: ${SITE.docsLlmsTxtUrl}
 - Source code (${SITE.productLicense}): ${SITE.githubUrl}
 - Blog: ${SITE.url}/blog
 - Extended version of this file: ${SITE.url}/llms-full.txt

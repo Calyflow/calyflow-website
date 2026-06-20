@@ -8,6 +8,7 @@ const nav = [
   { label: 'Agents', href: '/automation-library' },
   { label: 'Automation Hub', href: '/automation-hub' },
   { label: 'ATS / CRM Enrichment', href: '/ats-crm-enrichment' },
+  { label: 'Docs', href: SITE.docsUrl, external: true },
   { label: 'Blog', href: '/blog' },
 ];
 ---
@@ -21,9 +22,26 @@ const nav = [
         nav.map((item) => (
           <a
             href={item.href}
-            class="text-[0.9375rem] font-medium text-navy-800/80 transition-colors hover:text-navy-900"
+            rel={item.external ? 'noopener' : undefined}
+            class="inline-flex items-center gap-1 text-sm font-medium text-navy-800/80 transition-colors hover:text-navy-900"
           >
             {item.label}
+            {item.external && (
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="opacity-50"
+                aria-hidden="true"
+              >
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
+            )}
           </a>
         ))
       }
@@ -53,8 +71,28 @@ const nav = [
       {
         nav.map((item) => (
           <li>
-            <a href={item.href} class="block rounded-[10px] px-3 py-2.5 font-medium text-navy-800 hover:bg-cream-100">
+            <a
+              href={item.href}
+              rel={item.external ? 'noopener' : undefined}
+              class="flex items-center gap-1.5 rounded-[10px] px-3 py-2.5 font-medium text-navy-800 hover:bg-cream-100"
+            >
               {item.label}
+              {item.external && (
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="opacity-50"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
+              )}
             </a>
           </li>
         ))
