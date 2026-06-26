@@ -12,6 +12,10 @@ export default defineConfig({
   // canonical slash-less URL, so there are no duplicate-content URLs.
   trailingSlash: 'never',
   build: { format: 'file' },
+  // The Sourcing post was renamed to the Shortlist slug; keep the old URL alive.
+  redirects: {
+    '/blog/introducing-sourcing': '/blog/introducing-shortlist',
+  },
   integrations: [
     mdx(),
     // Keep the unlisted per-system "<system>-enrichment" pages out of the
