@@ -9,9 +9,31 @@ import HowItWorksDiagram from '../components/calyflowdb/HowItWorksDiagram.astro'
 import EnrichedProfileIllustration from '../components/calyflowdb/EnrichedProfileIllustration.astro';
 import SemanticShiftIllustration from '../components/calyflowdb/SemanticShiftIllustration.astro';
 
-const title = 'CalyflowDB — The AI-ready talent database for recruiting teams';
+// Title ≤60 chars, description ≤155 (BaseLayout contract).
+const title = 'CalyflowDB — AI-ready talent database for recruiting';
 const description =
-  'Stop searching candidates by keywords. CalyflowDB unifies your ATS, CRM, notes, calls and outreach into enriched profiles that AI agents can search, match and explain.';
+  'Stop searching by keywords. CalyflowDB unifies ATS, CRM, notes, calls, and outreach into enriched profiles AI agents can search, match, and explain.';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'CalyflowDB',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description,
+    url: `${SITE.url}/calyflowdb`,
+    publisher: { '@id': `${SITE.url}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      { '@type': 'ListItem', position: 2, name: 'CalyflowDB', item: `${SITE.url}/calyflowdb` },
+    ],
+  },
+];
 
 const scatteredSources = [
   { where: 'CVs', in: 'your ATS' },
@@ -138,7 +160,7 @@ const buildableAgents = [
 ];
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <!-- Hero -->
   <section class="relative overflow-hidden">
     <div

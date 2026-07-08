@@ -73,6 +73,7 @@ const cfBeaconToken = import.meta.env.CF_BEACON_TOKEN;
     <link rel="canonical" href={canonical} />
     {noIndex && <meta name="robots" content="noindex" />}
 
+    <meta name="theme-color" content="#fbf7f0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={`${SITE.name} Blog`} href="/rss.xml" />
@@ -83,12 +84,14 @@ const cfBeaconToken = import.meta.env.CF_BEACON_TOKEN;
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
