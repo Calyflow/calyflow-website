@@ -1,0 +1,110 @@
+---
+/**
+ * A single enriched candidate profile surrounded by connected
+ * evidence cards (CV, notes, transcripts, outreach, CRM, signals…).
+ */
+const cards: { x: number; y: number; label: string; tone: string }[] = [
+  { x: 32, y: 28, label: 'CV & history', tone: 'var(--color-mint-400)' },
+  { x: 470, y: 28, label: 'Recruiter notes', tone: 'var(--color-sky-300)' },
+  { x: 10, y: 160, label: 'Transcripts', tone: 'var(--color-lavender-300)' },
+  { x: 492, y: 160, label: 'Applications', tone: 'var(--color-mint-400)' },
+  { x: 10, y: 292, label: 'Outreach', tone: 'var(--color-sky-300)' },
+  { x: 492, y: 292, label: 'CRM notes', tone: 'var(--color-lavender-300)' },
+  { x: 32, y: 424, label: 'Public signals', tone: 'var(--color-sky-300)' },
+  { x: 470, y: 424, label: 'Match evidence', tone: 'var(--color-mint-400)' },
+];
+const W = 138;
+const H = 46;
+// Anchor point on the central card for each evidence card's connector.
+const cx = 320;
+const cy = 260;
+---
+
+<svg
+  viewBox="0 0 640 520"
+  fill="none"
+  role="img"
+  aria-label="An enriched candidate profile connected to evidence cards: CV, recruiter notes, interview transcripts, past applications, outreach history, CRM relationship notes, public signals and a match explanation"
+  class="h-auto w-full"
+>
+  <!-- connectors -->
+  <g stroke="var(--color-navy-800)" stroke-opacity="0.2" stroke-width="1.5">
+    {
+      cards.map((c) => {
+        const ex = c.x + W / 2 < cx ? c.x + W : c.x;
+        const ey = c.y + H / 2;
+        const ax = c.x + W / 2 < cx ? cx - 100 : cx + 100;
+        const ay = Math.min(Math.max(ey, cy - 70), cy + 70);
+        return <path d={`M${ex} ${ey} C ${(ex + ax) / 2} ${ey}, ${(ex + ax) / 2} ${ay}, ${ax} ${ay}`} />;
+      })
+    }
+  </g>
+  {
+    cards.map((c) => {
+      const ex = c.x + W / 2 < cx ? c.x + W : c.x;
+      return <circle cx={ex} cy={c.y + H / 2} r="3" fill="var(--color-mint-400)" />;
+    })
+  }
+
+  <!-- central profile card -->
+  <g>
+    <rect x="228" y="168" width="196" height="192" rx="16" fill="var(--color-navy-800)" opacity="0.08" transform="translate(6 8)"></rect>
+    <rect x="220" y="160" width="200" height="200" rx="16" fill="white" stroke="var(--color-navy-800)" stroke-width="1.75"></rect>
+    <circle cx="258" cy="200" r="18" fill="var(--color-mint-400)" opacity="0.3"></circle>
+    <circle cx="258" cy="200" r="18" stroke="var(--color-navy-800)" stroke-width="1.75"></circle>
+    <circle cx="258" cy="195" r="5.5" stroke="var(--color-navy-800)" stroke-width="1.75"></circle>
+    <path d="M247 211 a11 9 0 0 1 22 0" stroke="var(--color-navy-800)" stroke-width="1.75"></path>
+    <rect x="286" y="188" width="98" height="9" rx="4.5" fill="var(--color-navy-800)" opacity="0.35"></rect>
+    <rect x="286" y="204" width="72" height="7" rx="3.5" fill="var(--color-navy-800)" opacity="0.15"></rect>
+
+    <!-- skill chips -->
+    {
+      [
+        { x: 240, w: 62, label: 'K8s' },
+        { x: 308, w: 74, label: 'Terraform' },
+        { x: 240, w: 52, label: 'AWS', row: 1 },
+        { x: 298, w: 68, label: 'fintech', row: 1 },
+      ].map((chip) => (
+        <g>
+          <rect x={chip.x} y={238 + (chip.row ? 26 : 0)} width={chip.w} height="18" rx="9" fill="var(--color-mint-400)" opacity="0.2" />
+          <text
+            x={chip.x + chip.w / 2}
+            y={250 + (chip.row ? 26 : 0)}
+            text-anchor="middle"
+            font-family="var(--font-mono)"
+            font-size="10"
+            fill="var(--color-mint-700)"
+          >
+            {chip.label}
+          </text>
+        </g>
+      ))
+    }
+
+    <line x1="240" y1="300" x2="400" y2="300" stroke="var(--color-navy-800)" stroke-opacity="0.12" stroke-width="1.5"></line>
+    <rect x="240" y="314" width="160" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.1"></rect>
+    <rect x="240" y="326" width="128" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.1"></rect>
+    <rect x="332" y="176" width="76" height="20" rx="10" fill="var(--color-mint-400)" opacity="0.9" transform="translate(8 -6)"></rect>
+    <text x="378" y="184" text-anchor="middle" font-family="var(--font-mono)" font-size="10" font-weight="700" fill="var(--color-navy-900)">92% MATCH</text>
+  </g>
+
+  <!-- evidence cards -->
+  {
+    cards.map((c) => (
+      <g>
+        <rect x={c.x} y={c.y} width={W} height={H} rx="10" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.16" stroke-width="1.5" />
+        <rect x={c.x + 10} y={c.y + 12} width="22" height="22" rx="6" fill={c.tone} opacity="0.35" />
+        <path
+          d={`M${c.x + 15} ${c.y + 20} h12 M${c.x + 15} ${c.y + 26} h8`}
+          stroke="var(--color-navy-800)"
+          stroke-opacity="0.55"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+        <text x={c.x + 40} y={c.y + 28} font-family="var(--font-mono)" font-size="10" fill="var(--color-navy-800)" opacity="0.8">
+          {c.label}
+        </text>
+      </g>
+    ))
+  }
+</svg>
