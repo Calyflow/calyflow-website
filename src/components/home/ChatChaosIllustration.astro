@@ -1,0 +1,151 @@
+---
+/**
+ * "Chatting with AI isn't a workflow": scattered chat bubbles and browser
+ * tabs drifting out of sync — endless typing, no repeatable output.
+ * CSS-only motion, disabled under prefers-reduced-motion.
+ */
+---
+
+<svg
+  viewBox="0 0 480 280"
+  fill="none"
+  role="img"
+  aria-label="Scattered chat bubbles and browser tabs drifting apart — AI chats that never become a repeatable workflow"
+  class="h-auto w-full"
+>
+  <!-- stack of stray browser tabs -->
+  <g class="chaos-float chaos-d2">
+    <rect x="270" y="26" width="176" height="54" rx="10" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.15" stroke-width="1.5" transform="rotate(3 358 53)"></rect>
+    <rect x="256" y="14" width="176" height="54" rx="10" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.2" stroke-width="1.5" transform="rotate(-2 344 41)"></rect>
+    <g transform="rotate(-2 344 41)">
+      <circle cx="276" cy="32" r="4" fill="var(--color-coral-400)" opacity="0.6"></circle>
+      <circle cx="290" cy="32" r="4" fill="var(--color-amber-400)" opacity="0.55"></circle>
+      <circle cx="304" cy="32" r="4" fill="var(--color-navy-800)" opacity="0.15"></circle>
+      <rect x="270" y="44" width="130" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.12"></rect>
+      <rect x="270" y="55" width="92" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.12"></rect>
+    </g>
+    <text x="452" y="30" font-family="var(--font-mono)" font-size="11" fill="var(--color-navy-800)" opacity="0.4" text-anchor="end">×14</text>
+  </g>
+
+  <!-- big chat bubble with typing dots that never finish -->
+  <g class="chaos-float">
+    <path
+      d="M36 96 h172 a12 12 0 0 1 12 12 v44 a12 12 0 0 1 -12 12 h-124 l-22 20 v-20 h-26 a12 12 0 0 1 -12 -12 v-44 a12 12 0 0 1 12 -12Z"
+      fill="white"
+      stroke="var(--color-navy-800)"
+      stroke-width="1.75"
+      transform="rotate(-2 122 140)"
+    ></path>
+    <g transform="rotate(-2 122 140)">
+      <circle cx="106" cy="130" r="5" fill="var(--color-navy-800)" opacity="0.3" class="chaos-dot"></circle>
+      <circle cx="124" cy="130" r="5" fill="var(--color-navy-800)" opacity="0.3" class="chaos-dot chaos-dot-2"></circle>
+      <circle cx="142" cy="130" r="5" fill="var(--color-navy-800)" opacity="0.3" class="chaos-dot chaos-dot-3"></circle>
+    </g>
+  </g>
+
+  <!-- reply bubble, drifting the other way -->
+  <g class="chaos-float chaos-d1">
+    <path
+      d="M262 148 h158 a12 12 0 0 1 12 12 v38 a12 12 0 0 1 -12 12 h-24 v18 l-20 -18 h-114 a12 12 0 0 1 -12 -12 v-38 a12 12 0 0 1 12 -12Z"
+      fill="var(--color-cream-100)"
+      stroke="var(--color-navy-800)"
+      stroke-opacity="0.35"
+      stroke-width="1.5"
+      transform="rotate(2 351 188)"
+    ></path>
+    <g transform="rotate(2 351 188)">
+      <rect x="276" y="164" width="128" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.15"></rect>
+      <rect x="276" y="176" width="96" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.15"></rect>
+      <rect x="276" y="188" width="112" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.15"></rect>
+    </g>
+  </g>
+
+  <!-- lost prompt snippet -->
+  <g class="chaos-float chaos-d3">
+    <rect x="52" y="212" width="150" height="40" rx="20" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.18" stroke-width="1.5" transform="rotate(-3 127 232)"></rect>
+    <text x="76" y="238" font-family="var(--font-mono)" font-size="11" fill="var(--color-navy-800)" opacity="0.45" transform="rotate(-3 127 232)">where's that prompt…</text>
+  </g>
+
+  <!-- question mark + coral squiggle accents -->
+  <g class="chaos-wobble">
+    <circle cx="232" cy="72" r="17" fill="var(--color-coral-400)" opacity="0.16"></circle>
+    <text x="232" y="79" text-anchor="middle" font-family="var(--font-display)" font-size="20" font-weight="700" fill="var(--color-coral-400)">?</text>
+  </g>
+  <path
+    d="M330 252 q6 5 12 0 t12 0 t12 0 t12 0 t12 0"
+    stroke="var(--color-coral-400)"
+    stroke-width="1.75"
+    stroke-linecap="round"
+    opacity="0.7"
+  ></path>
+</svg>
+
+<style>
+  .chaos-float,
+  .chaos-wobble,
+  .chaos-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .chaos-float {
+      animation: chaos-drift 7s ease-in-out infinite;
+    }
+    .chaos-d1 {
+      animation-delay: 1.4s;
+      animation-duration: 8s;
+    }
+    .chaos-d2 {
+      animation-delay: 2.8s;
+      animation-duration: 9s;
+    }
+    .chaos-d3 {
+      animation-delay: 0.8s;
+      animation-duration: 7.5s;
+    }
+    .chaos-dot {
+      animation: chaos-typing 1.4s ease-in-out infinite;
+    }
+    .chaos-dot-2 {
+      animation-delay: 0.2s;
+    }
+    .chaos-dot-3 {
+      animation-delay: 0.4s;
+    }
+    .chaos-wobble {
+      animation: chaos-wobble 5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes chaos-drift {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-7px) rotate(-1deg);
+    }
+  }
+  @keyframes chaos-typing {
+    0%,
+    60%,
+    100% {
+      opacity: 0.25;
+      transform: translateY(0);
+    }
+    30% {
+      opacity: 0.7;
+      transform: translateY(-3px);
+    }
+  }
+  @keyframes chaos-wobble {
+    0%,
+    100% {
+      transform: rotate(-6deg) translateY(0);
+    }
+    50% {
+      transform: rotate(6deg) translateY(-4px);
+    }
+  }
+</style>

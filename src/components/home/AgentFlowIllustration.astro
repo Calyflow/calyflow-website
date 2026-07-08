@@ -1,0 +1,187 @@
+---
+/**
+ * Brief → agent → deliverable: packets flow left to right while the agent
+ * spark works. Sits under the Automation Library heading.
+ * CSS-only motion, disabled under prefers-reduced-motion.
+ */
+---
+
+<svg
+  viewBox="0 0 880 140"
+  fill="none"
+  role="img"
+  aria-label="A brief flows into an AI agent, which produces a finished deliverable"
+  class="h-auto w-full"
+>
+  <!-- connectors -->
+  <line x1="248" y1="70" x2="384" y2="70" stroke="var(--color-navy-800)" stroke-opacity="0.16" stroke-width="1.5" stroke-dasharray="4 6"></line>
+  <line x1="496" y1="70" x2="632" y2="70" stroke="var(--color-navy-800)" stroke-opacity="0.16" stroke-width="1.5" stroke-dasharray="4 6"></line>
+
+  <!-- moving packets -->
+  <circle cy="70" r="5" fill="var(--color-mint-400)" class="flow-packet flow-packet-in"></circle>
+  <circle cy="70" r="5" fill="var(--color-mint-400)" class="flow-packet flow-packet-out"></circle>
+
+  <!-- input: the brief -->
+  <g>
+    <rect x="108" y="30" width="140" height="80" rx="14" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.16" stroke-width="1.5"></rect>
+    <path d="M130 48h20l8 8v28h-28Z" stroke="var(--color-navy-800)" stroke-opacity="0.6" stroke-width="1.6" stroke-linejoin="round" fill="var(--color-sky-300)" fill-opacity="0.25"></path>
+    <rect x="168" y="52" width="62" height="7" rx="3.5" fill="var(--color-navy-800)" opacity="0.25"></rect>
+    <rect x="168" y="66" width="48" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.12"></rect>
+    <rect x="168" y="78" width="54" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.12"></rect>
+    <text x="178" y="128" text-anchor="middle" font-family="var(--font-mono)" font-size="10" letter-spacing="1.5" fill="var(--color-navy-800)" opacity="0.55">YOUR BRIEF</text>
+  </g>
+
+  <!-- agent -->
+  <g>
+    <circle cx="440" cy="70" r="46" fill="var(--color-mint-400)" opacity="0.16" class="flow-breathe"></circle>
+    <rect x="404" y="34" width="72" height="72" rx="18" fill="white" stroke="var(--color-navy-800)" stroke-width="1.75"></rect>
+    <path
+      d="M440 48 l5 15 15 5 -15 5 -5 15 -5 -15 -15 -5 15 -5Z"
+      fill="var(--color-mint-400)"
+      class="flow-spark"
+    ></path>
+    <path d="M466 42 v8 M470 46 h-8" stroke="var(--color-navy-800)" stroke-opacity="0.45" stroke-width="1.5" stroke-linecap="round"></path>
+    <text x="440" y="128" text-anchor="middle" font-family="var(--font-mono)" font-size="10" letter-spacing="1.5" fill="var(--color-mint-700)">AI AGENT</text>
+  </g>
+
+  <!-- output: the deliverable -->
+  <g>
+    <rect x="632" y="30" width="140" height="80" rx="14" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.16" stroke-width="1.5"></rect>
+    {
+      [0, 1, 2].map((i) => (
+        <g class={`flow-line flow-line-${i}`}>
+          <path
+            d={`m652 ${52 + i * 18} 3.5 3.5 6 -6`}
+            stroke="var(--color-mint-700)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <rect x="672" y={48 + i * 18} width={80 - i * 18} height="7" rx="3.5" fill="var(--color-navy-800)" opacity="0.16" />
+        </g>
+      ))
+    }
+    <text x="702" y="128" text-anchor="middle" font-family="var(--font-mono)" font-size="10" letter-spacing="1.5" fill="var(--color-navy-800)" opacity="0.55">DELIVERABLE</text>
+  </g>
+</svg>
+
+<style>
+  .flow-packet,
+  .flow-spark,
+  .flow-breathe,
+  .flow-line {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .flow-packet {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .flow-packet-in {
+      animation: flow-in 5s ease-in-out infinite;
+    }
+    .flow-packet-out {
+      animation: flow-out 5s ease-in-out infinite;
+    }
+    .flow-spark {
+      animation: flow-spark 5s ease-in-out infinite;
+    }
+    .flow-breathe {
+      animation: flow-breathe 5s ease-in-out infinite;
+    }
+    .flow-line {
+      animation: flow-appear 5s ease-out infinite;
+    }
+    .flow-line-1 {
+      animation-delay: 0.25s;
+    }
+    .flow-line-2 {
+      animation-delay: 0.5s;
+    }
+  }
+  /* Static fallback: deliverable lines visible. */
+  @media (prefers-reduced-motion: reduce) {
+    .flow-line {
+      opacity: 1;
+    }
+  }
+
+  @keyframes flow-in {
+    0% {
+      transform: translateX(248px);
+      opacity: 0;
+    }
+    6% {
+      opacity: 1;
+    }
+    32% {
+      transform: translateX(384px);
+      opacity: 1;
+    }
+    38%,
+    100% {
+      transform: translateX(384px);
+      opacity: 0;
+    }
+  }
+  @keyframes flow-out {
+    0%,
+    42% {
+      transform: translateX(496px);
+      opacity: 0;
+    }
+    48% {
+      opacity: 1;
+    }
+    72% {
+      transform: translateX(632px);
+      opacity: 1;
+    }
+    78%,
+    100% {
+      transform: translateX(632px);
+      opacity: 0;
+    }
+  }
+  @keyframes flow-spark {
+    0%,
+    30% {
+      transform: rotate(0deg) scale(1);
+    }
+    40% {
+      transform: rotate(90deg) scale(1.18);
+    }
+    50% {
+      transform: rotate(180deg) scale(1);
+    }
+    100% {
+      transform: rotate(180deg) scale(1);
+    }
+  }
+  @keyframes flow-breathe {
+    0%,
+    30%,
+    60%,
+    100% {
+      transform: scale(1);
+      opacity: 0.14;
+    }
+    45% {
+      transform: scale(1.18);
+      opacity: 0.3;
+    }
+  }
+  @keyframes flow-appear {
+    0%,
+    62% {
+      opacity: 0;
+      transform: translateX(-6px);
+    }
+    72%,
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
