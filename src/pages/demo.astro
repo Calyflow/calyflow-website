@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+
+const title = 'Demo | Calyflow';
+const description =
+  'Watch Calyflow in action: see how open-source recruiting agents run AI sourcing, screening, and outreach workflows on your own AI, data, and tools.';
+
+// Loom videos to feature. Add new entries here as more demos are recorded.
+const videos = [
+  {
+    id: 'de43e16b46be473a8ccf7ae5caefba6e',
+    title: 'Calyflow demo',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="Demo" title="See Calyflow in action">
+        Watch how Calyflow's open-source recruiting agents run AI sourcing,
+        screening, and outreach workflows — on your own AI, your own data, your
+        own tools.
+      </SectionHeading>
+
+      <div class="mx-auto mt-12 max-w-4xl space-y-12">
+        {
+          videos.map((video) => (
+            <figure>
+              <div class="relative aspect-video overflow-hidden rounded-[16px] border border-navy-800/12 bg-navy-900">
+                <iframe
+                  class="absolute inset-0 h-full w-full"
+                  src={`https://www.loom.com/embed/${video.id}`}
+                  title={video.title}
+                  loading="lazy"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                />
+              </div>
+            </figure>
+          ))
+        }
+      </div>
+
+      <div class="mt-12 flex justify-center">
+        <Button href={SITE.signupUrl} size="lg" event="cta-demo">
+          Create a free account
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
