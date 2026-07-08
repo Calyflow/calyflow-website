@@ -1,0 +1,238 @@
+---
+/**
+ * Animated hub-and-satellites illustration: agent nodes orbiting the
+ * Automation Hub while pulse rings emanate from the center. All motion
+ * is CSS-only and disabled under prefers-reduced-motion.
+ */
+---
+
+<svg
+  viewBox="0 0 560 560"
+  fill="none"
+  role="img"
+  aria-label="AI agents orbiting a central automation hub"
+  class="h-auto w-full"
+>
+  <defs>
+    <linearGradient id="orbit-glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--color-mint-400)"></stop>
+      <stop offset="100%" stop-color="var(--color-sky-300)"></stop>
+    </linearGradient>
+    <filter id="orbit-blur" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="26"></feGaussianBlur>
+    </filter>
+  </defs>
+
+  <!-- ambient glow -->
+  <circle cx="280" cy="280" r="90" fill="url(#orbit-glow)" opacity="0.35" filter="url(#orbit-blur)" class="orbit-breathe"></circle>
+
+  <!-- expanding pulse rings -->
+  <circle cx="280" cy="280" r="64" stroke="var(--color-mint-400)" stroke-width="1.5" class="orbit-ping"></circle>
+  <circle cx="280" cy="280" r="64" stroke="var(--color-mint-400)" stroke-width="1.5" class="orbit-ping orbit-ping-2"></circle>
+
+  <!-- orbit tracks -->
+  <circle cx="280" cy="280" r="146" stroke="var(--color-navy-800)" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="3 7"></circle>
+  <circle cx="280" cy="280" r="216" stroke="var(--color-navy-800)" stroke-opacity="0.1" stroke-width="1.5" stroke-dasharray="3 7"></circle>
+
+  <!-- inner orbit: 3 agent nodes -->
+  <g class="orbit-spin-a">
+    {
+      [
+        // envelope agent
+        {
+          angle: 0,
+          tone: 'var(--color-mint-400)',
+          glyph: '<rect x="-8" y="-6" width="16" height="12" rx="2.5" stroke="var(--color-navy-800)" stroke-width="1.6"/><path d="m-7 -4.5 6.1 4.6a1.5 1.5 0 0 0 1.8 0L7 -4.5" stroke="var(--color-navy-800)" stroke-width="1.6" stroke-linecap="round"/>',
+        },
+        // document agent
+        {
+          angle: 120,
+          tone: 'var(--color-sky-300)',
+          glyph: '<path d="M-6 -9h8l4 4v14h-12Z" stroke="var(--color-navy-800)" stroke-width="1.6" stroke-linejoin="round"/><path d="M-2.5 -1h5M-2.5 3.5h5" stroke="var(--color-navy-800)" stroke-width="1.6" stroke-linecap="round"/>',
+        },
+        // database agent
+        {
+          angle: 240,
+          tone: 'var(--color-lavender-300)',
+          glyph: '<ellipse cx="0" cy="-6" rx="7.5" ry="3" stroke="var(--color-navy-800)" stroke-width="1.6"/><path d="M-7.5 -6v12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-12" stroke="var(--color-navy-800)" stroke-width="1.6"/>',
+        },
+      ].map((n) => {
+        const rad = (n.angle * Math.PI) / 180;
+        const x = 280 + 146 * Math.cos(rad);
+        const y = 280 + 146 * Math.sin(rad);
+        return (
+          <g transform={`translate(${x} ${y})`}>
+            <g class="orbit-counter-a">
+              <circle r="24" fill="white" stroke="var(--color-navy-800)" stroke-width="1.75" />
+              <circle r="24" fill={n.tone} opacity="0.25" />
+              <g set:html={n.glyph} />
+            </g>
+          </g>
+        );
+      })
+    }
+  </g>
+
+  <!-- outer orbit: 4 smaller nodes -->
+  <g class="orbit-spin-b">
+    {
+      [
+        // magnifier
+        {
+          angle: 45,
+          tone: 'var(--color-sky-300)',
+          glyph: '<circle cx="-1.5" cy="-1.5" r="6" stroke="var(--color-navy-800)" stroke-width="1.6"/><path d="m3 3 4.5 4.5" stroke="var(--color-navy-800)" stroke-width="1.6" stroke-linecap="round"/>',
+        },
+        // clock
+        {
+          angle: 135,
+          tone: 'var(--color-mint-400)',
+          glyph: '<circle r="7.5" stroke="var(--color-navy-800)" stroke-width="1.6"/><path d="M0 -4v4l3 2" stroke="var(--color-navy-800)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>',
+        },
+        // spark
+        {
+          angle: 225,
+          tone: 'var(--color-mint-400)',
+          glyph: '<path d="M0 -8 1.8 -1.8 8 0 1.8 1.8 0 8 -1.8 1.8 -8 0 -1.8 -1.8Z" fill="var(--color-mint-400)" stroke="var(--color-navy-800)" stroke-width="1.3" stroke-linejoin="round"/>',
+        },
+        // chart
+        {
+          angle: 315,
+          tone: 'var(--color-lavender-300)',
+          glyph: '<path d="M-6 6v-5M-1 6v-9M4 6v-13" stroke="var(--color-navy-800)" stroke-width="1.8" stroke-linecap="round"/>',
+        },
+      ].map((n) => {
+        const rad = (n.angle * Math.PI) / 180;
+        const x = 280 + 216 * Math.cos(rad);
+        const y = 280 + 216 * Math.sin(rad);
+        return (
+          <g transform={`translate(${x} ${y})`}>
+            <g class="orbit-counter-b">
+              <circle r="19" fill="white" stroke="var(--color-navy-800)" stroke-width="1.6" />
+              <circle r="19" fill={n.tone} opacity="0.22" />
+              <g set:html={n.glyph} />
+            </g>
+          </g>
+        );
+      })
+    }
+  </g>
+
+  <!-- central hub -->
+  <g>
+    <rect x="234" y="234" width="92" height="92" rx="20" fill="white" stroke="var(--color-navy-800)" stroke-width="1.75"></rect>
+    <rect x="234" y="234" width="92" height="92" rx="20" fill="url(#orbit-glow)" opacity="0.18"></rect>
+    <path
+      d="M280 254 l6 18 18 6 -18 6 -6 18 -6 -18 -18 -6 18 -6Z"
+      fill="var(--color-mint-400)"
+      class="orbit-star"
+    ></path>
+    <path d="M312 248 v9 M316.5 252.5 h-9" stroke="var(--color-navy-800)" stroke-opacity="0.45" stroke-width="1.5" stroke-linecap="round"></path>
+  </g>
+  <text
+    x="280"
+    y="368"
+    text-anchor="middle"
+    font-family="var(--font-mono)"
+    font-size="11"
+    letter-spacing="1.5"
+    font-weight="600"
+    fill="var(--color-mint-700)"
+  >AUTOMATION HUB</text>
+</svg>
+
+<style>
+  .orbit-spin-a,
+  .orbit-spin-b,
+  .orbit-counter-a,
+  .orbit-counter-b,
+  .orbit-ping,
+  .orbit-breathe,
+  .orbit-star {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .orbit-spin-a,
+  .orbit-spin-b {
+    transform-box: view-box;
+    transform-origin: 50% 50%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .orbit-spin-a {
+      animation: orbit-rotate 36s linear infinite;
+    }
+    .orbit-counter-a {
+      animation: orbit-rotate-rev 36s linear infinite;
+    }
+    .orbit-spin-b {
+      animation: orbit-rotate-rev 56s linear infinite;
+    }
+    .orbit-counter-b {
+      animation: orbit-rotate 56s linear infinite;
+    }
+    .orbit-ping {
+      animation: orbit-ping 4.5s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+    }
+    .orbit-ping-2 {
+      animation-delay: 2.25s;
+    }
+    .orbit-breathe {
+      animation: orbit-breathe 5s ease-in-out infinite;
+    }
+    .orbit-star {
+      animation: orbit-star 5s ease-in-out infinite;
+    }
+  }
+  /* Without animation, hide the duplicate ping ring. */
+  @media (prefers-reduced-motion: reduce) {
+    .orbit-ping-2 {
+      display: none;
+    }
+    .orbit-ping {
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes orbit-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes orbit-rotate-rev {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+  @keyframes orbit-ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.65;
+    }
+    80%,
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+  @keyframes orbit-breathe {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.12);
+      opacity: 0.45;
+    }
+  }
+  @keyframes orbit-star {
+    0%,
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.12) rotate(12deg);
+    }
+  }
+</style>

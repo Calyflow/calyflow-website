@@ -10,6 +10,26 @@ const title = 'ATS / CRM Enrichment automation hubs | Calyflow';
 const description =
   'Custom automation hubs that enrich your ATS or CRM daily from Coresignal, Bright Data, Apollo, and Hunter.io. Pick your system to see what it can do.';
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'ATS / CRM Enrichment automation hubs',
+    serviceType: 'Recruiting data enrichment',
+    description,
+    url: `${SITE.url}/ats-crm-enrichment`,
+    provider: { '@id': `${SITE.url}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      { '@type': 'ListItem', position: 2, name: 'ATS / CRM Enrichment', item: `${SITE.url}/ats-crm-enrichment` },
+    ],
+  },
+];
+
 const modules = import.meta.glob<{ default: EnrichmentTarget }>('../data/enrichment/*.ts', {
   eager: true,
 });
@@ -25,7 +45,7 @@ const crm = all.filter((t) => t.category === 'crm');
 const favicons = faviconMap(await getConnectors());
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <!-- Hero + selector -->
   <section class="relative overflow-hidden">
     <div

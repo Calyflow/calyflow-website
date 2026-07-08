@@ -4,7 +4,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import Button from '../components/Button.astro';
 import { SITE } from '../data/site';
 
-const title = 'Demo | Calyflow';
+const title = 'Calyflow Demo — recruiting AI agents in action';
 const description =
   'Watch Calyflow in action: see how open-source recruiting agents run AI sourcing, screening, and outreach workflows on your own AI, data, and tools.';
 
@@ -13,14 +13,26 @@ const videos = [
   {
     id: 'de43e16b46be473a8ccf7ae5caefba6e',
     title: 'Calyflow demo',
+    uploadDate: '2026-07-08',
   },
 ];
+
+const jsonLd = videos.map((video) => ({
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: video.title,
+  description,
+  uploadDate: video.uploadDate,
+  thumbnailUrl: `https://cdn.loom.com/sessions/thumbnails/${video.id}-00001.jpg`,
+  embedUrl: `https://www.loom.com/embed/${video.id}`,
+  publisher: { '@id': `${SITE.url}/#organization` },
+}));
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <section class="py-12 md:py-16">
     <div class="mx-auto max-w-6xl px-5">
-      <SectionHeading eyebrow="Demo" title="See Calyflow in action">
+      <SectionHeading as="h1" eyebrow="Demo" title="See Calyflow in action">
         Watch how Calyflow's open-source recruiting agents run AI sourcing,
         screening, and outreach workflows — on your own AI, your own data, your
         own tools.

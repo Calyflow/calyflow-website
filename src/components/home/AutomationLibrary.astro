@@ -2,6 +2,7 @@
 import { getAllLibraryItems, groupByContext, pickFeatured } from '../../lib/library';
 import SectionHeading from '../SectionHeading.astro';
 import LibraryCard from '../library/LibraryCard.astro';
+import AgentFlowIllustration from './AgentFlowIllustration.astro';
 
 const items = await getAllLibraryItems();
 const groups = groupByContext(items).map((group) => ({
@@ -17,6 +18,10 @@ const total = items.length;
       Calyflow runs AI agents on your own AI, data, and tools. Some turn a brief into a finished
       deliverable; others reach into your ATS, CRM, and data to do the work.
     </SectionHeading>
+
+    <div class="mx-auto mt-10 hidden max-w-3xl md:block">
+      <AgentFlowIllustration />
+    </div>
 
     {
       groups.map((group) => (

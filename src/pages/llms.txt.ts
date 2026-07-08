@@ -46,6 +46,17 @@ Free to start, no credit card. New accounts include $10 of AI credit on the
 built-in Calyflow key (Claude Sonnet 4.6). Beyond that, users pay their own
 AI provider for tokens; every run shows its cost.
 
+## Products and services
+
+- CalyflowDB (${SITE.url}/calyflowdb): AI-ready talent database. Connects to
+  your ATS/CRM, enriches candidate data, and exposes it through hybrid
+  semantic + structured search that AI agents can query.
+- Automation Hub (${SITE.url}/automation-hub): custom AI agents on a schedule —
+  ATS/CRM enrichment, client research, shortlists, daily reporting.
+- ATS / CRM Enrichment hubs (${SITE.url}/ats-crm-enrichment): daily data
+  enrichment for 24+ ATS and CRM systems.
+- Product demo videos: ${SITE.url}/demo
+
 ## Links
 
 - Website: ${SITE.url}

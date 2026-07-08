@@ -2,40 +2,70 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Button from '../components/Button.astro';
+import Icon from '../components/icons/Icon.astro';
+import OrbitIllustration from '../components/automation-hub/OrbitIllustration.astro';
+import PipelineIllustration from '../components/automation-hub/PipelineIllustration.astro';
 import { SITE } from '../data/site';
 
-const title = 'Automation Hub — autonomous AI agents for recruiting | Calyflow';
+// Title ≤60 chars, description ≤155 (BaseLayout contract).
+const title = 'Automation Hub — autonomous recruiting AI | Calyflow';
 const description =
-  'The Calyflow Automation Hub runs custom AI agents on a schedule: enriching your ATS and CRM, researching clients, shortlisting candidates, and preparing documents — autonomously.';
+  'Custom AI agents on a schedule: enrich your ATS and CRM, research clients, shortlist candidates, and prepare documents — autonomously, on your own keys.';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Calyflow Automation Hub',
+    serviceType: 'Recruiting automation',
+    description,
+    url: `${SITE.url}/automation-hub`,
+    provider: { '@id': `${SITE.url}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+      { '@type': 'ListItem', position: 2, name: 'Automation Hub', item: `${SITE.url}/automation-hub` },
+    ],
+  },
+];
 
 // The benefits of moving from on-demand workflows to scheduled, autonomous agents.
-const benefits = [
+const benefits: { icon: 'integration-plug' | 'moon' | 'document-check' | 'target' | 'key' | 'clock'; title: string; blurb: string }[] = [
   {
+    icon: 'integration-plug',
     title: 'Connect every data source',
     blurb:
       'Agents reach into your ATS, CRM, data providers, and tools in one run — reading and writing where your data already lives, instead of you copy-pasting between tabs.',
   },
   {
+    icon: 'moon',
     title: 'Enrich data while you sleep',
     blurb:
       'Fresh job titles, verified emails, firmographics, and job-change signals land in your systems every morning — no manual research, no stale records.',
   },
   {
+    icon: 'document-check',
     title: 'Prepare documents automatically',
     blurb:
       'Shortlists, screening reports, client research briefs, and daily summaries are drafted and filed before your team logs in, ready to review and send.',
   },
   {
+    icon: 'target',
     title: 'Highly customized AI agents',
     blurb:
       'Each automation is an AI-powered agent tuned to your agency — your sources, your rubric, your tone of voice, your schedule. Not a generic integration.',
   },
   {
+    icon: 'key',
     title: 'Runs on your own AI and keys',
     blurb:
       'Every agent runs on your own models, data, and tool accounts. The work — and the spend — stays yours, with a clear cost shown on every run.',
   },
   {
+    icon: 'clock',
     title: 'Always-on, never forgotten',
     blurb:
       'Hourly, daily, or continuous — automations fire on time, every time, with health states and run history so nothing silently breaks.',
@@ -102,11 +132,11 @@ const steps = [
 ];
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <!-- Hero -->
   <section class="relative overflow-hidden">
     <div
-      class="aurora-glow absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full"
+      class="aurora-glow hub-aurora absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full"
       aria-hidden="true"
     >
     </div>
@@ -133,7 +163,7 @@ const steps = [
         Custom-built for your agency · Runs on your own AI &amp; keys
       </p>
 
-      <div class="mt-14">
+      <div class="relative mt-14">
         <img
           src="/automation-hub-dashboard.svg"
           alt="Calyflow Automation Hub: a sidebar 'Automation Hub' section is selected, and the main panel lists scheduled AI automations — ATS and CRM data enrichment, daily reporting, top candidate shortlist, new client research, existing clients' new jobs research and candidate re-engagement — each with a green, red, or amber health state, schedule, last run, recent-run history, and next run. Stat cards show 7 active automations, 142 runs today at 98% success, and 1 needing attention."
@@ -142,6 +172,37 @@ const steps = [
           class="mx-auto w-full max-w-5xl rounded-[20px] ring-1 ring-navy-900/10 shadow-[0_2px_6px_rgba(19,31,56,0.06),0_24px_56px_-12px_rgba(19,31,56,0.28)]"
           fetchpriority="high"
         />
+
+        <!-- floating live-run chips -->
+        <div
+          class="hub-float absolute -top-5 left-[4%] hidden items-center gap-2.5 rounded-[12px] border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
+          aria-hidden="true"
+        >
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="hub-ping absolute inline-flex h-full w-full rounded-full bg-mint-400 opacity-75"></span>
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-mint-400"></span>
+          </span>
+          <span class="font-mono text-xs font-medium text-navy-800">3 agents running now</span>
+        </div>
+        <div
+          class="hub-float hub-float-delay absolute -right-2 top-[30%] hidden items-center gap-2.5 rounded-[12px] border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
+          aria-hidden="true"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 13 4 4L19 7"></path>
+          </svg>
+          <span class="font-mono text-xs font-medium text-navy-800">ATS enrichment · +38 records</span>
+        </div>
+        <div
+          class="hub-float hub-float-delay-2 absolute -bottom-4 left-[12%] hidden items-center gap-2.5 rounded-[12px] border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
+          aria-hidden="true"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-navy-800)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-60">
+            <circle cx="12" cy="12" r="8.5"></circle>
+            <path d="M12 7.5V12l3.25 2.25"></path>
+          </svg>
+          <span class="font-mono text-xs font-medium text-navy-800">Next run · 06:00 CET</span>
+        </div>
       </div>
     </div>
   </section>
@@ -156,9 +217,16 @@ const steps = [
 
       <div class="mt-14 grid gap-6 md:grid-cols-3">
         {
-          benefits.map((b) => (
-            <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
-              <h3 class="font-display text-xl font-semibold">{b.title}</h3>
+          benefits.map((b, i) => (
+            <div
+              class="group rounded-[20px] border border-navy-800/12 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy-900/8 motion-reduce:hover:translate-y-0"
+              data-reveal
+              style={`transition-delay: ${(i % 3) * 90}ms`}
+            >
+              <span class="hub-icon-bob inline-flex" style={`animation-delay: ${i * 0.7}s`}>
+                <Icon name={b.icon} size={32} />
+              </span>
+              <h3 class="mt-4 font-display text-xl font-semibold">{b.title}</h3>
               <p class="mt-3 text-[0.9375rem] text-navy-800/65">{b.blurb}</p>
             </div>
           ))
@@ -174,18 +242,27 @@ const steps = [
         A starting set — every hub is tailored, so yours can do whatever repeats in your agency.
       </SectionHeading>
 
-      <div class="mt-14 grid gap-6 md:grid-cols-2">
-        {
-          automations.map((a) => (
-            <div class="flex items-start gap-4 rounded-[16px] border border-navy-800/12 bg-white p-6">
-              <span class="mt-1.5 h-2.5 w-2.5 flex-none rounded-full bg-mint-400" aria-hidden="true" />
-              <div>
-                <h3 class="font-display text-lg font-semibold">{a.name}</h3>
-                <p class="mt-1.5 text-[0.9375rem] text-navy-800/65">{a.blurb}</p>
+      <div class="mt-14 grid items-center gap-12 lg:grid-cols-[5fr_7fr]">
+        <div class="mx-auto w-full max-w-md lg:sticky lg:top-24">
+          <OrbitIllustration />
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {
+            automations.map((a, i) => (
+              <div
+                class="flex items-start gap-3.5 rounded-[16px] border border-navy-800/12 bg-white p-5 transition duration-300 hover:border-mint-400/60"
+                data-reveal
+                style={`transition-delay: ${(i % 2) * 90}ms`}
+              >
+                <span class="mt-1.5 h-2.5 w-2.5 flex-none rounded-full bg-mint-400" aria-hidden="true" />
+                <div>
+                  <h3 class="font-display text-[1.0625rem] font-semibold">{a.name}</h3>
+                  <p class="mt-1.5 text-sm text-navy-800/65">{a.blurb}</p>
+                </div>
               </div>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>
@@ -197,10 +274,18 @@ const steps = [
         We build, you approve, then it runs on its own — with the visibility to trust it.
       </SectionHeading>
 
-      <div class="mt-14 grid gap-6 md:grid-cols-4">
+      <div class="mx-auto mt-14 hidden max-w-4xl md:block">
+        <PipelineIllustration />
+      </div>
+
+      <div class="mt-10 grid gap-6 md:mt-8 md:grid-cols-4">
         {
-          steps.map((s) => (
-            <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
+          steps.map((s, i) => (
+            <div
+              class="rounded-[20px] border border-navy-800/12 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy-900/8 motion-reduce:hover:translate-y-0"
+              data-reveal
+              style={`transition-delay: ${i * 90}ms`}
+            >
               <span class="font-mono text-sm font-medium text-navy-800/40">{s.step}</span>
               <h3 class="mt-3 font-display text-xl font-semibold">{s.title}</h3>
               <p class="mt-3 text-[0.9375rem] text-navy-800/65">{s.blurb}</p>
@@ -235,3 +320,99 @@ const steps = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Slow drift on the hero aurora. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hub-aurora {
+      animation: hub-aurora-drift 14s ease-in-out infinite;
+    }
+    .hub-float {
+      animation: hub-float 6s ease-in-out infinite;
+    }
+    .hub-float-delay {
+      animation-delay: 2s;
+    }
+    .hub-float-delay-2 {
+      animation-delay: 4s;
+    }
+    .hub-ping {
+      animation: hub-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    .hub-icon-bob {
+      animation: hub-icon-bob 4.5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes hub-aurora-drift {
+    0%,
+    100% {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(-44%) scale(1.08);
+      opacity: 0.85;
+    }
+  }
+  @keyframes hub-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes hub-ping {
+    75%,
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+  @keyframes hub-icon-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Scroll reveal: cards start hidden only once JS has run (html.reveal-ready),
+     so content is never hidden without JavaScript. */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.reveal-ready) [data-reveal] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out;
+    }
+    :global(html.reveal-ready) [data-reveal].is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Reveal cards as they scroll into view.
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('reveal-ready');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.1 },
+    );
+    document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+  }
+</script>
