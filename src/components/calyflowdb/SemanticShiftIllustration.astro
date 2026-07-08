@@ -1,0 +1,82 @@
+---
+/**
+ * Boolean strings fading out, replaced by an AI agent reading enriched
+ * profiles via semantic similarity, with evidence-backed matches.
+ */
+---
+
+<svg
+  viewBox="0 0 640 440"
+  fill="none"
+  role="img"
+  aria-label="Old Boolean search strings fading away, replaced by an AI agent using semantic similarity over enriched candidate profiles"
+  class="h-auto w-full"
+>
+  <!-- fading boolean strings -->
+  <g font-family="var(--font-mono)" font-size="13" fill="var(--color-navy-800)">
+    <text x="40" y="44" opacity="0.45">("java" AND spring AND aws) NOT junior</text>
+    <line x1="40" y1="40" x2="368" y2="40" stroke="var(--color-navy-800)" stroke-opacity="0.35" stroke-width="1.5"></line>
+    <text x="80" y="78" opacity="0.28">"payment*" OR fintech OR bank* OR insur*</text>
+    <line x1="80" y1="74" x2="428" y2="74" stroke="var(--color-navy-800)" stroke-opacity="0.2" stroke-width="1.5"></line>
+    <text x="56" y="112" opacity="0.14">(kubernetes OR k8s) AND terraform AND…</text>
+  </g>
+
+  <!-- transition arrow -->
+  <path d="M320 128 v34 m0 0 -7 -7 m7 7 7 -7" stroke="var(--color-mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- agent node -->
+  <circle cx="130" cy="280" r="34" fill="var(--color-lavender-300)" opacity="0.35"></circle>
+  <circle cx="130" cy="280" r="34" stroke="var(--color-navy-800)" stroke-width="1.75"></circle>
+  <circle cx="118" cy="274" r="3.5" fill="var(--color-navy-800)"></circle>
+  <circle cx="142" cy="274" r="3.5" fill="var(--color-navy-800)"></circle>
+  <path d="M118 292 q12 8 24 0" stroke="var(--color-navy-800)" stroke-width="1.75" stroke-linecap="round"></path>
+  <path d="M130 246 v-12 m0 0 h10" stroke="var(--color-navy-800)" stroke-width="1.75" stroke-linecap="round"></path>
+  <text x="130" y="342" text-anchor="middle" font-family="var(--font-mono)" font-size="10" letter-spacing="1.5" fill="var(--color-navy-800)" opacity="0.55">AI AGENT</text>
+
+  <!-- reading beam -->
+  <path d="M162 268 L 250 232 M162 292 L 250 328" stroke="var(--color-mint-400)" stroke-width="1.5" stroke-dasharray="4 5"></path>
+
+  <!-- semantic space -->
+  <ellipse cx="356" cy="280" rx="106" ry="88" fill="var(--color-sky-300)" opacity="0.14"></ellipse>
+  <ellipse cx="356" cy="280" rx="106" ry="88" stroke="var(--color-navy-800)" stroke-opacity="0.16" stroke-width="1.5" stroke-dasharray="3 6"></ellipse>
+  <!-- vector points: mint = similar cluster, faint = rest -->
+  <g fill="var(--color-mint-400)">
+    <circle cx="340" cy="262" r="6"></circle>
+    <circle cx="366" cy="248" r="5"></circle>
+    <circle cx="356" cy="284" r="6"></circle>
+    <circle cx="382" cy="270" r="5"></circle>
+  </g>
+  <g stroke="var(--color-mint-700)" stroke-opacity="0.5" stroke-width="1.25">
+    <path d="M340 262 366 248 M340 262 356 284 M366 248 382 270 M356 284 382 270"></path>
+  </g>
+  <g fill="var(--color-navy-800)" opacity="0.22">
+    <circle cx="300" cy="238" r="4"></circle>
+    <circle cx="296" cy="312" r="4"></circle>
+    <circle cx="330" cy="330" r="4"></circle>
+    <circle cx="404" cy="318" r="4"></circle>
+    <circle cx="418" cy="238" r="4"></circle>
+    <circle cx="378" cy="216" r="4"></circle>
+  </g>
+  <text x="356" y="394" text-anchor="middle" font-family="var(--font-mono)" font-size="10" letter-spacing="1.5" fill="var(--color-navy-800)" opacity="0.55">SEMANTIC SIMILARITY</text>
+
+  <!-- evidence card -->
+  <g>
+    <rect x="492" y="216" width="128" height="128" rx="12" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.18" stroke-width="1.5"></rect>
+    <text x="506" y="240" font-family="var(--font-mono)" font-size="10" letter-spacing="1" fill="var(--color-navy-800)" opacity="0.6">EVIDENCE</text>
+    {
+      [0, 1, 2].map((i) => (
+        <g>
+          <path
+            d={`m506 ${256 + i * 24} 3.5 3.5 6 -6`}
+            stroke="var(--color-mint-700)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <rect x="524" y={252 + i * 24} width={82 - i * 16} height="7" rx="3.5" fill="var(--color-navy-800)" opacity="0.16" />
+        </g>
+      ))
+    }
+    <path d="M462 280 h24 m0 0 -6 -6 m6 6 -6 6" stroke="var(--color-navy-800)" stroke-opacity="0.4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path>
+  </g>
+</svg>

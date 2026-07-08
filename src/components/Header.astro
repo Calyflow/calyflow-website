@@ -3,12 +3,19 @@ import { SITE } from '../data/site';
 import Button from './Button.astro';
 import Logo from './Logo.astro';
 
-const nav = [
-  { label: 'Home', href: '/' },
+const howItWorks = [
+  { label: 'Demo', href: '/demo' },
   { label: 'Agents', href: '/automation-library' },
   { label: 'Automation Hub', href: '/automation-hub' },
   { label: 'ATS / CRM Enrichment', href: '/ats-crm-enrichment' },
-  { label: 'Demo', href: '/demo' },
+];
+
+// `dropdown` renders as a hover/focus submenu on desktop and a grouped
+// section in the mobile menu.
+const nav = [
+  { label: 'Home', href: '/' },
+  { label: 'CalyflowDB', href: '/calyflowdb' },
+  { label: 'How it works', dropdown: howItWorks },
   { label: 'Docs', href: SITE.docsUrl, external: true },
   { label: 'Blog', href: '/blog' },
 ];
@@ -20,31 +27,71 @@ const nav = [
 
     <nav aria-label="Main" class="hidden items-center gap-7 md:flex">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            rel={item.external ? 'noopener' : undefined}
-            class="inline-flex items-center gap-1 text-sm font-medium text-navy-800/80 transition-colors hover:text-navy-900"
-          >
-            {item.label}
-            {item.external && (
-              <svg
-                width="11"
-                height="11"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="opacity-50"
-                aria-hidden="true"
+        nav.map((item) =>
+          item.dropdown ? (
+            <div class="group relative">
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 py-5 text-sm font-medium text-navy-800/80 transition-colors group-focus-within:text-navy-900 group-hover:text-navy-900"
+                aria-haspopup="true"
               >
-                <path d="M7 17 17 7M9 7h8v8" />
-              </svg>
-            )}
-          </a>
-        ))
+                {item.label}
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="opacity-50 transition-transform duration-200 group-focus-within:rotate-180 group-hover:rotate-180"
+                  aria-hidden="true"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-1 opacity-0 transition duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                <ul class="min-w-56 rounded-[14px] border border-navy-800/10 bg-cream-50 p-2 shadow-lg shadow-navy-900/8">
+                  {item.dropdown.map((sub) => (
+                    <li>
+                      <a
+                        href={sub.href}
+                        class="block rounded-[10px] px-3.5 py-2.5 text-sm font-medium text-navy-800/80 hover:bg-cream-100 hover:text-navy-900"
+                      >
+                        {sub.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              rel={item.external ? 'noopener' : undefined}
+              class="inline-flex items-center gap-1 text-sm font-medium text-navy-800/80 transition-colors hover:text-navy-900"
+            >
+              {item.label}
+              {item.external && (
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="opacity-50"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
+              )}
+            </a>
+          )
+        )
       }
     </nav>
 
@@ -70,33 +117,53 @@ const nav = [
   <nav id="mobile-nav" aria-label="Mobile" class="hidden border-t border-navy-800/10 px-5 pt-3 pb-5 md:hidden">
     <ul class="flex flex-col gap-1">
       {
-        nav.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              rel={item.external ? 'noopener' : undefined}
-              class="flex items-center gap-1.5 rounded-[10px] px-3 py-2.5 font-medium text-navy-800 hover:bg-cream-100"
-            >
-              {item.label}
-              {item.external && (
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="opacity-50"
-                  aria-hidden="true"
-                >
-                  <path d="M7 17 17 7M9 7h8v8" />
-                </svg>
-              )}
-            </a>
-          </li>
-        ))
+        nav.map((item) =>
+          item.dropdown ? (
+            <li>
+              <p class="px-3 pt-3 pb-1 font-mono text-xs font-medium tracking-wide text-navy-800/50 uppercase">
+                {item.label}
+              </p>
+              <ul class="flex flex-col gap-1">
+                {item.dropdown.map((sub) => (
+                  <li>
+                    <a
+                      href={sub.href}
+                      class="flex items-center gap-1.5 rounded-[10px] px-3 py-2.5 pl-6 font-medium text-navy-800 hover:bg-cream-100"
+                    >
+                      {sub.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li>
+              <a
+                href={item.href}
+                rel={item.external ? 'noopener' : undefined}
+                class="flex items-center gap-1.5 rounded-[10px] px-3 py-2.5 font-medium text-navy-800 hover:bg-cream-100"
+              >
+                {item.label}
+                {item.external && (
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="opacity-50"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17 17 7M9 7h8v8" />
+                  </svg>
+                )}
+              </a>
+            </li>
+          )
+        )
       }
     </ul>
     <div class="mt-3 px-3">

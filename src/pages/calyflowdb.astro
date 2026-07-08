@@ -1,0 +1,569 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../data/site';
+import HeroIllustration from '../components/calyflowdb/HeroIllustration.astro';
+import BeforeAfterIllustration from '../components/calyflowdb/BeforeAfterIllustration.astro';
+import HowItWorksDiagram from '../components/calyflowdb/HowItWorksDiagram.astro';
+import EnrichedProfileIllustration from '../components/calyflowdb/EnrichedProfileIllustration.astro';
+import SemanticShiftIllustration from '../components/calyflowdb/SemanticShiftIllustration.astro';
+
+const title = 'CalyflowDB — The AI-ready talent database for recruiting teams';
+const description =
+  'Stop searching candidates by keywords. CalyflowDB unifies your ATS, CRM, notes, calls and outreach into enriched profiles that AI agents can search, match and explain.';
+
+const scatteredSources = [
+  { where: 'CVs', in: 'your ATS' },
+  { where: 'Notes', in: 'recruiter fields' },
+  { where: 'Calls', in: 'Zoom, Fireflies, Gong, tl;dv' },
+  { where: 'Relationships', in: 'HubSpot, Pipedrive, Attio' },
+  { where: 'Spreadsheets', in: 'Sheets, Excel, Airtable' },
+  { where: 'Sourcing history', in: 'LinkedIn, Apollo, PDL' },
+  { where: 'Outreach', in: 'Gmail, Lemlist, Instantly' },
+  { where: 'Project context', in: 'Slack, Notion, docs' },
+];
+
+const agentUnderstands = [
+  'what a candidate has actually done',
+  'which projects they worked on',
+  'what industries they know',
+  'what hiring managers said about them',
+  'why they were rejected last time',
+  'whether they are worth re-engaging',
+  'what kind of role they may fit now',
+  'which relationship history exists',
+  'what evidence supports a match',
+];
+
+const connectorCategories = [
+  { label: 'ATS', items: 'Bullhorn, Greenhouse, Lever, Recruit CRM, Teamtailor, Vincere, Workable, Zoho Recruit…' },
+  { label: 'CRM', items: 'HubSpot, Pipedrive, Attio, Notion, monday.com, Zoho CRM…' },
+  { label: 'Spreadsheets', items: 'Airtable, Google Sheets, Microsoft Excel' },
+  { label: 'Email', items: 'Gmail, Microsoft Outlook' },
+  { label: 'Sourcing & enrichment', items: 'Apollo, Coresignal, People Data Labs, RocketReach, SignalHire, Wiza, Hunter.io, Lusha…' },
+  { label: 'Meetings & transcripts', items: 'Avoma, Fathom, Fireflies.ai, Gong, Grain, tl;dv, Zoom…' },
+  { label: 'Outreach', items: 'Instantly.ai, Lemlist, Smartlead, Reply.io, Woodpecker, Mailshake…' },
+  { label: 'Team knowledge', items: 'Slack, Notion, documents, project files' },
+];
+
+const profileIncludes = [
+  'CV and work history',
+  'skills and seniority signals',
+  'recruiter notes',
+  'screening summaries',
+  'interview feedback',
+  'meeting transcripts',
+  'salary and availability context',
+  'past applications',
+  'client submissions',
+  'outreach history',
+  'relationship notes',
+  'enrichment data',
+];
+
+const agentCapabilities = [
+  'find candidates similar to a job',
+  'find jobs similar to a candidate',
+  'explain why someone is a fit',
+  'show evidence from the underlying data',
+  'identify missing information',
+  'compare candidates against must-haves',
+  'create shortlists',
+  'prepare candidate summaries',
+  'draft outreach',
+  'generate candidate marketing profiles',
+  'push outputs back into your workflow',
+];
+
+const agencyUses = [
+  'find candidates for new roles from your existing database',
+  'search by meaning instead of Boolean strings',
+  'enrich profiles with CVs, notes, transcripts, outreach, and CRM history',
+  'identify candidates worth reactivating',
+  'reduce duplicated sourcing work across recruiters',
+  'turn messy ATS and CRM data into a reusable agency asset',
+];
+
+const inHouseUses = [
+  'find past applicants who match new roles',
+  'search across interview notes, scorecards, CVs, and recruiter feedback',
+  'identify silver-medalist candidates',
+  'preserve hiring-manager calibration notes',
+  'reduce time spent manually reviewing old applications',
+  'support recruiters with evidence-backed AI recommendations',
+];
+
+const shifts = [
+  { from: 'Search strings', to: 'Semantic search' },
+  { from: 'Static records', to: 'Enriched profiles' },
+  { from: 'Scattered tools', to: 'Connected context' },
+  { from: 'Manual review', to: 'AI-assisted shortlisting' },
+  { from: 'Database storage', to: 'Talent intelligence' },
+];
+
+const buildableAgents = [
+  {
+    name: 'Candidate Rediscovery Agent',
+    body: 'Find candidates already in your database for every new job.',
+  },
+  {
+    name: 'Silver Medalist Agent',
+    body: 'Surface strong past applicants rejected for timing, compensation, or availability — not because they were weak.',
+  },
+  {
+    name: 'Job-to-Candidate Matching Agent',
+    body: 'Compare a new role against your existing pool and return a ranked, evidence-backed shortlist.',
+  },
+  {
+    name: 'Candidate-to-Job Matching Agent',
+    body: 'Take a strong candidate and find relevant open roles, client opportunities, or talent-marketing angles.',
+  },
+  {
+    name: 'Transcript Intelligence Agent',
+    body: 'Turn interview and intake-call transcripts into searchable requirements, calibration notes, and candidate evidence.',
+  },
+  {
+    name: 'Candidate Marketing Profile Agent',
+    body: 'Turn a CV, notes, and call history into a polished profile for client submission or business development.',
+  },
+  {
+    name: 'Talent Pool Cleanup Agent',
+    body: 'Find duplicates, incomplete records, stale profiles, missing emails, and profiles worth updating.',
+  },
+  {
+    name: 'Outreach Personalization Agent',
+    body: 'Draft better outreach from enriched candidate and client context — without digging through every note.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div
+      class="aurora-glow absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pt-16 pb-16 md:grid-cols-2 md:pt-24 md:pb-24">
+      <div>
+        <p class="mb-4 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
+          CalyflowDB · AI-ready talent database
+        </p>
+        <h1
+          class="font-display text-[clamp(2.25rem,4.5vw,3.25rem)] leading-[1.08] font-bold tracking-[-0.01em]"
+        >
+          Stop searching candidates by keywords. Start letting
+          <span class="text-gradient-brand">AI agents understand them</span>.
+        </h1>
+        <p class="mt-6 text-lg text-navy-800/70">
+          Your ATS was built to <em>store</em> candidates. CalyflowDB is built to
+          <strong class="font-semibold text-navy-900">understand</strong> them. Bring together CVs,
+          recruiter notes, interview feedback, call transcripts, CRM history, and outreach activity —
+          then let AI agents search, match, explain, and act on fully enriched talent profiles.
+        </p>
+        <ul class="mt-6 space-y-1.5 font-mono text-sm text-navy-800/60">
+          <li>No more keyword search.</li>
+          <li>No more endless Boolean strings.</li>
+          <li>No more hidden talent.</li>
+        </ul>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href={SITE.bookCallUrl} size="lg" event="cta-calyflowdb-hero">Book a demo</Button>
+          <Button href="/#principles" variant="secondary" size="lg" event="cta-calyflowdb-connectors">
+            Explore connectors
+          </Button>
+        </div>
+      </div>
+      <div class="mx-auto w-full max-w-lg md:max-w-none">
+        <HeroIllustration />
+      </div>
+    </div>
+  </section>
+
+  <!-- The problem -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading
+        eyebrow="The problem"
+        title="Your best candidates are already in your database. You just can't find them."
+      >
+        Every recruiting team has the same problem: thousands of candidates, with the context
+        scattered across systems.
+      </SectionHeading>
+
+      <ul class="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          scatteredSources.map((s) => (
+            <li class="rounded-[12px] border border-navy-800/12 bg-white px-4 py-3">
+              <p class="font-display text-sm font-semibold text-navy-900">{s.where}</p>
+              <p class="mt-0.5 font-mono text-xs text-navy-800/55">{s.in}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="mx-auto mt-12 max-w-2xl text-center text-lg text-navy-800/70">
+        Traditional search cannot use all of that. It looks for <em>words</em>. CalyflowDB builds an
+        AI-ready talent layer that understands
+        <strong class="font-semibold text-navy-900">meaning, evidence, relationships, and context</strong>.
+      </p>
+
+      <div class="mt-14">
+        <BeforeAfterIllustration />
+      </div>
+
+      <!-- query comparison -->
+      <div class="mx-auto mt-14 grid max-w-4xl gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
+        <div class="rounded-[14px] border border-navy-800/12 bg-white p-5">
+          <p class="font-mono text-xs tracking-wide text-navy-800/50 uppercase">Instead of searching</p>
+          <p class="mt-3 font-mono text-sm text-navy-800/70 line-through decoration-amber-400/70 decoration-2">
+            "Java AND Spring AND AWS AND fintech"
+          </p>
+        </div>
+        <div class="hidden text-2xl text-mint-700 md:block" aria-hidden="true">→</div>
+        <div class="rounded-[14px] border-[1.5px] border-mint-400/60 bg-white p-5">
+          <p class="font-mono text-xs tracking-wide text-mint-700 uppercase">You can ask</p>
+          <p class="mt-3 text-[0.9375rem] leading-relaxed text-navy-800">
+            "Find senior backend engineers who have built high-volume payment systems, worked in
+            regulated environments, and are likely suitable for a remote-first European fintech
+            role."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- No more Boolean -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="order-2 md:order-1">
+          <SemanticShiftIllustration />
+        </div>
+        <div class="order-1 md:order-2">
+          <p class="mb-3 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
+            An AI-searchable talent memory
+          </p>
+          <h2 class="text-3xl tracking-tight md:text-4xl">
+            No more Boolean. No more keyword hunting. No more hidden talent.
+          </h2>
+          <p class="mt-4 text-navy-800/70">Your AI agents can understand:</p>
+          <ul class="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+            {
+              agentUnderstands.map((item) => (
+                <li class="flex items-start gap-2.5 text-[0.9375rem] text-navy-800/80">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--color-mint-700)"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-0.5 flex-none"
+                    aria-hidden="true"
+                  >
+                    <path d="m5 13 4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-6 text-navy-800/70">
+            Instead of manually searching, filtering, reading, comparing, and rewriting the same
+            information again and again, your team runs agents that already know where to look and
+            what to extract.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What makes this different -->
+  <section class="bg-navy-900 py-20 md:py-24">
+    <div class="mx-auto max-w-3xl px-5 text-center">
+      <p class="font-mono text-sm font-medium tracking-wide text-mint-400 uppercase">
+        What makes this different?
+      </p>
+      <p class="mt-5 font-display text-2xl leading-snug font-bold text-white md:text-3xl">
+        Most recruiting tools add AI on top of incomplete data. CalyflowDB starts by connecting the
+        data.
+      </p>
+      <p class="mx-auto mt-5 max-w-2xl text-white/70">
+        The power comes from ingestion: the more relevant sources you connect, the more useful the
+        agents become. Your agents are not working from a single CV — they are working from a
+        complete recruiting memory.
+      </p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="How it works" title="Connect. Enrich. Let agents work.">
+        CalyflowDB does not replace your ATS or CRM. It makes your existing tools AI-ready.
+      </SectionHeading>
+
+      <div class="mt-14 hidden md:block">
+        <HowItWorksDiagram />
+      </div>
+
+      <!-- Step 1 -->
+      <div class="mt-16 grid gap-10 md:grid-cols-[220px_1fr] md:gap-16">
+        <div>
+          <p class="font-mono text-sm font-bold text-mint-700">STEP 1</p>
+          <h3 class="mt-2 font-display text-2xl font-semibold">Connect your recruiting data</h3>
+          <p class="mt-3 text-[0.9375rem] text-navy-800/70">
+            Connect the systems your team already uses. You choose what each agent can access.
+          </p>
+        </div>
+        <ul class="grid gap-3 sm:grid-cols-2">
+          {
+            connectorCategories.map((c) => (
+              <li class="rounded-[12px] border border-navy-800/12 bg-white px-4 py-3">
+                <p class="font-display text-sm font-semibold text-navy-900">{c.label}</p>
+                <p class="mt-1 text-xs leading-relaxed text-navy-800/60">{c.items}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="mt-20 grid items-center gap-10 md:grid-cols-2 md:gap-16">
+        <div>
+          <p class="font-mono text-sm font-bold text-mint-700">STEP 2</p>
+          <h3 class="mt-2 font-display text-2xl font-semibold">Build fully enriched candidate profiles</h3>
+          <p class="mt-3 text-[0.9375rem] text-navy-800/70">
+            CalyflowDB turns fragmented data into structured, searchable recruiting context. The goal
+            is not another database full of empty fields — it is profiles AI agents can
+            <strong class="font-semibold text-navy-900">reason over</strong>.
+          </p>
+          <ul class="mt-5 flex flex-wrap gap-2">
+            {
+              profileIncludes.map((item) => (
+                <li class="rounded-full bg-white px-3.5 py-1.5 font-mono text-xs text-navy-800/75 ring-1 ring-navy-800/10">
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <EnrichedProfileIllustration />
+      </div>
+
+      <!-- Step 3 -->
+      <div class="mt-20 grid gap-10 md:grid-cols-[220px_1fr] md:gap-16">
+        <div>
+          <p class="font-mono text-sm font-bold text-mint-700">STEP 3</p>
+          <h3 class="mt-2 font-display text-2xl font-semibold">Let AI agents search, match, and explain</h3>
+          <p class="mt-3 text-[0.9375rem] text-navy-800/70">
+            The agent does not just return names. It returns
+            <strong class="font-semibold text-navy-900">reasoning, evidence, and next actions</strong>.
+          </p>
+        </div>
+        <ul class="grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+          {
+            agentCapabilities.map((item) => (
+              <li class="flex items-start gap-2.5 text-[0.9375rem] text-navy-800/80">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="var(--color-mint-700)"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mt-0.5 flex-none"
+                  aria-hidden="true"
+                >
+                  <path d="m5 13 4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Example -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-4xl px-5">
+      <SectionHeading eyebrow="Example" title="From scattered data to an AI-ready answer" />
+      <div class="mt-12 space-y-5">
+        <div class="rounded-[16px] border border-navy-800/12 bg-white p-6 md:p-8">
+          <p class="font-mono text-xs tracking-wide text-navy-800/50 uppercase">A recruiter asks</p>
+          <p class="mt-3 font-display text-lg font-medium text-navy-900">
+            "Find candidates for a Senior Platform Engineer role. Must have Kubernetes, Terraform,
+            AWS, and experience supporting developer teams. Ideally fintech or SaaS."
+          </p>
+          <p class="mt-4 text-sm text-navy-800/60">
+            A traditional ATS search looks for matching keywords. CalyflowDB looks across CV text,
+            ATS notes, previous submissions, interview transcripts, screening summaries, public
+            profile enrichment, CRM relationship history, recruiter comments, and outreach history.
+          </p>
+        </div>
+        <div class="rounded-[16px] bg-navy-900 p-6 md:p-8">
+          <p class="font-mono text-xs tracking-wide text-mint-400 uppercase">The agent returns</p>
+          <p class="mt-3 text-lg leading-relaxed text-white/90">
+            "Candidate A is a strong match because they led Kubernetes platform work, built
+            Terraform modules on AWS, supported 60+ developers, and previously worked in a regulated
+            payments environment. The latest recruiter note says they were not ready to move six
+            months ago, but were open to reconnecting in Q3."
+          </p>
+          <p class="mt-5 font-mono text-sm text-mint-400">
+            That is not keyword search. That is recruiting intelligence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audiences -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="Who it's for" title="Built for agencies and in-house talent teams" />
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        <div class="rounded-[18px] border border-navy-800/12 bg-white p-7 md:p-9">
+          <h3 class="font-display text-xl font-semibold">For recruiting agencies</h3>
+          <p class="mt-2 text-sm text-navy-800/65">
+            Rediscover candidates your team already sourced, screened, interviewed, or marketed.
+          </p>
+          <ul class="mt-5 space-y-2.5">
+            {
+              agencyUses.map((item) => (
+                <li class="flex items-start gap-2.5 text-[0.9375rem] text-navy-800/80">
+                  <span class="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-mint-400" aria-hidden="true" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-6 border-l-[3px] border-mint-400 pl-4 text-sm text-navy-800/70 italic">
+            Your database becomes more than storage. It becomes a searchable intelligence layer for
+            the whole agency.
+          </p>
+        </div>
+        <div class="rounded-[18px] border border-navy-800/12 bg-white p-7 md:p-9">
+          <h3 class="font-display text-xl font-semibold">For in-house talent teams</h3>
+          <p class="mt-2 text-sm text-navy-800/65">
+            Stop losing context between requisitions, hiring managers, recruiters, and interview
+            loops.
+          </p>
+          <ul class="mt-5 space-y-2.5">
+            {
+              inHouseUses.map((item) => (
+                <li class="flex items-start gap-2.5 text-[0.9375rem] text-navy-800/80">
+                  <span class="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-mint-400" aria-hidden="true" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-6 border-l-[3px] border-mint-400 pl-4 text-sm text-navy-800/70 italic">
+            Your team can finally reuse what it already knows.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why now: the shift -->
+  <section class="py-20 md:py-24">
+    <div class="mx-auto max-w-4xl px-5">
+      <SectionHeading eyebrow="Why now" title="AI agents are only as good as the context they can access">
+        Most recruiting teams already have valuable data — trapped in disconnected systems. This is
+        the shift:
+      </SectionHeading>
+      <ul class="mx-auto mt-10 max-w-2xl divide-y divide-navy-800/10 rounded-[16px] border border-navy-800/12 bg-white">
+        {
+          shifts.map((s) => (
+            <li class="flex items-center justify-between gap-4 px-6 py-4">
+              <span class="font-mono text-sm text-navy-800/55">{s.from}</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--color-mint-700)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="flex-none"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14m0 0-6-6m6 6-6 6" />
+              </svg>
+              <span class="text-right font-display text-[0.9375rem] font-semibold text-navy-900">{s.to}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- What your team can build -->
+  <section class="bg-cream-100 py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-5">
+      <SectionHeading eyebrow="What your team can build" title="Agents that work your database for you">
+        Recruiters do not need more empty AI chat boxes. They need AI agents that can actually work
+        with their data.
+      </SectionHeading>
+      <ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          buildableAgents.map((a) => (
+            <li class="rounded-[14px] border border-navy-800/12 bg-white p-5">
+              <h3 class="font-display text-[0.9375rem] leading-snug font-semibold text-navy-900">{a.name}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-navy-800/65">{a.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Stack + closing CTA -->
+  <section class="py-24 md:py-32">
+    <div class="mx-auto max-w-4xl px-5">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="mb-3 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
+          Built to work with your stack
+        </p>
+        <h2 class="text-3xl tracking-tight md:text-4xl">A new layer for modern recruiting teams</h2>
+        <p class="mt-4 text-navy-800/65">
+          You do not need to migrate away from your ATS. You do not need to replace your CRM. You do
+          not need recruiters to learn a new database. The future of recruiting is not another ATS —
+          it is an AI-ready layer that sits across your data, tools, candidates, jobs, clients, and
+          conversations.
+        </p>
+      </div>
+
+      <div class="mt-14 rounded-[24px] bg-navy-900 px-6 py-14 text-center md:px-12">
+        <p class="font-display text-3xl leading-tight font-bold text-white">
+          Just AI agents working from fully enriched profiles.
+        </p>
+        <p class="mx-auto mt-4 max-w-xl text-white/70">
+          No more keyword search. No more Boolean gymnastics. No more hidden talent. Book a demo and
+          we will show you CalyflowDB on your own recruiting data.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button href={SITE.bookCallUrl} size="lg" event="cta-calyflowdb-final">Book a demo</Button>
+          <a
+            href={SITE.signupUrl}
+            class="inline-flex items-center justify-center gap-2 rounded-[10px] border-[1.5px] border-white/30 px-7 py-3.5 font-semibold text-white transition duration-200 ease-out hover:border-white"
+            data-event="cta-calyflowdb-signup"
+          >
+            Create free account
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

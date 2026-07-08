@@ -21,7 +21,7 @@ export const SITE = {
   docsLlmsTxtUrl: 'https://app.calyflow.ai/llms.txt',
   signupUrl: 'https://app.calyflow.ai/sign-up',
   /** Google Calendar booking link for custom automation-hub discovery calls. */
-  bookCallUrl: 'https://calendar.app.google/gfGaewL9jx9wf7Xh7',
+  bookCallUrl: 'https://calendar.app.google/mqJ6x4hCQm6Kp9bK7',
   githubUrl: 'https://github.com/Calyflow/calyflow-app',
   githubRepo: 'Calyflow/calyflow-app',
   contactEmail: 'hello@calyflow.ai',
