@@ -7,6 +7,7 @@ import Breadcrumbs from '../../components/blog/Breadcrumbs.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import TopicChip from '../../components/blog/TopicChip.astro';
 import Button from '../../components/Button.astro';
+import CtaPanel from '../../components/CtaPanel.astro';
 import { SITE, AUTHOR } from '../../data/site';
 
 export async function getStaticPaths() {
@@ -140,7 +141,7 @@ const jsonLd = [
       )
     }
 
-    <div class="mt-20 rounded-[20px] bg-cream-100 px-6 py-12 text-center">
+    <CtaPanel tone="cream" class="mt-20">
       <h2 class="text-2xl">Ready to run this as a workflow?</h2>
       <p class="mx-auto mt-3 max-w-xl text-navy-800/65">
         Calyflow turns this playbook into a repeatable workflow on your own AI, data, and tools.
@@ -148,6 +149,6 @@ const jsonLd = [
       <Button href={SITE.signupUrl} size="lg" event="cta-blog-post" class="mt-6">
         Create free account
       </Button>
-    </div>
+    </CtaPanel>
   </article>
 </BaseLayout>

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Button from '../components/Button.astro';
+import CtaPanel from '../components/CtaPanel.astro';
 import { SITE } from '../data/site';
 import HeroIllustration from '../components/calyflowdb/HeroIllustration.astro';
 import BeforeAfterIllustration from '../components/calyflowdb/BeforeAfterIllustration.astro';
@@ -205,7 +206,7 @@ const buildableAgents = [
   </section>
 
   <!-- The problem -->
-  <section class="bg-cream-100 py-24 md:py-32">
+  <section class="py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading
         eyebrow="The problem"
@@ -218,7 +219,7 @@ const buildableAgents = [
       <ul class="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {
           scatteredSources.map((s) => (
-            <li class="rounded-[12px] border border-navy-800/12 bg-white px-4 py-3">
+            <li class="rounded-card border border-navy-800/12 bg-white px-4 py-3">
               <p class="font-display text-sm font-semibold text-navy-900">{s.where}</p>
               <p class="mt-0.5 font-mono text-xs text-navy-800/55">{s.in}</p>
             </li>
@@ -238,14 +239,14 @@ const buildableAgents = [
 
       <!-- query comparison -->
       <div class="mx-auto mt-14 grid max-w-4xl gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
-        <div class="rounded-[14px] border border-navy-800/12 bg-white p-5">
+        <div class="rounded-card border border-navy-800/12 bg-white p-5">
           <p class="font-mono text-xs tracking-wide text-navy-800/50 uppercase">Instead of searching</p>
           <p class="mt-3 font-mono text-sm text-navy-800/70 line-through decoration-amber-400/70 decoration-2">
             "Java AND Spring AND AWS AND fintech"
           </p>
         </div>
         <div class="hidden text-2xl text-mint-700 md:block" aria-hidden="true">→</div>
-        <div class="rounded-[14px] border-[1.5px] border-mint-400/60 bg-white p-5">
+        <div class="rounded-card border-[1.5px] border-mint-400/60 bg-white p-5">
           <p class="font-mono text-xs tracking-wide text-mint-700 uppercase">You can ask</p>
           <p class="mt-3 text-[0.9375rem] leading-relaxed text-navy-800">
             "Find senior backend engineers who have built high-volume payment systems, worked in
@@ -324,7 +325,7 @@ const buildableAgents = [
   </section>
 
   <!-- How it works -->
-  <section class="bg-cream-100 py-24 md:py-32">
+  <section class="py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="How it works" title="Connect. Enrich. Let agents work.">
         CalyflowDB does not replace your ATS or CRM. It makes your existing tools AI-ready.
@@ -346,7 +347,7 @@ const buildableAgents = [
         <ul class="grid gap-3 sm:grid-cols-2">
           {
             connectorCategories.map((c) => (
-              <li class="rounded-[12px] border border-navy-800/12 bg-white px-4 py-3">
+              <li class="rounded-card border border-navy-800/12 bg-white px-4 py-3">
                 <p class="font-display text-sm font-semibold text-navy-900">{c.label}</p>
                 <p class="mt-1 text-xs leading-relaxed text-navy-800/60">{c.items}</p>
               </li>
@@ -420,7 +421,7 @@ const buildableAgents = [
     <div class="mx-auto max-w-4xl px-5">
       <SectionHeading eyebrow="Example" title="From scattered data to an AI-ready answer" />
       <div class="mt-12 space-y-5">
-        <div class="rounded-[16px] border border-navy-800/12 bg-white p-6 md:p-8">
+        <div class="rounded-panel border border-navy-800/12 bg-white p-6 md:p-8">
           <p class="font-mono text-xs tracking-wide text-navy-800/50 uppercase">A recruiter asks</p>
           <p class="mt-3 font-display text-lg font-medium text-navy-900">
             "Find candidates for a Senior Platform Engineer role. Must have Kubernetes, Terraform,
@@ -432,7 +433,7 @@ const buildableAgents = [
             profile enrichment, CRM relationship history, recruiter comments, and outreach history.
           </p>
         </div>
-        <div class="rounded-[16px] bg-navy-900 p-6 md:p-8">
+        <div class="rounded-panel bg-navy-900 p-6 md:p-8">
           <p class="font-mono text-xs tracking-wide text-mint-400 uppercase">The agent returns</p>
           <p class="mt-3 text-lg leading-relaxed text-white/90">
             "Candidate A is a strong match because they led Kubernetes platform work, built
@@ -449,11 +450,11 @@ const buildableAgents = [
   </section>
 
   <!-- Audiences -->
-  <section class="bg-cream-100 py-24 md:py-32">
+  <section class="py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="Who it's for" title="Built for agencies and in-house talent teams" />
       <div class="mt-14 grid gap-6 md:grid-cols-2">
-        <div class="rounded-[18px] border border-navy-800/12 bg-white p-7 md:p-9">
+        <div class="rounded-panel border border-navy-800/12 bg-white p-7 md:p-9">
           <h3 class="font-display text-xl font-semibold">For recruiting agencies</h3>
           <p class="mt-2 text-sm text-navy-800/65">
             Rediscover candidates your team already sourced, screened, interviewed, or marketed.
@@ -473,7 +474,7 @@ const buildableAgents = [
             the whole agency.
           </p>
         </div>
-        <div class="rounded-[18px] border border-navy-800/12 bg-white p-7 md:p-9">
+        <div class="rounded-panel border border-navy-800/12 bg-white p-7 md:p-9">
           <h3 class="font-display text-xl font-semibold">For in-house talent teams</h3>
           <p class="mt-2 text-sm text-navy-800/65">
             Stop losing context between requisitions, hiring managers, recruiters, and interview
@@ -504,7 +505,7 @@ const buildableAgents = [
         Most recruiting teams already have valuable data — trapped in disconnected systems. This is
         the shift:
       </SectionHeading>
-      <ul class="mx-auto mt-10 max-w-2xl divide-y divide-navy-800/10 rounded-[16px] border border-navy-800/12 bg-white">
+      <ul class="mx-auto mt-10 max-w-2xl divide-y divide-navy-800/10 rounded-panel border border-navy-800/12 bg-white">
         {
           shifts.map((s) => (
             <li class="flex items-center justify-between gap-4 px-6 py-4">
@@ -532,7 +533,7 @@ const buildableAgents = [
   </section>
 
   <!-- What your team can build -->
-  <section class="bg-cream-100 py-24 md:py-32">
+  <section class="py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="What your team can build" title="Agents that work your database for you">
         Recruiters do not need more empty AI chat boxes. They need AI agents that can actually work
@@ -541,7 +542,7 @@ const buildableAgents = [
       <ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {
           buildableAgents.map((a) => (
-            <li class="rounded-[14px] border border-navy-800/12 bg-white p-5">
+            <li class="rounded-card border border-navy-800/12 bg-white p-5">
               <h3 class="font-display text-[0.9375rem] leading-snug font-semibold text-navy-900">{a.name}</h3>
               <p class="mt-2 text-sm leading-relaxed text-navy-800/65">{a.body}</p>
             </li>
@@ -567,7 +568,7 @@ const buildableAgents = [
         </p>
       </div>
 
-      <div class="mt-14 rounded-[24px] bg-navy-900 px-6 py-14 text-center md:px-12">
+      <CtaPanel class="mt-14">
         <p class="font-display text-3xl leading-tight font-bold text-white">
           Just AI agents working from fully enriched profiles.
         </p>
@@ -579,13 +580,13 @@ const buildableAgents = [
           <Button href={SITE.bookCallUrl} size="lg" event="cta-calyflowdb-final">Book a demo</Button>
           <a
             href={SITE.signupUrl}
-            class="inline-flex items-center justify-center gap-2 rounded-[10px] border-[1.5px] border-white/30 px-7 py-3.5 font-semibold text-white transition duration-200 ease-out hover:border-white"
+            class="inline-flex items-center justify-center gap-2 rounded-chip border-[1.5px] border-white/30 px-7 py-3.5 font-semibold text-white transition duration-200 ease-out hover:border-white"
             data-event="cta-calyflowdb-signup"
           >
             Create free account
           </a>
         </div>
-      </div>
+      </CtaPanel>
     </div>
   </section>
 </BaseLayout>

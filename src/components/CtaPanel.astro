@@ -1,0 +1,35 @@
+---
+interface Props {
+  /** Colour treatment: dark navy (default) or soft cream. */
+  tone?: 'navy' | 'cream';
+  /** Optional mono uppercase eyebrow rendered above the slotted content. */
+  eyebrow?: string;
+  /** Extra classes for outer spacing/width (e.g. "mt-14", "mx-auto max-w-6xl"). */
+  class?: string;
+}
+
+const { tone = 'navy', eyebrow, class: className } = Astro.props;
+const isNavy = tone === 'navy';
+---
+
+<div
+  class:list={[
+    'rounded-panel px-6 py-14 text-center md:px-12',
+    isNavy ? 'bg-navy-900 text-white' : 'bg-cream-100 text-navy-800',
+    className,
+  ]}
+>
+  {
+    eyebrow && (
+      <p
+        class:list={[
+          'font-mono text-sm font-medium tracking-wide uppercase',
+          isNavy ? 'text-mint-400' : 'text-mint-700',
+        ]}
+      >
+        {eyebrow}
+      </p>
+    )
+  }
+  <slot />
+</div>
