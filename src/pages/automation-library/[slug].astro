@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/blog/Breadcrumbs.astro';
 import LibraryCard from '../../components/library/LibraryCard.astro';
 import Button from '../../components/Button.astro';
+import CtaPanel from '../../components/CtaPanel.astro';
 import { SITE } from '../../data/site';
 import { contextLabel, getAllLibraryItems, type LibraryItem } from '../../lib/library';
 
@@ -100,12 +101,12 @@ const jsonLd = [
       alt={`${item.name} cover`}
       loading="eager"
       decoding="async"
-      class="mt-8 aspect-[1200/630] w-full rounded-[20px] border border-navy-800/12 bg-cream-100 object-cover"
+      class="mt-8 aspect-[1200/630] w-full rounded-panel border border-navy-800/12 bg-cream-100 object-cover"
     />
 
     <div class="mx-auto mt-8 max-w-[72ch]">
       {/* Details panel: inputs (documents) → output → connectors used */}
-      <dl class="grid gap-5 rounded-[20px] border border-navy-800/12 bg-cream-50 p-6 sm:grid-cols-2">
+      <dl class="grid gap-5 rounded-panel border border-navy-800/12 bg-cream-50 p-6 sm:grid-cols-2">
         {
           hasDocuments && (
             <div class="sm:col-span-2">
@@ -117,7 +118,7 @@ const jsonLd = [
                   <div class="flex flex-wrap items-center gap-2">
                     <span class="font-mono text-xs font-medium text-navy-800/70">Required:</span>
                     {item.documents.required.map((name) => (
-                      <span class="inline-flex items-center rounded-[10px] border border-navy-800/12 bg-white px-2.5 py-1 text-sm text-navy-800">
+                      <span class="inline-flex items-center rounded-chip border border-navy-800/12 bg-white px-2.5 py-1 text-sm text-navy-800">
                         {name}
                       </span>
                     ))}
@@ -127,7 +128,7 @@ const jsonLd = [
                   <div class="flex flex-wrap items-center gap-2">
                     <span class="font-mono text-xs font-medium text-navy-800/70">Optional:</span>
                     {item.documents.optional.map((name) => (
-                      <span class="inline-flex items-center rounded-[10px] border border-navy-800/12 bg-cream-100 px-2.5 py-1 text-sm text-navy-800/70">
+                      <span class="inline-flex items-center rounded-chip border border-navy-800/12 bg-cream-100 px-2.5 py-1 text-sm text-navy-800/70">
                         {name}
                       </span>
                     ))}
@@ -156,7 +157,7 @@ const jsonLd = [
                     <span class="font-mono text-xs font-medium text-navy-800/70">{g.label}:</span>
                     {g.connectors.length > 0 ? (
                       g.connectors.map((name) => (
-                        <span class="inline-flex items-center rounded-[10px] border border-navy-800/12 bg-white px-2.5 py-1 text-sm text-navy-800">
+                        <span class="inline-flex items-center rounded-chip border border-navy-800/12 bg-white px-2.5 py-1 text-sm text-navy-800">
                           {name}
                         </span>
                       ))
@@ -178,7 +179,7 @@ const jsonLd = [
         {bodyHtml ? <Fragment set:html={bodyHtml} /> : <p>{item.description}</p>}
       </div>
 
-      <div class="mt-12 rounded-[20px] bg-cream-100 px-6 py-10 text-center">
+      <CtaPanel tone="cream" class="mt-12">
         <h2 class="text-2xl">Run this agent in Calyflow</h2>
         <p class="mx-auto mt-3 max-w-xl text-navy-800/65">
           On your own AI, data, and tools — repeatable and evidence-backed. Free to start, no credit
@@ -187,7 +188,7 @@ const jsonLd = [
         <Button href={SITE.signupUrl} size="lg" event="cta-library-detail" class="mt-6">
           Create free account
         </Button>
-      </div>
+      </CtaPanel>
     </div>
 
     {

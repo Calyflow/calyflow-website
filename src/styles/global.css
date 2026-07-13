@@ -6,7 +6,7 @@
   --color-cream-100: #f3ede2;
   --color-navy-900: #131f38;
   --color-navy-800: #1b2a4a;
-  --color-mint-400: #5bc8a8;
+  --color-mint-400: #3ecf8e;
   --color-mint-700: #1b7a5f;
   --color-sky-300: #9cc3f0;
   --color-lavender-300: #c5b6ee;
@@ -27,10 +27,10 @@
   --text-4xl: 2.75rem; /* 44px */
   --text-5xl: 3.75rem; /* 60px */
 
-  /* ---- Shape (DESIGN.md §6): 10 chips/buttons, 14 cards, 20 panels ---- */
-  --radius-chip: 10px;
-  --radius-card: 14px;
-  --radius-panel: 20px;
+  /* ---- Shape (DESIGN.md §6): tight, Supabase-like scale matching the app ---- */
+  --radius-chip: 6px;
+  --radius-card: 8px;
+  --radius-panel: 12px;
 
   /* Soft hover shadow, never dark */
   --shadow-lift: 0 8px 30px rgba(19, 31, 56, 0.08);

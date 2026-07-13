@@ -52,12 +52,12 @@ const nav = [
                 </svg>
               </button>
               <div class="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-1 opacity-0 transition duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                <ul class="min-w-56 rounded-[14px] border border-navy-800/10 bg-cream-50 p-2 shadow-lg shadow-navy-900/8">
+                <ul class="min-w-56 rounded-card border border-navy-800/10 bg-cream-50 p-2 shadow-lg shadow-navy-900/8">
                   {item.dropdown.map((sub) => (
                     <li>
                       <a
                         href={sub.href}
-                        class="block rounded-[10px] px-3.5 py-2.5 text-sm font-medium text-navy-800/80 hover:bg-cream-100 hover:text-navy-900"
+                        class="block rounded-chip px-3.5 py-2.5 text-sm font-medium text-navy-800/80 hover:bg-cream-100 hover:text-navy-900"
                       >
                         {sub.label}
                       </a>
@@ -102,7 +102,7 @@ const nav = [
     <button
       id="nav-toggle"
       type="button"
-      class="flex h-10 w-10 items-center justify-center rounded-[10px] text-navy-800 md:hidden"
+      class="flex h-10 w-10 items-center justify-center rounded-chip text-navy-800 md:hidden"
       aria-expanded="false"
       aria-controls="mobile-nav"
       aria-label="Open menu"
@@ -128,7 +128,7 @@ const nav = [
                   <li>
                     <a
                       href={sub.href}
-                      class="flex items-center gap-1.5 rounded-[10px] px-3 py-2.5 pl-6 font-medium text-navy-800 hover:bg-cream-100"
+                      class="flex items-center gap-1.5 rounded-chip px-3 py-2.5 pl-6 font-medium text-navy-800 hover:bg-cream-100"
                     >
                       {sub.label}
                     </a>
@@ -141,7 +141,7 @@ const nav = [
               <a
                 href={item.href}
                 rel={item.external ? 'noopener' : undefined}
-                class="flex items-center gap-1.5 rounded-[10px] px-3 py-2.5 font-medium text-navy-800 hover:bg-cream-100"
+                class="flex items-center gap-1.5 rounded-chip px-3 py-2.5 font-medium text-navy-800 hover:bg-cream-100"
               >
                 {item.label}
                 {item.external && (

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Button from '../components/Button.astro';
+import CtaPanel from '../components/CtaPanel.astro';
 import Icon from '../components/icons/Icon.astro';
 import OrbitIllustration from '../components/automation-hub/OrbitIllustration.astro';
 import PipelineIllustration from '../components/automation-hub/PipelineIllustration.astro';
@@ -169,13 +170,13 @@ const steps = [
           alt="Calyflow Automation Hub: a sidebar 'Automation Hub' section is selected, and the main panel lists scheduled AI automations — ATS and CRM data enrichment, daily reporting, top candidate shortlist, new client research, existing clients' new jobs research and candidate re-engagement — each with a green, red, or amber health state, schedule, last run, recent-run history, and next run. Stat cards show 7 active automations, 142 runs today at 98% success, and 1 needing attention."
           width="1200"
           height="780"
-          class="mx-auto w-full max-w-5xl rounded-[20px] ring-1 ring-navy-900/10 shadow-[0_2px_6px_rgba(19,31,56,0.06),0_24px_56px_-12px_rgba(19,31,56,0.28)]"
+          class="mx-auto w-full max-w-5xl rounded-panel ring-1 ring-navy-900/10 shadow-[0_2px_6px_rgba(19,31,56,0.06),0_24px_56px_-12px_rgba(19,31,56,0.28)]"
           fetchpriority="high"
         />
 
         <!-- floating live-run chips -->
         <div
-          class="hub-float absolute -top-5 left-[4%] hidden items-center gap-2.5 rounded-[12px] border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
+          class="hub-float absolute -top-5 left-[4%] hidden items-center gap-2.5 rounded-card border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
           aria-hidden="true"
         >
           <span class="relative flex h-2.5 w-2.5">
@@ -185,7 +186,7 @@ const steps = [
           <span class="font-mono text-xs font-medium text-navy-800">3 agents running now</span>
         </div>
         <div
-          class="hub-float hub-float-delay absolute -right-2 top-[30%] hidden items-center gap-2.5 rounded-[12px] border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
+          class="hub-float hub-float-delay absolute -right-2 top-[30%] hidden items-center gap-2.5 rounded-card border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
           aria-hidden="true"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-mint-700)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -194,7 +195,7 @@ const steps = [
           <span class="font-mono text-xs font-medium text-navy-800">ATS enrichment · +38 records</span>
         </div>
         <div
-          class="hub-float hub-float-delay-2 absolute -bottom-4 left-[12%] hidden items-center gap-2.5 rounded-[12px] border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
+          class="hub-float hub-float-delay-2 absolute -bottom-4 left-[12%] hidden items-center gap-2.5 rounded-card border border-navy-800/10 bg-white/95 px-4 py-2.5 shadow-lg shadow-navy-900/10 backdrop-blur-sm lg:flex"
           aria-hidden="true"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-navy-800)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-60">
@@ -208,7 +209,7 @@ const steps = [
   </section>
 
   <!-- Why autonomous automations -->
-  <section class="bg-cream-100 py-24 md:py-32">
+  <section class="py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="Why automate" title="The work that happens without you">
         A workflow gives one person one good output when they run it. An automation gives your whole
@@ -219,7 +220,7 @@ const steps = [
         {
           benefits.map((b, i) => (
             <div
-              class="group rounded-[20px] border border-navy-800/12 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy-900/8 motion-reduce:hover:translate-y-0"
+              class="group rounded-panel border border-navy-800/12 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy-900/8 motion-reduce:hover:translate-y-0"
               data-reveal
               style={`transition-delay: ${(i % 3) * 90}ms`}
             >
@@ -250,7 +251,7 @@ const steps = [
           {
             automations.map((a, i) => (
               <div
-                class="flex items-start gap-3.5 rounded-[16px] border border-navy-800/12 bg-white p-5 transition duration-300 hover:border-mint-400/60"
+                class="flex items-start gap-3.5 rounded-panel border border-navy-800/12 bg-white p-5 transition duration-300 hover:border-mint-400/60"
                 data-reveal
                 style={`transition-delay: ${(i % 2) * 90}ms`}
               >
@@ -268,7 +269,7 @@ const steps = [
   </section>
 
   <!-- How it works -->
-  <section class="bg-cream-100 py-24 md:py-32">
+  <section class="py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="How it works" title="From manual chore to autonomous agent">
         We build, you approve, then it runs on its own — with the visibility to trust it.
@@ -282,7 +283,7 @@ const steps = [
         {
           steps.map((s, i) => (
             <div
-              class="rounded-[20px] border border-navy-800/12 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy-900/8 motion-reduce:hover:translate-y-0"
+              class="rounded-panel border border-navy-800/12 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-navy-900/8 motion-reduce:hover:translate-y-0"
               data-reveal
               style={`transition-delay: ${i * 90}ms`}
             >
@@ -299,10 +300,7 @@ const steps = [
   <!-- Final CTA -->
   <section class="py-24 md:py-32">
     <div class="mx-auto max-w-3xl px-5">
-      <div class="rounded-[24px] bg-navy-900 px-6 py-14 text-center md:px-12">
-        <p class="font-mono text-sm font-medium tracking-wide text-mint-400 uppercase">
-          Build your Automation Hub
-        </p>
+      <CtaPanel eyebrow="Build your Automation Hub">
         <p class="mt-4 font-display text-3xl font-bold text-white">
           Tell us what your team does on repeat
         </p>
@@ -316,7 +314,7 @@ const steps = [
         <p class="mt-4 font-mono text-[0.8125rem] text-white/50">
           30 minutes · No commitment · Runs on your own AI &amp; keys
         </p>
-      </div>
+      </CtaPanel>
     </div>
   </section>
 </BaseLayout>

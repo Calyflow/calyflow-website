@@ -51,17 +51,17 @@ const description =
       page.lastPage > 1 && (
         <nav aria-label="Pagination" class="mt-12 flex items-center justify-center gap-4 font-mono text-sm">
           {page.url.prev ? (
-            <a href={page.url.prev} class="rounded-[10px] border border-navy-800/25 px-4 py-2 hover:border-navy-800">← Newer</a>
+            <a href={page.url.prev} class="rounded-chip border border-navy-800/25 px-4 py-2 hover:border-navy-800">← Newer</a>
           ) : (
-            <span class="rounded-[10px] border border-navy-800/10 px-4 py-2 text-navy-800/40">← Newer</span>
+            <span class="rounded-chip border border-navy-800/10 px-4 py-2 text-navy-800/40">← Newer</span>
           )}
           <span class="text-navy-800/55">
             Page {page.currentPage} of {page.lastPage}
           </span>
           {page.url.next ? (
-            <a href={page.url.next} class="rounded-[10px] border border-navy-800/25 px-4 py-2 hover:border-navy-800">Older →</a>
+            <a href={page.url.next} class="rounded-chip border border-navy-800/25 px-4 py-2 hover:border-navy-800">Older →</a>
           ) : (
-            <span class="rounded-[10px] border border-navy-800/10 px-4 py-2 text-navy-800/40">Older →</span>
+            <span class="rounded-chip border border-navy-800/10 px-4 py-2 text-navy-800/40">Older →</span>
           )}
         </nav>
       )

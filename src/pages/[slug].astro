@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Button from '../components/Button.astro';
+import CtaPanel from '../components/CtaPanel.astro';
 import { SITE } from '../data/site';
 import { getConnectors, faviconMap } from '../lib/connectors';
 import type { EnrichmentTarget } from '../data/enrichment/types';
@@ -106,7 +107,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
             width="56"
             height="56"
             loading="lazy"
-            class="mx-auto mb-5 h-14 w-14 rounded-[14px] border border-navy-800/12 bg-white p-2 shadow-sm"
+            class="mx-auto mb-5 h-14 w-14 rounded-card border border-navy-800/12 bg-white p-2 shadow-sm"
           />
         )
       }
@@ -131,7 +132,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
   </section>
 
   <!-- The stack -->
-  <section class="bg-cream-100 py-24 md:py-32">
+  <section class="py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="The stack" title="Three systems, one daily loop">
         Your {systemKind} stays the source of truth. {target.enrich1} and {target.enrich2} keep it
@@ -141,7 +142,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
       <div class="mt-14 grid gap-6 md:grid-cols-3">
         {
           stack.map((item) => (
-            <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
+            <div class="rounded-panel border border-navy-800/12 bg-white p-7">
               <div class="flex items-center gap-3">
                 {item.icon && (
                   <img
@@ -150,7 +151,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
                     width="32"
                     height="32"
                     loading="lazy"
-                    class="h-8 w-8 flex-none rounded-[8px] border border-navy-800/10 bg-cream-50 p-1"
+                    class="h-8 w-8 flex-none rounded-card border border-navy-800/10 bg-cream-50 p-1"
                   />
                 )}
                 <h3 class="font-display text-2xl font-semibold">{item.name}</h3>
@@ -176,7 +177,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
       <ul class="mx-auto mt-12 grid max-w-3xl gap-4">
         {
           target.capabilities.map((cap) => (
-            <li class="flex items-start gap-3 rounded-[14px] border border-navy-800/12 bg-white p-5">
+            <li class="flex items-start gap-3 rounded-card border border-navy-800/12 bg-white p-5">
               <svg
                 class="mt-0.5 h-5 w-5 flex-none text-mint-700"
                 viewBox="0 0 20 20"
@@ -198,7 +199,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
   </section>
 
   <!-- Time saved -->
-  <section class="bg-cream-100 py-24 md:py-32">
+  <section class="py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="The payoff" title="How much time it saves">
         Conservative estimates. The exact numbers depend on your database size and how stale it has
@@ -208,7 +209,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
       <div class="mt-14 grid gap-6 md:grid-cols-3">
         {
           target.timeSavings.map((item) => (
-            <div class="flex flex-col rounded-[20px] border border-navy-800/12 bg-white p-7">
+            <div class="flex flex-col rounded-panel border border-navy-800/12 bg-white p-7">
               <h3 class="font-display text-xl font-semibold">{item.task}</h3>
               <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.detail}</p>
               <p class="mt-4 text-[0.9375rem] font-medium text-mint-700">{item.saved}</p>
@@ -229,7 +230,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
       <div class="mt-14 grid gap-6 md:grid-cols-3">
         {
           howItWorks.map((item) => (
-            <div class="rounded-[20px] border border-navy-800/12 bg-white p-7">
+            <div class="rounded-panel border border-navy-800/12 bg-white p-7">
               <span class="font-mono text-sm font-medium text-navy-800/40">{item.step}</span>
               <h3 class="mt-3 font-display text-2xl font-semibold">{item.title}</h3>
               <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.blurb}</p>
@@ -243,10 +244,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
   <!-- Pricing + final CTA -->
   <section class="pb-24 md:pb-32">
     <div class="mx-auto max-w-3xl px-5">
-      <div class="rounded-[24px] bg-navy-900 px-6 py-14 text-center md:px-12">
-        <p class="font-mono text-sm font-medium tracking-wide text-mint-400 uppercase">
-          Implementation
-        </p>
+      <CtaPanel eyebrow="Implementation">
         <p class="mt-4 font-display text-5xl font-bold text-white">from €2,500</p>
         <p class="mx-auto mt-4 max-w-xl text-white/70">
           A one-time build of your custom automation hub — wired to your {target.name}, {
@@ -267,7 +265,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
             See every supported ATS &amp; CRM →
           </a>
         </p>
-      </div>
+      </CtaPanel>
     </div>
   </section>
 </BaseLayout>

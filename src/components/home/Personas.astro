@@ -25,7 +25,7 @@ const personas = [
 ];
 ---
 
-<section class="bg-cream-100 py-24 md:py-32">
+<section class="py-24 md:py-32">
   <div class="mx-auto max-w-6xl px-5">
     <SectionHeading eyebrow="Who it's for" title="From solo desk to enterprise team" />
 
@@ -34,7 +34,7 @@ const personas = [
         personas.map((p) => (
           <div
             class:list={[
-              'flex flex-col rounded-[20px] bg-white p-8',
+              'flex flex-col rounded-panel bg-white p-8',
               p.featured
                 ? 'border-2 border-mint-400 shadow-[0_8px_30px_rgba(19,31,56,0.08)]'
                 : 'border border-navy-800/12',
