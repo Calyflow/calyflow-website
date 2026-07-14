@@ -7,9 +7,15 @@ interface Props {
   caption?: string;
   /** Constrain width for narrow UI shots (e.g. a single Slack thread). */
   width?: number;
+  /** Drop the frame (border + rounding + shadow) for images that already
+   *  carry their own chrome/shadow, e.g. a full browser-window mockup. */
+  bare?: boolean;
 }
 
-const { src, alt, caption, width } = Astro.props;
+const { src, alt, caption, width, bare } = Astro.props;
+const frame = bare
+  ? ''
+  : 'rounded-card border border-navy-800/12 shadow-[0_2px_6px_rgba(19,31,56,0.06),0_16px_40px_-16px_rgba(19,31,56,0.22)]';
 ---
 
 <figure class="my-8">
@@ -18,7 +24,7 @@ const { src, alt, caption, width } = Astro.props;
     alt={alt}
     loading="lazy"
     style={width ? `max-width:${width}px` : undefined}
-    class="mx-auto w-full rounded-card border border-navy-800/12 shadow-[0_2px_6px_rgba(19,31,56,0.06),0_16px_40px_-16px_rgba(19,31,56,0.22)]"
+    class={`mx-auto w-full ${frame}`}
   />
   {
     caption && (
