@@ -1,0 +1,28 @@
+---
+// Responsive Loom video embed for blog posts (MDX).
+// Lazy-loaded so the replay doesn't tax page load.
+interface Props {
+  /** The 32-character Loom share ID, e.g. "78296701194745858784b7756f9f0f8b". */
+  id: string;
+  /** Accessible title for the iframe. */
+  title: string;
+}
+
+const { id, title } = Astro.props;
+const src = `https://www.loom.com/embed/${id}`;
+---
+
+<figure class="my-8">
+  <div class="relative aspect-video overflow-hidden rounded-[16px] border border-navy-800/12 bg-navy-900">
+    <iframe
+      class="absolute inset-0 h-full w-full"
+      src={src}
+      title={title}
+      loading="lazy"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+  </div>
+  <figcaption class="mt-2 text-center font-mono text-[0.8125rem] text-navy-800/55">{title}</figcaption>
+</figure>
