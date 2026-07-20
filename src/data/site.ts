@@ -20,6 +20,7 @@ export const SITE = {
   /** llms.txt index of the documentation (lives in the app). */
   docsLlmsTxtUrl: 'https://app.calyflow.ai/llms.txt',
   signupUrl: 'https://app.calyflow.ai/sign-up',
+  loginUrl: 'https://app.calyflow.ai/sign-in',
   /** Google Calendar booking link for custom automation-hub discovery calls. */
   bookCallUrl: 'https://calendar.app.google/mqJ6x4hCQm6Kp9bK7',
   githubUrl: 'https://github.com/Calyflow/calyflow-app',
