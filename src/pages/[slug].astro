@@ -88,13 +88,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
 
 <BaseLayout title={title} description={description} noIndex={true}>
   <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div
-      class="aurora-glow absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full"
-      aria-hidden="true"
-    >
-    </div>
-
+  <section class="relative">
     <div class="relative mx-auto max-w-6xl px-5 pt-20 pb-16 text-center md:pt-28 md:pb-20">
       <p class="mb-4 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
         Custom automation hub
@@ -115,7 +109,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
         class="mx-auto max-w-3xl font-display text-[clamp(2.5rem,5.5vw,3.5rem)] leading-[1.06] font-bold tracking-[-0.01em]"
       >
         {target.heroTitleLead}{' '}
-        <span class="text-gradient-brand">{target.name}</span>{' '}
+        {target.name}{' '}
         {target.heroTitleTail}
       </h1>
       <p class="mx-auto mt-6 max-w-2xl text-xl text-navy-800/70">{target.heroSubtitle}</p>
@@ -125,7 +119,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
           Book a call
         </Button>
       </div>
-      <p class="mt-4 font-mono text-sm text-navy-800/55">
+      <p class="mt-4 font-mono text-sm text-navy-800/70">
         Implementation from €2,500 · Runs on your own keys · Your data stays in {target.name}
       </p>
     </div>
@@ -159,7 +153,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
               <p class="mt-2 font-mono text-[0.8125rem] tracking-wide text-mint-700 uppercase">
                 {item.role}
               </p>
-              <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.blurb}</p>
+              <p class="mt-3 text-[0.9375rem] text-navy-800/70">{item.blurb}</p>
             </div>
           ))
         }
@@ -211,7 +205,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
           target.timeSavings.map((item) => (
             <div class="flex flex-col rounded-panel border border-navy-800/12 bg-white p-7">
               <h3 class="font-display text-xl font-semibold">{item.task}</h3>
-              <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.detail}</p>
+              <p class="mt-3 text-[0.9375rem] text-navy-800/70">{item.detail}</p>
               <p class="mt-4 text-[0.9375rem] font-medium text-mint-700">{item.saved}</p>
             </div>
           ))
@@ -233,7 +227,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
             <div class="rounded-panel border border-navy-800/12 bg-white p-7">
               <span class="font-mono text-sm font-medium text-navy-800/40">{item.step}</span>
               <h3 class="mt-3 font-display text-2xl font-semibold">{item.title}</h3>
-              <p class="mt-3 text-[0.9375rem] text-navy-800/65">{item.blurb}</p>
+              <p class="mt-3 text-[0.9375rem] text-navy-800/70">{item.blurb}</p>
             </div>
           ))
         }

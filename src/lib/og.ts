@@ -11,14 +11,14 @@ const spaceGrotesk = readFileSync(
 const inter = readFileSync('node_modules/@fontsource/inter/files/inter-latin-500-normal.woff');
 
 const colors = {
-  cream: '#fbf7f0',
+  cream: '#fafafa',
   navy900: '#131f38',
   navy800: '#1b2a4a',
-  mint: '#5bc8a8',
+  mint: '#3ecf8e',
   sky: '#9cc3f0',
 };
 
-/** Renders a 1200×630 brand OG image (cream, aurora glow, title) as PNG. */
+/** Renders a 1200×630 brand OG image (cream, single mint→sky glow, title) as PNG. */
 export async function renderOgImage(title: string, subtitle?: string): Promise<Buffer> {
   const svg = await satori(
     {
@@ -36,7 +36,7 @@ export async function renderOgImage(title: string, subtitle?: string): Promise<B
           fontFamily: 'Inter',
         },
         children: [
-          // Aurora glow (mint → sky), top-right
+          // Single mint → sky glow (matches homepage hero flourish)
           {
             type: 'div',
             props: {
@@ -48,8 +48,8 @@ export async function renderOgImage(title: string, subtitle?: string): Promise<B
                 height: '620px',
                 borderRadius: '9999px',
                 background: `linear-gradient(135deg, ${colors.mint}, ${colors.sky})`,
-                opacity: 0.25,
-                filter: 'blur(90px)',
+                opacity: 0.2,
+                filter: 'blur(64px)',
               },
             },
           },

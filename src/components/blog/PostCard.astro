@@ -19,8 +19,8 @@ const date = post.data.pubDate.toLocaleDateString('en-US', {
   <h3 class="mt-4 font-display text-2xl leading-snug font-semibold">
     <a href={`/blog/${post.id}`} class="hover:text-mint-700">{post.data.title}</a>
   </h3>
-  <p class="mt-3 flex-1 text-[0.9375rem] text-navy-800/65">{post.data.description}</p>
-  <p class="mt-5 font-mono text-[0.8125rem] text-navy-800/55">
+  <p class="mt-3 flex-1 text-[0.9375rem] text-navy-800/70">{post.data.description}</p>
+  <p class="mt-5 font-mono text-[0.8125rem] text-navy-800/70">
     <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{date}</time>
   </p>
 </article>

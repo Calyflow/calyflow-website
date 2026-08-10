@@ -163,14 +163,8 @@ const buildableAgents = [
 
 <BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div
-      class="aurora-glow absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full"
-      aria-hidden="true"
-    >
-    </div>
-
-    <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pt-16 pb-16 md:grid-cols-2 md:pt-24 md:pb-24">
+  <section class="relative">
+    <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pt-16 pb-12 md:grid-cols-2 md:pt-20 md:pb-16">
       <div>
         <p class="mb-4 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
           CalyflowDB · AI-ready talent database
@@ -179,7 +173,7 @@ const buildableAgents = [
           class="font-display text-[clamp(2.25rem,4.5vw,3.25rem)] leading-[1.08] font-bold tracking-[-0.01em]"
         >
           Stop searching candidates by keywords. Start letting
-          <span class="text-gradient-brand">AI agents understand them</span>.
+          AI agents understand them.
         </h1>
         <p class="mt-6 text-lg text-navy-800/70">
           Your ATS was built to <em>store</em> candidates. CalyflowDB is built to
@@ -187,7 +181,7 @@ const buildableAgents = [
           recruiter notes, interview feedback, call transcripts, CRM history, and outreach activity —
           then let AI agents search, match, explain, and act on fully enriched talent profiles.
         </p>
-        <ul class="mt-6 space-y-1.5 font-mono text-sm text-navy-800/60">
+        <ul class="mt-6 space-y-1.5 font-mono text-sm text-navy-800/70">
           <li>No more keyword search.</li>
           <li>No more endless Boolean strings.</li>
           <li>No more hidden talent.</li>
@@ -206,7 +200,7 @@ const buildableAgents = [
   </section>
 
   <!-- The problem -->
-  <section class="border-t border-navy-800/10 py-24 md:py-32">
+  <section class="border-t border-navy-800/10 py-14 md:py-20">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading
         eyebrow="The problem"
@@ -216,37 +210,36 @@ const buildableAgents = [
         scattered across systems.
       </SectionHeading>
 
-      <ul class="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <dl class="mx-auto mt-10 grid max-w-4xl gap-x-10 gap-y-5 border-t border-navy-800/10 pt-8 sm:grid-cols-2 lg:grid-cols-4">
         {
           scatteredSources.map((s) => (
-            <li class="rounded-card border border-navy-800/12 bg-white px-4 py-3">
-              <p class="font-display text-sm font-semibold text-navy-900">{s.where}</p>
-              <p class="mt-0.5 font-mono text-xs text-navy-800/55">{s.in}</p>
-            </li>
+            <div>
+              <dt class="font-display text-sm font-semibold text-navy-900">{s.where}</dt>
+              <dd class="mt-1 font-mono text-xs text-navy-800/70">{s.in}</dd>
+            </div>
           ))
         }
-      </ul>
+      </dl>
 
-      <p class="mx-auto mt-12 max-w-2xl text-center text-lg text-navy-800/70">
+      <p class="mx-auto mt-10 max-w-2xl text-center text-lg text-navy-800/70">
         Traditional search cannot use all of that. It looks for <em>words</em>. CalyflowDB builds an
         AI-ready talent layer that understands
         <strong class="font-semibold text-navy-900">meaning, evidence, relationships, and context</strong>.
       </p>
 
-      <div class="mt-14">
+      <div class="mt-12">
         <BeforeAfterIllustration />
       </div>
 
       <!-- query comparison -->
-      <div class="mx-auto mt-14 grid max-w-4xl gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
-        <div class="rounded-card border border-navy-800/12 bg-white p-5">
+      <div class="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2 md:gap-10">
+        <div class="border-l-2 border-navy-800/15 pl-5">
           <p class="font-mono text-xs tracking-wide text-navy-800/50 uppercase">Instead of searching</p>
           <p class="mt-3 font-mono text-sm text-navy-800/70 line-through decoration-amber-400/70 decoration-2">
             "Java AND Spring AND AWS AND fintech"
           </p>
         </div>
-        <div class="hidden text-2xl text-mint-700 md:block" aria-hidden="true">→</div>
-        <div class="rounded-card border-[1.5px] border-mint-400/60 bg-white p-5">
+        <div class="border-l-2 border-mint-400 pl-5">
           <p class="font-mono text-xs tracking-wide text-mint-700 uppercase">You can ask</p>
           <p class="mt-3 text-[0.9375rem] leading-relaxed text-navy-800">
             "Find senior backend engineers who have built high-volume payment systems, worked in
@@ -259,7 +252,7 @@ const buildableAgents = [
   </section>
 
   <!-- No more Boolean -->
-  <section class="border-t border-navy-800/10 py-24 md:py-32">
+  <section class="border-t border-navy-800/10 py-14 md:py-20">
     <div class="mx-auto max-w-6xl px-5">
       <div class="grid items-center gap-12 md:grid-cols-2">
         <div class="order-2 md:order-1">
@@ -307,7 +300,7 @@ const buildableAgents = [
   </section>
 
   <!-- What makes this different -->
-  <section class="bg-navy-900 py-20 md:py-24">
+  <section class="bg-navy-900 py-14 md:py-20">
     <div class="mx-auto max-w-3xl px-5 text-center">
       <p class="font-mono text-sm font-medium tracking-wide text-mint-400 uppercase">
         What makes this different?
@@ -325,18 +318,18 @@ const buildableAgents = [
   </section>
 
   <!-- How it works -->
-  <section class="py-24 md:py-32">
+  <section class="py-14 md:py-20">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="How it works" title="Connect. Enrich. Let agents work.">
         CalyflowDB does not replace your ATS or CRM. It makes your existing tools AI-ready.
       </SectionHeading>
 
-      <div class="mt-14 hidden md:block">
+      <div class="mt-10 hidden md:block">
         <HowItWorksDiagram />
       </div>
 
       <!-- Step 1 -->
-      <div class="mt-16 grid gap-10 md:grid-cols-[220px_1fr] md:gap-16">
+      <div class="mt-12 grid gap-10 md:grid-cols-[220px_1fr] md:gap-16">
         <div>
           <p class="font-mono text-sm font-bold text-mint-700">STEP 1</p>
           <h3 class="mt-2 font-display text-2xl font-semibold">Connect your recruiting data</h3>
@@ -344,20 +337,20 @@ const buildableAgents = [
             Connect the systems your team already uses. You choose what each agent can access.
           </p>
         </div>
-        <ul class="grid gap-3 sm:grid-cols-2">
+        <dl class="divide-y divide-navy-800/10 border-y border-navy-800/10">
           {
             connectorCategories.map((c) => (
-              <li class="rounded-card border border-navy-800/12 bg-white px-4 py-3">
-                <p class="font-display text-sm font-semibold text-navy-900">{c.label}</p>
-                <p class="mt-1 text-xs leading-relaxed text-navy-800/60">{c.items}</p>
-              </li>
+              <div class="grid gap-1 py-3.5 sm:grid-cols-[140px_1fr] sm:gap-6">
+                <dt class="font-display text-sm font-semibold text-navy-900">{c.label}</dt>
+                <dd class="text-sm leading-relaxed text-navy-800/70">{c.items}</dd>
+              </div>
             ))
           }
-        </ul>
+        </dl>
       </div>
 
       <!-- Step 2 -->
-      <div class="mt-20 grid items-center gap-10 md:grid-cols-2 md:gap-16">
+      <div class="mt-16 grid items-center gap-10 md:grid-cols-2 md:gap-16">
         <div>
           <p class="font-mono text-sm font-bold text-mint-700">STEP 2</p>
           <h3 class="mt-2 font-display text-2xl font-semibold">Build fully enriched candidate profiles</h3>
@@ -369,7 +362,7 @@ const buildableAgents = [
           <ul class="mt-5 flex flex-wrap gap-2">
             {
               profileIncludes.map((item) => (
-                <li class="rounded-full bg-white px-3.5 py-1.5 font-mono text-xs text-navy-800/75 ring-1 ring-navy-800/10">
+                <li class="rounded-chip border border-navy-800/12 bg-cream-100 px-3 py-1 font-mono text-xs text-navy-800/70">
                   {item}
                 </li>
               ))
@@ -380,7 +373,7 @@ const buildableAgents = [
       </div>
 
       <!-- Step 3 -->
-      <div class="mt-20 grid gap-10 md:grid-cols-[220px_1fr] md:gap-16">
+      <div class="mt-16 grid gap-10 md:grid-cols-[220px_1fr] md:gap-16">
         <div>
           <p class="font-mono text-sm font-bold text-mint-700">STEP 3</p>
           <h3 class="mt-2 font-display text-2xl font-semibold">Let AI agents search, match, and explain</h3>
@@ -417,31 +410,31 @@ const buildableAgents = [
   </section>
 
   <!-- Example -->
-  <section class="border-t border-navy-800/10 py-24 md:py-32">
+  <section class="border-y border-navy-800/10 bg-cream-100 py-14 md:py-20">
     <div class="mx-auto max-w-4xl px-5">
       <SectionHeading eyebrow="Example" title="From scattered data to an AI-ready answer" />
-      <div class="mt-12 space-y-5">
-        <div class="rounded-panel border border-navy-800/12 bg-white p-6 md:p-8">
+      <div class="mt-10 space-y-8">
+        <div>
           <p class="font-mono text-xs tracking-wide text-navy-800/50 uppercase">A recruiter asks</p>
           <p class="mt-3 font-display text-lg font-medium text-navy-900">
             "Find candidates for a Senior Platform Engineer role. Must have Kubernetes, Terraform,
             AWS, and experience supporting developer teams. Ideally fintech or SaaS."
           </p>
-          <p class="mt-4 text-sm text-navy-800/60">
+          <p class="mt-4 text-sm text-navy-800/70">
             A traditional ATS search looks for matching keywords. CalyflowDB looks across CV text,
             ATS notes, previous submissions, interview transcripts, screening summaries, public
             profile enrichment, CRM relationship history, recruiter comments, and outreach history.
           </p>
         </div>
-        <div class="rounded-panel bg-navy-900 p-6 md:p-8">
-          <p class="font-mono text-xs tracking-wide text-mint-400 uppercase">The agent returns</p>
-          <p class="mt-3 text-lg leading-relaxed text-white/90">
+        <div class="border-t border-navy-800/10 pt-8">
+          <p class="font-mono text-xs tracking-wide text-mint-700 uppercase">The agent returns</p>
+          <p class="mt-3 text-lg leading-relaxed text-navy-800">
             "Candidate A is a strong match because they led Kubernetes platform work, built
             Terraform modules on AWS, supported 60+ developers, and previously worked in a regulated
             payments environment. The latest recruiter note says they were not ready to move six
             months ago, but were open to reconnecting in Q3."
           </p>
-          <p class="mt-5 font-mono text-sm text-mint-400">
+          <p class="mt-5 font-mono text-sm text-mint-700">
             That is not keyword search. That is recruiting intelligence.
           </p>
         </div>
@@ -450,13 +443,13 @@ const buildableAgents = [
   </section>
 
   <!-- Audiences -->
-  <section class="border-t border-navy-800/10 py-24 md:py-32">
+  <section class="border-t border-navy-800/10 py-14 md:py-20">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="Who it's for" title="Built for agencies and in-house talent teams" />
-      <div class="mt-14 grid gap-6 md:grid-cols-2">
-        <div class="rounded-panel border border-navy-800/12 bg-white p-7 md:p-9">
+      <div class="mt-10 grid gap-12 border-t border-navy-800/10 pt-10 md:grid-cols-2 md:gap-16">
+        <div>
           <h3 class="font-display text-xl font-semibold">For recruiting agencies</h3>
-          <p class="mt-2 text-sm text-navy-800/65">
+          <p class="mt-2 text-sm text-navy-800/70">
             Rediscover candidates your team already sourced, screened, interviewed, or marketed.
           </p>
           <ul class="mt-5 space-y-2.5">
@@ -469,14 +462,14 @@ const buildableAgents = [
               ))
             }
           </ul>
-          <p class="mt-6 border-l-[3px] border-mint-400 pl-4 text-sm text-navy-800/70 italic">
+          <p class="mt-6 border-l-2 border-mint-400 pl-4 text-sm text-navy-800/70">
             Your database becomes more than storage. It becomes a searchable intelligence layer for
             the whole agency.
           </p>
         </div>
-        <div class="rounded-panel border border-navy-800/12 bg-white p-7 md:p-9">
+        <div>
           <h3 class="font-display text-xl font-semibold">For in-house talent teams</h3>
-          <p class="mt-2 text-sm text-navy-800/65">
+          <p class="mt-2 text-sm text-navy-800/70">
             Stop losing context between requisitions, hiring managers, recruiters, and interview
             loops.
           </p>
@@ -490,7 +483,7 @@ const buildableAgents = [
               ))
             }
           </ul>
-          <p class="mt-6 border-l-[3px] border-mint-400 pl-4 text-sm text-navy-800/70 italic">
+          <p class="mt-6 border-l-2 border-mint-400 pl-4 text-sm text-navy-800/70">
             Your team can finally reuse what it already knows.
           </p>
         </div>
@@ -499,17 +492,17 @@ const buildableAgents = [
   </section>
 
   <!-- Why now: the shift -->
-  <section class="border-t border-navy-800/10 py-20 md:py-24">
+  <section class="border-t border-navy-800/10 py-14 md:py-20">
     <div class="mx-auto max-w-4xl px-5">
       <SectionHeading eyebrow="Why now" title="AI agents are only as good as the context they can access">
         Most recruiting teams already have valuable data — trapped in disconnected systems. This is
         the shift:
       </SectionHeading>
-      <ul class="mx-auto mt-10 max-w-2xl divide-y divide-navy-800/10 rounded-panel border border-navy-800/12 bg-white">
+      <ul class="mx-auto mt-10 max-w-2xl divide-y divide-navy-800/10 border-y border-navy-800/10">
         {
           shifts.map((s) => (
-            <li class="flex items-center justify-between gap-4 px-6 py-4">
-              <span class="font-mono text-sm text-navy-800/55">{s.from}</span>
+            <li class="flex items-center justify-between gap-4 py-4">
+              <span class="font-mono text-sm text-navy-800/70">{s.from}</span>
               <svg
                 width="16"
                 height="16"
@@ -533,18 +526,18 @@ const buildableAgents = [
   </section>
 
   <!-- What your team can build -->
-  <section class="border-t border-navy-800/10 py-24 md:py-32">
+  <section class="border-t border-navy-800/10 py-14 md:py-20">
     <div class="mx-auto max-w-6xl px-5">
       <SectionHeading eyebrow="What your team can build" title="Agents that work your database for you">
         Recruiters do not need more empty AI chat boxes. They need AI agents that can actually work
         with their data.
       </SectionHeading>
-      <ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="mt-10 grid gap-x-10 gap-y-0 border-t border-navy-800/10 sm:grid-cols-2 lg:grid-cols-4">
         {
           buildableAgents.map((a) => (
-            <li class="rounded-card border border-navy-800/12 bg-white p-5">
+            <li class="border-b border-navy-800/10 py-5">
               <h3 class="font-display text-[0.9375rem] leading-snug font-semibold text-navy-900">{a.name}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-navy-800/65">{a.body}</p>
+              <p class="mt-2 text-sm leading-relaxed text-navy-800/70">{a.body}</p>
             </li>
           ))
         }
@@ -553,14 +546,14 @@ const buildableAgents = [
   </section>
 
   <!-- Stack + closing CTA -->
-  <section class="border-t border-navy-800/10 py-24 md:py-32">
+  <section class="border-t border-navy-800/10 py-14 md:py-20">
     <div class="mx-auto max-w-4xl px-5">
       <div class="mx-auto max-w-2xl text-center">
         <p class="mb-3 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">
           Built to work with your stack
         </p>
         <h2 class="text-3xl tracking-tight md:text-4xl">A new layer for modern recruiting teams</h2>
-        <p class="mt-4 text-navy-800/65">
+        <p class="mt-4 text-navy-800/70">
           You do not need to migrate away from your ATS. You do not need to replace your CRM. You do
           not need recruiters to learn a new database. The future of recruiting is not another ATS —
           it is an AI-ready layer that sits across your data, tools, candidates, jobs, clients, and
@@ -568,7 +561,7 @@ const buildableAgents = [
         </p>
       </div>
 
-      <CtaPanel class="mt-14">
+      <CtaPanel class="mt-12">
         <p class="font-display text-3xl leading-tight font-bold text-white">
           Just AI agents working from fully enriched profiles.
         </p>
@@ -580,7 +573,7 @@ const buildableAgents = [
           <Button href={SITE.bookCallUrl} size="lg" event="cta-calyflowdb-final">Book a demo</Button>
           <a
             href={SITE.signupUrl}
-            class="inline-flex items-center justify-center gap-2 rounded-chip border-[1.5px] border-white/30 px-7 py-3.5 font-semibold text-white transition duration-200 ease-out hover:border-white"
+            class="inline-flex items-center justify-center gap-2 rounded-chip border-[1.5px] border-white/30 px-7 py-3.5 font-semibold text-white transition duration-200 ease-out hover:border-white focus-ring"
             data-event="cta-calyflowdb-signup"
           >
             Create free account
