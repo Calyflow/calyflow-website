@@ -2,19 +2,18 @@
 import Icon from '../icons/Icon.astro';
 import ChatChaosIllustration from './ChatChaosIllustration.astro';
 
-// The "chatting vs. building" narrative (spec §3.3).
 const pains = [
-  'Your AI workflow lives in 14 browser tabs and one person’s head.',
-  'Every CV screen starts from a blank prompt — and ends with different results.',
-  'The prompts that work are buried in someone’s chat history, not your team’s toolkit.',
+  'Sourcing is slow, repetitive, and easy to put off — so it slips behind every other priority.',
+  'Recruiters are not very good at sourcing — Boolean strings, channels, and follow-ups rarely get the time they deserve.',
+  'The best searches live in one person’s head, so quality swings from hire to hire.',
 ];
 ---
 
-<section class="mx-auto max-w-6xl px-5 py-24 md:py-32">
+<section class="mx-auto max-w-6xl px-5 py-14 md:py-20">
   <div class="grid items-center gap-12 md:grid-cols-2">
     <div>
       <p class="mb-3 font-mono text-sm font-medium tracking-wide text-coral-400 uppercase">The problem</p>
-      <h2 class="text-3xl tracking-tight md:text-4xl">Chatting with AI isn’t a workflow</h2>
+      <h2 class="text-3xl tracking-tight md:text-4xl">Nobody likes to source candidates</h2>
       <ul class="mt-7 space-y-4">
         {
           pains.map((pain) => (
@@ -32,27 +31,33 @@ const pains = [
 
     <div class="rounded-panel border border-navy-800/12 bg-white p-8 md:p-10">
       <p class="mb-3 font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">The Calyflow way</p>
-      <h3 class="font-display text-2xl font-semibold">Import a workflow. Attach your docs. Run.</h3>
+      <h3 class="font-display text-2xl font-semibold">Upload the brief. Agents do the rest.</h3>
       <ol class="mt-6 space-y-5">
-        <li class="flex items-start gap-4">
-          <Icon name="workflow-nodes" size={32} class="shrink-0" />
-          <div>
-            <p class="font-semibold text-navy-900">Import a proven workflow</p>
-            <p class="mt-1 text-[0.9375rem] text-navy-800/65">CV screening, sourcing maps, outreach: built by recruiters, versioned like code.</p>
-          </div>
-        </li>
         <li class="flex items-start gap-4">
           <Icon name="document-check" size={32} class="shrink-0" />
           <div>
-            <p class="font-semibold text-navy-900">Attach your documents</p>
-            <p class="mt-1 text-[0.9375rem] text-navy-800/65">The workflow knows what it needs (JD, intake notes, CVs) and tells you what’s missing.</p>
+            <p class="font-semibold text-navy-900">Upload a job description</p>
+            <p class="mt-1 text-[0.9375rem] text-navy-800/70">
+              The role brief is the starting point — no blank prompts, no re-explaining the search every time.
+            </p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <Icon name="workflow-nodes" size={32} class="shrink-0" />
+          <div>
+            <p class="font-semibold text-navy-900">Add unpublished insights</p>
+            <p class="mt-1 text-[0.9375rem] text-navy-800/70">
+              Intake call notes or a call transcript — the context that never makes it into the public JD.
+            </p>
           </div>
         </li>
         <li class="flex items-start gap-4">
           <Icon name="ai-spark" size={32} class="shrink-0" />
           <div>
-            <p class="font-semibold text-navy-900">Run it: same quality every time</p>
-            <p class="mt-1 text-[0.9375rem] text-navy-800/65">Repeatable results your whole team can use, with the run cost visible on every run.</p>
+            <p class="font-semibold text-navy-900">Agents source autonomously</p>
+            <p class="mt-1 text-[0.9375rem] text-navy-800/70">
+              They connect to your databases, LinkedIn Proxy, and 30+ data providers — then start sourcing candidates.
+            </p>
           </div>
         </li>
       </ol>

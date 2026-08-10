@@ -21,8 +21,8 @@ const { item } = Astro.props;
 const badge = contextLabel(item.context);
 const badgeClass =
   item.context === 'business-development'
-    ? 'bg-lavender-300/30 text-navy-800/75'
-    : 'bg-mint-400/22 text-mint-700';
+    ? 'bg-lavender-100 text-lavender-700'
+    : 'bg-mint-100 text-mint-700';
 const hasDocuments = item.documents.required.length > 0 || item.documents.optional.length > 0;
 
 // Related: a few other agents from the same context, then fill from others.
@@ -82,7 +82,7 @@ const jsonLd = [
           badge && (
             <span
               class:list={[
-                'inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[0.6875rem] leading-4',
+                'inline-flex items-center rounded-chip px-2.5 py-0.5 font-mono text-[0.6875rem] leading-4',
                 badgeClass,
               ]}
             >
@@ -110,7 +110,7 @@ const jsonLd = [
         {
           hasDocuments && (
             <div class="sm:col-span-2">
-              <dt class="font-mono text-xs tracking-wide text-navy-800/55 uppercase">
+              <dt class="font-mono text-xs tracking-wide text-navy-800/70 uppercase">
                 Documents needed
               </dt>
               <dd class="mt-2 space-y-2.5">
@@ -139,7 +139,7 @@ const jsonLd = [
           )
         }
         <div>
-          <dt class="font-mono text-xs tracking-wide text-navy-800/55 uppercase">Output</dt>
+          <dt class="font-mono text-xs tracking-wide text-navy-800/70 uppercase">Output</dt>
           <dd class="mt-1.5 flex items-center gap-1.5 text-[0.9375rem] text-navy-800">
             <span class="text-mint-700">→</span>
             {item.output}
@@ -148,7 +148,7 @@ const jsonLd = [
         {
           item.connectors.length > 0 && (
             <div class="sm:col-span-2">
-              <dt class="font-mono text-xs tracking-wide text-navy-800/55 uppercase">
+              <dt class="font-mono text-xs tracking-wide text-navy-800/70 uppercase">
                 Connectors used
               </dt>
               <dd class="mt-2 space-y-2.5">
@@ -162,11 +162,11 @@ const jsonLd = [
                         </span>
                       ))
                     ) : (
-                      <span class="text-sm text-navy-800/60">Pick when you run it</span>
+                      <span class="text-sm text-navy-800/70">Pick when you run it</span>
                     )}
                   </div>
                 ))}
-                <p class="pt-1 text-[0.8125rem] text-navy-800/55">
+                <p class="pt-1 text-[0.8125rem] text-navy-800/70">
                   Choose which connector to use each time you run it.
                 </p>
               </dd>
@@ -181,7 +181,7 @@ const jsonLd = [
 
       <CtaPanel tone="cream" class="mt-12">
         <h2 class="text-2xl">Run this agent in Calyflow</h2>
-        <p class="mx-auto mt-3 max-w-xl text-navy-800/65">
+        <p class="mx-auto mt-3 max-w-xl text-navy-800/70">
           On your own AI, data, and tools — repeatable and evidence-backed. Free to start, no credit
           card.
         </p>

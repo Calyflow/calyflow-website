@@ -96,6 +96,14 @@ const nav = [
     </nav>
 
     <div class="hidden items-center gap-3 md:flex">
+      <a
+        href={SITE.loginUrl}
+        rel="noopener"
+        data-event="login-header"
+        class="text-sm font-medium text-navy-800/80 transition-colors hover:text-navy-900"
+      >
+        Log in
+      </a>
       <Button href={SITE.signupUrl} event="cta-header">Create free account</Button>
     </div>
 
@@ -166,7 +174,15 @@ const nav = [
         )
       }
     </ul>
-    <div class="mt-3 px-3">
+    <div class="mt-3 space-y-2 px-3">
+      <a
+        href={SITE.loginUrl}
+        rel="noopener"
+        data-event="login-mobile-nav"
+        class="flex items-center justify-center rounded-chip px-3 py-2.5 font-medium text-navy-800 hover:bg-cream-100"
+      >
+        Log in
+      </a>
       <Button href={SITE.signupUrl} event="cta-mobile-nav" class="w-full">Create free account</Button>
     </div>
   </nav>

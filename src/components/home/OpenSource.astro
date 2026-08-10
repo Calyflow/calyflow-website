@@ -4,7 +4,7 @@ import GitHubButton from '../GitHubButton.astro';
 import Icon from '../icons/Icon.astro';
 ---
 
-<section id="open-source" class="scroll-mt-20 py-24 md:py-32">
+<section id="open-source" class="scroll-mt-20 py-14 md:py-20">
   <div class="mx-auto max-w-6xl px-5">
     <div class="mx-auto max-w-3xl text-center">
       <span class="oss-shield relative mx-auto inline-flex">
@@ -18,7 +18,7 @@ import Icon from '../icons/Icon.astro';
         {SITE.definition}
       </p>
 
-      <p class="mt-5 text-navy-800/65">
+      <p class="mt-5 text-navy-800/70">
         The code is AGPL-3.0 and inspectable: you can read exactly what happens to every CV and
         every prompt. You can self-host the whole platform on your own infrastructure. And because
         your data lives in your systems and your AI runs on your key, there is no hostage-taking:
@@ -27,7 +27,7 @@ import Icon from '../icons/Icon.astro';
 
       <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <GitHubButton size="lg" event="github-click-oss" />
-        <span class="font-mono text-sm text-navy-800/55">License: {SITE.productLicense}</span>
+        <span class="font-mono text-sm text-navy-800/70">License: {SITE.productLicense}</span>
       </div>
     </div>
   </div>

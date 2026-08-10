@@ -48,8 +48,8 @@ const cy = 260;
 
   <!-- central profile card -->
   <g>
-    <rect x="228" y="168" width="196" height="192" rx="16" fill="var(--color-navy-800)" opacity="0.08" transform="translate(6 8)"></rect>
-    <rect x="220" y="160" width="200" height="200" rx="16" fill="white" stroke="var(--color-navy-800)" stroke-width="1.75"></rect>
+    <rect x="228" y="168" width="196" height="192" rx="8" fill="var(--color-navy-800)" opacity="0.08" transform="translate(6 8)"></rect>
+    <rect x="220" y="160" width="200" height="200" rx="8" fill="white" stroke="var(--color-navy-800)" stroke-width="1.75"></rect>
     <circle cx="258" cy="200" r="18" fill="var(--color-mint-400)" opacity="0.3"></circle>
     <circle cx="258" cy="200" r="18" stroke="var(--color-navy-800)" stroke-width="1.75"></circle>
     <circle cx="258" cy="195" r="5.5" stroke="var(--color-navy-800)" stroke-width="1.75"></circle>
@@ -66,7 +66,7 @@ const cy = 260;
         { x: 298, w: 68, label: 'fintech', row: 1 },
       ].map((chip) => (
         <g>
-          <rect x={chip.x} y={238 + (chip.row ? 26 : 0)} width={chip.w} height="18" rx="9" fill="var(--color-mint-400)" opacity="0.2" />
+          <rect x={chip.x} y={238 + (chip.row ? 26 : 0)} width={chip.w} height="18" rx="6" fill="var(--color-mint-400)" opacity="0.2" />
           <text
             x={chip.x + chip.w / 2}
             y={250 + (chip.row ? 26 : 0)}
@@ -84,7 +84,7 @@ const cy = 260;
     <line x1="240" y1="300" x2="400" y2="300" stroke="var(--color-navy-800)" stroke-opacity="0.12" stroke-width="1.5"></line>
     <rect x="240" y="314" width="160" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.1"></rect>
     <rect x="240" y="326" width="128" height="6" rx="3" fill="var(--color-navy-800)" opacity="0.1"></rect>
-    <rect x="332" y="176" width="76" height="20" rx="10" fill="var(--color-mint-400)" opacity="0.9" transform="translate(8 -6)"></rect>
+    <rect x="332" y="176" width="76" height="20" rx="6" fill="var(--color-mint-400)" opacity="0.9" transform="translate(8 -6)"></rect>
     <text x="378" y="184" text-anchor="middle" font-family="var(--font-mono)" font-size="10" font-weight="700" fill="var(--color-navy-900)">92% MATCH</text>
   </g>
 
@@ -92,7 +92,7 @@ const cy = 260;
   {
     cards.map((c) => (
       <g>
-        <rect x={c.x} y={c.y} width={W} height={H} rx="10" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.16" stroke-width="1.5" />
+        <rect x={c.x} y={c.y} width={W} height={H} rx="6" fill="white" stroke="var(--color-navy-800)" stroke-opacity="0.16" stroke-width="1.5" />
         <rect x={c.x + 10} y={c.y + 12} width="22" height="22" rx="6" fill={c.tone} opacity="0.35" />
         <path
           d={`M${c.x + 15} ${c.y + 20} h12 M${c.x + 15} ${c.y + 26} h8`}

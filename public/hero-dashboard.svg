@@ -1,150 +1,192 @@
 <svg viewBox="0 0 1200 780" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-labelledby="heroTitle heroDesc">
-  <title id="heroTitle">Calyflow dashboard</title>
-  <desc id="heroDesc">A recruiter's Calyflow workspace showing a project with attached documents and AI workflows running, with a CV screening report streaming in.</desc>
+  <title id="heroTitle">Calyflow shortlist</title>
+  <desc id="heroDesc">A Calyflow project Shortlist: candidates ranked by AI fit score with sources, FIT status, and AI-generated recommendations.</desc>
 
   <defs>
-    <clipPath id="appFrame"><rect x="8" y="8" width="1184" height="764" rx="20"/></clipPath>
+    <clipPath id="appFrame"><rect x="8" y="8" width="1184" height="764" rx="12"/></clipPath>
   </defs>
 
-  <!-- App frame -->
-  <rect x="8" y="8" width="1184" height="764" rx="20" fill="#FBF7F0" stroke="#1B2A4A" stroke-opacity="0.12"/>
+  <!-- App frame — cream-50 canvas, panel radius -->
+  <rect x="8" y="8" width="1184" height="764" rx="12" fill="#FAFAFA" stroke="#1B2A4A" stroke-opacity="0.12"/>
 
   <g clip-path="url(#appFrame)">
 
     <!-- ===== Top bar ===== -->
-    <rect x="8" y="8" width="1184" height="64" fill="#FBF7F0"/>
-    <line x1="8" y1="72" x2="1192" y2="72" stroke="#1B2A4A" stroke-opacity="0.10"/>
-    <!-- Logo -->
-    <!-- App icon, inlined from https://app.calyflow.ai/icon.svg (28x28 = 32 * 0.875) -->
-    <g transform="translate(36 26) scale(0.875)">
-      <rect width="32" height="32" rx="7" fill="#FBF7F0"/>
+    <rect x="8" y="8" width="1184" height="56" fill="#FAFAFA"/>
+    <line x1="8" y1="64" x2="1192" y2="64" stroke="#1B2A4A" stroke-opacity="0.10"/>
+
+    <!-- Logo mark -->
+    <g transform="translate(36 20) scale(0.75)">
+      <rect width="32" height="32" rx="6" fill="#FAFAFA"/>
       <path d="M14 5c1.2 5.9 4.1 8.8 10 10-5.9 1.2-8.8 4.1-10 10-1.2-5.9-4.1-8.8-10-10 5.9-1.2 8.8-4.1 10-10Z" fill="#1B7A5F"/>
       <path d="M24.5 19c.4 1.9 1.3 2.8 3.2 3.2-1.9.4-2.8 1.3-3.2 3.2-.4-1.9-1.3-2.8-3.2-3.2 1.9-.4 2.8-1.3 3.2-3.2Z" fill="#1B7A5F"/>
     </g>
-    <!-- "Calyflow" wordmark outlined in Space Grotesk 700 to match the site menu -->
-    <path transform="translate(76 47) scale(0.022 -0.022)" fill="#1B2A4A" d="M332 -14Q202 -14 126.0 58.5Q50 131 50 266V434Q50 569 126.0 641.5Q202 714 332 714Q461 714 531.5 643.5Q602 573 602 450V444H472V454Q472 516 437.5 556.0Q403 596 332 596Q262 596 222.0 553.0Q182 510 182 436V264Q182 191 222.0 147.5Q262 104 332 104Q403 104 437.5 144.5Q472 185 472 246V264H602V250Q602 127 531.5 56.5Q461 -14 332 -14Z M868 -14Q815 -14 773.0 4.5Q731 23 706.5 58.5Q682 94 682 145Q682 196 706.5 230.5Q731 265 774.5 282.5Q818 300 874 300H1010V328Q1010 363 988.0 385.5Q966 408 918 408Q871 408 848.0 386.5Q825 365 818 331L702 370Q714 408 740.5 439.5Q767 471 811.5 490.5Q856 510 920 510Q1018 510 1075.0 461.0Q1132 412 1132 319V134Q1132 104 1160 104H1200V0H1116Q1079 0 1055.0 18.0Q1031 36 1031 66V67H1012Q1008 55 994.0 35.5Q980 16 950.0 1.0Q920 -14 868 -14ZM890 88Q943 88 976.5 117.5Q1010 147 1010 196V206H883Q848 206 828.0 191.0Q808 176 808 149Q808 122 829.0 105.0Q850 88 890 88Z M1292 0V700H1418V0Z M1612 -200V-90H1882Q1910 -90 1910 -60V65H1892Q1884 48 1867.0 31.0Q1850 14 1821.0 3.0Q1792 -8 1747 -8Q1689 -8 1645.5 18.5Q1602 45 1578.0 92.0Q1554 139 1554 200V496H1680V210Q1680 154 1707.5 126.0Q1735 98 1786 98Q1844 98 1876.0 136.5Q1908 175 1908 244V496H2034V-88Q2034 -139 2004.0 -169.5Q1974 -200 1924 -200Z M2256 0V392H2130V496H2256V588Q2256 639 2286.5 669.5Q2317 700 2366 700H2496V596H2410Q2382 596 2382 566V496H2512V392H2382V0Z M2610 0V700H2736V0Z M3112 -14Q3038 -14 2979.0 16.0Q2920 46 2886.0 103.0Q2852 160 2852 240V256Q2852 336 2886.0 393.0Q2920 450 2979.0 480.0Q3038 510 3112 510Q3186 510 3245.0 480.0Q3304 450 3338.0 393.0Q3372 336 3372 256V240Q3372 160 3338.0 103.0Q3304 46 3245.0 16.0Q3186 -14 3112 -14ZM3112 98Q3170 98 3208.0 135.5Q3246 173 3246 243V253Q3246 323 3208.5 360.5Q3171 398 3112 398Q3054 398 3016.0 360.5Q2978 323 2978 253V243Q2978 173 3016.0 135.5Q3054 98 3112 98Z M3528 0 3458 496H3583L3627 85H3645L3709 496H3911L3975 85H3993L4037 496H4162L4092 0H3883L3819 411H3801L3737 0Z"/>
-    <!-- Workspace switcher -->
-    <rect x="930" y="22" width="180" height="36" rx="18" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.15"/>
-    <text x="950" y="45" font-size="14" fill="#1B2A4A">Marek's Agency</text>
-    <path d="M1086 37 l6 7 l6 -7" fill="none" stroke="#1B2A4A" stroke-width="2" stroke-linecap="round"/>
+    <!-- Wordmark -->
+    <path transform="translate(72 42) scale(0.020 -0.020)" fill="#131F38" d="M332 -14Q202 -14 126.0 58.5Q50 131 50 266V434Q50 569 126.0 641.5Q202 714 332 714Q461 714 531.5 643.5Q602 573 602 450V444H472V454Q472 516 437.5 556.0Q403 596 332 596Q262 596 222.0 553.0Q182 510 182 436V264Q182 191 222.0 147.5Q262 104 332 104Q403 104 437.5 144.5Q472 185 472 246V264H602V250Q602 127 531.5 56.5Q461 -14 332 -14Z M868 -14Q815 -14 773.0 4.5Q731 23 706.5 58.5Q682 94 682 145Q682 196 706.5 230.5Q731 265 774.5 282.5Q818 300 874 300H1010V328Q1010 363 988.0 385.5Q966 408 918 408Q871 408 848.0 386.5Q825 365 818 331L702 370Q714 408 740.5 439.5Q767 471 811.5 490.5Q856 510 920 510Q1018 510 1075.0 461.0Q1132 412 1132 319V134Q1132 104 1160 104H1200V0H1116Q1079 0 1055.0 18.0Q1031 36 1031 66V67H1012Q1008 55 994.0 35.5Q980 16 950.0 1.0Q920 -14 868 -14ZM890 88Q943 88 976.5 117.5Q1010 147 1010 196V206H883Q848 206 828.0 191.0Q808 176 808 149Q808 122 829.0 105.0Q850 88 890 88Z M1292 0V700H1418V0Z M1612 -200V-90H1882Q1910 -90 1910 -60V65H1892Q1884 48 1867.0 31.0Q1850 14 1821.0 3.0Q1792 -8 1747 -8Q1689 -8 1645.5 18.5Q1602 45 1578.0 92.0Q1554 139 1554 200V496H1680V210Q1680 154 1707.5 126.0Q1735 98 1786 98Q1844 98 1876.0 136.5Q1908 175 1908 244V496H2034V-88Q2034 -139 2004.0 -169.5Q1974 -200 1924 -200Z M2256 0V392H2130V496H2256V588Q2256 639 2286.5 669.5Q2317 700 2366 700H2496V596H2410Q2382 596 2382 566V496H2512V392H2382V0Z M2610 0V700H2736V0Z M3112 -14Q3038 -14 2979.0 16.0Q2920 46 2886.0 103.0Q2852 160 2852 240V256Q2852 336 2886.0 393.0Q2920 450 2979.0 480.0Q3038 510 3112 510Q3186 510 3245.0 480.0Q3304 450 3338.0 393.0Q3372 336 3372 256V240Q3372 160 3338.0 103.0Q3304 46 3245.0 16.0Q3186 -14 3112 -14ZM3112 98Q3170 98 3208.0 135.5Q3246 173 3246 243V253Q3246 323 3208.5 360.5Q3171 398 3112 398Q3054 398 3016.0 360.5Q2978 323 2978 253V243Q2978 173 3016.0 135.5Q3054 98 3112 98Z M3528 0 3458 496H3583L3627 85H3645L3709 496H3911L3975 85H3993L4037 496H4162L4092 0H3883L3819 411H3801L3737 0Z"/>
+
+    <!-- Admin button (navy inverted) -->
+    <rect x="1008" y="18" width="72" height="28" rx="6" fill="#131F38"/>
+    <text x="1044" y="37" font-size="12" font-weight="600" fill="#FAFAFA" text-anchor="middle">Admin</text>
     <!-- Avatar -->
-    <circle cx="1146" cy="40" r="16" fill="#1B2A4A"/>
-    <text x="1146" y="45" font-size="13" font-weight="700" fill="#FBF7F0" text-anchor="middle">M</text>
+    <circle cx="1124" cy="32" r="14" fill="#1B2A4A"/>
+    <text x="1124" y="36" font-size="12" font-weight="700" fill="#FAFAFA" text-anchor="middle">M</text>
+    <!-- Chevron -->
+    <path d="M1150 27 l5 6 l5 -6" fill="none" stroke="#1B2A4A" stroke-opacity="0.45" stroke-width="1.6" stroke-linecap="round"/>
 
     <!-- ===== Sidebar ===== -->
-    <line x1="256" y1="72" x2="256" y2="772" stroke="#1B2A4A" stroke-opacity="0.10"/>
+    <rect x="8" y="64" width="224" height="708" fill="#F4F4F5"/>
+    <line x1="232" y1="64" x2="232" y2="772" stroke="#1B2A4A" stroke-opacity="0.10"/>
 
-    <g font-size="14" fill="#1B2A4A">
-      <!-- Primary nav -->
-      <text x="34" y="114">Dashboard</text>
-      <text x="34" y="152">Agents</text>
-      <text x="34" y="190">Knowledge Base</text>
-      <text x="34" y="228">Settings</text>
+    <g font-size="13" fill="#1B2A4A">
+      <text x="28" y="96" font-size="10" font-weight="700" letter-spacing="1.1" fill-opacity="0.45">WORKSPACE</text>
+      <text x="28" y="126" fill-opacity="0.85">Dashboard</text>
+      <text x="28" y="156" fill-opacity="0.85">Agents</text>
+      <text x="28" y="186" fill-opacity="0.85">Knowledge Base</text>
 
-      <!-- Clients -->
-      <text x="34" y="272" font-size="11" font-weight="700" letter-spacing="1.2" fill-opacity="0.45">CLIENTS</text>
-      <text x="240" y="272" font-size="12" text-anchor="end" fill="#1B7A5F" fill-opacity="0.8">See all</text>
-      <path d="M30 290 l9 0 l-4.5 6 z" fill="#1B2A4A" fill-opacity="0.6"/>
-      <text x="48" y="294" font-weight="600">TechNova</text>
-      <rect x="44" y="306" width="196" height="34" rx="9" fill="#5BC8A8" fill-opacity="0.22" stroke="#5BC8A8"/>
-      <text x="58" y="328" font-size="13" font-weight="600">Senior DevOps – Berlin</text>
-      <text x="58" y="362" font-size="13" fill-opacity="0.55">Frontend Lead – Prague</text>
-      <path d="M32 386 l6 4 l-6 4 z" fill="none" stroke="#1B2A4A" stroke-opacity="0.5" stroke-width="1.4"/>
-      <text x="48" y="392" fill-opacity="0.7">Aurora Labs</text>
+      <text x="28" y="230" font-size="10" font-weight="700" letter-spacing="1.1" fill-opacity="0.45">SOURCING</text>
+      <!-- Active project -->
+      <rect x="16" y="244" width="200" height="32" rx="6" fill="#EAE9E7"/>
+      <text x="28" y="265" font-weight="600">Tech Lead (July 3)</text>
+      <text x="28" y="298" fill-opacity="0.70">Senior DevOps – Berlin</text>
+      <text x="28" y="328" fill-opacity="0.70">Frontend Lead – Prague</text>
 
-      <!-- Operations -->
-      <text x="34" y="434" font-size="11" font-weight="700" letter-spacing="1.2" fill-opacity="0.45">OPERATIONS</text>
-      <path d="M44 452 l-8 13 h7 l-2 10 l9 -14 h-7 z" fill="#1B2A4A" fill-opacity="0.55"/>
-      <text x="58" y="465" fill-opacity="0.85">Automation Hub</text>
-      <text x="58" y="500" font-size="13" fill-opacity="0.55">Connections</text>
+      <text x="28" y="372" font-size="10" font-weight="700" letter-spacing="1.1" fill-opacity="0.45">OPERATIONS</text>
+      <text x="28" y="402" fill-opacity="0.85">Automation Hub</text>
+      <text x="28" y="432" fill-opacity="0.70">Connections</text>
+      <text x="28" y="462" fill-opacity="0.70">Settings</text>
     </g>
 
-    <!-- ===== Main: project header ===== -->
-    <text x="288" y="110" font-size="13" fill="#1B2A4A" fill-opacity="0.5">TechNova / Projects</text>
-    <text x="288" y="140" font-size="24" font-weight="700" fill="#1B2A4A">Senior DevOps – Berlin</text>
+    <!-- ===== Main content ===== -->
+    <text x="260" y="98" font-size="12" fill="#1B2A4A" fill-opacity="0.70">Projects / Tech Lead</text>
+    <text x="260" y="132" font-size="22" font-weight="700" fill="#131F38">Tech Lead</text>
 
-    <!-- Readiness chips -->
-    <g font-size="13">
-      <rect x="288" y="158" width="146" height="30" rx="15" fill="#5BC8A8" fill-opacity="0.22"/>
-      <path d="M302 173 l5 5 l8 -9" fill="none" stroke="#1B7A5F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="322" y="178" fill="#1B2A4A" font-weight="600">Job Description</text>
+    <!-- Tabs -->
+    <g font-size="13" fill="#1B2A4A" fill-opacity="0.70">
+      <text x="260" y="168">Documents</text>
+      <text x="360" y="168">Sourcing</text>
+      <text x="440" y="168" font-weight="600" fill="#131F38" fill-opacity="1">Shortlist</text>
+      <text x="520" y="168">Outreach</text>
+      <text x="600" y="168">Files</text>
+      <text x="650" y="168">Activity</text>
+    </g>
+    <line x1="260" y1="178" x2="1168" y2="178" stroke="#1B2A4A" stroke-opacity="0.10"/>
+    <!-- Active tab underline (mint-700) -->
+    <rect x="438" y="176" width="68" height="2" rx="1" fill="#1B7A5F"/>
 
-      <rect x="446" y="158" width="132" height="30" rx="15" fill="#5BC8A8" fill-opacity="0.22"/>
-      <path d="M460 173 l5 5 l8 -9" fill="none" stroke="#1B7A5F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="480" y="178" fill="#1B2A4A" font-weight="600">Intake Notes</text>
+    <!-- Action buttons (secondary / outlined) -->
+    <rect x="860" y="148" width="148" height="30" rx="6" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.25"/>
+    <text x="934" y="168" font-size="12" font-weight="600" fill="#1B2A4A" text-anchor="middle">Add to talent pool</text>
+    <rect x="1020" y="148" width="148" height="30" rx="6" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.25"/>
+    <text x="1094" y="168" font-size="12" font-weight="600" fill="#1B2A4A" text-anchor="middle">Re-evaluate</text>
 
-      <rect x="590" y="158" width="84" height="30" rx="15" fill="none" stroke="#1B2A4A" stroke-opacity="0.25"/>
-      <text x="606" y="178" fill="#1B2A4A" font-weight="600">3 CVs</text>
+    <!-- AI recommendations callout -->
+    <text x="260" y="210" font-size="13" fill="#1B2A4A" fill-opacity="0.70">
+      <tspan font-weight="700" fill="#1B7A5F" fill-opacity="1">AI-generated recommendations</tspan>
+      <tspan> · 8 candidates ranked for this role</tspan>
+    </text>
+
+    <!-- ===== Shortlist table ===== -->
+    <rect x="260" y="228" width="908" height="516" rx="8" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.12"/>
+
+    <!-- Table header -->
+    <rect x="260" y="228" width="908" height="40" rx="8" fill="#FAFAFA"/>
+    <rect x="260" y="252" width="908" height="16" fill="#FAFAFA"/>
+    <line x1="260" y1="268" x2="1168" y2="268" stroke="#1B2A4A" stroke-opacity="0.10"/>
+    <g font-size="11" font-weight="700" letter-spacing="0.8" fill="#1B2A4A" fill-opacity="0.55">
+      <text x="280" y="254">CANDIDATE</text>
+      <text x="520" y="254">TITLE</text>
+      <text x="760" y="254">SOURCE</text>
+      <text x="920" y="254">FIT</text>
+      <text x="1060" y="254">SCORE</text>
     </g>
 
-    <!-- ===== Workflow cards ===== -->
-    <g>
-      <!-- Card 1: CV Screener (running) -->
-      <rect x="288" y="212" width="280" height="118" rx="14" fill="#FFFFFF" stroke="#5BC8A8" stroke-width="1.6"/>
-      <text x="308" y="244" font-size="15" font-weight="700" fill="#1B2A4A">CV Screener</text>
-      <circle cx="540" cy="239" r="5" fill="#5BC8A8"/>
-      <text x="308" y="270" font-size="12.5" fill="#1B2A4A" fill-opacity="0.6">Running — screening CV 2 of 3</text>
-      <rect x="308" y="290" width="240" height="6" rx="3" fill="#1B2A4A" fill-opacity="0.08"/>
-      <rect x="308" y="290" width="158" height="6" rx="3" fill="#5BC8A8"/>
-
-      <!-- Card 2: Sourcing Map (done) -->
-      <rect x="592" y="212" width="280" height="118" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.12"/>
-      <text x="612" y="244" font-size="15" font-weight="700" fill="#1B2A4A">Sourcing Map</text>
-      <path d="M832 233 l5 5 l9 -10" fill="none" stroke="#1B7A5F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="612" y="270" font-size="12.5" fill="#1B2A4A" fill-opacity="0.6">Completed · output saved to project</text>
-      <text x="612" y="306" font-size="13" font-weight="600" fill="#1B7A5F">View output →</text>
-
-      <!-- Card 3: Outreach Writer (ready) -->
-      <rect x="896" y="212" width="280" height="118" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.12"/>
-      <text x="916" y="244" font-size="15" font-weight="700" fill="#1B2A4A">Outreach Writer</text>
-      <text x="916" y="270" font-size="12.5" fill="#1B2A4A" fill-opacity="0.6">Ready · uses client deck + benefits</text>
-      <rect x="916" y="284" width="74" height="30" rx="15" fill="#5BC8A8"/>
-      <text x="953" y="304" font-size="13.5" font-weight="700" fill="#1B2A4A" text-anchor="middle">Run</text>
-    </g>
-
-    <!-- ===== Output panel: streaming screening report ===== -->
-    <rect x="288" y="354" width="888" height="392" rx="14" fill="#FFFFFF" stroke="#1B2A4A" stroke-opacity="0.12"/>
-
-    <text x="312" y="388" font-size="11" font-weight="700" letter-spacing="1.2" fill="#1B2A4A" fill-opacity="0.45">CV SCREENER · STREAMING</text>
-    <circle cx="1124" cy="384" r="4" fill="#5BC8A8"/>
-    <text x="1136" y="388" font-size="11.5" fill="#1B2A4A" fill-opacity="0.55">live</text>
-
-    <text x="312" y="420" font-size="18" font-weight="700" fill="#1B2A4A">Screening Report: Anna Novakova</text>
-    <rect x="990" y="402" width="166" height="30" rx="15" fill="#5BC8A8" fill-opacity="0.25" stroke="#5BC8A8"/>
-    <text x="1073" y="422" font-size="13.5" font-weight="700" fill="#1B2A4A" text-anchor="middle">8/10 · Strong fit</text>
-
-    <line x1="312" y1="440" x2="1152" y2="440" stroke="#1B2A4A" stroke-opacity="0.08"/>
-
-    <text x="312" y="470" font-size="13" font-weight="700" fill="#1B2A4A">Must-have requirements</text>
-
+    <!-- Row helper: y baselines for 6 rows -->
     <!-- Row 1 -->
-    <circle cx="320" cy="498" r="8" fill="#5BC8A8" fill-opacity="0.25"/>
-    <path d="M315.5 498 l3.5 3.5 l6 -7" fill="none" stroke="#1B7A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="340" y="503" font-size="13.5" fill="#1B2A4A" font-weight="600">Kubernetes (4+ yrs)</text>
-    <text x="560" y="503" font-size="12.5" fill="#1B2A4A" fill-opacity="0.55">"Led K8s platform team at Datacore, 2021–2025"</text>
+    <g>
+      <text x="280" y="302" font-size="14" font-weight="600" fill="#131F38">Amina Okonkwo</text>
+      <text x="520" y="302" font-size="13" fill="#1B2A4A" fill-opacity="0.70">Staff Engineer · Payments</text>
+      <rect x="760" y="288" width="102" height="22" rx="6" fill="#D0E1F6"/>
+      <text x="811" y="303" font-size="11" font-weight="600" fill="#2C5C8D" text-anchor="middle">Included search</text>
+      <circle cx="932" cy="297" r="9" fill="#3ECF8E"/>
+      <path d="M927 297 l3.5 3.5 l7 -7" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1088" y="304" font-size="18" font-weight="700" fill="#131F38" text-anchor="end">92</text>
+    </g>
+    <line x1="280" y1="324" x2="1148" y2="324" stroke="#1B2A4A" stroke-opacity="0.08"/>
 
     <!-- Row 2 -->
-    <circle cx="320" cy="530" r="8" fill="#5BC8A8" fill-opacity="0.25"/>
-    <path d="M315.5 530 l3.5 3.5 l6 -7" fill="none" stroke="#1B7A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="340" y="535" font-size="13.5" fill="#1B2A4A" font-weight="600">Terraform / IaC</text>
-    <text x="560" y="535" font-size="12.5" fill="#1B2A4A" fill-opacity="0.55">"Migrated 40+ services to Terraform modules"</text>
+    <g>
+      <text x="280" y="358" font-size="14" font-weight="600" fill="#131F38">Jonas Meier</text>
+      <text x="520" y="358" font-size="13" fill="#1B2A4A" fill-opacity="0.70">Tech Lead · Platform</text>
+      <rect x="760" y="344" width="102" height="22" rx="6" fill="#D0E1F6"/>
+      <text x="811" y="359" font-size="11" font-weight="600" fill="#2C5C8D" text-anchor="middle">Included search</text>
+      <circle cx="932" cy="353" r="9" fill="#3ECF8E"/>
+      <path d="M927 353 l3.5 3.5 l7 -7" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1088" y="360" font-size="18" font-weight="700" fill="#131F38" text-anchor="end">88</text>
+    </g>
+    <line x1="280" y1="380" x2="1148" y2="380" stroke="#1B2A4A" stroke-opacity="0.08"/>
 
-    <!-- Row 3 (gap) -->
-    <circle cx="320" cy="562" r="8" fill="#E2A33C" fill-opacity="0.25"/>
-    <text x="320" y="567" font-size="12" font-weight="800" fill="#B07514" text-anchor="middle">!</text>
-    <text x="340" y="567" font-size="13.5" fill="#1B2A4A" font-weight="600">On-call leadership</text>
-    <text x="560" y="567" font-size="12.5" fill="#1B2A4A" fill-opacity="0.55">not evident from CV — ask in screening call</text>
+    <!-- Row 3 -->
+    <g>
+      <text x="280" y="414" font-size="14" font-weight="600" fill="#131F38">Sofia Reyes</text>
+      <text x="520" y="414" font-size="13" fill="#1B2A4A" fill-opacity="0.70">Engineering Manager</text>
+      <rect x="760" y="400" width="54" height="22" rx="6" fill="#EAE9E7"/>
+      <text x="787" y="415" font-size="11" font-weight="600" fill="#1B2A4A" fill-opacity="0.70" text-anchor="middle">Other</text>
+      <circle cx="932" cy="409" r="9" fill="#3ECF8E"/>
+      <path d="M927 409 l3.5 3.5 l7 -7" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1088" y="416" font-size="18" font-weight="700" fill="#131F38" text-anchor="end">84</text>
+    </g>
+    <line x1="280" y1="436" x2="1148" y2="436" stroke="#1B2A4A" stroke-opacity="0.08"/>
 
-    <text x="312" y="610" font-size="13" font-weight="700" fill="#1B2A4A">Strengths</text>
+    <!-- Row 4 -->
+    <g>
+      <text x="280" y="470" font-size="14" font-weight="600" fill="#131F38">Chen Wei</text>
+      <text x="520" y="470" font-size="13" fill="#1B2A4A" fill-opacity="0.70">Principal Engineer</text>
+      <rect x="760" y="456" width="102" height="22" rx="6" fill="#D0E1F6"/>
+      <text x="811" y="471" font-size="11" font-weight="600" fill="#2C5C8D" text-anchor="middle">Included search</text>
+      <circle cx="932" cy="465" r="9" fill="#3ECF8E"/>
+      <path d="M927 465 l3.5 3.5 l7 -7" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1088" y="472" font-size="18" font-weight="700" fill="#131F38" text-anchor="end">81</text>
+    </g>
+    <line x1="280" y1="492" x2="1148" y2="492" stroke="#1B2A4A" stroke-opacity="0.08"/>
 
-    <!-- Streaming text skeleton -->
-    <rect x="312" y="624" width="640" height="10" rx="5" fill="#1B2A4A" fill-opacity="0.10"/>
-    <rect x="312" y="644" width="560" height="10" rx="5" fill="#1B2A4A" fill-opacity="0.10"/>
-    <rect x="312" y="664" width="430" height="10" rx="5" fill="#1B2A4A" fill-opacity="0.10"/>
-    <rect x="748" y="660" width="9" height="16" rx="2" fill="#5BC8A8"/>
+    <!-- Row 5 -->
+    <g>
+      <text x="280" y="526" font-size="14" font-weight="600" fill="#131F38">Priya Natarajan</text>
+      <text x="520" y="526" font-size="13" fill="#1B2A4A" fill-opacity="0.70">Staff SWE · Infra</text>
+      <rect x="760" y="512" width="102" height="22" rx="6" fill="#D0E1F6"/>
+      <text x="811" y="527" font-size="11" font-weight="600" fill="#2C5C8D" text-anchor="middle">Included search</text>
+      <circle cx="932" cy="521" r="9" fill="#EAE9E7" stroke="#1B2A4A" stroke-opacity="0.20"/>
+      <path d="M927 521 l10 0" fill="none" stroke="#1B2A4A" stroke-opacity="0.45" stroke-width="1.8" stroke-linecap="round"/>
+      <text x="1088" y="528" font-size="18" font-weight="700" fill="#131F38" text-anchor="end">76</text>
+    </g>
+    <line x1="280" y1="548" x2="1148" y2="548" stroke="#1B2A4A" stroke-opacity="0.08"/>
 
-    <line x1="312" y1="700" x2="1152" y2="700" stroke="#1B2A4A" stroke-opacity="0.08"/>
-    <text x="312" y="726" font-size="12" fill="#1B2A4A" fill-opacity="0.5">Run #18 · 12,384 tokens in / 1,872 out · $0.041 · saved to project files</text>
+    <!-- Row 6 -->
+    <g>
+      <text x="280" y="582" font-size="14" font-weight="600" fill="#131F38">Marco Bianchi</text>
+      <text x="520" y="582" font-size="13" fill="#1B2A4A" fill-opacity="0.70">Lead Developer</text>
+      <rect x="760" y="568" width="54" height="22" rx="6" fill="#EAE9E7"/>
+      <text x="787" y="583" font-size="11" font-weight="600" fill="#1B2A4A" fill-opacity="0.70" text-anchor="middle">Other</text>
+      <circle cx="932" cy="577" r="9" fill="#3ECF8E"/>
+      <path d="M927 577 l3.5 3.5 l7 -7" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="1088" y="584" font-size="18" font-weight="700" fill="#131F38" text-anchor="end">74</text>
+    </g>
+    <line x1="280" y1="604" x2="1148" y2="604" stroke="#1B2A4A" stroke-opacity="0.08"/>
+
+    <!-- Row 7 (partial / quieter) -->
+    <g opacity="0.55">
+      <text x="280" y="638" font-size="14" font-weight="600" fill="#131F38">Elena Petrova</text>
+      <text x="520" y="638" font-size="13" fill="#1B2A4A" fill-opacity="0.70">Senior Backend</text>
+      <rect x="760" y="624" width="102" height="22" rx="6" fill="#D0E1F6"/>
+      <text x="811" y="639" font-size="11" font-weight="600" fill="#2C5C8D" text-anchor="middle">Included search</text>
+      <circle cx="932" cy="633" r="9" fill="#EAE9E7" stroke="#1B2A4A" stroke-opacity="0.20"/>
+      <path d="M927 633 l10 0" fill="none" stroke="#1B2A4A" stroke-opacity="0.45" stroke-width="1.8" stroke-linecap="round"/>
+      <text x="1088" y="640" font-size="18" font-weight="700" fill="#131F38" text-anchor="end">69</text>
+    </g>
+    <line x1="280" y1="660" x2="1148" y2="660" stroke="#1B2A4A" stroke-opacity="0.08"/>
+
+    <!-- Footer meta -->
+    <text x="280" y="710" font-size="12" fill="#1B2A4A" fill-opacity="0.70">8 candidates · last evaluated 2 min ago · scores from your ICP rubric</text>
 
   </g>
 </svg>

@@ -12,7 +12,7 @@ export const SITE = {
     'Calyflow is a set of open-source recruiting agents that run AI workflows on your own models, data, and tools.',
   /** Meta description for the homepage (≤155 chars). */
   description:
-    'Run AI-powered sourcing, screening, and outreach workflows on your own AI, your own data, your own tools. Open source, free to start.',
+    'Fully autonomous recruiting agents. Upload a JD and unpublished insights — agents connect to your data, LinkedIn Proxy, and 30+ providers to source.',
   url: 'https://calyflow.ai',
   appUrl: 'https://app.calyflow.ai',
   /** Full product documentation (lives in the app). */
@@ -20,6 +20,7 @@ export const SITE = {
   /** llms.txt index of the documentation (lives in the app). */
   docsLlmsTxtUrl: 'https://app.calyflow.ai/llms.txt',
   signupUrl: 'https://app.calyflow.ai/sign-up',
+  loginUrl: 'https://app.calyflow.ai/sign-in',
   /** Google Calendar booking link for custom automation-hub discovery calls. */
   bookCallUrl: 'https://calendar.app.google/mqJ6x4hCQm6Kp9bK7',
   githubUrl: 'https://github.com/Calyflow/calyflow-app',

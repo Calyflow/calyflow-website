@@ -1,0 +1,104 @@
+---
+import { SITE } from '../../data/site';
+import Button from '../Button.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+const plans = [
+  {
+    name: 'Full-time',
+    detail: '24/7',
+    price: '€40k',
+    period: '/year',
+    features: ['Candidate sourcing', 'Client research and outreach'],
+    cta: 'Book a call',
+    href: SITE.bookCallUrl,
+    event: 'cta-agent-full-time',
+    featured: true,
+  },
+  {
+    name: 'Part-time',
+    detail: '12h · 5 days',
+    price: '€20k',
+    period: '/year',
+    features: ['Candidate sourcing', 'Client research and outreach'],
+    cta: 'Book a call',
+    href: SITE.bookCallUrl,
+    event: 'cta-agent-part-time',
+    featured: false,
+  },
+  {
+    name: 'Ad-hoc',
+    detail: 'On-demand · pay as you go',
+    price: 'Pay as you go',
+    period: '',
+    features: ['Candidate sourcing', 'Client research and outreach'],
+    cta: 'Create a free account',
+    href: SITE.signupUrl,
+    event: 'cta-agent-ad-hoc',
+    featured: false,
+  },
+];
+---
+
+<section class="py-14 md:py-20" id="autonomous-agent">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading eyebrow="Autonomous AI agent" title="A fully autonomous set of agents">
+      You upload the job description and unpublished insights. The agents connect to databases,
+      LinkedIn Proxy, and 30+ data providers — then source candidates for you, full-time,
+      part-time, or on demand.
+    </SectionHeading>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {
+        plans.map((plan) => (
+          <div
+            class:list={[
+              'flex flex-col rounded-panel bg-white p-8',
+              plan.featured
+                ? 'border-2 border-mint-400 shadow-[0_8px_30px_rgba(19,31,56,0.08)]'
+                : 'border border-navy-800/12',
+            ]}
+          >
+            <p class="font-mono text-sm font-medium tracking-wide text-mint-700 uppercase">{plan.name}</p>
+            <p class="mt-2 text-sm text-navy-800/70">{plan.detail}</p>
+            <p class="mt-5 font-display text-3xl font-bold tracking-tight text-navy-900">
+              {plan.price}
+              {plan.period && (
+                <span class="text-lg font-semibold text-navy-800/70">{plan.period}</span>
+              )}
+            </p>
+            <ul class="mt-6 flex-1 space-y-3">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-2.5 text-[0.9375rem] text-navy-800/70">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--color-mint-700)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-0.5 shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="m5 12.5 4.5 4.5L19 7.5" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <Button
+              href={plan.href}
+              variant={plan.featured ? 'primary' : 'secondary'}
+              event={plan.event}
+              class="mt-8 w-full"
+            >
+              {plan.cta}
+            </Button>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

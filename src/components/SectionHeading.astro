@@ -22,7 +22,7 @@ const { eyebrow, title, id, class: className, as: Heading = 'h2' } = Astro.props
   <Heading {id} class="text-3xl tracking-tight md:text-4xl">{title}</Heading>
   {
     Astro.slots.has('default') && (
-      <p class="mt-4 text-navy-800/55">
+      <p class="mt-4 text-navy-800/70">
         <slot />
       </p>
     )

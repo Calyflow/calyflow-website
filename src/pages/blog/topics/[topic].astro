@@ -26,8 +26,7 @@ const description = `Articles on ${label} for recruiting teams: practical, workf
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="relative overflow-hidden">
-    <div class="aurora-glow-b absolute -top-32 left-1/2 h-[320px] w-[640px] -translate-x-1/2 rounded-full" aria-hidden="true"></div>
+  <section class="relative">
     <div class="relative mx-auto max-w-6xl px-5 pt-16 pb-10 md:pt-20">
       <Breadcrumbs crumbs={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: capitalized }]} />
       <h1 class="mt-6 text-3xl tracking-tight capitalize md:text-4xl">{label}</h1>
