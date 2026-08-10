@@ -11,7 +11,7 @@ This post breaks down what a good sourcing map contains, why generating it in *o
 
 ## The piecemeal problem
 
-Most recruiters already use AI for sourcing — one fragment at a time. "Give me a boolean string for a senior data engineer." Then, in another chat: "Which companies in Berlin have strong data teams?" Then: "Synonyms for 'data pipeline'?"
+Most recruiters already use AI for sourcing, one fragment at a time. "Give me a boolean string for a senior data engineer." Then, in another chat: "Which companies in Berlin have strong data teams?" Then: "Synonyms for 'data pipeline'?"
 
 Each answer is fine. The problem is that the fragments don't talk to each other:
 
@@ -37,7 +37,7 @@ The layers reinforce each other, and that's the point of generating them togethe
 Beyond speed, the single-run approach fixes three things piecemeal prompting can't:
 
 - **Consistency.** Every searcher on the team starts from the same map structure. Search #50 is as thorough as search #1, because thoroughness is encoded in the workflow, not in someone's mood.
-- **Provenance.** The map derives from the JD and intake notes you attached. When a target company looks odd, you can trace *why* it's there — same philosophy as [evidence-quoted CV screening](/blog/ai-cv-screening-without-hallucinations): every output should justify itself.
+- **Provenance.** The map derives from the JD and intake notes you attached. When a target company looks odd, you can trace *why* it's there, same philosophy as [evidence-quoted CV screening](/blog/ai-cv-screening-without-hallucinations): every output should justify itself.
 - **Iteration.** When the client adds a constraint ("no candidates from vendors"), you re-run the map with updated intake notes. The whole set (companies, pools, strings) updates coherently, instead of you patching one boolean string and forgetting the rest.
 
 ## Garbage in, garbage map

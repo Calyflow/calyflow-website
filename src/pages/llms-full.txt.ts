@@ -5,12 +5,12 @@ import { FAQ } from '../data/faq';
 // Extended LLM-facing description: adds the workflow catalog and the full
 // FAQ answers, generated from the same data the homepage renders.
 const workflows = WORKFLOWS.map(
-  (wf, i) => `${i + 1}. ${wf.name} (${wf.input} → ${wf.output}): ${wf.description}`
+ (wf, i) => `${i + 1}. ${wf.name} (${wf.input} → ${wf.output}): ${wf.description}`
 ).join('\n');
 
 const faq = FAQ.map((item) => `### ${item.question}\n\n${item.answer}`).join('\n\n');
 
-const body = `# ${SITE.name} — full reference
+const body = `# ${SITE.name}, full reference
 
 > ${SITE.definition}
 
@@ -22,14 +22,14 @@ evidence-backed results and a visible cost per run.
 ## Core principles
 
 - Bring Your Own AI: model-agnostic. Claude, ChatGPT, Gemini, OpenAI API,
-  Anthropic API, or local models, on your own API key or the built-in
-  Calyflow key ($10 of free credit for new accounts).
+ Anthropic API, or local models, on your own API key or the built-in
+ Calyflow key ($10 of free credit for new accounts).
 - Bring Your Own Data: connects to your ATS/CRM and files (Recruit CRM,
-  Bullhorn, Vincere, HubSpot, Salesforce, Google Sheets, Airtable, CSV).
-  Calyflow does not own your candidate data.
+ Bullhorn, Vincere, HubSpot, Salesforce, Google Sheets, Airtable, CSV).
+ Calyflow does not own your candidate data.
 - Bring Your Own Tools: agents can use multiple tools during execution
-  (LinkedIn, Apollo, BrightData, GitHub, Google Search, company databases,
-  internal candidate DBs).
+ (LinkedIn, Apollo, BrightData, GitHub, Google Search, company databases,
+ internal candidate DBs).
 
 ## The launch workflows (one search lifecycle)
 
@@ -51,4 +51,4 @@ ${faq}
 `;
 
 export const GET: APIRoute = () =>
-  new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+ new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });

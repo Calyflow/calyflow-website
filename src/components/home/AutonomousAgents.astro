@@ -1,12 +1,12 @@
 ---
-import { SITE } from '../../data/site';
+import { AUTHOR, SITE } from '../../data/site';
 import Button from '../Button.astro';
 import SectionHeading from '../SectionHeading.astro';
 
 const plans = [
   {
-    name: 'Full-time',
-    detail: '24/7',
+    name: 'Full-time Agent',
+    detail: '24/7 running',
     price: '€40k',
     period: '/year',
     features: ['Candidate sourcing', 'Client research and outreach'],
@@ -16,8 +16,8 @@ const plans = [
     featured: true,
   },
   {
-    name: 'Part-time',
-    detail: '12h · 5 days',
+    name: 'Part-time Agent',
+    detail: '12h · 5 days running',
     price: '€20k',
     period: '/year',
     features: ['Candidate sourcing', 'Client research and outreach'],
@@ -40,11 +40,11 @@ const plans = [
 ];
 ---
 
-<section class="py-14 md:py-20" id="autonomous-agent">
+<section class="border-t border-navy-800/10 py-14 md:py-20" id="the-solution">
   <div class="mx-auto max-w-6xl px-5">
-    <SectionHeading eyebrow="Autonomous AI agent" title="A fully autonomous set of agents">
+    <SectionHeading eyebrow="The solution" title="Autonomous AI Recruiting Agents">
       You upload the job description and unpublished insights. The agents connect to databases,
-      LinkedIn Proxy, and 30+ data providers — then source candidates for you, full-time,
+      LinkedIn Proxy, and 30+ data providers, then source candidates for you, full-time,
       part-time, or on demand.
     </SectionHeading>
 
@@ -100,5 +100,26 @@ const plans = [
         ))
       }
     </div>
+
+    <figure class="mx-auto mt-16 max-w-3xl text-center md:mt-20">
+      <blockquote class="font-display text-[clamp(1.5rem,3.5vw,2rem)] leading-[1.25] font-semibold tracking-tight text-balance text-navy-900">
+        “The agent can source 10x more candidates and run outreach to 10x more clients. No holidays,
+        no breaks, just execution.”
+      </blockquote>
+      <figcaption class="mt-8 flex items-center justify-center gap-3">
+        <img
+          src={AUTHOR.avatar}
+          alt=""
+          width="48"
+          height="48"
+          loading="lazy"
+          class="h-12 w-12 rounded-full object-cover ring-1 ring-navy-800/10"
+        />
+        <cite class="not-italic">
+          <span class="font-display font-semibold text-navy-900">{AUTHOR.name}</span>
+          <span class="mt-0.5 block text-sm text-navy-800/70">Recruiting & AI Automation Expert</span>
+        </cite>
+      </figcaption>
+    </figure>
   </div>
 </section>

@@ -15,7 +15,7 @@ export interface DocumentSpec {
 }
 
 /**
- * A library agent. Calyflow no longer separates "workflows" from "agents" —
+ * A library agent. Calyflow no longer separates "workflows" from "agents" , 
  * everything is an agent; some are simple, some reach into connectors (ATS,
  * CRM, data, email). The `context` field says which app context it runs in.
  */
@@ -64,14 +64,14 @@ export const CONTEXT_GROUPS: ContextGroup[] = [
     id: 'recruiting',
     title: 'Recruiting',
     blurb:
-      'Run the whole search lifecycle on your own AI, data, and tools — intake and job descriptions, sourcing, screening, outreach, and submission packs.',
+      'Run the whole search lifecycle on your own AI, data, and tools, intake and job descriptions, sourcing, screening, outreach, and submission packs.',
   },
   {
     context: 'business-development',
     id: 'business-development',
     title: 'Business development',
     blurb:
-      'Win and grow client relationships — market your strongest candidates and research prospects before you reach out.',
+      'Win and grow client relationships, market your strongest candidates and research prospects before you reach out.',
   },
 ];
 
@@ -119,7 +119,7 @@ export function groupByContext(items: LibraryItem[]): GroupedLibrary[] {
   return groups;
 }
 
-/** Raw connector entry from the API — either a plain label or a full group. */
+/** Raw connector entry from the API, either a plain label or a full group. */
 type ApiConnector = string | Partial<ConnectorGroup>;
 
 interface ApiLibraryItem {
@@ -189,7 +189,7 @@ function normalizeDocuments(docs: Partial<DocumentSpec> | null | undefined): Doc
 /**
  * Resolve the cover URL. When `rebuildHost` is set (snapshot path), rebuild it
  * from the slug against that host. Otherwise honor the URL the live API
- * returns — so covers come from the same environment as the data — falling
+ * returns, so covers come from the same environment as the data, falling
  * back to the API's own origin if it omits one.
  */
 function resolveCoverUrl(item: ApiLibraryItem, rebuildHost: string | null): string {

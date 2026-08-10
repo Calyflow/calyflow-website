@@ -1,25 +1,25 @@
 ---
 title: 'Introducing CalyflowDB: a talent data layer your agents can search'
-description: 'An AI-native talent data layer that connects your talent pools, normalizes them, and makes them semantically searchable — for you and your AI agents.'
+description: 'An AI-native talent data layer that connects your talent pools, normalizes them, and makes them semantically searchable, for you and your AI agents.'
 pubDate: 2026-07-14
 topic: 'open-source'
 ---
 
 import Screenshot from '../../components/blog/Screenshot.astro';
 
-Most agencies don't have a candidate shortage. They have a candidate-*findability* shortage. The people you need are already in your world — in last year's Bullhorn, in a Greenhouse you inherited from a client, in three spreadsheets and a CRM nobody has opened since the last placement. The data exists. It just isn't in one place, it isn't clean, and — the part that matters in 2026 — it isn't in a shape an AI agent can search.
+Most agencies don't have a candidate shortage. They have a candidate-*findability* shortage. The people you need are already in your world, in last year's Bullhorn, in a Greenhouse you inherited from a client, in three spreadsheets and a CRM nobody has opened since the last placement. The data exists. It just isn't in one place, it isn't clean, and: the part that matters in 2026, it isn't in a shape an AI agent can search.
 
-Today we're shipping **CalyflowDB**: an AI-native talent data layer that connects your talent pools, normalizes them, and makes them semantically searchable — then hands the whole thing to your AI agents so they can run searches on their own. Think of it as the warehouse under your recruiting: one place your people live, and one interface — human *or* agent — for asking it questions.
+Today we're shipping **CalyflowDB**: an AI-native talent data layer that connects your talent pools, normalizes them, and makes them semantically searchable, then hands the whole thing to your AI agents so they can run searches on their own. Think of it as the warehouse under your recruiting: one place your people live, and one interface, human *or* agent, for asking it questions.
 
 <Screenshot
-  bare
-  src="/blog/calyflowdb-dashboard.png"
-  alt="The CalyflowDB workspace Overview for 'Robo Alfa IT — EU': stat cards for Candidates (19, 1 search-ready), Jobs (0, 9 companies), Embedded coverage (100%), and API requests over 30 days (47), plus Pipeline activity and a Data issues quality queue."
+ bare
+ src="/blog/calyflowdb-dashboard.png"
+ alt="The CalyflowDB workspace Overview for 'Robo Alfa IT: EU': stat cards for Candidates (19, 1 search-ready), Jobs (0, 9 companies), Embedded coverage (100%), and API requests over 30 days (47), plus Pipeline activity and a Data issues quality queue."
 />
 
 ## The problem CalyflowDB is built for
 
-If you've tried to point an AI agent at your candidate data, you already know where it breaks. Your ATS has an API, but it thinks in "requisitions" and "stages," not "who have I ever met who's done fintech payments in Berlin." Your spreadsheets have no API at all. Nothing is deduplicated, so the same person shows up four times with three email addresses. And "search" means keyword search — type `Kubernetes` and miss the profile that says `k8s`, or the one who ran it in 2019 and hasn't touched it since.
+If you've tried to point an AI agent at your candidate data, you already know where it breaks. Your ATS has an API, but it thinks in "requisitions" and "stages," not "who have I ever met who's done fintech payments in Berlin." Your spreadsheets have no API at all. Nothing is deduplicated, so the same person shows up four times with three email addresses. And "search" means keyword search, type `Kubernetes` and miss the profile that says `k8s`, or the one who ran it in 2019 and hasn't touched it since.
 
 An agent is only as good as the data layer it stands on. Give it a pile of raw exports and it does exactly what you'd do with a pile of raw exports: struggle. CalyflowDB is the layer that turns that pile into something an agent can reason over.
 
@@ -27,60 +27,60 @@ An agent is only as good as the data layer it stands on. Give it a pile of raw e
 
 Four jobs, in order:
 
-**Connects your talent pools.** CalyflowDB ships with **27 source connectors** out of the box — **24 applicant tracking systems** (Greenhouse, Ashby, Lever, Bullhorn, Vincere, JobAdder, Recruit CRM, Teamtailor, Workable, SmartRecruiters, Recruitee, and more) plus **Google Sheets, Airtable, and Excel/Office 365** for everything that never made it into a "real" system. You map your fields once; it syncs candidates, jobs, and applications on a schedule, with encrypted credentials and dedupe built in.
+**Connects your talent pools.** CalyflowDB ships with **27 source connectors** out of the box, **24 applicant tracking systems** (Greenhouse, Ashby, Lever, Bullhorn, Vincere, JobAdder, Recruit CRM, Teamtailor, Workable, SmartRecruiters, Recruitee, and more) plus **Google Sheets, Airtable, and Excel/Office 365** for everything that never made it into a "real" system. You map your fields once; it syncs candidates, jobs, and applications on a schedule, with encrypted credentials and dedupe built in.
 
-**Normalizes what comes in.** Identity resolution collapses the four-copies-of-one-person problem into a single profile, with a scored review queue for the close calls. CVs in PDF and DOCX get parsed. Skills get resolved against a versioned skill graph — so `k8s` and `Kubernetes` are the same thing — and every skill carries a *freshness* signal: "current role" versus "last used 2019." Location, seniority, and industry get enriched. This is the unglamorous work that makes everything downstream possible.
+**Normalizes what comes in.** Identity resolution collapses the four-copies-of-one-person problem into a single profile, with a scored review queue for the close calls. CVs in PDF and DOCX get parsed. Skills get resolved against a versioned skill graph, so `k8s` and `Kubernetes` are the same thing, and every skill carries a *freshness* signal: "current role" versus "last used 2019." Location, seniority, and industry get enriched. This is the unglamorous work that makes everything downstream possible.
 
-**Makes it searchable — properly.** Search in CalyflowDB is **hybrid**: a semantic leg (Vertex AI embeddings in a pgvector index, so meaning matches even when words don't) fused with a classic full-text leg (so exact terms and titles still land), combined with Reciprocal Rank Fusion and a skill-aware rerank. You can ask in plain language — "senior backend engineer, payments background, open to remote" — and the query gets parsed, expanded across the skill graph, and answered with ranked, *explainable* results. Every match shows its evidence, down to which skill fired and how recently it was used. It's matching you can defend to a client, not a black box that spits out names.
+**Makes it searchable, properly.** Search in CalyflowDB is **hybrid**: a semantic leg (Vertex AI embeddings in a pgvector index, so meaning matches even when words don't) fused with a classic full-text leg (so exact terms and titles still land), combined with Reciprocal Rank Fusion and a skill-aware rerank. You can ask in plain language, "senior backend engineer, payments background, open to remote", and the query gets parsed, expanded across the skill graph, and answered with ranked, *explainable* results. Every match shows its evidence, down to which skill fired and how recently it was used. It's matching you can defend to a client, not a black box that spits out names.
 
-**Keeps it compliant.** Consent state travels with every record. Do-not-contact and deleted candidates never surface in a search or a match — structurally, not as an afterthought. There's an anonymized search mode, a GDPR delete-everywhere pipeline, and EU data residency by default. If a client's auditor asks what happens to a candidate's data, you answer with architecture, not adjectives.
+**Keeps it compliant.** Consent state travels with every record. Do-not-contact and deleted candidates never surface in a search or a match, structurally, not as an afterthought. There's an anonymized search mode, a GDPR delete-everywhere pipeline, and EU data residency by default. If a client's auditor asks what happens to a candidate's data, you answer with architecture, not adjectives.
 
 ## The part that changes how you work: agents can search it themselves
 
-Here's the shift. CalyflowDB doesn't just give *you* a search box — it gives your **AI agents** a native way in.
+Here's the shift. CalyflowDB doesn't just give *you* a search box, it gives your **AI agents** a native way in.
 
-Every capability in CalyflowDB is exposed as an **MCP server**: connect it to Claude Code, Claude Desktop, or any MCP-compatible client, and your agent gets one tool per API operation — roughly a hundred of them — to list, search, match, shortlist, and (with the right scope) write back. Because the tools are generated from the same API spec the product runs on, they can't drift out of sync, and each one is scoped to the API key, so an agent never even sees a tool it isn't allowed to call.
+Every capability in CalyflowDB is exposed as an **MCP server**: connect it to Claude Code, Claude Desktop, or any MCP-compatible client, and your agent gets one tool per API operation, roughly a hundred of them, to list, search, match, shortlist, and (with the right scope) write back. Because the tools are generated from the same API spec the product runs on, they can't drift out of sync, and each one is scoped to the API key, so an agent never even sees a tool it isn't allowed to call.
 
 What that unlocks is an agent that runs the loop end to end, unattended:
 
 1. **Search** your pool in natural language, with query parsing on.
-2. **Open** the promising profiles and check a role's coverage — how many qualified people you actually have for it.
+2. **Open** the promising profiles and check a role's coverage, how many qualified people you actually have for it.
 3. **Shortlist** the best into a search project.
-4. **Record feedback** — good fit, not a fit — so the signal is captured for ranking.
-5. And with write access: **log outreach, create applications, schedule interviews** — straight back into the flow.
+4. **Record feedback**, good fit, not a fit, so the signal is captured for ranking.
+5. And with write access: **log outreach, create applications, schedule interviews**, straight back into the flow.
 
 You describe the role. The agent works your data warehouse. You review a ranked shortlist with the reasoning attached. That's a fully autonomous search running on *your* talent, not a generic scrape of the open web.
 
 ## Who this is for
 
-**Agencies.** You've been accumulating talent for years across every tool you've ever bought. CalyflowDB is where all of it finally becomes one searchable asset — and, because there's a full clients-and-deals CRM layer alongside the talent hub, the same warehouse holds both sides of your business. Your agents source from data you already own and paid for, instead of re-buying the same candidates every quarter.
+**Agencies.** You've been accumulating talent for years across every tool you've ever bought. CalyflowDB is where all of it finally becomes one searchable asset, and, because there's a full clients-and-deals CRM layer alongside the talent hub, the same warehouse holds both sides of your business. Your agents source from data you already own and paid for, instead of re-buying the same candidates every quarter.
 
-**Solopreneurs and independent recruiters.** You *are* the sourcing team, the research team, and the ops team. CalyflowDB is how one person runs like several: connect your history, point an agent at it, and let it do the searching while you do the talking to humans. There's a free plan and you bring your own API key — no enterprise contract to get started.
+**Solopreneurs and independent recruiters.** You *are* the sourcing team, the research team, and the ops team. CalyflowDB is how one person runs like several: connect your history, point an agent at it, and let it do the searching while you do the talking to humans. There's a free plan and you bring your own API key, no enterprise contract to get started.
 
 ## Under the hood (the short version)
 
 A few things worth knowing if you like to know how the machine works:
 
-- **Postgres, all the way down.** PostgreSQL 17 with `pgvector` (HNSW indexes) for semantic search and a weighted `tsvector` index for lexical — one database, two retrieval strategies, fused at query time.
+- **Postgres, all the way down.** PostgreSQL 17 with `pgvector` (HNSW indexes) for semantic search and a weighted `tsvector` index for lexical, one database, two retrieval strategies, fused at query time.
 - **Real multi-tenancy.** Every workspace is isolated by Postgres row-level security. Need harder isolation? A workspace can run as a *dedicated* deployment with its own database.
 - **Two SDKs, one source of truth.** TypeScript and Python SDKs are generated from the same OpenAPI spec as the MCP tools, and CI fails if they drift. The method you call in code, the tool your agent calls, and the endpoint the API serves are literally the same operation.
 - **Built to be owned.** Like the rest of Calyflow, CalyflowDB is AGPL-3.0 and self-hostable on your own GCP. The managed version is a convenience, never a cage.
 
 ## The honest trade-offs
 
-You may have read [our post on why Calyflow doesn't warehouse your data](/blog/why-calyflow-is-open-source) — that the workflow product connects to your systems and leaves your candidates where they live. That's still true of the workflows.
+You may have read [our post on why Calyflow doesn't warehouse your data](/blog/why-calyflow-is-open-source), that the workflow product connects to your systems and leaves your candidates where they live. That's still true of the workflows.
 
-CalyflowDB is the deliberate opposite choice, made for a specific job: agents can't run intelligent, sub-second search over data that's scattered across a dozen APIs, so this is the layer where you *choose* to consolidate. The BYO principle doesn't change — it just moves. It's still your workspace, optionally your own dedicated database, self-hostable, under a license that means the worst case is always "take the code and keep working." A warehouse you own and can walk away with isn't lock-in. It's leverage.
+CalyflowDB is the deliberate opposite choice, made for a specific job: agents can't run intelligent, sub-second search over data that's scattered across a dozen APIs, so this is the layer where you *choose* to consolidate. The BYO principle doesn't change: it just moves. It's still your workspace, optionally your own dedicated database, self-hostable, under a license that means the worst case is always "take the code and keep working." A warehouse you own and can walk away with isn't lock-in. It's leverage.
 
 And two things we'd rather tell you than have you discover:
 
-- **Write-back is deep, not universal.** Search, matching, and read access work across all 27 connectors. Structured write-back into the source ATS (shortlist notes, do-not-contact) is live for a subset today and expanding — check the connector page for exactly which, because we mark what's real and only what's real.
-- **The MCP server runs locally today.** You run it on your own machine over stdio and connect your agent to it — no inbound URL, nothing exposed. A hosted remote endpoint is on the roadmap; when it ships, we'll say so here, and not before.
+- **Write-back is deep, not universal.** Search, matching, and read access work across all 27 connectors. Structured write-back into the source ATS (shortlist notes, do-not-contact) is live for a subset today and expanding, check the connector page for exactly which, because we mark what's real and only what's real.
+- **The MCP server runs locally today.** You run it on your own machine over stdio and connect your agent to it, no inbound URL, nothing exposed. A hosted remote endpoint is on the roadmap; when it ships, we'll say so here, and not before.
 
 ## Get started
 
-CalyflowDB is the data layer that makes the top rung of the [AI Adoption Ladder](/blog/ai-adoption-ladder-for-recruiting-teams) — an AI-operated search lifecycle — something you can actually stand on. Connect your first source, and the search box (and your agents) light up the moment the sync finishes.
+CalyflowDB is the data layer that makes the top rung of the [AI Adoption Ladder](/blog/ai-adoption-ladder-for-recruiting-teams), an AI-operated search lifecycle, something you can actually stand on. Connect your first source, and the search box (and your agents) light up the moment the sync finishes.
 
 Connect it. Normalize it. Search it. Then let your agents do the searching for you.
 
-*New to Calyflow? [Create a free account](https://app.calyflow.ai/sign-up) — your own API key, no credit card — connect an ATS or a spreadsheet, and run your first semantic search over your own talent pool.*
+*New to Calyflow? [Create a free account](https://app.calyflow.ai/sign-up), your own API key, no credit card, connect an ATS or a spreadsheet, and run your first semantic search over your own talent pool.*

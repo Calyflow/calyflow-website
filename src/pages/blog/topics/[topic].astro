@@ -21,7 +21,7 @@ const { topic } = Astro.params;
 const { posts } = Astro.props;
 const label = topic.replace(/-/g, ' ');
 const capitalized = label.replace(/\b\w/g, (c) => c.toUpperCase());
-const title = `${capitalized} — Calyflow Blog`;
+const title = `${capitalized}, Calyflow Blog`;
 const description = `Articles on ${label} for recruiting teams: practical, workflow-first guides from Calyflow.`;
 ---
 

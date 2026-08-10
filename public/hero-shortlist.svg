@@ -6,7 +6,7 @@
     <clipPath id="appFrame"><rect x="8" y="8" width="1184" height="764" rx="12"/></clipPath>
   </defs>
 
-  <!-- App frame — cream-50 canvas, panel radius -->
+  <!-- App frame, cream-50 canvas, panel radius -->
   <rect x="8" y="8" width="1184" height="764" rx="12" fill="#FAFAFA" stroke="#1B2A4A" stroke-opacity="0.12"/>
 
   <g clip-path="url(#appFrame)">

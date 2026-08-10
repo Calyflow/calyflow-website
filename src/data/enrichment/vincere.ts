@@ -10,21 +10,21 @@ const target: EnrichmentTarget = {
   heroTitleLead: 'Keep',
   heroTitleTail: 'current, automatically',
   heroSubtitle:
-    'A custom automation hub that enriches your Vincere records every day from Coresignal and Apollo — fresh roles, verified contacts, and job-change alerts, with no manual research.',
+    'A custom automation hub that enriches your Vincere records every day from Coresignal and Apollo, fresh roles, verified contacts, and job-change alerts, with no manual research.',
 
   stackRole: 'Your system of record',
   stackBlurb:
-    'The hub reads and writes back to Vincere. Your ATS stays the single source of truth — nothing is exported into another tool.',
+    'The hub reads and writes back to Vincere. Your ATS stays the single source of truth, nothing is exported into another tool.',
   enrich1Blurb:
     'Refreshes job titles, current employer, tenure, and company headcount so your records reflect where candidates actually are today.',
   enrich2Blurb:
     'Fills in and verifies emails and direct dials, so outreach lands instead of bouncing on a candidate who changed jobs two years ago.',
 
   capabilities: [
-    'Enrich Vincere candidate and contact records daily from Coresignal and Apollo — no manual lookups.',
+    'Enrich Vincere candidate and contact records daily from Coresignal and Apollo, no manual lookups.',
     'Detect job changes: flag candidates who moved to a new company or role so you can re-engage at the right moment.',
     'Verify and refresh emails and phone numbers, retiring bounced addresses before they hurt your sender reputation.',
-    'Backfill missing fields — current title, employer, location, LinkedIn, company size — across your existing database.',
+    'Backfill missing fields, current title, employer, location, LinkedIn, company size, across your existing database.',
     'Top up firmographics on company records: headcount, industry, and growth signals worth a conversation.',
     'Write everything straight back into Vincere with a clear source and timestamp on each enriched field.',
     'Run on your own Coresignal and Apollo keys, so the data and the spend stay entirely yours.',
@@ -35,7 +35,7 @@ const target: EnrichmentTarget = {
       task: 'Manual record enrichment',
       detail:
         'A recruiter spends 5–8 minutes per record cross-checking LinkedIn, finding an email, and updating Vincere.',
-      saved: '~6 min saved per record — 50 records a day is roughly 5 hours back, every day.',
+      saved: '~6 min saved per record, 50 records a day is roughly 5 hours back, every day.',
     },
     {
       task: 'Spotting job changes',
