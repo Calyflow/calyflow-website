@@ -1,5 +1,5 @@
 /**
- * Homepage FAQ — shared by the FAQ section, the FAQPage JSON-LD, and
+ * Homepage FAQ, shared by the FAQ section, the FAQPage JSON-LD, and
  * llms-full.txt so the answers stay identical everywhere.
  * Style: the first sentence IS the answer (answer-first writing).
  */

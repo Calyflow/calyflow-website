@@ -1,6 +1,6 @@
 <svg viewBox="0 0 1200 780" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-labelledby="ahTitle ahDesc">
   <title id="ahTitle">Calyflow Automation Hub</title>
-  <desc id="ahDesc">A recruiting agency's Calyflow Automation Hub showing scheduled AI automations — ATS and CRM data enrichment, daily reporting, candidate shortlisting and client research — each with a health status, schedule, last run and recent-run history.</desc>
+  <desc id="ahDesc">A recruiting agency's Calyflow Automation Hub showing scheduled AI automations, ATS and CRM data enrichment, daily reporting, candidate shortlisting and client research, each with a health status, schedule, last run and recent-run history.</desc>
 
   <defs>
     <clipPath id="ahFrame"><rect x="8" y="8" width="1184" height="764" rx="20"/></clipPath>

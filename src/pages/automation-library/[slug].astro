@@ -66,7 +66,7 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout title={`${item.name} — Calyflow`} description={description} ogImage={item.coverUrl} jsonLd={jsonLd}>
+<BaseLayout title={`${item.name}, Calyflow`} description={description} ogImage={item.coverUrl} jsonLd={jsonLd}>
   <article class="mx-auto max-w-5xl px-5 py-14 md:py-20">
     <div class="mx-auto max-w-[72ch]">
       <Breadcrumbs
@@ -95,7 +95,7 @@ const jsonLd = [
       </header>
     </div>
 
-    {/* Cover breaks out to the full article width — it's a wide diagram. */}
+    {/* Cover breaks out to the full article width, it's a wide diagram. */}
     <img
       src={item.coverUrl}
       alt={`${item.name} cover`}
@@ -182,7 +182,7 @@ const jsonLd = [
       <CtaPanel tone="cream" class="mt-12">
         <h2 class="text-2xl">Run this agent in Calyflow</h2>
         <p class="mx-auto mt-3 max-w-xl text-navy-800/70">
-          On your own AI, data, and tools — repeatable and evidence-backed. Free to start, no credit
+          On your own AI, data, and tools, repeatable and evidence-backed. Free to start, no credit
           card.
         </p>
         <Button href={SITE.signupUrl} size="lg" event="cta-library-detail" class="mt-6">

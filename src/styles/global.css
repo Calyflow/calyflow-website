@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  /* ---- Brand color system — aligned with calyflow-app globals.css ---- */
+  /* ---- Brand color system, aligned with calyflow-app globals.css ---- */
   --color-cream-50: #fafafa;
   --color-cream-100: #eae9e7;
   --color-navy-900: #131f38;
@@ -91,14 +91,14 @@
 }
 
 @utility aurora-glow {
-  /* Homepage hero only — once-per-site mint → sky flourish (app once-per-app rule) */
+  /* Homepage hero only, once-per-site mint → sky flourish (app once-per-app rule) */
   background-image: linear-gradient(135deg, var(--color-mint-400), var(--color-sky-300));
   opacity: 0.2;
   filter: blur(64px);
   pointer-events: none;
 }
 
-/* Long-form blog typography — keeps MDX output on-brand without a plugin. */
+/* Long-form blog typography, keeps MDX output on-brand without a plugin. */
 @layer components {
   .prose-calyflow {
     max-width: 68ch;

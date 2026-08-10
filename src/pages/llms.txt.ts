@@ -24,21 +24,21 @@ FAQ), see the documentation's own llms.txt.
 ## Core principles
 
 - Bring Your Own AI: model-agnostic. Claude, ChatGPT, Gemini, OpenAI API,
-  Anthropic API, or local models, on your own API key or the built-in
-  Calyflow key.
+ Anthropic API, or local models, on your own API key or the built-in
+ Calyflow key.
 - Bring Your Own Data: connects to your ATS/CRM and files (Recruit CRM,
-  Bullhorn, Vincere, HubSpot, Salesforce, Google Sheets, Airtable, CSV).
-  Calyflow does not own your candidate data.
+ Bullhorn, Vincere, HubSpot, Salesforce, Google Sheets, Airtable, CSV).
+ Calyflow does not own your candidate data.
 - Bring Your Own Tools: agents can use multiple tools during execution
-  (LinkedIn, Apollo, BrightData, GitHub, Google Search, company databases,
-  internal candidate DBs).
+ (LinkedIn, Apollo, BrightData, GitHub, Google Search, company databases,
+ internal candidate DBs).
 
 ## Who it is for
 
 - Independent recruiters: free forever.
 - Recruiting agencies: shared workflows, collaboration, reporting; free 30 days.
 - Enterprise talent teams: governance, permissions, private deployment on
-  their own GCP; free 30 days.
+ their own GCP; free 30 days.
 
 ## Pricing
 
@@ -49,12 +49,12 @@ AI provider for tokens; every run shows its cost.
 ## Products and services
 
 - CalyflowDB (${SITE.url}/calyflowdb): AI-ready talent database. Connects to
-  your ATS/CRM, enriches candidate data, and exposes it through hybrid
-  semantic + structured search that AI agents can query.
-- Automation Hub (${SITE.url}/automation-hub): custom AI agents on a schedule —
-  ATS/CRM enrichment, client research, shortlists, daily reporting.
+ your ATS/CRM, enriches candidate data, and exposes it through hybrid
+ semantic + structured search that AI agents can query.
+- Automation Hub (${SITE.url}/automation-hub): custom AI agents on a schedule , 
+ ATS/CRM enrichment, client research, shortlists, daily reporting.
 - ATS / CRM Enrichment hubs (${SITE.url}/ats-crm-enrichment): daily data
-  enrichment for 24+ ATS and CRM systems.
+ enrichment for 24+ ATS and CRM systems.
 - Product demo videos: ${SITE.url}/demo
 
 ## Links
@@ -69,4 +69,4 @@ AI provider for tokens; every run shows its cost.
 `;
 
 export const GET: APIRoute = () =>
-  new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+ new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });

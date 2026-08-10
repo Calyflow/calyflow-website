@@ -21,8 +21,8 @@ interface Props {
 const { page } = Astro.props;
 const isFirst = page.currentPage === 1;
 const title = isFirst
-  ? 'Blog — AI Recruiting Workflows | Calyflow'
-  : `Blog — Page ${page.currentPage} | Calyflow`;
+  ? 'Blog: AI Recruiting Workflows | Calyflow'
+  : `Blog, Page ${page.currentPage} | Calyflow`;
 const description =
   'Practical guides to AI recruiting workflows: CV screening without hallucinations, sourcing maps, outreach, and the AI Adoption Ladder.';
 ---

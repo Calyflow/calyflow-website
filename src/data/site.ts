@@ -12,7 +12,7 @@ export const SITE = {
     'Calyflow is a set of open-source recruiting agents that run AI workflows on your own models, data, and tools.',
   /** Meta description for the homepage (≤155 chars). */
   description:
-    'Fully autonomous recruiting agents. Upload a JD and unpublished insights — agents connect to your data, LinkedIn Proxy, and 30+ providers to source.',
+    'Fully autonomous recruiting agents. Upload a JD and unpublished insights, agents connect to your data, LinkedIn Proxy, and 30+ providers to source.',
   url: 'https://calyflow.ai',
   appUrl: 'https://app.calyflow.ai',
   /** Full product documentation (lives in the app). */
@@ -33,10 +33,9 @@ export const SITE = {
 
 export const AUTHOR = {
   name: 'Michal Juhas',
-  /** TODO: replace placeholder avatar with a real photo before launch. */
-  avatar: '/images/michal-avatar.svg',
+  avatar: '/images/michal-juhas.jpg',
   linkedin: 'https://www.linkedin.com/in/michaljuhas',
-  bio: 'Founder of Calyflow. Helps recruiting teams climb the AI Adoption Ladder — from chatting with AI to running repeatable AI workflows.',
+  bio: 'Founder of Calyflow. Helps recruiting teams climb the AI Adoption Ladder, from chatting with AI to running repeatable AI workflows.',
 } as const;
 
 /** The launch workflows, shown as one search lifecycle (spec §3.5). Names,

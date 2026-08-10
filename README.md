@@ -62,8 +62,8 @@ Reserved future redirects (add in Cloudflare when needed): `/docs`,
 
 ## Before launch (placeholders to replace)
 
-- `public/images/michal-avatar.svg` → real photo of Michal
-- `public/hero-dashboard.svg` → supplement/replace with real product
+- `public/images/michal-juhas.jpg` → founder portrait (blog + homepage quote)
+- `public/hero-shortlist.svg` → supplement/replace with real product
   screenshots once the UI ships
 - Confirm the LinkedIn URL in `src/data/site.ts`
 

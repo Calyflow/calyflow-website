@@ -67,13 +67,13 @@ const howItWorks = [
   {
     step: '01',
     title: 'Daily automation',
-    blurb: `Every morning the hub pulls a batch of ${target.name} ${recordsPhrase}, enriches them through ${target.enrich1} and ${target.enrich2}, and writes the results back — before your team logs in.`,
+    blurb: `Every morning the hub pulls a batch of ${target.name} ${recordsPhrase}, enriches them through ${target.enrich1} and ${target.enrich2}, and writes the results back, before your team logs in.`,
   },
   {
     step: '02',
     title: 'Automation hub overview',
     blurb:
-      'A single dashboard shows what ran, what changed, which records were enriched, and what needs a human eye — full provenance on every update, no black box.',
+      'A single dashboard shows what ran, what changed, which records were enriched, and what needs a human eye, full provenance on every update, no black box.',
   },
   {
     step: '03',
@@ -83,7 +83,7 @@ const howItWorks = [
 ];
 
 const title = `${target.name} enrichment automation hub | Calyflow`;
-const description = `A custom automation hub that enriches your ${target.name} records daily from ${target.enrich1} and ${target.enrich2} — fresh data, verified contacts, and no manual research.`;
+const description = `A custom automation hub that enriches your ${target.name} records daily from ${target.enrich1} and ${target.enrich2}, fresh data, verified contacts, and no manual research.`;
 ---
 
 <BaseLayout title={title} description={description} noIndex={true}>
@@ -241,7 +241,7 @@ const description = `A custom automation hub that enriches your ${target.name} r
       <CtaPanel eyebrow="Implementation">
         <p class="mt-4 font-display text-5xl font-bold text-white">from €2,500</p>
         <p class="mx-auto mt-4 max-w-xl text-white/70">
-          A one-time build of your custom automation hub — wired to your {target.name}, {
+          A one-time build of your custom automation hub, wired to your {target.name}, {
             target.enrich1
           }, and {target.enrich2} accounts, with the daily automation, the overview dashboard, and
           the Claude project set up for your team. Final scope and price are confirmed on the call.

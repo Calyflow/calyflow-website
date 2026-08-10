@@ -1,43 +1,43 @@
 ---
 title: 'Introducing Sourcing Plan: research before you source'
-description: 'A new Calyflow mode that researches the landscape for your role and hands you a phased, editable sourcing strategy — before any execution agent runs.'
+description: 'A new Calyflow mode that researches the landscape for your role and hands you a phased, editable sourcing strategy, before any execution agent runs.'
 pubDate: 2026-06-24
 topic: 'sourcing'
 ---
 
 import Screenshot from '../../components/blog/Screenshot.astro';
 
-Great sourcing doesn't start with a search box. It starts with a strategy: *where* the right people actually hang out, *which* channels are worth your time, and *what* terms will surface them. Most recruiters carry that map in their head — or worse, rebuild it from scratch on every new role.
+Great sourcing doesn't start with a search box. It starts with a strategy: *where* the right people actually hang out, *which* channels are worth your time, and *what* terms will surface them. Most recruiters carry that map in their head, or worse, rebuild it from scratch on every new role.
 
 Today we're shipping **Sourcing Plan**, a new mode inside every Calyflow project that does that thinking up front. Click **✨ Generate plan** and Calyflow researches the landscape for your role, then hands you a phased, editable strategy you can refine before any execution agent lifts a finger.
 
 <Screenshot
-  src="/blog/sourcing-plan-tab.png"
-  alt="The Sourcing Plan tab in a Calyflow project for a Senior Backend Engineer role: a freshly generated, phased search plan on the left, and a 'Work with the agent' panel on the right with a search-effort slider and an 'Ask for a change' composer."
-  caption="The Sourcing Plan tab: a generated plan on the left, the agent you steer it with on the right."
+ src="/blog/sourcing-plan-tab.png"
+ alt="The Sourcing Plan tab in a Calyflow project for a Senior Backend Engineer role: a freshly generated, phased search plan on the left, and a 'Work with the agent' panel on the right with a search-effort slider and an 'Ask for a change' composer."
+ caption="The Sourcing Plan tab: a generated plan on the left, the agent you steer it with on the right."
 />
 
 ## The problem: everyone runs before they look
 
-Calyflow already has a fleet of execution agents — the [GitHub Sourcer](/blog/new-sourcing-agents-github-and-coresignal), ATS Shortlister, and the rest — that go find and rank candidates for you. They're fast. But fast without direction means you can burn a run searching the wrong communities with the wrong keywords, then do it again on the next role.
+Calyflow already has a fleet of execution agents, the [GitHub Sourcer](/blog/new-sourcing-agents-github-and-coresignal), ATS Shortlister, and the rest, that go find and rank candidates for you. They're fast. But fast without direction means you can burn a run searching the wrong communities with the wrong keywords, then do it again on the next role.
 
-What was missing was the step *before* execution: a deliberate, research-backed plan of attack. That's the gap Sourcing Plan fills — and it's the natural next step up from a one-shot [sourcing map](/blog/ai-sourcing-maps-jd-to-boolean-strings).
+What was missing was the step *before* execution: a deliberate, research-backed plan of attack. That's the gap Sourcing Plan fills: and it's the natural next step up from a one-shot [sourcing map](/blog/ai-sourcing-maps-jd-to-boolean-strings).
 
 ## How it works
 
 Sourcing Plan lives as its own tab in your project, right alongside Agents, Documents, and Settings. The flow is built to keep you in control the whole way:
 
-1. **Generate.** Hit **✨ Generate plan**. Calyflow reads your job description and project context, then researches the sourcing landscape — searching the web, reading pages, and pulling from your documents.
+1. **Generate.** Hit **✨ Generate plan**. Calyflow reads your job description and project context, then researches the sourcing landscape, searching the web, reading pages, and pulling from your documents.
 2. **Pick your depth.** A simple **Low / Medium / High** effort slider lets you trade speed for thoroughness. Medium is the default; High does deeper research with more tool calls; Low is fast and cheap.
-3. **Watch it think.** The research streams live — *"▸ Searched the web → ✓ Read a web page"* — so you can see exactly what's informing the plan instead of staring at a spinner.
+3. **Watch it think.** The research streams live, *"▸ Searched the web → ✓ Read a web page"*, so you can see exactly what's informing the plan instead of staring at a spinner.
 4. **Review the draft.** When it's done, you get a clean, phased plan in Markdown: where to look, which channels, what search terms, in what order.
-5. **Edit inline.** Hit **✎ Edit** to tweak the plan directly. It's your document — change anything.
+5. **Edit inline.** Hit **✎ Edit** to tweak the plan directly. It's your document, change anything.
 6. **Or just ask.** Below the plan there's a chat composer. *"Add two niche communities for this market and drop the generic job boards."* Calyflow revises the whole plan with your instruction, and keeps every revision in a threaded conversation so you can trace how the plan evolved.
 
 <Screenshot
-  src="/blog/sourcing-plan-detail.png"
-  alt="A close-up of a generated Sourcing Plan: a phased search plan starting with an exact-match step, with ready-to-paste boolean strings for LinkedIn, Google/Bing, and X-ray search, then broader phases below."
-  caption="The draft is a phased plan with ready-to-paste boolean strings for each channel."
+ src="/blog/sourcing-plan-detail.png"
+ alt="A close-up of a generated Sourcing Plan: a phased search plan starting with an exact-match step, with ready-to-paste boolean strings for LinkedIn, Google/Bing, and X-ray search, then broader phases below."
+ caption="The draft is a phased plan with ready-to-paste boolean strings for each channel."
 />
 
 ## The part that makes it more than a doc: the progress log
@@ -48,24 +48,24 @@ The plan is automatically injected into every sourcing agent's context. So when 
 
 > _Searched GitHub Kafka + CloudNativePG repos → 18 strong candidates → next: email outreach_
 
-That log is append-only — earlier entries are never overwritten — and it travels with the plan. The result: the *next* agent you run already knows what's been done, so it doesn't repeat searches or step on work that's already finished. Your plan becomes a living record of the campaign, not a doc you wrote once and forgot.
+That log is append-only, earlier entries are never overwritten, and it travels with the plan. The result: the *next* agent you run already knows what's been done, so it doesn't repeat searches or step on work that's already finished. Your plan becomes a living record of the campaign, not a doc you wrote once and forgot.
 
 Five agents now feed the loop: the **GitHub Sourcer** plus the ATS, Sheet, Coresignal, and Vincere shortlisters.
 
 ## A few deliberate choices
 
-- **One active plan per project.** Like your job description, there's a single live plan at a time. Earlier versions are archived for history, but agents always work from the current one — no ambiguity about which strategy is in force.
-- **Research-only, by design.** The plan generator gets web search, web scraping, and access to your project documents — and nothing else. No ATS, no email, no candidate data. Planning is pure research; execution stays with the execution agents.
+- **One active plan per project.** Like your job description, there's a single live plan at a time. Earlier versions are archived for history, but agents always work from the current one, no ambiguity about which strategy is in force.
+- **Research-only, by design.** The plan generator gets web search, web scraping, and access to your project documents, and nothing else. No ATS, no email, no candidate data. Planning is pure research; execution stays with the execution agents.
 - **History you can revisit.** Every generate and revise turn is recorded, grouped by conversation, so the thinking behind a plan is never lost.
 
 ## Who it's for
 
-If you run sourcing across many roles — at an agency, a staffing firm, or an in-house team juggling reqs — Sourcing Plan gives you a repeatable way to research before you execute, keep a strategy you can edit in plain language, and track what's actually been done as your agents work.
+If you run sourcing across many roles, at an agency, a staffing firm, or an in-house team juggling reqs, Sourcing Plan gives you a repeatable way to research before you execute, keep a strategy you can edit in plain language, and track what's actually been done as your agents work.
 
 ## Try it
 
-Open any project, head to the **Sourcing Plan** tab, and click **✨ Generate plan**. Make sure the project has an active job description first — Calyflow will nudge you if it's missing.
+Open any project, head to the **Sourcing Plan** tab, and click **✨ Generate plan**. Make sure the project has an active job description first, Calyflow will nudge you if it's missing.
 
 Plan first. Source second. Repeat without re-thinking.
 
-*New to Calyflow? [Create a free account](https://app.calyflow.ai/sign-up) — your own API key, no credit card — and plan your first search.*
+*New to Calyflow? [Create a free account](https://app.calyflow.ai/sign-up), your own API key, no credit card, and plan your first search.*
