@@ -5,7 +5,6 @@ import SocialProof from '../components/home/SocialProof.astro';
 import ProblemSolution from '../components/home/ProblemSolution.astro';
 import Principles from '../components/home/Principles.astro';
 import AutonomousAgents from '../components/home/AutonomousAgents.astro';
-import OpenSource from '../components/home/OpenSource.astro';
 import Faq from '../components/home/Faq.astro';
 import FinalCta from '../components/home/FinalCta.astro';
 import { SITE } from '../data/site';
@@ -23,9 +22,7 @@ const jsonLd = [
     operatingSystem: 'Web',
     description: SITE.definition,
     url: SITE.url,
-    license: 'https://www.gnu.org/licenses/agpl-3.0.html',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
-    sameAs: [SITE.githubUrl],
     publisher: { '@id': `${SITE.url}/#organization` },
   },
   {
@@ -46,7 +43,6 @@ const jsonLd = [
   <ProblemSolution />
   <AutonomousAgents />
   <Principles />
-  <OpenSource />
   <Faq />
   <FinalCta />
 </BaseLayout>
