@@ -8,7 +8,7 @@
  defaults: '2026-01-30'
  });
 
- // Wire up data-event attributes: CTA buttons and GitHub star buttons.
+ // Wire up data-event attributes on CTA buttons.
  document.addEventListener('click', function(e) {
  var el = e.target.closest('[data-event]');
  if (!el) return;
@@ -17,8 +17,6 @@
 
  if (eventName.startsWith('cta-')) {
  window.posthog?.capture('cta_clicked', { section: eventName });
- } else if (eventName.startsWith('github-click')) {
- window.posthog?.capture('github_star_clicked', { section: eventName });
  }
  });
 </script>

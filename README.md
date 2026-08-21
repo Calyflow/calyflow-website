@@ -1,6 +1,6 @@
 # calyflow.ai — marketing website
 
-> Calyflow is a set of open-source recruiting agents that run AI workflows on your own
+> Calyflow is a set of recruiting agents that run AI workflows on your own
 > models, data, and tools.
 
 This repo is the static marketing site for [calyflow.ai](https://calyflow.ai)
@@ -19,9 +19,8 @@ npm run build      # static build → dist/
 npm run preview    # serve dist/ locally
 ```
 
-The build fetches the GitHub star count once (degrades gracefully offline)
-and generates per-page OG images, `sitemap-index.xml`, `rss.xml`, `llms.txt`,
-and `llms-full.txt`.
+The build generates per-page OG images, `sitemap-index.xml`, `rss.xml`,
+`llms.txt`, and `llms-full.txt`.
 
 ## Common edits
 
@@ -69,4 +68,4 @@ Reserved future redirects (add in Cloudflare when needed): `/docs`,
 
 ## License
 
-MIT (this website). The Calyflow platform itself is AGPL-3.0.
+MIT (this website). The Calyflow platform itself is proprietary.

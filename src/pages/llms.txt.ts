@@ -2,12 +2,12 @@ import type { APIRoute } from 'astro';
 import { SITE } from '../data/site';
 
 // Concise, factual product summary for LLMs and AI crawlers (spec §5.3).
-// Phrasing must stay consistent with the site and the GitHub README.
+// Phrasing must stay consistent with the rest of the site.
 const body = `# ${SITE.name}
 
 > ${SITE.definition}
 
-${SITE.name} (${SITE.url}) is a set of open-source recruiting agents. Recruiters import
+${SITE.name} (${SITE.url}) is a set of recruiting agents. Recruiters import
 proven AI workflows (CV screening, sourcing maps, outreach writing, job
 description writing, submission packs), attach their documents, and run them
 with repeatable, evidence-backed results.
@@ -63,7 +63,6 @@ AI provider for tokens; every run shows its cost.
 - App sign-up: ${SITE.signupUrl}
 - Documentation: ${SITE.docsUrl}
 - Documentation index for LLMs: ${SITE.docsLlmsTxtUrl}
-- Source code (${SITE.productLicense}): ${SITE.githubUrl}
 - Blog: ${SITE.url}/blog
 - Extended version of this file: ${SITE.url}/llms-full.txt
 `;

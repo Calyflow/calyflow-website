@@ -14,7 +14,7 @@ const body = `# ${SITE.name}, full reference
 
 > ${SITE.definition}
 
-${SITE.name} (${SITE.url}) is a set of open-source recruiting agents. Instead of chatting
+${SITE.name} (${SITE.url}) is a set of recruiting agents. Instead of chatting
 with AI in scattered browser tabs, recruiters import a workflow, attach their
 documents (job description, intake notes, CVs), and run it, with repeatable,
 evidence-backed results and a visible cost per run.
@@ -45,7 +45,6 @@ ${faq}
 - App sign-up: ${SITE.signupUrl}
 - Documentation: ${SITE.docsUrl}
 - Documentation index for LLMs: ${SITE.docsLlmsTxtUrl}
-- Source code (${SITE.productLicense}): ${SITE.githubUrl}
 - Blog: ${SITE.url}/blog
 - RSS: ${SITE.url}/rss.xml
 `;

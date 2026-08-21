@@ -1,15 +1,15 @@
 /**
  * Single source of truth for site-wide constants and the canonical entity
- * phrasing. The same product description must appear on the site, in
- * llms.txt, and in the GitHub README so search engines and LLMs converge
- * on one story (WEBSITE_SPEC.md §5.3).
+ * phrasing. The same product description must appear on the site and in
+ * llms.txt so search engines and LLMs converge on one story
+ * (WEBSITE_SPEC.md §5.3).
  */
 export const SITE = {
   name: 'Calyflow',
-  tagline: 'Open-source Recruiting Agents',
+  tagline: 'Agentic Recruiting',
   /** The ONE canonical, quotable definition. Reuse verbatim everywhere. */
   definition:
-    'Calyflow is a set of open-source recruiting agents that run AI workflows on your own models, data, and tools.',
+    'Calyflow is a set of recruiting agents that run AI workflows on your own models, data, and tools.',
   /** Meta description for the homepage (≤155 chars). */
   description:
     'Fully autonomous recruiting agents. Upload a JD and unpublished insights, agents connect to your data, LinkedIn Proxy, and 30+ providers to source.',
@@ -23,10 +23,7 @@ export const SITE = {
   loginUrl: 'https://app.calyflow.ai/sign-in',
   /** Google Calendar booking link for custom automation-hub discovery calls. */
   bookCallUrl: 'https://calendar.app.google/mqJ6x4hCQm6Kp9bK7',
-  githubUrl: 'https://github.com/Calyflow/calyflow-app',
-  githubRepo: 'Calyflow/calyflow-app',
   contactEmail: 'hello@calyflow.ai',
-  productLicense: 'AGPL-3.0',
   locale: 'en',
   ogImage: '/og/default.png',
 } as const;

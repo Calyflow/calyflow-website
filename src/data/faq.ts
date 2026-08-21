@@ -12,7 +12,7 @@ export const FAQ: FaqItem[] = [
   {
     question: 'What is Calyflow?',
     answer:
-      'Calyflow is a set of open-source recruiting agents that run AI workflows on your own models, data, and tools. Instead of chatting with AI in scattered browser tabs, you import a workflow (CV screening, sourcing, outreach), attach your documents, and run it.',
+      'Calyflow is a set of recruiting agents that run AI workflows on your own models, data, and tools. Instead of chatting with AI in scattered browser tabs, you import a workflow (CV screening, sourcing, outreach), attach your documents, and run it.',
   },
   {
     question: 'Which AI models can I use?',
@@ -27,7 +27,7 @@ export const FAQ: FaqItem[] = [
   {
     question: 'Can I self-host Calyflow?',
     answer:
-      'Yes. Calyflow is open source under AGPL-3.0, so you can self-host it on your own infrastructure. Enterprise teams can also have a private deployment on their own Google Cloud project, deployed by us.',
+      'Yes. Calyflow can be self-hosted on your own infrastructure for full control over where your data lives. Enterprise teams can also have a private deployment on their own Google Cloud project, deployed by us.',
   },
   {
     question: 'Is Calyflow really free?',
